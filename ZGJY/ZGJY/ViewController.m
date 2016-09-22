@@ -19,7 +19,7 @@
     
     
     NSLog(@"%@",  NSLocalizedString(@"qaz", nil));
-    //啦啦啦LYD
+    //啦啦啦LYD 1111111
     
     
     // Do any additional setup after loading the view, typically from a nib.
