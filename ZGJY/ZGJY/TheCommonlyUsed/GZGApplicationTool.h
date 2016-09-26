@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@interface ZGApplicationTool : NSObject
+@interface GZGApplicationTool : NSObject
 @end
 
-@interface ZGApplicationTool (Sizes)
+@interface GZGApplicationTool (Sizes)
 /**
 *  NavigationBar Size
 *
@@ -41,14 +41,14 @@
  *
  *  @return Size
  */
-+ (CGFloat)screenWidth;
++ (CGFloat)screenWide;
 /**
  *  系统屏幕的高
  *
  *  @return Size
  */
 + (CGFloat)screenHeight;
-+ (CGFloat)proportion_weight;
++ (CGFloat)proportion_wide;
 + (CGFloat)Proportion_height;
 /**
  *  UI设计给的宽
@@ -57,7 +57,7 @@
  *
  *  @return 返回计算的宽
  */
-+ (CGFloat)control_weight:(CGFloat)weight;
++ (CGFloat)control_wide:(CGFloat)wide;
 /**
  *  UI设计给的高
  *
@@ -87,7 +87,7 @@
 + (CGSize)compressImageSize:(UIImage *)image;
 @end
 
-@interface ZGApplicationTool (BooLs)
+@interface GZGApplicationTool (BooLs)
 /**
 *  正则手机号
 *
@@ -104,7 +104,7 @@
 +(NSString *)Judgingdevice;
 @end
 
-@interface ZGApplicationTool (Edition)
+@interface GZGApplicationTool (Edition)
 /**
 *  判断项目Version版本
 *
@@ -123,7 +123,7 @@
 + (void)jumpAppStoreScore;
 @end
 
-@interface ZGApplicationTool (date)
+@interface GZGApplicationTool (date)
 /**
 *  计算当月的第一天在周几
 *
@@ -254,7 +254,7 @@
 
 @end
 
-@interface ZGApplicationTool (UIImages)
+@interface GZGApplicationTool (UIImages)
 /**
  *生成二维码
  */
@@ -280,7 +280,7 @@
 + (UIVisualEffectView *)woolGlassEatablishImage:(UIImageView *)imageView;
 @end
 
-@interface ZGApplicationTool (NSArrays)
+@interface GZGApplicationTool (NSArrays)
 /**
  * 截取字符串
  * @param text 内容

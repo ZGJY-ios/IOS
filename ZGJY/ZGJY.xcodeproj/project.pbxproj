@@ -49,11 +49,19 @@
 		044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3FC1D5C60B200DD06EC /* UIWebView+AFNetworking.m */; };
 		047B690F1D5D7B080057CE61 /* ZGNetDealImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */; };
 		047B69131D5DA0630057CE61 /* 123456.png in Resources */ = {isa = PBXBuildFile; fileRef = 047B69121D5DA0630057CE61 /* 123456.png */; };
+		048B783A1D98CF93009F7C37 /* GZGMainNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */; };
+		048B783D1D98D702009F7C37 /* GZGColorClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B783C1D98D701009F7C37 /* GZGColorClass.m */; };
+		048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B783F1D98E6E2009F7C37 /* GZGCommonlySet.m */; };
 		04D60F481D87D6A400A42583 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D60F4A1D87D6A400A42583 /* Localizable.strings */; };
-		BD3D325C1D52ECED004CCEFE /* ZGApplicationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3D325B1D52ECED004CCEFE /* ZGApplicationTool.m */; };
+		04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */; };
+		04FBA26F1D98C87000AD147A /* GZGClassifiCationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA2601D98C87000AD147A /* GZGClassifiCationViewController.m */; };
+		04FBA2711D98C87000AD147A /* GZGPersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA2661D98C87000AD147A /* GZGPersonalCenterViewController.m */; };
+		04FBA2721D98C87000AD147A /* GZGRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA2691D98C87000AD147A /* GZGRootViewController.m */; };
+		04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA26E1D98C87000AD147A /* GZGTheShoppingCartViewController.m */; };
+		04FBA2771D98C8B100AD147A /* GZGSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA2761D98C8B100AD147A /* GZGSubViewController.m */; };
+		04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA27A1D98C98200AD147A /* AppDelegate.m */; };
+		04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA27C1D98C98200AD147A /* GZGApplicationTool.m */; };
 		BDDDF80D1D51B992002723AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDDF80C1D51B992002723AB /* main.m */; };
-		BDDDF8101D51B992002723AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDDF80F1D51B992002723AB /* AppDelegate.m */; };
-		BDDDF8131D51B992002723AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDDF8121D51B992002723AB /* ViewController.m */; };
 		BDDDF8161D51B992002723AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDDF8141D51B992002723AB /* Main.storyboard */; };
 		BDDDF8181D51B992002723AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDDF8171D51B992002723AB /* Assets.xcassets */; };
 		BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDDF8191D51B992002723AB /* LaunchScreen.storyboard */; };
@@ -165,18 +173,35 @@
 		047B690D1D5D7B080057CE61 /* ZGNetDealImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGNetDealImage.h; sourceTree = "<group>"; };
 		047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGNetDealImage.m; sourceTree = "<group>"; };
 		047B69121D5DA0630057CE61 /* 123456.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123456.png; sourceTree = "<group>"; };
+		048B78381D98CF93009F7C37 /* GZGMainNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGMainNavgationController.h; sourceTree = "<group>"; };
+		048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGMainNavgationController.m; sourceTree = "<group>"; };
+		048B783B1D98D701009F7C37 /* GZGColorClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGColorClass.h; sourceTree = "<group>"; };
+		048B783C1D98D701009F7C37 /* GZGColorClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGColorClass.m; sourceTree = "<group>"; };
+		048B783E1D98E6E2009F7C37 /* GZGCommonlySet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCommonlySet.h; sourceTree = "<group>"; };
+		048B783F1D98E6E2009F7C37 /* GZGCommonlySet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCommonlySet.m; sourceTree = "<group>"; };
 		04D60F461D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		04D60F471D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		04D60F491D87D6A400A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		04D60F4B1D87D6BA00A42583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BD3D325A1D52ECED004CCEFE /* ZGApplicationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGApplicationTool.h; sourceTree = "<group>"; };
-		BD3D325B1D52ECED004CCEFE /* ZGApplicationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGApplicationTool.m; sourceTree = "<group>"; };
+		04E8D61D1D9917F200E0D85D /* GZGGlobalPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGGlobalPurchasingViewController.h; sourceTree = "<group>"; };
+		04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGGlobalPurchasingViewController.m; sourceTree = "<group>"; };
+		04FBA25F1D98C87000AD147A /* GZGClassifiCationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGClassifiCationViewController.h; sourceTree = "<group>"; };
+		04FBA2601D98C87000AD147A /* GZGClassifiCationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGClassifiCationViewController.m; sourceTree = "<group>"; };
+		04FBA2651D98C87000AD147A /* GZGPersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGPersonalCenterViewController.h; sourceTree = "<group>"; };
+		04FBA2661D98C87000AD147A /* GZGPersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGPersonalCenterViewController.m; sourceTree = "<group>"; };
+		04FBA2681D98C87000AD147A /* GZGRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGRootViewController.h; sourceTree = "<group>"; };
+		04FBA2691D98C87000AD147A /* GZGRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGRootViewController.m; sourceTree = "<group>"; };
+		04FBA26D1D98C87000AD147A /* GZGTheShoppingCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGTheShoppingCartViewController.h; sourceTree = "<group>"; };
+		04FBA26E1D98C87000AD147A /* GZGTheShoppingCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGTheShoppingCartViewController.m; sourceTree = "<group>"; };
+		04FBA2751D98C8B100AD147A /* GZGSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSubViewController.h; sourceTree = "<group>"; };
+		04FBA2761D98C8B100AD147A /* GZGSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSubViewController.m; sourceTree = "<group>"; };
+		04FBA2791D98C98200AD147A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04FBA27A1D98C98200AD147A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04FBA27B1D98C98200AD147A /* GZGApplicationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGApplicationTool.h; sourceTree = "<group>"; };
+		04FBA27C1D98C98200AD147A /* GZGApplicationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGApplicationTool.m; sourceTree = "<group>"; };
+		04FBA27D1D98C98200AD147A /* ZGJY.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGJY.pch; sourceTree = "<group>"; };
 		BDDDF8081D51B992002723AB /* ZGJY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZGJY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDDF80C1D51B992002723AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BDDDF80E1D51B992002723AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BDDDF80F1D51B992002723AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BDDDF8111D51B992002723AB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BDDDF8121D51B992002723AB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BDDDF8151D51B992002723AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDDDF8171D51B992002723AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDDDF81A1D51B992002723AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -187,7 +212,6 @@
 		BDDDF82C1D51B993002723AB /* ZGJYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZGJYUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDDF8301D51B993002723AB /* ZGJYUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGJYUITests.m; sourceTree = "<group>"; };
 		BDDDF8321D51B993002723AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDDDF83E1D51B9E4002723AB /* ZGJY.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGJY.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +378,84 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		04FBA25D1D98C87000AD147A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA2641D98C87000AD147A /* PersonalCenter */,
+				04FBA25E1D98C87000AD147A /* ClassifiCation */,
+				04FBA26C1D98C87000AD147A /* TheShoppingCart */,
+				04FBA2611D98C87000AD147A /* GlobalPurchasing */,
+				04FBA2671D98C87000AD147A /* RootViewClass */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		04FBA25E1D98C87000AD147A /* ClassifiCation */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA25F1D98C87000AD147A /* GZGClassifiCationViewController.h */,
+				04FBA2601D98C87000AD147A /* GZGClassifiCationViewController.m */,
+			);
+			path = ClassifiCation;
+			sourceTree = "<group>";
+		};
+		04FBA2611D98C87000AD147A /* GlobalPurchasing */ = {
+			isa = PBXGroup;
+			children = (
+				04E8D61D1D9917F200E0D85D /* GZGGlobalPurchasingViewController.h */,
+				04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */,
+			);
+			path = GlobalPurchasing;
+			sourceTree = "<group>";
+		};
+		04FBA2641D98C87000AD147A /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA2651D98C87000AD147A /* GZGPersonalCenterViewController.h */,
+				04FBA2661D98C87000AD147A /* GZGPersonalCenterViewController.m */,
+			);
+			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		04FBA2671D98C87000AD147A /* RootViewClass */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA2681D98C87000AD147A /* GZGRootViewController.h */,
+				04FBA2691D98C87000AD147A /* GZGRootViewController.m */,
+				04FBA2751D98C8B100AD147A /* GZGSubViewController.h */,
+				04FBA2761D98C8B100AD147A /* GZGSubViewController.m */,
+				048B78381D98CF93009F7C37 /* GZGMainNavgationController.h */,
+				048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */,
+			);
+			path = RootViewClass;
+			sourceTree = "<group>";
+		};
+		04FBA26C1D98C87000AD147A /* TheShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA26D1D98C87000AD147A /* GZGTheShoppingCartViewController.h */,
+				04FBA26E1D98C87000AD147A /* GZGTheShoppingCartViewController.m */,
+			);
+			path = TheShoppingCart;
+			sourceTree = "<group>";
+		};
+		04FBA2781D98C98200AD147A /* TheCommonlyUsed */ = {
+			isa = PBXGroup;
+			children = (
+				04D60F4A1D87D6A400A42583 /* Localizable.strings */,
+				04FBA2791D98C98200AD147A /* AppDelegate.h */,
+				04FBA27A1D98C98200AD147A /* AppDelegate.m */,
+				04FBA27B1D98C98200AD147A /* GZGApplicationTool.h */,
+				04FBA27C1D98C98200AD147A /* GZGApplicationTool.m */,
+				048B783B1D98D701009F7C37 /* GZGColorClass.h */,
+				048B783C1D98D701009F7C37 /* GZGColorClass.m */,
+				048B783E1D98E6E2009F7C37 /* GZGCommonlySet.h */,
+				048B783F1D98E6E2009F7C37 /* GZGCommonlySet.m */,
+				04FBA27D1D98C98200AD147A /* ZGJY.pch */,
+			);
+			path = TheCommonlyUsed;
+			sourceTree = "<group>";
+		};
 		BDDDF7FF1D51B992002723AB = {
 			isa = PBXGroup;
 			children = (
@@ -378,17 +480,11 @@
 		BDDDF80A1D51B992002723AB /* ZGJY */ = {
 			isa = PBXGroup;
 			children = (
-				047B69121D5DA0630057CE61 /* 123456.png */,
-				04D60F4A1D87D6A400A42583 /* Localizable.strings */,
-				BDDDF80E1D51B992002723AB /* AppDelegate.h */,
-				BDDDF80F1D51B992002723AB /* AppDelegate.m */,
-				BDDDF8111D51B992002723AB /* ViewController.h */,
-				BDDDF8121D51B992002723AB /* ViewController.m */,
-				BD3D325A1D52ECED004CCEFE /* ZGApplicationTool.h */,
-				BD3D325B1D52ECED004CCEFE /* ZGApplicationTool.m */,
-				BDDDF83E1D51B9E4002723AB /* ZGJY.pch */,
-				044DA3E41D5C4AA800DD06EC /* ZGNetWorking */,
+				04FBA25D1D98C87000AD147A /* ViewControllers */,
+				04FBA2781D98C98200AD147A /* TheCommonlyUsed */,
 				044D9F481D5C439200DD06EC /* ThirdPartyLibrary */,
+				044DA3E41D5C4AA800DD06EC /* ZGNetWorking */,
+				047B69121D5DA0630057CE61 /* 123456.png */,
 				BDDDF8141D51B992002723AB /* Main.storyboard */,
 				BDDDF8171D51B992002723AB /* Assets.xcassets */,
 				BDDDF8191D51B992002723AB /* LaunchScreen.storyboard */,
@@ -486,7 +582,7 @@
 		BDDDF8001D51B992002723AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = LiuYaDong;
 				TargetAttributes = {
 					BDDDF8071D51B992002723AB = {
@@ -559,26 +655,32 @@
 			files = (
 				044DA3DE1D5C467100DD06EC /* UIImage+GIF.m in Sources */,
 				044DA4021D5C60B200DD06EC /* UIImageView+AFNetworking.m in Sources */,
-				BDDDF8131D51B992002723AB /* ViewController.m in Sources */,
 				044DA3971D5C458E00DD06EC /* FMDatabaseQueue.m in Sources */,
-				BD3D325C1D52ECED004CCEFE /* ZGApplicationTool.m in Sources */,
-				BDDDF8101D51B992002723AB /* AppDelegate.m in Sources */,
+				04FBA2721D98C87000AD147A /* GZGRootViewController.m in Sources */,
+				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
 				044DA3E01D5C467100DD06EC /* UIImage+WebP.m in Sources */,
 				044DA3D51D5C467100DD06EC /* NSData+ImageContentType.m in Sources */,
 				044DA3FF1D5C60B200DD06EC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				044DA3B01D5C466300DD06EC /* AFURLResponseSerialization.m in Sources */,
 				044DA4011D5C60B200DD06EC /* UIButton+AFNetworking.m in Sources */,
+				048B783D1D98D702009F7C37 /* GZGColorClass.m in Sources */,
+				04FBA2771D98C8B100AD147A /* GZGSubViewController.m in Sources */,
 				044DA3941D5C458E00DD06EC /* FMDatabase.m in Sources */,
 				044DA4001D5C60B200DD06EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */,
 				044DA3D81D5C467100DD06EC /* SDWebImageDecoder.m in Sources */,
 				044DA3AF1D5C466300DD06EC /* AFURLRequestSerialization.m in Sources */,
+				04FBA2711D98C87000AD147A /* GZGPersonalCenterViewController.m in Sources */,
+				04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */,
 				044DA3DD1D5C467100DD06EC /* UIButton+WebCache.m in Sources */,
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
+				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
 				044DA3AC1D5C466300DD06EC /* AFHTTPSessionManager.m in Sources */,
 				044DA3E21D5C467100DD06EC /* UIImageView+WebCache.m in Sources */,
 				044DA3961D5C458E00DD06EC /* FMDatabasePool.m in Sources */,
 				044DA3B11D5C466300DD06EC /* AFURLSessionManager.m in Sources */,
+				048B783A1D98CF93009F7C37 /* GZGMainNavgationController.m in Sources */,
 				044DA3981D5C458E00DD06EC /* FMResultSet.m in Sources */,
 				044DA3FD1D5C60B200DD06EC /* AFAutoPurgingImageCache.m in Sources */,
 				044DA4031D5C60B200DD06EC /* UIProgressView+AFNetworking.m in Sources */,
@@ -594,6 +696,8 @@
 				044DA3DF1D5C467100DD06EC /* UIImage+MultiFormat.m in Sources */,
 				044DA3E31D5C467100DD06EC /* UIView+WebCacheOperation.m in Sources */,
 				047B690F1D5D7B080057CE61 /* ZGNetDealImage.m in Sources */,
+				04FBA26F1D98C87000AD147A /* GZGClassifiCationViewController.m in Sources */,
+				04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */,
 				044DA3D71D5C467100DD06EC /* SDWebImageCompat.m in Sources */,
 				044DA3FE1D5C60B200DD06EC /* AFImageDownloader.m in Sources */,
 				044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */,
@@ -642,6 +746,7 @@
 				04D60F4B1D87D6BA00A42583 /* en */,
 			);
 			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BDDDF8141D51B992002723AB /* Main.storyboard */ = {
@@ -669,6 +774,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -679,8 +785,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -714,6 +822,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -724,8 +833,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -753,7 +864,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ZGJY/ZGJY.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZGJY/TheCommonlyUsed/ZGJY.pch";
 				INFOPLIST_FILE = ZGJY/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zgjy.gwqqg;
@@ -765,7 +876,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/ZGJY/ZGJY.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ZGJY/TheCommonlyUsed/ZGJY.pch";
 				INFOPLIST_FILE = ZGJY/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zgjy.gwqqg;

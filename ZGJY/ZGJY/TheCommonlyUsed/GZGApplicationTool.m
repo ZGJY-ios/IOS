@@ -6,12 +6,12 @@
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
 
-#import "ZGApplicationTool.h"
+#import "GZGApplicationTool.h"
 #import "sys/utsname.h"
-@implementation ZGApplicationTool
+@implementation GZGApplicationTool
 
 @end
-@implementation ZGApplicationTool (Sizes)
+@implementation GZGApplicationTool (Sizes)
 /**
  *NavigationBar高度
  */
@@ -48,18 +48,18 @@
  *系统屏幕的宽
  */
 
-+ (CGFloat)screenWidth {return [UIScreen mainScreen].bounds.size.width;}
++ (CGFloat)screenWide {return [UIScreen mainScreen].bounds.size.width;}
 /**
  *系统屏幕的高
  */
 + (CGFloat)screenHeight {return [UIScreen mainScreen].bounds.size.height;}
-+ (CGFloat)proportion_weight{return [self screenWidth]/640;}
++ (CGFloat)proportion_wide{return [self screenWide]/640;}
 + (CGFloat)Proportion_height{return [self screenHeight]/1136;}
 /**
  *设计图适配的宽  以6为基准
  */
 
-+ (CGFloat)control_weight:(CGFloat)weight{return weight * [self proportion_weight];}
++ (CGFloat)control_wide:(CGFloat)wide{return wide * [self proportion_wide];}
 /**
  *设计图适配的高  以6为基准
  */
@@ -80,23 +80,23 @@
  */
 + (CGSize)compressImageSize:(UIImage *)image{
     CGSize imageSize = image.size;
-    if (image.size.height/[self screenHeight]-[self navBarAndStatusBarSize] && image.size.width<[self screenWidth]) {
+    if (image.size.height/[self screenHeight]-[self navBarAndStatusBarSize] && image.size.width<[self screenWide]) {
         imageSize.height = imageSize.height;
         imageSize.width = imageSize.width;
     }else{
-        if (image.size.height/([self screenHeight]-[self navBarAndStatusBarSize]) > (image.size.width/[self screenWidth]) ) {
+        if (image.size.height/([self screenHeight]-[self navBarAndStatusBarSize]) > (image.size.width/[self screenWide]) ) {
             imageSize.height = [self screenHeight]-[self navBarAndStatusBarSize];
             imageSize.width = ((([self screenHeight]-[self navBarAndStatusBarSize])/image.size.height)*image.size.width);
-        }else if (image.size.height/([self screenHeight] - [self navBarAndStatusBarSize]) <= image.size.width/[self screenWidth]){
-            imageSize.height = ([self screenWidth]/image.size.width)*image.size.height;
-            imageSize.width = [self screenWidth];
+        }else if (image.size.height/([self screenHeight] - [self navBarAndStatusBarSize]) <= image.size.width/[self screenWide]){
+            imageSize.height = ([self screenWide]/image.size.width)*image.size.height;
+            imageSize.width = [self screenWide];
         }
     }
     return imageSize;
 }
 @end
 
-@implementation ZGApplicationTool (BooLs)
+@implementation GZGApplicationTool (BooLs)
 /**
  *  正则手机号
  *
@@ -121,7 +121,7 @@
 }
 @end
 
-@implementation ZGApplicationTool (Edition)
+@implementation GZGApplicationTool (Edition)
 /**
  *判断项目Version版本
  */
@@ -141,7 +141,7 @@
 
 @end
 
-@implementation ZGApplicationTool (date)
+@implementation GZGApplicationTool (date)
 /**
  *计算当月的第一天在周几
  */
@@ -321,7 +321,7 @@
 @end
 
 
-@implementation ZGApplicationTool (UIImages)
+@implementation GZGApplicationTool (UIImages)
 /**
  *生成二维码
  */
@@ -439,7 +439,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
 
 @end
 
-@implementation ZGApplicationTool (NSArrays)
+@implementation GZGApplicationTool (NSArrays)
 /**
  * 截取字符串
  * @param text 内容
