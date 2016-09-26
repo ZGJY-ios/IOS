@@ -41,13 +41,13 @@
     [self.navBarView addSubview:self.titles];
     
     self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.leftBtn.frame = CGRectMake([GZGApplicationTool control_wide:25],([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:34])/2, [GZGApplicationTool control_wide:33], [GZGApplicationTool control_height:34]);
+    self.leftBtn.frame = CGRectMake([GZGApplicationTool control_wide:25],([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:45])/2 + [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]);
 //    [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
     [self.leftBtn addTarget:self action:@selector(returnBtnDown) forControlEvents:UIControlEventTouchUpInside];
     [self.navBarView addSubview:self.leftBtn];
     
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.rightBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:40 + 25],([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:34])/2, [GZGApplicationTool control_wide:33], [GZGApplicationTool control_height:34]);
+    self.rightBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:40 + 25],([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:45])/2 + [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]);
     [self.rightBtn addTarget:self action:@selector(rightBtnDown) forControlEvents:UIControlEventTouchUpInside];
     [self.navBarView addSubview:self.rightBtn];
     
