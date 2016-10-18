@@ -38,3 +38,14 @@
 }
 
 @end
+@implementation UIView (GZGCommonlySet)
+
+- (CGFloat)viewHeight{return self.frame.size.height;}
+- (CGFloat)viewWidth{return self.frame.size.width;}
+- (CGFloat)edgnSidePosition{return self.frame.origin.x;}
+- (CGFloat)edgnSideOffset{return self.frame.origin.x + self.frame.size.width;}
+- (CGFloat)onThePosition{return self.frame.origin.y;}
+- (CGFloat)onTheOffset{return self.frame.origin.y + self.frame.size.height;}
+
+
+@end

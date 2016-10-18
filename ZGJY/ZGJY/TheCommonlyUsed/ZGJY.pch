@@ -10,6 +10,7 @@
 #define ZGJY_pch
 #import "GZGApplicationTool.h"
 #import "GZGColorClass.h"
+#import "GZGCommonlySet.h"
 
 #define APP_Story_URL  @"现在没有"
 #define SCREENWIDTH  [UIScreen mainScreen].bounds.size.width
