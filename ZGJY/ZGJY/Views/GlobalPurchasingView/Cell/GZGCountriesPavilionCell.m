@@ -24,25 +24,28 @@ static NSString *const CellCountriesCellStr = @"cellCountriesCellStr";
 }
 
 - (void)buildUI{
+    CGFloat hh = [GZGApplicationTool control_height:382.0f];
+    CGFloat w = SCREENWIDTH,h = [GZGApplicationTool control_height:393];
+    
+    UIView *viewCell = [[UIView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:20], SCREENWIDTH, hh+h)];
+    viewCell.backgroundColor = [UIColor whiteColor];
+    [self addSubview:viewCell];
+    
+    
+   
+    self.cellCountriesImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, hh)];
+    [viewCell addSubview:self.cellCountriesImage];
+
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    
-    CGFloat w = SCREENWIDTH,h = [GZGApplicationTool control_height:393];
-    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, w, h) collectionViewLayout:flowLayout];
+    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, hh, w, h) collectionViewLayout:flowLayout];
     _collection.delegate = self;
     _collection.dataSource = self;
     [_collection registerClass:[GZGCountriesCollectionViewCell class] forCellWithReuseIdentifier:CellCountriesCellStr];
     [_collection registerClass:[GZGCountriesCollectionViewCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:CellCountriesCellStr];
     _collection.backgroundColor = [UIColor whiteColor];
     [self addSubview:_collection];
-    
-    CGFloat hh = [GZGApplicationTool control_height:393.0f];
-    
-    self.cellCountriesImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, hh)];
-    [self addSubview:self.cellCountriesImage];
-    
-    
-    
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -64,7 +67,7 @@ static NSString *const CellCountriesCellStr = @"cellCountriesCellStr";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"111");
+    NSLog(@"%ld",indexPath.row);
 }
 
 

@@ -37,6 +37,12 @@
  *@return Color
  */
 + (UIColor *)subjectTabBarTitleColor{return [@"353535" hexStringToColor];}
+
+/**
+ *Search Cancle 取消的颜色
+ *@return Color
+ */
++ (UIColor *)subjectSearchTextColor{return [@"a4a4a4" hexStringToColor];}
 @end
 @implementation GZGColorClass (GlobalPurchasingColor)
 /**
@@ -137,7 +143,79 @@
 
 @end
 @implementation GZGColorClass (GlobalCountriesPacilionColor)
-
+/**
+ 国家馆商品字体颜色
+ 
+ @return Color
+ */
 + (UIColor *)subjectCountriesPacilionGoodsTitleColor{return [@"675f5f" hexStringToColor];}
+
+/**
+ *韩国馆Nac背景颜色
+
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionSouthKoreaNavColor{return [@"E0334B" hexStringToColor];}
+/**
+ *韩国馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionSouthKoreaBackColor{return [@"ff95a1" hexStringToColor];}
+
+
+
+
+/**
+ *日本馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionJapanBackColor{return [@"f7a13e" hexStringToColor];}
+/**
+ *澳大利亚馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionAustraliaBackColor{return [@"57c5e6" hexStringToColor];}
+/**
+ *欧洲馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionTheEuropeanBackColor{return [@"bb63b9" hexStringToColor];}
+@end
+
+@implementation GZGColorClass (GradientColor)
+
+/**
+ 国家馆颜色渐变
+
+ @param frame    CGrect Frame
+ @param colorOne ColorOne
+ @param colorTow ColorTow
+
+ @return Color
+ */
++ (CAGradientLayer *)doubleGradientColor:(CGRect)frame colorOne:(UIColor *)colorOne colorTow:(UIColor *)colorTow{
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    gradientLayer.frame = frame;
+    gradientLayer.colors = [NSArray arrayWithObjects:(id)colorOne.CGColor,(id)colorTow.CGColor, nil];
+    return gradientLayer;
+}
+
+/**
+ 国家馆HeadFaceSelect颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesHeadFaceSelectTitleColor{return [@"d95c68" hexStringToColor];}
+
+/**
+ 国家馆取消HeadFaceSelect颜色
+
+ @return Color
+ */
++ (UIColor *)subjectCountriesHeadFaceCancleSelectTitleColor{return [@"787878" hexStringToColor];}
 
 @end

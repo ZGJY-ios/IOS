@@ -37,7 +37,7 @@
  
  @return CGFloat
  */
-- (CGFloat)leftSidePosition;
+- (CGFloat)edgnSidePosition;
 /**
  *View的靠边总长度偏移量
  

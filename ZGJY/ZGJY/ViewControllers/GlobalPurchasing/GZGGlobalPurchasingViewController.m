@@ -15,6 +15,8 @@
 #import "GZGCrossBorderDirectMailCell.h"
 #import "GZGCountriesPavilionCell.h"
 #import "UIImageView+WebCache.h"
+#import "GZGSearchViewController.h"
+#import "GZGCountriesPavilionViewController.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -35,7 +37,7 @@ GZGCrossBorderDirectMailCellDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     [self buildUI];
 }
 
@@ -49,7 +51,7 @@ GZGCrossBorderDirectMailCellDelegate
 - (void)buildUI{
     [self navTitleUI];
     [self tableViewUI];
-
+    
 }
 
 - (void)navTitleUI{
@@ -75,8 +77,9 @@ GZGCrossBorderDirectMailCellDelegate
     iamgeViews.image = [UIImage imageNamed:@"QQG_NavTitleText"];
     [self.view addSubview:iamgeViews];
 }
+
+
 - (void)tableViewUI{
-    
     CGFloat xx = 0, yy = [GZGApplicationTool navBarAndStatusBarSize],ww = SCREENWIDTH, hh = SCREENHEIGHT - yy  - [GZGApplicationTool tabBarSize];
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(xx, yy, ww, hh) style:UITableViewStyleGrouped];
     _mainTableView.delegate = self;
@@ -85,14 +88,12 @@ GZGCrossBorderDirectMailCellDelegate
     _mainTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _mainTableView.showsVerticalScrollIndicator = NO;
     _mainTableView.showsHorizontalScrollIndicator = NO;
-//    _mainTableView.tableHeaderView = [self tableViewHeadView];
     [self.view addSubview:_mainTableView];
 }
 #pragma mark 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 10;
+    return 7;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
@@ -107,17 +108,39 @@ GZGCrossBorderDirectMailCellDelegate
     }else if (section == 5){
         return 1;
     }else if (section == 6){
-        return 2;
+        return 4;
     }
     return 0;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return [GZGApplicationTool control_height:300.0f];
+    }else if (indexPath.section == 1){
+        return 50;
+    }else if (indexPath.section == 2){
+        return [GZGApplicationTool control_height:235.0f];
+    }else if (indexPath.section == 3){
+        return [GZGApplicationTool control_height:387.0f];
+    }else if (indexPath.section == 4){
+        return [GZGApplicationTool control_height:643.0f];
+    }else if (indexPath.section == 5){
+        return [GZGApplicationTool control_height:530.0f];
+    }else if (indexPath.section == 6){
+        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
+    }
+    return 50;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
     if (section == 0) {
-       return [GZGApplicationTool control_height:285.0f];
-    }else if (section == 1 || section == 2|| section == 3|| section == 5 || section == 6){
-        return [GZGApplicationTool control_height:180];
+        return [GZGApplicationTool control_height:300.0f];
+    }else if (section == 1 || section == 2|| section == 3|| section == 5){
+        return [GZGApplicationTool control_height:153.0f];
     }else if (section == 4){
-        return  [GZGApplicationTool control_height:380];
+        return  [GZGApplicationTool control_height:380.0f];
+    }else if (section == 6){
+       return [GZGApplicationTool control_height:0.00001f];
     }
     return [GZGApplicationTool control_height:20.0f];
 }
@@ -125,29 +148,24 @@ GZGCrossBorderDirectMailCellDelegate
     return 0.00001f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 0) {
-        return [GZGApplicationTool control_height:300];
-    }else if (indexPath.section == 1){
-        return 50;
-    }else if (indexPath.section == 2){
-        return [GZGApplicationTool control_height:210];
-    }else if (indexPath.section == 3){
-        return [GZGApplicationTool control_height:400];
-    }else if (indexPath.section == 4){
-        return [GZGApplicationTool control_height:717];
-    }else if (indexPath.section == 5){
-        return [GZGApplicationTool control_height:550.0f];
-    }else if (indexPath.section == 6){
-        return [GZGApplicationTool control_height:393.0f];
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return [self tableViewHeadView];
+    }else if (section == 1){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_xstm.jpg"] index:section];
+    }else if (section == 2){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_hlpt.jpg"] index:section];
+    }else if (section == 3){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];
+    }else if (section == 4){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_myzq.jpg"] index:section];
+    }else if (section == 5){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];
     }
-    
-    return 50;
+    return nil;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     
     if (indexPath.section == 0) {
         static NSString *str = @"LYD";
@@ -157,16 +175,6 @@ GZGCrossBorderDirectMailCellDelegate
         }
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }else if (indexPath.section == 1){
-        static NSString *vvv = @"xxdfsx";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:vvv];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:vvv];
-        }
-        
-        cell.backgroundColor = [UIColor  redColor];
-        
         return cell;
     }else if (indexPath.section == 2){
         static NSString * gZGSpellGroupCellStr = @"gZGSpellGroupCellStr";
@@ -188,6 +196,7 @@ GZGCrossBorderDirectMailCellDelegate
             cell = [[GZGGPGlobalSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:globalSelectCellStr];
         }
         cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 4){
         static NSString *maternallnfantCellStr = @"maternallnfantCellStr";
@@ -196,14 +205,17 @@ GZGCrossBorderDirectMailCellDelegate
             cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
         }
         cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    }else if (indexPath.section == 5){
+    }
+    else if (indexPath.section == 5){
         static NSString *crossBorderDirectMailCellStr = @"crossBorderDirectMailCellStr";
         GZGCrossBorderDirectMailCell *cell = [tableView dequeueReusableCellWithIdentifier:crossBorderDirectMailCellStr];
         if (!cell) {
             cell = [[GZGCrossBorderDirectMailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:crossBorderDirectMailCellStr];
         }
         cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 6){
         static NSString *countriesPavilionCellStr = @"countriesPavilionCellStr";
@@ -211,22 +223,21 @@ GZGCrossBorderDirectMailCellDelegate
         if (!cell) {
             cell = [[GZGCountriesPavilionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:countriesPavilionCellStr];
         }
-        if (indexPath.row != 0) {
-            cell.cellGoodsImage = [UIImage imageNamed:@"sy_hgpic2.jpg"];
-            cell.cellGoodsName = @"LYD是个大帅哥哦~~~~~~~~~";
-            cell.cellGoodsprice = @"9999";
-            cell.cellAddshopping = [UIImage imageNamed:@"QQG_ADD_GWC"];
-        }else{
-            [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"sy_hgban.jpg"]];
-        }
+        
+        NSArray *indexImageArr = @[@"index-Korea.jpg",@"index-Japan.jpg",@"index-Europe.jpg",@"index-Aussie.jpg"];
+        NSArray *syImageArr = @[@"sy_hlpic2.jpg",@"sy_hlpic3.jpg",@"sy_hgpic1.jpg",@"sy_hlpic1.jpg"];
+
+        [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:indexImageArr[indexPath.row]]];
+        cell.cellGoodsImage = [UIImage imageNamed:syImageArr[indexPath.row]];
+        cell.cellGoodsName = @"LYD是个大帅哥哦~~~~~~~~~";
+        cell.cellGoodsprice = @"9999";
+        cell.cellAddshopping = [UIImage imageNamed:@"QQG_ADD_GWC"];
+        
+        
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    
-   
-    
-    
-    
-    
     
     static NSString *vvv = @"xxxxx";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:vvv];
@@ -234,44 +245,15 @@ GZGCrossBorderDirectMailCellDelegate
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:vvv];
     }
     
-    //    cell.backgroundColor = [UIColor  clearColor];
-    //    GZGGPClassifiCationCell
-
-
     
     
     return cell;
 }
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return [self tableViewHeadView];
-    }else if (section == 1){
-        
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_xstm.jpg"] index:section];
-    }else if (section == 2){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_hlpt.jpg"] index:section];
-    }else if (section == 3){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];
-    }else if (section == 4){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_myzq.jpg"] index:section];
-    }else if (section == 5){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];
-    }else if (section == 6){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_hgg.jpg"] index:section];
-    }
-    return nil;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 #pragma mark 各个Cell的HeadView
 - (UIView *)tableViewHeadView{
-    UIView *scrToFigureView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:285])];
+    UIView *scrToFigureView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
     
-    YDImageRoll *ydimage = [[YDImageRoll alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_wide:285])];
+    YDImageRoll *ydimage = [[YDImageRoll alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
     ydimage.imageUrlArray = @[@"http://www.shengpet.com/uploads/allimg/140410/2-1404100943143X.jpg",
                               @"http://h.hiphotos.bdimg.com/album/w%3D2048/sign=69b2037aca1349547e1eef6462769358/d000baa1cd11728b707d37d9c9fcc3cec2fd2cfc.jpg",
                               @"http://pic15.nipic.com/20110621/2678842_143658366148_2.jpg",
@@ -289,7 +271,7 @@ GZGCrossBorderDirectMailCellDelegate
     UIView *view = [[UIView alloc] init];
     UIButton *limitedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     limitedBtn.backgroundColor = [UIColor    greenColor];
-    limitedBtn.frame = CGRectMake(0, CellBlcnkHeadHeight, SCREENWIDTH, [GZGApplicationTool control_height:160]);
+    limitedBtn.frame = CGRectMake(0, CellBlcnkHeadHeight, SCREENWIDTH, [GZGApplicationTool control_height:133.0f]);
     if(index == 4){
         limitedBtn.frame = CGRectMake(0, CellBlcnkHeadHeight, SCREENWIDTH, [GZGApplicationTool control_height:360]);
         limitedBtn.backgroundColor = [UIColor    orangeColor];
@@ -308,6 +290,42 @@ GZGCrossBorderDirectMailCellDelegate
 }
 - (void)classifiCationBtnIndex:(NSInteger)index{
     NSLog(@"点击了第%ld个按钮",index);
+    
+    GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
+    switch (index) {
+        case HomeItem_SouthKorea:{
+            vc.countriesTitle = @"韩国馆";
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
+            vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_Japan:{
+            vc.countriesTitle = @"日本馆";
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_Australia:{
+            vc.countriesTitle = @"澳大利亚馆";
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_TheEuropean:{
+            vc.countriesTitle = @"欧洲馆";
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        default:
+            break;
+    }
+    
 }
 - (void)gpGpobalSelectCellIndex:(NSInteger)index{
     if (index == 0) {
@@ -328,23 +346,30 @@ GZGCrossBorderDirectMailCellDelegate
     NSLog(@"点击了第%ld个按钮",index);
 }
 #pragma mark 自己的方法
+- (void)returnBtnDown{
+    GZGSearchViewController *vc = [[GZGSearchViewController alloc] init];
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
 - (void)limitedBtnDown:(UIButton *)btn{
     NSLog(@"tag = %ld",btn.tag);
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
