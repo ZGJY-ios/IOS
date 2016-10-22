@@ -101,6 +101,19 @@
 		048F71081D9B65DF00338BA6 /* GZGGPClassifiCationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F71071D9B65DF00338BA6 /* GZGGPClassifiCationCell.m */; };
 		048F710B1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F710A1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m */; };
 		048F710E1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F710D1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.m */; };
+		049DC64F1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC64E1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m */; };
+		049DC6521DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC6511DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m */; };
+		049DC6551DB9FEF9001DC372 /* koho-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049DC6531DB9FEF9001DC372 /* koho-1.jpg */; };
+		049DC6561DB9FEF9001DC372 /* koho-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049DC6541DB9FEF9001DC372 /* koho-2.jpg */; };
+		049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC6581DBA065A001DC372 /* GZGCommonleView.m */; };
+		049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */; };
+		04A2D0511DB9ACCF003966DA /* GZGCountriesPavilionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */; };
+		04A2D0561DB9B51C003966DA /* index-Aussie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0521DB9B51C003966DA /* index-Aussie.jpg */; };
+		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
+		04A2D0581DB9B51C003966DA /* index-Japan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0541DB9B51C003966DA /* index-Japan.jpg */; };
+		04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0551DB9B51C003966DA /* index-Korea.jpg */; };
+		04A63CF01DBB46D100961F81 /* YDTopTitleRolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A63CEF1DBB46D100961F81 /* YDTopTitleRolling.m */; };
+		04A753D71DB74EF600D01BAE /* GZGSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A753D61DB74EF600D01BAE /* GZGSearchViewController.m */; };
 		04D60F481D87D6A400A42583 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04D60F4A1D87D6A400A42583 /* Localizable.strings */; };
 		04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */; };
 		04FBA26F1D98C87000AD147A /* GZGClassifiCationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA2601D98C87000AD147A /* GZGClassifiCationViewController.m */; };
@@ -295,6 +308,26 @@
 		048F710A1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGUpImageDownTitleBtn.m; sourceTree = "<group>"; };
 		048F710C1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGGPGlobalSelectCell.h; sourceTree = "<group>"; };
 		048F710D1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGGPGlobalSelectCell.m; sourceTree = "<group>"; };
+		049DC64D1DB9F8A3001DC372 /* GZGCountriesReplenishCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesReplenishCell.h; sourceTree = "<group>"; };
+		049DC64E1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesReplenishCell.m; sourceTree = "<group>"; };
+		049DC6501DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesReplenishCollectionCell.h; sourceTree = "<group>"; };
+		049DC6511DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesReplenishCollectionCell.m; sourceTree = "<group>"; };
+		049DC6531DB9FEF9001DC372 /* koho-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "koho-1.jpg"; sourceTree = "<group>"; };
+		049DC6541DB9FEF9001DC372 /* koho-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "koho-2.jpg"; sourceTree = "<group>"; };
+		049DC6571DBA065A001DC372 /* GZGCommonleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCommonleView.h; sourceTree = "<group>"; };
+		049DC6581DBA065A001DC372 /* GZGCommonleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCommonleView.m; sourceTree = "<group>"; };
+		049DC65A1DBA1470001DC372 /* GZGCountriesHeadFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesHeadFaceCell.h; sourceTree = "<group>"; };
+		049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesHeadFaceCell.m; sourceTree = "<group>"; };
+		04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesPavilionViewController.h; sourceTree = "<group>"; };
+		04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesPavilionViewController.m; sourceTree = "<group>"; };
+		04A2D0521DB9B51C003966DA /* index-Aussie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Aussie.jpg"; sourceTree = "<group>"; };
+		04A2D0531DB9B51C003966DA /* index-Europe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Europe.jpg"; sourceTree = "<group>"; };
+		04A2D0541DB9B51C003966DA /* index-Japan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Japan.jpg"; sourceTree = "<group>"; };
+		04A2D0551DB9B51C003966DA /* index-Korea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Korea.jpg"; sourceTree = "<group>"; };
+		04A63CEE1DBB46D100961F81 /* YDTopTitleRolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTopTitleRolling.h; sourceTree = "<group>"; };
+		04A63CEF1DBB46D100961F81 /* YDTopTitleRolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTopTitleRolling.m; sourceTree = "<group>"; };
+		04A753D51DB74EF600D01BAE /* GZGSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSearchViewController.h; sourceTree = "<group>"; };
+		04A753D61DB74EF600D01BAE /* GZGSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSearchViewController.m; sourceTree = "<group>"; };
 		04D60F461D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		04D60F471D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		04D60F491D87D6A400A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -393,6 +426,8 @@
 			children = (
 				E574BDBA1DB9D4A1004971C2 /* searchList-icon1.png */,
 				E574BDBB1DB9D4A1004971C2 /* searchList-icon2.png */,
+				049DC6531DB9FEF9001DC372 /* koho-1.jpg */,
+				049DC6541DB9FEF9001DC372 /* koho-2.jpg */,
 				04104EAC1D9CACEF00A940F1 /* sy_ad1.jpg */,
 				04104EAD1D9CACEF00A940F1 /* sy_hgpic1.jpg */,
 				04104EAE1D9CACEF00A940F1 /* sy_hgpic2.jpg */,
@@ -418,6 +453,10 @@
 				04104EC21D9CACEF00A940F1 /* sy_xspic5.jpg */,
 				04104EC31D9CACEF00A940F1 /* sy_xspic6.jpg */,
 				04104EC41D9CACEF00A940F1 /* 图层-33.jpg */,
+				04A2D0521DB9B51C003966DA /* index-Aussie.jpg */,
+				04A2D0531DB9B51C003966DA /* index-Europe.jpg */,
+				04A2D0541DB9B51C003966DA /* index-Japan.jpg */,
+				04A2D0551DB9B51C003966DA /* index-Korea.jpg */,
 			);
 			path = product;
 			sourceTree = "<group>";
@@ -674,6 +713,12 @@
 				043CDFF81DA8E58C0095B3F5 /* GZGCountriesCollectionViewCell.m */,
 				E576614C1DB74C7C0078D96F /* GZGSearchListCell.h */,
 				E576614D1DB74C7C0078D96F /* GZGSearchListCell.m */,
+				049DC64D1DB9F8A3001DC372 /* GZGCountriesReplenishCell.h */,
+				049DC64E1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m */,
+				049DC6501DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.h */,
+				049DC6511DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m */,
+				049DC65A1DBA1470001DC372 /* GZGCountriesHeadFaceCell.h */,
+				049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -714,6 +759,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		049DC69C1DBA17B7001DC372 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				04A63CED1DBB46D100961F81 /* YDTopTitleRollings */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		04A63CED1DBB46D100961F81 /* YDTopTitleRollings */ = {
+			isa = PBXGroup;
+			children = (
+				04A63CEE1DBB46D100961F81 /* YDTopTitleRolling.h */,
+				04A63CEF1DBB46D100961F81 /* YDTopTitleRolling.m */,
+			);
+			path = YDTopTitleRollings;
+			sourceTree = "<group>";
+		};
 		04FBA25D1D98C87000AD147A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +804,10 @@
 				04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */,
 				E55EE52E1DB63F29003F12C4 /* GZGSearchListController.h */,
 				E55EE52F1DB63F29003F12C4 /* GZGSearchListController.m */,
+				04A753D51DB74EF600D01BAE /* GZGSearchViewController.h */,
+				04A753D61DB74EF600D01BAE /* GZGSearchViewController.m */,
+				04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */,
+				04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */,
 			);
 			path = GlobalPurchasing;
 			sourceTree = "<group>";
@@ -789,6 +855,8 @@
 				048B783C1D98D701009F7C37 /* GZGColorClass.m */,
 				048B783E1D98E6E2009F7C37 /* GZGCommonlySet.h */,
 				048B783F1D98E6E2009F7C37 /* GZGCommonlySet.m */,
+				049DC6571DBA065A001DC372 /* GZGCommonleView.h */,
+				049DC6581DBA065A001DC372 /* GZGCommonleView.m */,
 				04FBA27D1D98C98200AD147A /* ZGJY.pch */,
 			);
 			path = TheCommonlyUsed;
@@ -824,6 +892,7 @@
 				04FBA25D1D98C87000AD147A /* ViewControllers */,
 				04FBA2781D98C98200AD147A /* TheCommonlyUsed */,
 				044D9F481D5C439200DD06EC /* ThirdPartyLibrary */,
+				049DC69C1DBA17B7001DC372 /* Tools */,
 				044DA3E41D5C4AA800DD06EC /* ZGNetWorking */,
 				047B69121D5DA0630057CE61 /* 123456.png */,
 				BDDDF8141D51B992002723AB /* Main.storyboard */,
@@ -969,23 +1038,27 @@
 				04104EC71D9CACEF00A940F1 /* sy_hgpic2.jpg in Resources */,
 				04104EC91D9CACEF00A940F1 /* sy_hlpic2.jpg in Resources */,
 				047467D01DAB859B009E4EAA /* nav_qqjx.jpg in Resources */,
+				049DC6561DB9FEF9001DC372 /* koho-2.jpg in Resources */,
 				04104ED11D9CACEF00A940F1 /* sy_mypic5.jpg in Resources */,
 				047467D61DAB859B009E4EAA /* sy_rbban.jpg in Resources */,
 				E574BDBD1DB9D4A1004971C2 /* searchList-icon2.png in Resources */,
 				04104EDB1D9CACEF00A940F1 /* sy_xspic5.jpg in Resources */,
 				04104ED91D9CACEF00A940F1 /* sy_xspic3.jpg in Resources */,
 				E574BDBC1DB9D4A1004971C2 /* searchList-icon1.png in Resources */,
+				049DC6551DB9FEF9001DC372 /* koho-1.jpg in Resources */,
 				04104ED51D9CACEF00A940F1 /* sy_qqpic2.jpg in Resources */,
 				047B69131D5DA0630057CE61 /* 123456.png in Resources */,
 				04104EC81D9CACEF00A940F1 /* sy_hlpic1.jpg in Resources */,
 				047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */,
 				047467CF1DAB859B009E4EAA /* nav_ozg.jpg in Resources */,
+				04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */,
 				047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */,
 				04104ECB1D9CACEF00A940F1 /* sy_kjpic1.jpg in Resources */,
 				04104ED31D9CACEF00A940F1 /* sy_myzq.jpg in Resources */,
 				04104ED61D9CACEF00A940F1 /* sy_qqpic3.jpg in Resources */,
 				04104EDA1D9CACEF00A940F1 /* sy_xspic4.jpg in Resources */,
 				04104EC51D9CACEF00A940F1 /* sy_ad1.jpg in Resources */,
+				04A2D0581DB9B51C003966DA /* index-Japan.jpg in Resources */,
 				04104ED81D9CACEF00A940F1 /* sy_xspic2.jpg in Resources */,
 				047467D21DAB859B009E4EAA /* nav_xstm.jpg in Resources */,
 				047467D41DAB859B009E4EAA /* sy_hgban.jpg in Resources */,
@@ -1003,12 +1076,14 @@
 				04104ECD1D9CACEF00A940F1 /* sy_kjpic3.jpg in Resources */,
 				044DA3991D5C458E00DD06EC /* Info.plist in Resources */,
 				04104ECE1D9CACEF00A940F1 /* sy_mypic2.jpg in Resources */,
+				04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */,
 				BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */,
 				BDDDF8181D51B992002723AB /* Assets.xcassets in Resources */,
 				04104ECC1D9CACEF00A940F1 /* sy_kjpic2.jpg in Resources */,
 				047467D31DAB859B009E4EAA /* sy_adban.jpg in Resources */,
 				04104ED41D9CACEF00A940F1 /* sy_qqpic1.jpg in Resources */,
 				047467CE1DAB859B009E4EAA /* nav_kjzy.jpg in Resources */,
+				04A2D0561DB9B51C003966DA /* index-Aussie.jpg in Resources */,
 				BDDDF8161D51B992002723AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,6 +1115,7 @@
 				04FBA2721D98C87000AD147A /* GZGRootViewController.m in Sources */,
 				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
+				049DC64F1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m in Sources */,
 				044DA3E01D5C467100DD06EC /* UIImage+WebP.m in Sources */,
 				04104EE01D9CB26300A940F1 /* GZGGPMaternalInfantCell.m in Sources */,
 				044DA3D51D5C467100DD06EC /* NSData+ImageContentType.m in Sources */,
@@ -1051,10 +1127,12 @@
 				044DA4011D5C60B200DD06EC /* UIButton+AFNetworking.m in Sources */,
 				048B783D1D98D702009F7C37 /* GZGColorClass.m in Sources */,
 				04FBA2771D98C8B100AD147A /* GZGSubViewController.m in Sources */,
+				04A63CF01DBB46D100961F81 /* YDTopTitleRolling.m in Sources */,
 				044DA3941D5C458E00DD06EC /* FMDatabase.m in Sources */,
 				044DA4001D5C60B200DD06EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */,
 				044DA3D81D5C467100DD06EC /* SDWebImageDecoder.m in Sources */,
+				049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */,
 				044DA3AF1D5C466300DD06EC /* AFURLRequestSerialization.m in Sources */,
 				04FBA2711D98C87000AD147A /* GZGPersonalCenterViewController.m in Sources */,
 				04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */,
@@ -1063,6 +1141,7 @@
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
 				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
 				043CDFF01DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m in Sources */,
+				049DC6521DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m in Sources */,
 				044DA3AC1D5C466300DD06EC /* AFHTTPSessionManager.m in Sources */,
 				044DA3E21D5C467100DD06EC /* UIImageView+WebCache.m in Sources */,
 				040DDA4F1D9925CC00C2FB75 /* UIImageView+YDWebCache.m in Sources */,
@@ -1084,6 +1163,8 @@
 				BDDDF80D1D51B992002723AB /* main.m in Sources */,
 				044DA3D41D5C467100DD06EC /* MKAnnotationView+WebCache.m in Sources */,
 				044DA3DF1D5C467100DD06EC /* UIImage+MultiFormat.m in Sources */,
+				04A753D71DB74EF600D01BAE /* GZGSearchViewController.m in Sources */,
+				04A2D0511DB9ACCF003966DA /* GZGCountriesPavilionViewController.m in Sources */,
 				048F710E1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.m in Sources */,
 				E55EE5301DB63F29003F12C4 /* GZGSearchListController.m in Sources */,
 				044DA3E31D5C467100DD06EC /* UIView+WebCacheOperation.m in Sources */,
@@ -1094,6 +1175,7 @@
 				04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */,
 				043CDFF31DA8D93E0095B3F5 /* GZGCountriesPavilionCell.m in Sources */,
 				044DA3D71D5C467100DD06EC /* SDWebImageCompat.m in Sources */,
+				049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */,
 				044DA3FE1D5C60B200DD06EC /* AFImageDownloader.m in Sources */,
 				044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */,
 				044DA3AD1D5C466300DD06EC /* AFNetworkReachabilityManager.m in Sources */,

@@ -51,13 +51,13 @@
     _textField.placeholder = @"中港会员日，特惠来袭！";
     _textField.borderStyle=UITextBorderStyleRoundedRect;
     _textField.clearButtonMode=UITextFieldViewModeWhileEditing;
-    _textField.text = @"奶粉";
     
     UIImageView *imageTextFiled = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:29])];
     imageTextFiled.image = [UIImage imageNamed:@"QQG_Search_FDJ"];
     _textField.leftView = imageTextFiled;
     _textField.leftViewMode = UITextFieldViewModeAlways;
     _textField.backgroundColor = [GZGColorClass gzgBackClolor];
+    _textField.text = _string;
     [self.view addSubview:_textField];
     
     

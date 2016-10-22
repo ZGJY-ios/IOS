@@ -5,6 +5,11 @@
   Created by 刘亚栋 on 16/9/13.
   Copyright © 2016年 LiuYaDong. All rights reserved.
 */
+
+//CommonlyText
+"GZG_Commonly_Cancle" = "取消";
+"GZG_Commonly_EveryoneSearch" = "大家都在搜:";
+
 //TabBarTitle
 "GZG_TabBarTitle_ZGQQG" = "中港全球购";
 "GZG_TabBarTitle_GGC" = "购物车";

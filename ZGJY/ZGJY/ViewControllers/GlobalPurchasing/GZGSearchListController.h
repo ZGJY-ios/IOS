@@ -9,5 +9,6 @@
 #import "GZGSubViewController.h"
 
 @interface GZGSearchListController : GZGSubViewController
+@property (nonatomic, copy) NSString * string;
 
 @end
