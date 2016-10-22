@@ -1,0 +1,128 @@
+//
+//  AppDelegate.m
+//  ZGJY
+//
+//  Created by 刘亚栋 on 16/8/3.
+//  Copyright © 2016年 LiuYaDong. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "GZGGlobalPurchasingViewController.h"
+#import "GZGTheShoppingCartViewController.h"
+#import "GZGClassifiCationViewController.h"
+#import "GZGPersonalCenterViewController.h"
+#import "GZGMainNavgationController.h"
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyAndVisible];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self setTabBarViewControllerType:0];
+    
+    return YES;
+}
+
+
+- (void)setTabBarViewControllerType:(NSInteger)type{
+
+    GZGGlobalPurchasingViewController *globalVC = [[GZGGlobalPurchasingViewController alloc] init];
+    GZGTheShoppingCartViewController *theShopVC = [[GZGTheShoppingCartViewController alloc] init];
+    GZGClassifiCationViewController *classVC = [[GZGClassifiCationViewController alloc] init];
+    GZGPersonalCenterViewController *personalVC = [[GZGPersonalCenterViewController alloc] init];
+    
+    [self tabbarViewControllerGlobal:globalVC
+                             theShop:theShopVC
+                               class:classVC
+                            personal:personalVC
+                            titleArr:@[NSLocalizedString(@"GZG_TabBarTitle_ZGQQG", nil),
+                                       NSLocalizedString(@"GZG_TabBarTitle_GGC", nil),
+                                       NSLocalizedString(@"GZG_TabBarTitle_FL", nil),
+                                       NSLocalizedString(@"GZG_TabBarTitle_GRZX", nil)]
+                     tabBarImageXArr:@[@"TabBar_GlobalPurchasing_X",
+                                       @"TabBar_TheShopPingCart_X",
+                                       @"TabBar_ClassifiCation_X",
+                                       @"TabBar_PerSonalCenter_X"]
+                         tabBarImageArr:@[@"TabBar_GlobalPurchasing",
+                                       @"TabBar_TheShopPingCart",
+                                       @"TabBar_ClassifiCation",
+                                       @"TabBar_PerSonalCenter"]
+                     tabBarBackColor:[UIColor whiteColor]
+                   pitchOnTotleColor:[GZGColorClass subjectTabBarTitleColorX]
+                    defaulTitleColor:[GZGColorClass subjectTabBarTitleColor]];
+    
+}
+
+- (void)tabbarViewControllerGlobal:(__weak UIViewController *)globalController
+                           theShop:(__weak UIViewController *)theShopController
+                             class:(__weak UIViewController *)classController
+                          personal:(__weak UIViewController *)personalController
+                          titleArr:(NSArray *)titleArr
+                   tabBarImageXArr:(NSArray *)tabbarOmageXArr
+                    tabBarImageArr:(NSArray *)tabBarImageArr
+                   tabBarBackColor:(UIColor *)tabBarColor
+                 pitchOnTotleColor:(UIColor *)pitchOnColor
+                  defaulTitleColor:(UIColor *)defaulTitleColor{
+    
+    NSMutableArray *controllerArr = [NSMutableArray array];
+    NSArray *arrControllerVC = @[globalController,theShopController,classController,personalController];
+    NSArray *arrTitle = titleArr;
+    NSArray *arrTabBarImageX = tabbarOmageXArr;
+    NSArray *arrTabBarImage = tabBarImageArr;
+
+    UITabBarController *tabBar = [[UITabBarController alloc] init];
+    for (NSInteger i=0; i<arrControllerVC.count; i++) {
+        GZGMainNavgationController *mainNav = [[GZGMainNavgationController alloc] initWithRootViewController:arrControllerVC[i]];
+        UITabBarItem *tabBarItem = [[UITabBarItem alloc] init];
+        [tabBarItem setTitle:arrTitle[i]];
+        tabBarItem.image = [[UIImage imageNamed:arrTabBarImage[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        tabBarItem.selectedImage = [[UIImage imageNamed:arrTabBarImageX[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        ((UIViewController *)arrControllerVC[i]).tabBarItem = tabBarItem;
+        [controllerArr addObject:mainNav];
+    }
+    UIView *tabBarBack = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    tabBarBack.backgroundColor = tabBarColor;
+    [tabBar.tabBar insertSubview:tabBarBack atIndex:0];
+    
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:pitchOnColor,NSFontAttributeName:[UIFont systemFontOfSize:[GZGApplicationTool control_wide:16.0f]]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName:defaulTitleColor,NSFontAttributeName:[UIFont systemFontOfSize:[GZGApplicationTool control_wide:16.0f]]} forState:UIControlStateNormal];
+    tabBar.viewControllers = controllerArr;
+    tabBar.selectedIndex = 0;
+    self.window.rootViewController = tabBar;
+    
+    
+    
+    
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+@end

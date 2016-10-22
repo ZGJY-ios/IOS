@@ -1,0 +1,23 @@
+//
+//  ZGJY.pch
+//  ZGJY
+//
+//  Created by 刘亚栋 on 16/8/3.
+//  Copyright © 2016年 LiuYaDong. All rights reserved.
+//
+
+#ifndef ZGJY_pch
+#define ZGJY_pch
+#import "GZGApplicationTool.h"
+#import "GZGColorClass.h"
+#import "GZGCommonlySet.h"
+#define KScreenWigth     [[UIScreen mainScreen] bounds].size.width
+#define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
+#define APP_Story_URL  @"现在没有"
+#define SCREENWIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* ZGJY_pch */
