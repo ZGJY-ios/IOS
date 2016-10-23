@@ -235,3 +235,12 @@
 + (UIColor *)subjectSearchListSelectedTextColor {return [@"b63c39" hexStringToColor];}
 
 @end
+
+@implementation GZGColorClass (PersonalCenterColor)
+
+/**
+ *  个人中心 会员名称 颜色
+ */
++ (UIColor *)subjectPersonalCenterColor {return [@"ffffff" hexStringToColor];}
+
+@end
