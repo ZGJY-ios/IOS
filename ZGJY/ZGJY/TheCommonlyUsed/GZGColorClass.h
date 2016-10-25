@@ -208,7 +208,61 @@
  @return Color
  */
 + (UIColor *)subjectCountriesHeadFaceCancleSelectTitleColor;
+/**
+ 国家馆HeadFace内容 进口字体颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountImportTitleColor;
 
+/**
+ 国家馆HeadFace内容名字颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountNameTitleColor;
+
+/**
+ 国家馆HeadFace商品质量字体颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountQualityTitleColor;
+
+/**
+ 国家馆CellBack颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountCellBackColor;
+
+/**
+ 国家馆韩国馆CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesSouthKoreaCellCollectionBackColor;
+
+/**
+ 国家馆日本CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesJapanCellCollectionBackColor;
+
+/**
+ 国家馆澳亚里亚CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesAustraliaCellCollectionBackColor;
+
+/**
+ 国家馆欧洲CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesTheEuropeanCellCollectionBackColor;
 @end
 @interface GZGColorClass (SearchListColor)
 

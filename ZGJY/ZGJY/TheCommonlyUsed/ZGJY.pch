@@ -11,12 +11,24 @@
 #import "GZGApplicationTool.h"
 #import "GZGColorClass.h"
 #import "GZGCommonlySet.h"
+#define KScreenWigth  [[UIScreen mainScreen] bounds].size.width
+#define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
 #import "GZGCommonleView.h"
+
+
+
+
 
 
 #define APP_Story_URL  @"现在没有"
 #define SCREENWIDTH  [UIScreen mainScreen].bounds.size.width
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+
+//notifi
+
+#define GZGCountriesTableCanslideNotification @"GZGCountriesTableCanSlideNotification"    //让Scrollew 可以滑动
+#define GZGCountriesTableBanSlideNotification @"GZGCountriesTableBanSlideNotification"    //让Scrollew 禁止滑动
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

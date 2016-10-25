@@ -16,6 +16,7 @@
 #import "GZGCrossBorderDirectMailCell.h"
 #import "GZGCountriesPavilionCell.h"
 #import "UIImageView+WebCache.h"
+#import "GZGYSalaTableViewCell.h"
 #import "GZGSearchViewController.h"
 #import "GZGCountriesPavilionViewController.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
@@ -27,7 +28,7 @@ UITableViewDataSource,
 GZGGPClassifiCationCellDelegate,
 GZGGPGlobalSelectCellDelegate,
 GZGGPMaternalInfantCellDelegate,
-GZGCrossBorderDirectMailCellDelegate
+GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 >
 @property(nonatomic, strong) UITableView *mainTableView;
 @end
@@ -99,7 +100,7 @@ GZGCrossBorderDirectMailCellDelegate
     if (section == 0) {
         return 1;
     }else if (section == 1){
-        return 3;
+        return 1;
     }else if (section == 2){
         return 3;
     }else if (section == 3){
@@ -117,7 +118,7 @@ GZGCrossBorderDirectMailCellDelegate
     if (indexPath.section == 0) {
         return [GZGApplicationTool control_height:300.0f];
     }else if (indexPath.section == 1){
-        return 50;
+        return [GZGApplicationTool control_height:550];
     }else if (indexPath.section == 2){
         return [GZGApplicationTool control_height:235.0f];
     }else if (indexPath.section == 3){
@@ -177,6 +178,14 @@ GZGCrossBorderDirectMailCellDelegate
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+    }else if (indexPath.section == 1){
+        static NSString *vvv = @"xxdfsx";
+        GZGYSalaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:vvv];
+        if (!cell) {
+            cell = [[GZGYSalaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:vvv];
+        }
+        cell.delegete = self;
+        return cell;
     }else if (indexPath.section == 2){
         static NSString * gZGSpellGroupCellStr = @"gZGSpellGroupCellStr";
         GZGSpellGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:gZGSpellGroupCellStr];
@@ -226,7 +235,7 @@ GZGCrossBorderDirectMailCellDelegate
         }
         
         NSArray *indexImageArr = @[@"index-Korea.jpg",@"index-Japan.jpg",@"index-Europe.jpg",@"index-Aussie.jpg"];
-        NSArray *syImageArr = @[@"sy_hlpic2.jpg",@"sy_hlpic3.jpg",@"sy_hgpic1.jpg",@"sy_hlpic1.jpg"];
+        NSArray *syImageArr = @[@"sy_hgpic1",@"sy_hlpic2",@"sy_hlpic3",@"sy_hlpic4"];
 
         [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:indexImageArr[indexPath.row]]];
         cell.cellGoodsImage = [UIImage imageNamed:syImageArr[indexPath.row]];
@@ -296,6 +305,7 @@ GZGCrossBorderDirectMailCellDelegate
     switch (index) {
         case HomeItem_SouthKorea:{
             vc.countriesTitle = @"韩国馆";
+            vc.countriesIndex = CountriesEnterThe_SouthKorea;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
             vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -304,6 +314,7 @@ GZGCrossBorderDirectMailCellDelegate
         }
         case HomeItem_Japan:{
             vc.countriesTitle = @"日本馆";
+            vc.countriesIndex = CountriesEnterThe_Japan;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
@@ -311,6 +322,7 @@ GZGCrossBorderDirectMailCellDelegate
         }
         case HomeItem_Australia:{
             vc.countriesTitle = @"澳大利亚馆";
+            vc.countriesIndex = CountriesEnterThe_Australia;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
@@ -318,6 +330,7 @@ GZGCrossBorderDirectMailCellDelegate
         }
         case HomeItem_TheEuropean:{
             vc.countriesTitle = @"欧洲馆";
+            vc.countriesIndex = CountriesEnterThe_TheEuropean;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
@@ -358,7 +371,11 @@ GZGCrossBorderDirectMailCellDelegate
 - (void)limitedBtnDown:(UIButton *)btn{
     NSLog(@"tag = %ld",btn.tag);
 }
-
+#pragma mark --- CollectionView点击事件
+-(void)CollectionViewDelegeteClick:(NSInteger)sender
+{
+    NSLog(@"我靠%ld",sender);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

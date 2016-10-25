@@ -7,6 +7,9 @@
 //
 
 #import "YDTopTitleRolling.h"
+
+static NSInteger const TopTitleLabTag = 9910;
+
 @interface YDTopTitleRolling()<UIScrollViewDelegate>
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) UILabel *titleLab;
@@ -54,6 +57,8 @@
 
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     _scrollView.delegate = self;
+    _scrollView.showsVerticalScrollIndicator = FALSE;
+    _scrollView.showsHorizontalScrollIndicator = FALSE;
     [self addSubview:_scrollView];
     
     CGFloat labelY = 0;
@@ -68,13 +73,14 @@
         titleLab.textColor = _defauleColor;
         titleLab.font = _titlesFont;
         titleLab.userInteractionEnabled = YES;
-        titleLab.tag = i ;
+        titleLab.tag = i + TopTitleLabTag;
         countIndex += titleSize.width + _titleSpacing;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollTitleClick:)];
         [titleLab addGestureRecognizer:tap];
         
         if (i == 0) {
-            [self titleColorChange:titleLab];
+//            [self titleColorChange:titleLab];
+            titleLab.textColor = _selectColor;
         }
          [_scrollView addSubview:titleLab];
     }
@@ -82,7 +88,7 @@
     CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y, ww = [self textSize:firstLab.text font:[UIFont systemFontOfSize:13] size:self.frame.size.width].width;
     _topTitleLine = [[UIView alloc] init];
     _topTitleLine.backgroundColor = _selectColor;
-    _topTitleLine.frame = CGRectMake(0, hh - _lineWidth, ww, _lineWidth);
+    _topTitleLine.frame = CGRectMake(0, hh - [GZGApplicationTool control_height:25], ww, _lineWidth);
     [_scrollView addSubview:_topTitleLine];
 
     _scrollView.contentSize = CGSizeMake(countIndex, self.frame.size.height);
@@ -97,9 +103,7 @@
     UILabel *labelTitle = (UILabel *)tap.view;
     [self changeTitleColor:labelTitle];
     [self scrollTitleLabelSelectededCenter:labelTitle];
-    
-    NSInteger index = labelTitle.tag;
-    [self.delegate titleRollingIndex:index];
+    [self.delegate titleRollingIndex:labelTitle];
 }
 
 /**
@@ -113,7 +117,7 @@
     CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y;
     // 改变指示器位置
     [UIView animateWithDuration:0.20 animations:^{
-        _topTitleLine.frame = CGRectMake(label.frame.origin.x, hh - _lineWidth, label.frame.size.width, _lineWidth);
+        _topTitleLine.frame = CGRectMake(label.frame.origin.x, hh - [GZGApplicationTool control_height:25], label.frame.size.width, _lineWidth);
     }];
 }
 /**
@@ -123,22 +127,40 @@
  */
 - (void)scrollTitleLabelSelectededCenter:(UILabel *)centerLabel {
     
-    CGFloat ww = [UIScreen mainScreen].bounds.size.width;
-    CGFloat offsetX = centerLabel.center.x - ww * 0.5;
-    if (offsetX < 0) offsetX = 0;
-    CGFloat maxOffsetX = _scrollView.contentSize.width - ww;
-    if (offsetX > maxOffsetX) offsetX = maxOffsetX;
-    [_scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    [self topTitleLab:centerLabel];
 }
 
 - (void)titleColorChange:(UILabel *)lab{
-    _titleLab.highlighted = NO;
-    _titleLab.textColor = _defauleColor;
-    lab.highlighted = YES;
-    _titleLab = lab;
+    for (NSInteger i=0; i<_titleArray.count; i++) {
+        UILabel *selectLabColor = (UILabel *)[self viewWithTag:i + TopTitleLabTag];
+        selectLabColor.textColor = _defauleColor;
+        selectLabColor.highlighted = NO;
+    }
+    UILabel *selectLabColor = (UILabel *)[self viewWithTag:lab.tag];
+    selectLabColor.textColor = _selectColor;
 }
 
+- (void)scrollViewCenterlabel:(UILabel *)lab{
+    [self topTitleLab:lab];
+    CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y;
+    // 改变指示器位置
+    [UIView animateWithDuration:0.20 animations:^{
+        _topTitleLine.frame = CGRectMake(lab.frame.origin.x, hh - [GZGApplicationTool control_height:25], lab.frame.size.width, _lineWidth);
+    }];
+    [self titleColorChange:lab];
 
+}
+
+- (void)topTitleLab:(UILabel *)lab{
+    CGFloat ww = [UIScreen mainScreen].bounds.size.width;
+    CGFloat offsetX = lab.center.x - ww * 0.5;
+    if (offsetX < 0) offsetX = 0;
+    CGFloat maxOffsetX = _scrollView.contentSize.width - ww;
+    if (offsetX > maxOffsetX){
+        offsetX = maxOffsetX;
+    }
+    [_scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+}
 
 
 /*

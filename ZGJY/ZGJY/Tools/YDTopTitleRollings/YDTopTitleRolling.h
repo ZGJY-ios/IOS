@@ -10,7 +10,8 @@
 
 @protocol YDTopTitleRollingDelegate <NSObject>
 
-- (void)titleRollingIndex:(NSInteger)index;
+- (void)titleRollingIndex:(UILabel *)lab ;
+
 
 @end
 
@@ -26,6 +27,8 @@
                     titleFont:(UIFont *)titleFont
                  titleSpacing:(CGFloat)titleSpacing
                     lineWidth:(CGFloat)lineWidth;
+
+- (void)scrollViewCenterlabel:(UILabel *)lab;
 
 @end
 
