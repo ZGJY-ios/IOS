@@ -22,6 +22,12 @@
 }
 - (void)buildUI {
     
+    self.commodityHotImageView = ({
+        UIImageView * imageView = [[UIImageView alloc] init];
+        imageView.frame = CGRectMake([GZGApplicationTool control_wide:0], [GZGApplicationTool control_height:0], [GZGApplicationTool control_wide:65], [GZGApplicationTool control_height:65]);
+        imageView.image = [UIImage imageNamed:@"SearchListHot"];
+        imageView;
+    });
     self.commodityImageView = ({
         UIImageView * imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake([GZGApplicationTool control_wide:44], [GZGApplicationTool control_height:0], [GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:274]);
@@ -72,7 +78,7 @@
     });
     
     
-    
+    [self.commodityImageView addSubview:self.commodityHotImageView];
     [self addSubview:self.commodityImageView];
     [self addSubview:self.commodityNameLabel];
     [self addSubview:self.commodityIntroductionLabel];

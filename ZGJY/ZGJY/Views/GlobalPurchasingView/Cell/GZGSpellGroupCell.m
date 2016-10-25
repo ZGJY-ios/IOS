@@ -52,7 +52,6 @@
     self.imageView = ({
         UIImageView * imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:25], [GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:160]);
-        imageView.backgroundColor = [UIColor yellowColor];
         imageView;
     });
     self.soldLabel = ({
@@ -68,7 +67,7 @@
         UILabel * label = [[UILabel alloc] init];
         label.frame = CGRectMake(self.soldLabel.frame.origin.x + self.soldLabel.frame.size.width, [GZGApplicationTool control_wide:35], [GZGApplicationTool control_wide:82], [GZGApplicationTool control_height:20]);
         label.backgroundColor = [GZGColorClass subjectGPSpellGroupRemainingBackgroundColor];
-        label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:14]];
+        label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:10]];
         label.textAlignment = NSTextAlignmentCenter;
         label.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"剩余 ?? 件", nil) textColor:[GZGColorClass subjectGPSpellGroupSoldAndRemainingTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
         label;
@@ -175,7 +174,7 @@
     [self addSubview:self.percentageLabel];
 }
 - (void)setModel {
-    self.imageView.image = [UIImage imageNamed:@""];
+    self.imageView.image = [UIImage imageNamed:@"ssss 副本"];
     self.soldLabel.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"已售 ?? 件", nil) textColor:[GZGColorClass subjectGPSpellGroupSoldAndRemainingTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
     self.remainingLabel.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"剩余 ?? 件", nil) textColor:[GZGColorClass subjectGPSpellGroupSoldAndRemainingTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
     self.commodityNameLabel.text = NSLocalizedString(@"商品详情", nil);
@@ -184,7 +183,7 @@
     self.marketPriceLabel.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"市场价:￥240", nil)];
     self.limitLabel.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"?? 件起享受团购价", nil) textColor:[GZGColorClass subjectGPSpellGroupLimitTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
     self.progressView.progress = 2.0 / 3;
-    self.percentageLabel.text = [NSString stringWithFormat:@"%.f",100 * self.progressView.progress];
+    self.percentageLabel.text = [NSString stringWithFormat:@"%.f %@",100 * self.progressView.progress,@"%"];
     
     // 商品标签
     _commodityLabels = [NSMutableArray arrayWithArray:@[@"香味持久",@"滋润去屑",@"自然健康"]];

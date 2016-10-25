@@ -18,6 +18,7 @@
 
 @interface GZGSearchListCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView * commodityHotImageView; // 商品热门
 @property (nonatomic, strong) UIImageView * commodityImageView; // 商品视图
 @property (nonatomic, strong) UILabel * commodityNameLabel;  // 商品名称
 @property (nonatomic, strong) UILabel * commodityIntroductionLabel; // 商品介绍

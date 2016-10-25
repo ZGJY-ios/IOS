@@ -227,6 +227,35 @@
 
 @end
 
+@interface GZGColorClass (ShoppingCartColor)
+
+/**
+ *  购物车 价格颜色
+ */
++ (UIColor *)subjectShoppingCartPriceColor;
+/**
+ *  购物车 商品增减 背景颜色
+ */
++ (UIColor *)subjectShoppingCartGoodsAddSubBackgroundColor;
+/**
+ *  购物车 商品增减 前景颜色
+ */
++ (UIColor *)subjectShoppingCartGoodsFillColor;
+/**
+ *  购物车 边框颜色
+ */
++ (UIColor *)subjectShoppingCartBorderColor;
+/**
+ *  购物车 收藏按钮颜色
+ */
++ (UIColor *)subjectShoppingCartCollectionBackgroundColor;
+/**
+ *  购物车 热门推荐 原价颜色
+ */
++ (UIColor *)subjectShoppingCartOriginPriceColor;
+
+@end
+
 @interface GZGColorClass (PersonalCenterColor)
 
 /**
