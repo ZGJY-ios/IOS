@@ -235,7 +235,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         }
         
         NSArray *indexImageArr = @[@"index-Korea.jpg",@"index-Japan.jpg",@"index-Europe.jpg",@"index-Aussie.jpg"];
-        NSArray *syImageArr = @[@"sy_hlpic2.jpg",@"sy_hlpic3.jpg",@"sy_hgpic1.jpg",@"sy_hlpic1.jpg"];
+        NSArray *syImageArr = @[@"sy_hgpic1",@"sy_hlpic2",@"sy_hlpic3",@"sy_hlpic4"];
 
         [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:indexImageArr[indexPath.row]]];
         cell.cellGoodsImage = [UIImage imageNamed:syImageArr[indexPath.row]];
@@ -305,6 +305,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     switch (index) {
         case HomeItem_SouthKorea:{
             vc.countriesTitle = @"韩国馆";
+            vc.countriesIndex = CountriesEnterThe_SouthKorea;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
             vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -313,6 +314,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         }
         case HomeItem_Japan:{
             vc.countriesTitle = @"日本馆";
+            vc.countriesIndex = CountriesEnterThe_Japan;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
@@ -320,6 +322,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         }
         case HomeItem_Australia:{
             vc.countriesTitle = @"澳大利亚馆";
+            vc.countriesIndex = CountriesEnterThe_Australia;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
@@ -327,6 +330,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         }
         case HomeItem_TheEuropean:{
             vc.countriesTitle = @"欧洲馆";
+            vc.countriesIndex = CountriesEnterThe_TheEuropean;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];

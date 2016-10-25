@@ -11,4 +11,10 @@
 @interface GZGCountriesReplenishCell : UITableViewCell
 @property(nonatomic, strong) UIImage *replenishImage;
 @property(nonatomic, strong) UIImageView *cellCountriesImage;
+
+
+@property(nonatomic, strong) UIColor *oneColor;
+@property(nonatomic, strong) UIColor *towColor;
+
+
 @end

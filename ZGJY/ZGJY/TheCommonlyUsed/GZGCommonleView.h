@@ -17,5 +17,6 @@
  
  @return UIView
  */
-+ (UIView *)countriesGradiengColor:(CGRect)frame;
++ (UIView *)countriesGradiengColor:(CGRect)frame oneColor:(UIColor *)oneColor towColor:(UIColor *)towColor;
+
 @end
