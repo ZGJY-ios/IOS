@@ -292,6 +292,34 @@
 
 @end
 
+@implementation GZGColorClass (ShoppingCartColor)
+
+/**
+ *  购物车 价格颜色
+ */
++ (UIColor *)subjectShoppingCartPriceColor {return [@"b53232" hexStringToColor];}
+/**
+ *  购物车 商品增减 背景颜色
+ */
++ (UIColor *)subjectShoppingCartGoodsAddSubBackgroundColor {return [@"eeeeee" hexStringToColor];}
+/**
+ *  购物车 商品增减 前景颜色
+ */
++ (UIColor *)subjectShoppingCartGoodsFillColor {return [@"313131" hexStringToColor];}
+/**
+ *  购物车 边框颜色
+ */
++ (UIColor *)subjectShoppingCartBorderColor {return [@"dcdcdc" hexStringToColor];}
+/**
+ *  购物车 收藏按钮颜色
+ */
++ (UIColor *)subjectShoppingCartCollectionBackgroundColor {return [@"dbd9d9" hexStringToColor];}
+/**
+ *  购物车 热门推荐 原价颜色
+ */
++ (UIColor *)subjectShoppingCartOriginPriceColor {return [@"5f5f5f" hexStringToColor];}
+@end
+
 @implementation GZGColorClass (PersonalCenterColor)
 
 /**
