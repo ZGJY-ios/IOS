@@ -9,11 +9,25 @@
 #import "GZGCountriesPavilionViewController.h"
 #import "GZGCountriesReplenishCell.h"
 #import "GZGCountriesHeadFaceCell.h"
+#import "YDTopTitleRolling.h"
+#import "GZGCountriesTheCostomTableView.h"
+
+
 @interface GZGCountriesPavilionViewController ()<
 UITableViewDelegate,
-UITableViewDataSource
+UITableViewDataSource,
+UIScrollViewDelegate,
+GZGCountriesHeadFaceCellDelegate
 >
-@property(nonatomic, strong)UITableView *mainTableView;
+//@property(nonatomic, strong) UITableView *mainTableView;
+@property(nonatomic, strong) GZGCountriesTheCostomTableView *mainTableView;
+@property(nonatomic, assign) BOOL isTableViewScrollew;
+@property(nonatomic, assign) BOOL isTableViewScrollew1;
+@property(nonatomic, assign) BOOL cancelTableScrollew;
+
+@property(nonatomic, strong) NSMutableArray *headFaceArray;
+
+@property(nonatomic, strong) YDTopTitleRolling *ydTopTitleRollingView;
 @end
 
 @implementation GZGCountriesPavilionViewController
@@ -21,8 +35,9 @@ UITableViewDataSource
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _headFaceArray = [NSMutableArray array];
     
-    
+    _cancelTableScrollew = YES;
     self.titles.text = self.countriesTitle;
     [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
     [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
@@ -30,7 +45,14 @@ UITableViewDataSource
     self.navBarView.backgroundColor = self.navColor;
     self.view.backgroundColor = self.backViewColor;;
     [self buildUI];
+    [self loadHeadFacedata];
+    [self notififatation];
+    
+    
+//    [self topTItleRollingUI];
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -40,15 +62,21 @@ UITableViewDataSource
 }
 #pragma mark 方法
 - (void)buildUI{
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, SCREENHEIGHT - [GZGApplicationTool tabBarSize]) style:UITableViewStyleGrouped];
+    _mainTableView = [[GZGCountriesTheCostomTableView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize]) style:UITableViewStyleGrouped];
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;
     _mainTableView.backgroundColor = [UIColor clearColor];
     _mainTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     _mainTableView.showsVerticalScrollIndicator = NO;
     _mainTableView.showsHorizontalScrollIndicator = NO;
+    _mainTableView.bounces = NO;
     [self.view addSubview:_mainTableView];
 }
+- (void)notififatation{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(banSliding:) name:GZGCountriesTableBanSlideNotification object:nil];
+}
+
+
 
 #pragma mark 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -66,7 +94,7 @@ UITableViewDataSource
     if (indexPath.section == 0) {
        return [GZGApplicationTool control_height:611.0f];
     }else if (indexPath.section == 1){
-       return [GZGApplicationTool control_height:1124.0f];
+       return SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize];
     }
     return 30;
 }
@@ -90,8 +118,23 @@ UITableViewDataSource
         }
         cell.cellCountriesImage.image = [UIImage imageNamed:@"sy_hgban.jpg"];
         cell.replenishImage = [UIImage imageNamed:@"koho-1.jpg"];
-        cell.backgroundColor = [UIColor  clearColor];
+        if (self.countriesIndex == CountriesEnterThe_SouthKorea) {
+            cell.oneColor = [@"dd3149" hexStringToColor];
+            cell.towColor = [@"ec4c60" hexStringToColor];
+        }else if (self.countriesIndex == CountriesEnterThe_Japan) {
+            cell.oneColor = [@"e25a2b" hexStringToColor];
+            cell.towColor = [@"f08f30" hexStringToColor];
+        }else if (self.countriesIndex == CountriesEnterThe_Australia) {
+            cell.oneColor = [@"51a8c8" hexStringToColor];
+            cell.towColor = [@"48b9e1" hexStringToColor];
+        }else{
+            cell.oneColor = [@"af347b" hexStringToColor];
+            cell.towColor = [@"a94aaa" hexStringToColor];
+        }
         
+        
+        cell.backgroundColor = [UIColor  clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
         static NSString *headFaceCellStr = @"headFaceCellStr";
@@ -99,11 +142,33 @@ UITableViewDataSource
         if (!cell) {
             cell = [[GZGCountriesHeadFaceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:headFaceCellStr];
         }
+        if (self.countriesIndex == CountriesEnterThe_SouthKorea) {
+            cell.backgroundColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
+        }else if (self.countriesIndex == CountriesEnterThe_Japan) {
+            cell.backgroundColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
+        }else if (self.countriesIndex == CountriesEnterThe_Australia) {
+            cell.backgroundColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
+        }else{
+            cell.backgroundColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
+        }
         
         
         
         
         
+        
+        
+        
+        
+        
+        cell.delegate = self;
+        
+        cell.dataArr = _headFaceArray;
+        
+        cell.cellHeadImageUrl = @"";
+        cell.cellPlaceholderHeadImage = [UIImage imageNamed:@"index-Korea.jpg"];
+        [cell.collection reloadData];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
@@ -115,9 +180,67 @@ UITableViewDataSource
     }
     return cell;
 }
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat tabOffsetY = [_mainTableView rectForSection:1].origin.y ;
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (_cancelTableScrollew == YES) {
+        _isTableViewScrollew1 = _isTableViewScrollew;
+        
+        if (offsetY>=tabOffsetY) {
+            scrollView.contentOffset = CGPointMake(0, tabOffsetY);
+            _isTableViewScrollew = YES;
+            
+        }else{
+            _isTableViewScrollew = NO;
+        }
+        
+        if (_isTableViewScrollew != _isTableViewScrollew1) {
+            
+            if (!_isTableViewScrollew1 && _isTableViewScrollew) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:GZGCountriesTableCanslideNotification object:nil userInfo:@{@"CanSlide":@"YES"}];
+                _cancelTableScrollew = NO;
+            }
+        }
+    }else{
+        scrollView.contentOffset = CGPointMake(0, tabOffsetY);
+    }
+  
+}
+
 #pragma mark 自己的代理
+//tabBar的TapTitleDelegate
+- (void)topTitleIndex:(UILabel *)lab{
+    [_mainTableView reloadData];
+}
+
 
 #pragma mark 自己的方法
+
+- (void)banSliding:(NSNotification *)nofiti{
+    NSDictionary *userInfo = nofiti.userInfo;
+    NSString *canScroll = userInfo[@"BanSlide"];
+    if ([canScroll isEqualToString:@"YES"]) {
+        _cancelTableScrollew = YES;
+        
+    }
+}
+
+- (void)loadHeadFacedata{
+    for (NSInteger i=0; i<10; i++) {
+        NSString *countriesTitle = @"【原装进口】可分Confume";
+        NSString *titleName = @"纯天然植物染发剂";
+        NSString *titleQuality = @"颜色持久 安全染发";
+        NSString *priceLab = @"￥125";
+        [_headFaceArray addObject:@[countriesTitle,titleName,titleQuality,priceLab]];
+    }
+    
+    [_mainTableView reloadData];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

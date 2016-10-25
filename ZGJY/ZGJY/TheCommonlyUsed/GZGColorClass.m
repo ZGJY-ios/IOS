@@ -163,9 +163,6 @@
  */
 + (UIColor *)subjectCountriespacilionSouthKoreaBackColor{return [@"ff95a1" hexStringToColor];}
 
-
-
-
 /**
  *日本馆背景颜色
  
@@ -184,6 +181,8 @@
  *@return Color
  */
 + (UIColor *)subjectCountriespacilionTheEuropeanBackColor{return [@"bb63b9" hexStringToColor];}
+
+
 @end
 
 @implementation GZGColorClass (GradientColor)
@@ -217,6 +216,63 @@
  @return Color
  */
 + (UIColor *)subjectCountriesHeadFaceCancleSelectTitleColor{return [@"787878" hexStringToColor];}
+
+/**
+ 国家馆HeadFace内容 进口字体颜色
+
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountImportTitleColor{return [@"636260" hexStringToColor];}
+
+/**
+ 国家馆HeadFace内容名字颜色
+
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountNameTitleColor{return [@"000000" hexStringToColor];}
+
+/**
+ 国家馆HeadFace商品质量字体颜色
+
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountQualityTitleColor{return [@"ed4c60" hexStringToColor];}
+
+
+/**
+ 国家馆CellBack颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesCountCellBackColor{return [@"fbd0d8" hexStringToColor];}
+
+/**
+ 国家馆韩国馆CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesSouthKoreaCellCollectionBackColor{return [@"ed4c60" hexStringToColor];}
+
+/**
+ 国家馆日本CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesJapanCellCollectionBackColor{return [@"f08f30" hexStringToColor];}
+
+/**
+ 国家馆澳亚里亚CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesAustraliaCellCollectionBackColor{return [@"48b9e1" hexStringToColor];}
+
+/**
+ 国家馆欧洲CellCollectionBakcColor颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesTheEuropeanCellCollectionBackColor{return [@"a849a9" hexStringToColor];}
 
 @end
 @implementation GZGColorClass (SearchListColor)

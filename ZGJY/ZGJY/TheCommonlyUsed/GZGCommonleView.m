@@ -17,11 +17,12 @@
 
  @return UIView
  */
-+ (UIView *)countriesGradiengColor:(CGRect)frame{
++ (UIView *)countriesGradiengColor:(CGRect)frame oneColor:(UIColor *)oneColor towColor:(UIColor *)towColor{
     UIView *view = [[UIView alloc] initWithFrame:frame];
-    [view.layer addSublayer:[GZGColorClass doubleGradientColor:CGRectMake(0, 0, frame.size.width, frame.size.height) colorOne:[@"dd3149" hexStringToColor] colorTow:[@"ec4c60" hexStringToColor]]];
+    [view.layer addSublayer:[GZGColorClass doubleGradientColor:CGRectMake(0, 0, frame.size.width, frame.size.height) colorOne:oneColor colorTow:towColor]];
     
     return view;
 }
-
+//[@"dd3149" hexStringToColor]
+//[@"ec4c60" hexStringToColor]
 @end

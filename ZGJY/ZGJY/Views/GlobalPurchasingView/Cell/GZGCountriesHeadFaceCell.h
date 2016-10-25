@@ -7,7 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YDTopTitleRolling.h"
+
+@protocol GZGCountriesHeadFaceCellDelegate <NSObject>
+
+- (void)topTitleIndex:(UILabel *)lab;
+
+@end
 
 @interface GZGCountriesHeadFaceCell : UITableViewCell
+
+@property(nonatomic,strong) NSMutableArray *dataArr;
+
+@property(nonatomic, strong) NSString *cellHeadImageUrl;
+@property(nonatomic, strong) UIImage *cellPlaceholderHeadImage;
+@property(nonatomic, strong) NSString *cellCountriesTitle;
+@property(nonatomic, strong) NSString *cellTitleName;
+@property(nonatomic, strong) NSString *cellTitleQuality;
+@property(nonatomic, strong) NSString *cellPriceLab;
+
+
+
+
+
+@property(nonatomic, strong) YDTopTitleRolling *ydTopTitleRollingView;
+@property(nonatomic, assign) id<GZGCountriesHeadFaceCellDelegate>delegate;
+@property(nonatomic, strong) UIColor *cellCollectionBackColor;
+@property(nonatomic,strong) UICollectionView *collection;
 
 @end

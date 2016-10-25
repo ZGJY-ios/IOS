@@ -20,11 +20,12 @@ static NSString *const CellCountriesCellStr = @"cellCountriesCellStr";
     return self;
 }
 
+
 - (void)buildUI{
     CGFloat hh = [GZGApplicationTool control_height:295.0f];
     CGFloat w = SCREENWIDTH,h = [GZGApplicationTool control_height:316.0f];
 
-    UIView *viewCell = [UIView countriesGradiengColor:CGRectMake(0,0, SCREENWIDTH, hh+h)];
+    UIView *viewCell = [UIView countriesGradiengColor:CGRectMake(0,0, SCREENWIDTH, hh+h) oneColor:self.oneColor towColor:self.towColor];
     [self addSubview:viewCell];
     
     
@@ -54,6 +55,7 @@ static NSString *const CellCountriesCellStr = @"cellCountriesCellStr";
     
     return cell;
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld",indexPath.row);
