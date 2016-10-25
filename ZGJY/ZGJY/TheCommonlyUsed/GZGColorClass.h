@@ -279,5 +279,13 @@
  */
 + (UIColor *)subjectSearchListSelectedTextColor;
 
+@end
+
+@interface GZGColorClass (PersonalCenterColor)
+
+/**
+ *  个人中心 会员名称 颜色
+ */
++ (UIColor *)subjectPersonalCenterColor;
 
 @end
