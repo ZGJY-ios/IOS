@@ -7,7 +7,7 @@
 //
 
 #import "GZGPersonalCenterViewController.h"
-
+#import "GZGAddressManageViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -181,6 +181,9 @@
             switch (indexPath.row) {
                 case 0: {
                     NSLog(@"我的订单");
+                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+                    [addredssManger setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:addredssManger animated:YES];
                 }
                     break;
                 case 1: {

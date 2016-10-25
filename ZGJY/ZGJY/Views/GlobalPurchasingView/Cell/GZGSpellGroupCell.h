@@ -12,7 +12,7 @@
 
 + (instancetype)dequeueReusableCellWithIdentifier:(NSString *)reuseIdentifier withTableView:(UITableView *)tableView forIndexPath:(NSIndexPath *)indexPath;
 
-- (void)setModel;
+- (void)setModel:(UIImage *)imagex;
 
 @property (nonatomic, copy) void(^GZGSpellGroupCellBlock)(UIButton * button);
 
