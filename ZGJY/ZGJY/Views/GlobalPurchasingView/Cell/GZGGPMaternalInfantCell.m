@@ -38,14 +38,14 @@ static const NSInteger MaternalBtnTag = 1000;
     
     
     
-//    CGFloat ww = SCREENWIDTH/3,hh = [GZGApplicationTool control_height:305];
+    //    CGFloat ww = SCREENWIDTH/3,hh = [GZGApplicationTool control_height:305];
     CGFloat ww = [GZGApplicationTool control_wide:132.0f],hh = [GZGApplicationTool control_height:176.0f];
-//    CGFloat titleWidh = [GZGApplicationTool control_wide:41];
-    CGFloat xx = SCREENWIDTH,yy = [GZGApplicationTool control_height:305];
+    //    CGFloat titleWidh = [GZGApplicationTool control_wide:41];
+    CGFloat xx = SCREENWIDTH,yy = [GZGApplicationTool control_height:278];
     
     
     for (NSInteger i=0; i<imageMeternallImageArr.count; i++) {
-        CGFloat xxx = 0 + i%3*(xx/3),yyy = 0 + i/3*yy;
+        CGFloat xxx = 0 + i%3*(xx/3),yyy = [GZGApplicationTool control_height:10] + i/3*yy;
         GZGUpImageDownTitleBtn *maternalBtn = [[GZGUpImageDownTitleBtn alloc] initWithFrame:CGRectMake(xxx, yyy, xx/3, yy)];
         maternalBtn.widhSize = ww;
         maternalBtn.heightSize = hh;
@@ -59,19 +59,19 @@ static const NSInteger MaternalBtnTag = 1000;
     }
     
     for (NSInteger i=0; i<2; i++) {
-        UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(xx/3+i*(xx/3),  [GZGApplicationTool control_height:60], 0.5, yy*2 - [GZGApplicationTool control_height:60*2])];
+        UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(xx/3+i*(xx/3),  [GZGApplicationTool control_height:10], 0.5, yy*2)];
         viewLine.backgroundColor = [UIColor grayColor];
         [self addSubview:viewLine];
     }
     
     for (NSInteger i=0; i<1; i++) {
-        UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0,  yy+i *yy, SCREENWIDTH, 0.5)];
+        UIView *viewLine = [[UIView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:10] + yy+i *yy, SCREENWIDTH, 0.5)];
         viewLine.backgroundColor = [UIColor grayColor];
         [self addSubview:viewLine];
     }
     
     UIButton *moreBtn = [UIButton   buttonWithType:UIButtonTypeCustom];
-    moreBtn.frame = CGRectMake((SCREENWIDTH - [GZGApplicationTool control_wide:160])/2, yy * 2 + [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:160], [GZGApplicationTool control_height:50]);
+    moreBtn.frame = CGRectMake((SCREENWIDTH - [GZGApplicationTool control_wide:160])/2, yy * 2 + [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:160], [GZGApplicationTool control_height:50]);
     [moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [moreBtn setTitle:NSLocalizedString(@"GZGGPMaternalInfant_CCGDSP", nil) forState:UIControlStateNormal];
     moreBtn.titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:25]];

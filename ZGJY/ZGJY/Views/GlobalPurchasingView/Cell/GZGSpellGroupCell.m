@@ -34,19 +34,19 @@
     }
     return self;
 }
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
-    CGContextRef context =UIGraphicsGetCurrentContext();
-    CGContextBeginPath(context);
-    CGContextSetLineWidth(context, 2.0);
-    CGContextSetStrokeColorWithColor(context, [GZGColorClass subjectGPSpellGroupDottedLineColor].CGColor);
-    CGFloat lengths[] = {1,2};
-    CGContextSetLineDash(context, 0, lengths,2);
-    CGContextMoveToPoint(context, self.imageView.frame.origin.x + self.imageView.frame.size.width + [GZGApplicationTool control_wide:90], [GZGApplicationTool control_wide:70]);
-    CGContextAddLineToPoint(context, [GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:20] ,[GZGApplicationTool control_wide:70]);
-    CGContextStrokePath(context);
-}
+//- (void)drawRect:(CGRect)rect {
+//    [super drawRect:rect];
+//    
+//    CGContextRef context =UIGraphicsGetCurrentContext();
+//    CGContextBeginPath(context);
+//    CGContextSetLineWidth(context, 2.0);
+//    CGContextSetStrokeColorWithColor(context, [GZGColorClass subjectGPSpellGroupDottedLineColor].CGColor);
+//    CGFloat lengths[] = {1,2};
+//    CGContextSetLineDash(context, 0, lengths,2);
+//    CGContextMoveToPoint(context, self.imageView.frame.origin.x + self.imageView.frame.size.width + [GZGApplicationTool control_wide:90], [GZGApplicationTool control_wide:70]);
+//    CGContextAddLineToPoint(context, [GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:20] ,[GZGApplicationTool control_wide:70]);
+//    CGContextStrokePath(context);
+//}
 - (void)buildUI {
     
     self.imageView = ({
@@ -100,7 +100,7 @@
         label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:26]];
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [GZGColorClass subjectGPSpellGroupTitleColor];
-        label.text = NSLocalizedString(@"￥118", nil);
+        label.text = NSLocalizedString(@"￥？？？", nil);
         label;
     });
     self.marketPriceLabel = ({
@@ -110,7 +110,7 @@
         label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:12]];
         label.textAlignment = NSTextAlignmentLeft;
         label.textColor = [GZGColorClass subjectGPSpellGroupGoodsTextColor];
-        label.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"市场价:￥240", nil)];
+        label.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"市场价:￥？？", nil)];
         label;
     });
     self.limitLabel = ({
@@ -281,7 +281,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y,[GZGApplicationTool screenWide], [GZGApplicationTool control_height:210-1]);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y,[GZGApplicationTool screenWide], [GZGApplicationTool control_height:235.0f-1]);
         [self buildUI];
     }
     return self;

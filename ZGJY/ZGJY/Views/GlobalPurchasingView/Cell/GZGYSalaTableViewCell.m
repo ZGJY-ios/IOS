@@ -19,10 +19,10 @@
         UICollectionViewFlowLayout*flowlay = [[UICollectionViewFlowLayout alloc]init];
         flowlay.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc]initWithFrame:self.frame collectionViewLayout:flowlay];
-        flowlay.itemSize = CGSizeMake(KScreenWigth/3-2.7, KScreenHeight/5);
+        flowlay.itemSize = CGSizeMake([GZGApplicationTool control_wide:245],[GZGApplicationTool control_height:270]);
         flowlay.minimumLineSpacing = 5;
         flowlay.minimumInteritemSpacing = 0;
-        flowlay.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0);
+        flowlay.sectionInset = UIEdgeInsetsMake([GZGApplicationTool control_height:10], 0, 0, 0);
         [_collectionView registerClass:[GZGYSalaCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
         _collectionView.scrollsToTop = YES;
         _collectionView.delegate = self;

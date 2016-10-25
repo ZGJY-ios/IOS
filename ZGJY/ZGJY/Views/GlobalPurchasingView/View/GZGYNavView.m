@@ -31,7 +31,7 @@
             [HeaderScroller addSubview:SegBtn];
         }
         
-        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height - 2, KScreenWigth/6, 2)];
+        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height -[GZGApplicationTool control_height:10], KScreenWigth/6, 2)];
         [LineView setBackgroundColor:[UIColor redColor]];
         [HeaderScroller addSubview:LineView];
         [self addSubview:HeaderScroller];

@@ -11,7 +11,10 @@
 #import "GZGYDetailsView.h"
 #import "GZGYBbtnView.h"
 #import "GZGYChoiceView.h"
-@interface GZGYDetailsViewController ()<NavDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate>
+#import "GZGYEvaluationTableViewCell.h"
+#import "GZGYEvaluaImgTableViewCell.h"
+#import "GZGYOrderViewController.h"
+@interface GZGYDetailsViewController ()<NavDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate,ChoiceDelegeteClickProtocol>
 {
     NSArray*nameArray;
     GZGYDetailsView * detailsView;
@@ -31,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
     nameArray = @[@"商品",@"详情",@"评价"];
     [self Animation];
     [self ScrollViewInterface];
@@ -102,8 +106,8 @@
     }
     if (self.etableView == nil) {
         self.etableView = [[UITableView alloc]initWithFrame:CGRectMake(KScreenWigth*2, 0, KScreenWigth, self.mainScroll.frame.size.height)];
-//        self.etableView.delegate = self;
-//        self.etableView.dataSource = self;
+        self.etableView.delegate = self;
+        self.etableView.dataSource = self;
         [self.mainScroll addSubview:self.etableView];
     }
 }
@@ -123,7 +127,7 @@
 #pragma mark --- btnview
 -(void)BtnInterface
 {
-    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:928], KScreenWigth, [GZGApplicationTool control_height:100])];
+    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, KScreenHeight-64-[GZGApplicationTool control_height:100], KScreenWigth, [GZGApplicationTool control_height:100])];
     btnView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:btnView];
 }
@@ -131,9 +135,53 @@
 -(void)ChoiceViewInterface
 {
     choiceView = [[GZGYChoiceView alloc] initWithFrame:CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight)];
+    choiceView.delegate = self;
     [self.view addSubview:choiceView];
     choiceView.hidden = YES;
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return [GZGApplicationTool control_height:360];
+    }
+    return [GZGApplicationTool control_height:235];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return [GZGApplicationTool control_height:20];
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *ID = @"cell";
+    if (indexPath.section == 0) {
+        GZGYEvaluaImgTableViewCell* cell = (GZGYEvaluaImgTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            cell = [[GZGYEvaluaImgTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        }
+        return cell;
+    }else{
+        GZGYEvaluationTableViewCell* cell = (GZGYEvaluationTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            cell = [[GZGYEvaluationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        }
+        return cell;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //取消点击事件的阴影 就是点击之后在返回cell上还是有点击的阴影 加上这句话可以消除阴影
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 - (void)changeView:(float)x {
     float xx = x*(1.0f/6.0f);
     NSLog(@"~~~~~~~~%f",xx);
@@ -217,9 +265,32 @@
         detailsView.center = center;
         detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
         
-        choiceView.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        choiceView.frame =CGRectMake(0, 0, KScreenWigth, KScreenHeight);
         btnView.alpha = 0;
     } completion: nil];
+}
+-(void)ChoiceBtnDelegate:(NSInteger)sender
+{
+    center.y += 64;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [UIView animateWithDuration: 0.35 animations: ^{
+        choiceView.frame =CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight);
+        detailsView.center = center;
+        detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
+        btnView.alpha = 1;
+    } completion: nil];
+}
+#pragma mark --- 半透明或叉号按钮事件监听
+-(void)dismiss
+{
+    center.y += 64;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [UIView animateWithDuration: 0.35 animations: ^{
+        choiceView.frame =CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight);
+        detailsView.center = center;
+        detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
+    } completion: nil];
+    
 }
 #pragma mark --- 配送事件监听
 -(void)distribution
@@ -239,7 +310,8 @@
 #pragma mark --- 增加事件监听
 -(void)add
 {
-    
+    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+    [self.navigationController pushViewController:orders animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

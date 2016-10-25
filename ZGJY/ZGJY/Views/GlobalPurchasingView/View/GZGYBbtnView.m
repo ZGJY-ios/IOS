@@ -20,20 +20,23 @@
         serviceBtn = [[GZGYButton alloc]initWithFrame:CGRectMake(0, 0, [GZGApplicationTool control_wide:110], self.frame.size.height) Head:@"客服" Message:nil];
         serviceBtn.jiantou.frame = CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:50]);
         serviceBtn.jiantou.image = [UIImage imageNamed:@"service"];
-        serviceBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:35]);
+        serviceBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:10], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:90], [GZGApplicationTool control_height:35]);
+        serviceBtn.headLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:serviceBtn];
         
         
         focusBtn = [[GZGYButton alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:110], 0, [GZGApplicationTool control_wide:120], self.frame.size.height) Head:@"关注" Message:nil];
         focusBtn.jiantou.frame = CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:50]);
         focusBtn.jiantou.image = [UIImage imageNamed:@"foucson"];
-        focusBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:35]);
+        focusBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:10], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:90], [GZGApplicationTool control_height:35]);
+        focusBtn.headLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:focusBtn];
         
         cartBtn = [[GZGYButton alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:220], 0, [GZGApplicationTool control_wide:150], self.frame.size.height) Head:@"购物车" Message:nil];
-        cartBtn.jiantou.frame = CGRectMake([GZGApplicationTool control_wide:35], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:50]);
+        cartBtn.jiantou.frame = CGRectMake([GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:50]);
         cartBtn.jiantou.image = [UIImage imageNamed:@"shop-car"];
-        cartBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:80], [GZGApplicationTool control_height:35]);
+        cartBtn.headLabel.frame = CGRectMake([GZGApplicationTool control_wide:10], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:130], [GZGApplicationTool control_height:35]);
+        cartBtn.headLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:cartBtn];
         
         
@@ -48,5 +51,4 @@
     }
     return self;
 }
-
 @end

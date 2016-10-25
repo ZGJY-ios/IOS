@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GZGYButton.h"
+
 @interface GZGYBbtnView : UIView
 @property(nonatomic, strong)GZGYButton* serviceBtn;
 @property(nonatomic, strong)GZGYButton* focusBtn;

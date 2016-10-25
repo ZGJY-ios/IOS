@@ -53,8 +53,8 @@
  *系统屏幕的高
  */
 + (CGFloat)screenHeight {return [UIScreen mainScreen].bounds.size.height;}
-+ (CGFloat)proportion_wide{return [self screenWide]/640.0f;}
-+ (CGFloat)Proportion_height{return [self screenHeight]/1136.0f;}
++ (CGFloat)proportion_wide{return [self screenWide]/750.0f;}
++ (CGFloat)Proportion_height{return [self screenHeight]/1334.0f;}
 /**
  *设计图适配的宽  以6为基准
  */

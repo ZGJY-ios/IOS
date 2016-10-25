@@ -40,6 +40,11 @@
  *@return Color
  */
 + (UIColor *)subjectTabBarTitleColor;
+/**
+ *Search Cancle 取消的颜色
+ *@return Color
+ */
++ (UIColor *)subjectSearchTextColor;
 @end
 @interface GZGColorClass (GlobalPurchasingColor)
 /**
@@ -146,5 +151,79 @@
  @return Color
  */
 + (UIColor *)subjectCountriesPacilionGoodsTitleColor;
+/**
+ *韩国馆Nac背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionSouthKoreaNavColor;
+/**
+ 韩国馆背景颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriespacilionSouthKoreaBackColor;
+/**
+ *日本馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionJapanBackColor;
+/**
+ *澳大利亚馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionAustraliaBackColor;
+/**
+ *欧洲馆背景颜色
+ 
+ *@return Color
+ */
++ (UIColor *)subjectCountriespacilionTheEuropeanBackColor;
+
+@end
+
+@interface GZGColorClass (GradientColor)
+/**
+ 国家馆颜色渐变
+ 
+ @param frame    CGrect Frame
+ @param colorOne ColorOne
+ @param colorTow ColorTow
+ 
+ @return Color
+ */
++ (CAGradientLayer *)doubleGradientColor:(CGRect)frame colorOne:(UIColor *)colorOne colorTow:(UIColor *)colorTow;
+/**
+ 国家馆HeadFaceSelect颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesHeadFaceSelectTitleColor;
+
+/**
+ 国家馆取消HeadFaceSelect颜色
+ 
+ @return Color
+ */
++ (UIColor *)subjectCountriesHeadFaceCancleSelectTitleColor;
+
+@end
+@interface GZGColorClass (SearchListColor)
+
+/**
+ *  搜索列表 背景色
+ */
++ (UIColor *)subjectSearchListBackgroundColor;
+/**
+ *  搜索列表 字体颜色 没选中
+ */
++ (UIColor *)subjectSearchListNormalTextColor;
+/**
+ *  搜索列表 字体颜色 选中
+ */
++ (UIColor *)subjectSearchListSelectedTextColor;
+
 
 @end

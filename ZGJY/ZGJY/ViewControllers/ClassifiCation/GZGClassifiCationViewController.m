@@ -17,6 +17,7 @@
 {
     UIView*ViewHead;
     NSArray*DataArray;
+    NSArray*classArray;
 }
 @property(nonatomic,retain)NSMutableArray*SecArray;
 @property(nonatomic,strong)NSArray<GZGYClassModel*>*model;
@@ -46,7 +47,7 @@
     self.navBarView.hidden = YES;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-    
+    classArray = @[@"精品男装",@"潮流女装",@"母婴用品",@"儿童玩具",@"个护化妆",@"家用电器",@"电脑办公",@"手机数码",@"母婴童装",@"图书音像",@"家居家纺",@"家居生活",@"家具建材",@"食品生鲜",@"酒水饮料",@"运动户外",@"奢品礼品"];
     self.NameArray = @[@"分类",@"品牌"];
     DataArray = @[@{@"SecStr":@"常用分类",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]},@{@"SecStr":@"专场推荐",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]},@{@"SecStr":@"热门分类",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]}];
     self.model = DataArray;
@@ -84,18 +85,18 @@
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
-    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:190], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:190]-self.tabBarController.tabBar.frame.size.height)];
+    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:200], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:200]-self.tabBarController.tabBar.frame.size.height)];
     self.ScrollView.delegate = self;
     self.ScrollView.pagingEnabled = YES;
     self.ScrollView.bounces = NO;
     self.ScrollView.contentSize = CGSizeMake(KScreenWigth * _NameArray.count, self.ScrollView.frame.size.height);
-    self.ScrollView.backgroundColor = [UIColor whiteColor];
+    self.ScrollView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     [self.view addSubview:self.ScrollView];
 }
 #pragma mark --- Seg
 -(void)SegViewInterface
 {
-    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101], KScreenWigth, [GZGApplicationTool control_height:75]) NameArray:_NameArray];
+    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101], KScreenWigth, [GZGApplicationTool control_height:95]) NameArray:_NameArray];
     self.segView.delegate = self;
     self.segView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.segView];
@@ -157,7 +158,7 @@
 #pragma mark --- tableview
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 50;
+    return classArray.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -165,7 +166,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"test%ld",(long)indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",classArray[indexPath.row]];
     
     return cell;
 }
@@ -269,14 +270,14 @@
         UICollectionReusableView*headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
         if (indexPath.section == 0) {
             UIImageView*imgHeadView = [[UIImageView alloc]init];
-            imgHeadView.frame = CGRectMake(0, 5, KScreenWigth/3*2, KScreenHeight/7+20);
+            imgHeadView.frame = CGRectMake(0, 0, KScreenWigth/3*2, [GZGApplicationTool control_height:255]);
             imgHeadView.image = [UIImage imageNamed:@"sy_hgpic2.jpg"];
             [headerView addSubview:imgHeadView];
         }else{
             UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, KScreenWigth/3*2, KScreenHeight/20)];
             HeadLabel.font = [UIFont systemFontOfSize:13];
             HeadLabel.text = _SecArray[indexPath.section];
-            HeadLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
+            HeadLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
             [headerView addSubview:HeadLabel];
         }
         return headerView;

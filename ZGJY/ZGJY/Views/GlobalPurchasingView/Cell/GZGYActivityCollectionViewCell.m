@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, self.frame.size.width, [GZGApplicationTool control_height:60])];
+        imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, self.frame.size.width, [GZGApplicationTool control_height:65])];
         imgView.image = [UIImage imageNamed:@"sy_hgpic2.jpg"];
         [self addSubview:imgView];
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:70], self.frame.size.width, 30)];
