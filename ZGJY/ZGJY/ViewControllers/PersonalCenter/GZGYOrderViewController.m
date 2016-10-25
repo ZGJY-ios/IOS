@@ -31,7 +31,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.titles.text = @"我的订单";
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.nameArray = @[@"全部",@"待付款",@"待发货",@"待收货",@"待评价"];
     //scrollview
@@ -43,7 +45,7 @@
 #pragma mark --- ScrollInterface
 -(void)ScrollInterface
 {
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:105], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:105])];
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64+ [GZGApplicationTool control_height:105], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:105])];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.bounces = NO;
@@ -53,7 +55,7 @@
 #pragma mark --- 订单分类
 -(void)OrdersInterface
 {
-    self.ordersView = [[GZGYOrders alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, [GZGApplicationTool control_height:105]) NameArray:self.nameArray];
+    self.ordersView = [[GZGYOrders alloc]initWithFrame:CGRectMake(0, 64, KScreenWigth, [GZGApplicationTool control_height:105]) NameArray:self.nameArray];
     self.ordersView.delegate = self;
     [self.view addSubview:self.ordersView];
     [self addTableViewToScrollView:self.scrollView count:self.nameArray.count frame:CGRectZero];
@@ -168,6 +170,8 @@
     [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth, self.ordersView.frame.size.height) animated:YES];
     [self refreshTableView:(int)sender];
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

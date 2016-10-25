@@ -24,7 +24,7 @@
         _imgView = [UIImageView new];
         _imgView.frame = CGRectMake(0,[GZGApplicationTool control_height:28], [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:170]);
         //_imgView.frame = CGRectMake(0, 17, self.frame.size.width, self.frame.size.height-50);
-        _imgView.image = [UIImage imageNamed:@"sy_hgpic2.jpg"];
+        _imgView.image = [UIImage imageNamed:@"sy_hgpic1"];
         [self addSubview:_imgView];
         _priceLabel = [UILabel new];
         _priceLabel.frame = CGRectMake(0,[GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:30]);

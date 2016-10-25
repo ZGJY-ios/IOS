@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface GZGYOrderViewController : UIViewController
+#import "GZGSubViewController.h"
+@interface GZGYOrderViewController : GZGSubViewController
 
 @end

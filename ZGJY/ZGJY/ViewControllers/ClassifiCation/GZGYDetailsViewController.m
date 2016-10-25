@@ -33,8 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.view.backgroundColor = [UIColor whiteColor];
     nameArray = @[@"商品",@"详情",@"评价"];
     [self Animation];
     [self ScrollViewInterface];
@@ -62,28 +62,27 @@
 #pragma mark --- Nav
 -(void)NavViewInterface
 {
-    self.segView = [[GZGYNavView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth/2, [GZGApplicationTool control_height:75]) NameArray:nameArray];
+    self.segView = [[GZGYNavView alloc]initWithFrame:CGRectMake(KScreenWigth/4, [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:75], KScreenWigth/2, [GZGApplicationTool control_height:75]) NameArray:nameArray];
     self.segView.delegate = self;
-    [self.navigationItem setTitleView:self.segView];
+    self.navBarView = self.segView;
+    [self.view addSubview: self.segView];
     [self addTableViewToScrollView:self.mainScroll count:nameArray.count frame:CGRectZero];
     
     UIButton * sharebutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sharebutton.frame = CGRectMake(0, 0, 20, 20);
+    sharebutton.frame = CGRectMake([GZGApplicationTool control_wide:575], [GZGApplicationTool control_height:30]+20, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
     [sharebutton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
     [sharebutton addTarget:self action:@selector(sharebutttonAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithCustomView:sharebutton];
     UIButton * rightbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightbutton.frame = CGRectMake(10, 0, 20, 20);
+    rightbutton.frame = CGRectMake([GZGApplicationTool control_wide:680], [GZGApplicationTool control_height:30]+20, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
     [rightbutton setImage:[UIImage imageNamed:@"etc.png"] forState:UIControlStateNormal];
     [rightbutton addTarget:self action:@selector(rightbuttonAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithCustomView:rightbutton];
-    NSArray *buttonItem = @[right,share];
-    self.navigationItem.rightBarButtonItems = buttonItem;
+    [self.view addSubview:sharebutton];
+    [self.view addSubview:rightbutton];
 }
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
-    self.mainScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, KScreenHeight-64)];
+    self.mainScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, KScreenHeight-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize])];
     self.mainScroll.delegate = self;
     self.mainScroll.pagingEnabled = YES;
     self.mainScroll.bounces = NO;
@@ -93,7 +92,7 @@
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (self.oneScroll == nil) {
-        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:200])];
+        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, self.mainScroll.frame.size.height)];
         self.oneScroll.contentSize = CGSizeMake(KScreenWigth, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]);
 //        self.oneScroll.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         [self.mainScroll addSubview:self.oneScroll];
@@ -113,7 +112,7 @@
 }
 -(void)DetailsInterface
 {
-    NSArray * arrayImg = @[@"sy_hlpic1.jpg",@"sy_hlpic2.jpg",@"sy_hlpic3.jpg"];
+    NSArray * arrayImg = @[@"sy_hlpic2",@"sy_hlpic2.jpg",@"sy_hlpic3.jpg"];
     detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, self.oneScroll.frame.size.height) andImageArr:arrayImg];
     [self.oneScroll addSubview:detailsView];
     [detailsView.speButton addTarget:self action:@selector(specifications) forControlEvents:UIControlEventTouchUpInside];
@@ -127,7 +126,7 @@
 #pragma mark --- btnview
 -(void)BtnInterface
 {
-    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, KScreenHeight-64-[GZGApplicationTool control_height:100], KScreenWigth, [GZGApplicationTool control_height:100])];
+    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, KScreenHeight-[GZGApplicationTool control_height:100], KScreenWigth, [GZGApplicationTool control_height:100])];
     btnView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:btnView];
 }

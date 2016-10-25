@@ -7,7 +7,7 @@
 //
 
 #import "GZGPersonalCenterViewController.h"
-
+#import "GZGYOrderViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -180,7 +180,9 @@
         {
             switch (indexPath.row) {
                 case 0: {
-                    NSLog(@"我的订单");
+                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+                    orders.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:orders animated:YES];
                 }
                     break;
                 case 1: {

@@ -43,9 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"分类";
-    self.navigationController.navigationBar.hidden = NO;
-    self.navBarView.hidden = YES;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.navigationController.navigationBar.hidden = NO;
+//    self.navBarView.hidden = YES;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.titles.text = @"分类";
     self.view.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
     classArray = @[@"精品男装",@"潮流女装",@"母婴用品",@"儿童玩具",@"个护化妆",@"家用电器",@"电脑办公",@"手机数码",@"母婴童装",@"图书音像",@"家居家纺",@"家居生活",@"家具建材",@"食品生鲜",@"酒水饮料",@"运动户外",@"奢品礼品"];
     self.NameArray = @[@"分类",@"品牌"];
@@ -69,7 +70,7 @@
 #pragma mark --- 搜索框
 -(void)SearchInterface
 {
-    UIView* textview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, [GZGApplicationTool control_height:100])];
+    UIView* textview = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, [GZGApplicationTool control_height:100])];
     textview.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:textview];
     UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:25], KScreenWigth-[GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:60])];
@@ -85,7 +86,7 @@
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
-    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:200], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:200]-self.tabBarController.tabBar.frame.size.height)];
+    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:200]+[GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:200]-self.tabBarController.tabBar.frame.size.height)];
     self.ScrollView.delegate = self;
     self.ScrollView.pagingEnabled = YES;
     self.ScrollView.bounces = NO;
@@ -96,7 +97,7 @@
 #pragma mark --- Seg
 -(void)SegViewInterface
 {
-    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101], KScreenWigth, [GZGApplicationTool control_height:95]) NameArray:_NameArray];
+    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101]+[GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, [GZGApplicationTool control_height:95]) NameArray:_NameArray];
     self.segView.delegate = self;
     self.segView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.segView];
@@ -271,7 +272,7 @@
         if (indexPath.section == 0) {
             UIImageView*imgHeadView = [[UIImageView alloc]init];
             imgHeadView.frame = CGRectMake(0, 0, KScreenWigth/3*2, [GZGApplicationTool control_height:255]);
-            imgHeadView.image = [UIImage imageNamed:@"sy_hgpic2.jpg"];
+            imgHeadView.image = [UIImage imageNamed:@"sy_xspic3.jpg"];
             [headerView addSubview:imgHeadView];
         }else{
             UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, KScreenWigth/3*2, KScreenHeight/20)];
@@ -288,6 +289,8 @@
         HeadLabel.text = @"世界品牌";
         HeadLabel.backgroundColor = [UIColor whiteColor];
         [headerView addSubview:HeadLabel];
+        
+        
         return headerView;
     }
 }
