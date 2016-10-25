@@ -8,6 +8,8 @@
 
 #import "GZGPersonalCenterViewController.h"
 #import "GZGAddressManageViewController.h"
+#import "GZGYOrderViewController.h"
+
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -180,10 +182,15 @@
         {
             switch (indexPath.row) {
                 case 0: {
+
                     NSLog(@"我的订单");
-                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
-                    [addredssManger setHidesBottomBarWhenPushed:YES];
-                    [self.navigationController pushViewController:addredssManger animated:YES];
+//                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+//                    [addredssManger setHidesBottomBarWhenPushed:YES];
+//                    [self.navigationController pushViewController:addredssManger animated:YES];
+
+                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+                    orders.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:orders animated:YES];
                 }
                     break;
                 case 1: {

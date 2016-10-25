@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth/2, KScreenHeight/15)];
+        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth/2, [GZGApplicationTool control_height:75])];
         HeaderScroller.pagingEnabled = YES;
         HeaderScroller.bounces = NO;
         [HeaderScroller setContentSize:CGSizeMake(KScreenWigth/6 * NameArray.count, HeaderScroller.frame.size.height)];
@@ -23,16 +23,16 @@
             SegBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [SegBtn setFrame:CGRectMake(KScreenWigth/6 * i, 0, KScreenWigth/6, HeaderScroller.frame.size.height)];
             [SegBtn setTitle:NameArray[i] forState:UIControlStateNormal];
-            [SegBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-            [SegBtn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+            [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
             SegBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
             SegBtn.tag = i;
             [SegBtn addTarget:self action:@selector(SegBtn:) forControlEvents:UIControlEventTouchUpInside];
             [HeaderScroller addSubview:SegBtn];
         }
         
-        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height -[GZGApplicationTool control_height:10], KScreenWigth/6, 2)];
-        [LineView setBackgroundColor:[UIColor redColor]];
+        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height -2, KScreenWigth/6, 2)];
+        [LineView setBackgroundColor:[UIColor whiteColor]];
         [HeaderScroller addSubview:LineView];
         [self addSubview:HeaderScroller];
     }
