@@ -118,7 +118,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     if (indexPath.section == 0) {
         return [GZGApplicationTool control_height:300.0f];
     }else if (indexPath.section == 1){
-        return [GZGApplicationTool control_height:550];
+        return [GZGApplicationTool control_height:560];
     }else if (indexPath.section == 2){
         return [GZGApplicationTool control_height:235.0f];
     }else if (indexPath.section == 3){
