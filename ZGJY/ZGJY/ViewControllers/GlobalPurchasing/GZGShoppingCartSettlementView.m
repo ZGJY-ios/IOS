@@ -93,15 +93,8 @@
 }
 
 - (void)buttonClick:(UIButton *)btn {
-    switch (btn.tag) {
-        case 0: {
-            btn.selected = !btn.isSelected;
-        }
-            break;
-        case 1: {
-            NSLog(@"去结算");
-        }
-            break;
+    if (self.buttonClick) {
+        self.buttonClick(btn);
     }
 }
 

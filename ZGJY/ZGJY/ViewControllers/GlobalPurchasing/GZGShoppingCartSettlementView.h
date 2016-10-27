@@ -20,4 +20,6 @@
 
 - (instancetype)initWithOriginY:(CGFloat)originY Height:(CGFloat)height;
 
+@property (nonatomic, copy) void(^buttonClick)(UIButton * button);
+
 @end

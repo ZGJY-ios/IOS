@@ -7,6 +7,8 @@
 //
 
 #import "GZGTheShoppingCartViewController.h"
+#import "GZGConfirmOrderViewController.h"
+#import "GZGYDetailsViewController.h"
 #import "GZGShoppingCartCell.h"
 #import "GZGShoppingCartReusableView.h"
 #import "GZGShoppingCartSettlementView.h"
@@ -74,6 +76,21 @@
     
     self.settlementView = [[GZGShoppingCartSettlementView alloc] initWithOriginY:[GZGApplicationTool screenHeight] - self.tabBarController.tabBar.frame.size.height - [GZGApplicationTool control_height:100] Height:100];
     self.settlementView.backgroundColor = [UIColor whiteColor];
+    __weak GZGTheShoppingCartViewController * weak = self;
+    [self.settlementView setButtonClick:^(UIButton * btn) {
+        switch (btn.tag) {
+            case 0: {
+                btn.selected = !btn.isSelected;
+            }
+                break;
+            case 1: {
+                GZGConfirmOrderViewController * confirmOrderVC = [[GZGConfirmOrderViewController alloc] init];
+                confirmOrderVC.hidesBottomBarWhenPushed = YES;
+                [weak.navigationController pushViewController:confirmOrderVC animated:YES];
+            }
+                break;
+        }
+    }];
     [self.view addSubview:self.settlementView];
 }
 
@@ -158,6 +175,9 @@
     return @[deleteRow, collectRowAction];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    detailsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
 ////////======
