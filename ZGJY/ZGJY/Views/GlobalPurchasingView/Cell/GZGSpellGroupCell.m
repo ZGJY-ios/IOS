@@ -173,8 +173,8 @@
     [self addSubview:self.replenishOnrButton];
     [self addSubview:self.percentageLabel];
 }
-- (void)setModel {
-    self.imageView.image = [UIImage imageNamed:@"ssss 副本"];
+- (void)setModel:(UIImage *)imagex {
+    self.imageView.image = imagex;
     self.soldLabel.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"已售 ?? 件", nil) textColor:[GZGColorClass subjectGPSpellGroupSoldAndRemainingTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
     self.remainingLabel.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"剩余 ?? 件", nil) textColor:[GZGColorClass subjectGPSpellGroupSoldAndRemainingTextColor] numberColor:[GZGColorClass subjectGPSpellGroupTitleColor]];
     self.commodityNameLabel.text = NSLocalizedString(@"商品详情", nil);
@@ -268,8 +268,8 @@
     return cell;
 }
 
-- (void)setModel {
-    [_spellGroupView setModel];
+- (void)setModel:(UIImage *)imagex {
+    [_spellGroupView setModel:imagex];
 }
 
 - (void)awakeFromNib {

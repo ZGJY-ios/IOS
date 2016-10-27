@@ -118,7 +118,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     if (indexPath.section == 0) {
         return [GZGApplicationTool control_height:300.0f];
     }else if (indexPath.section == 1){
-        return [GZGApplicationTool control_height:550];
+        return [GZGApplicationTool control_height:560];
     }else if (indexPath.section == 2){
         return [GZGApplicationTool control_height:235.0f];
     }else if (indexPath.section == 3){
@@ -160,7 +160,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (section == 3){
         return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];
     }else if (section == 4){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_myzq.jpg"] index:section];
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"sy_myzq.jpg"] index:section];
     }else if (section == 5){
         return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];
     }
@@ -193,7 +193,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGSpellGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:gZGSpellGroupCellStr];
         }
         
-        [cell setModel];
+        NSArray *arrImage = @[@"gzg_gg1",@"gzg_gg2",@"gzg_gg3"];
+        
+        
+        [cell setModel:[UIImage imageNamed:arrImage[indexPath.row]]];
+    
         [cell setGZGSpellGroupCellBlock:^(UIButton * button) {
             NSLog(@"block");
         }];
@@ -267,7 +271,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     ydimage.imageUrlArray = @[@"http://www.shengpet.com/uploads/allimg/140410/2-1404100943143X.jpg",
                               @"http://h.hiphotos.bdimg.com/album/w%3D2048/sign=69b2037aca1349547e1eef6462769358/d000baa1cd11728b707d37d9c9fcc3cec2fd2cfc.jpg",
                               @"http://pic15.nipic.com/20110621/2678842_143658366148_2.jpg",
-                              @"http://www.petsoo.cn/file/upload/201011/09/09-37-15-10-2225.jpg"];
+                              @"http://sc.jb51.net/uploads/allimg/150603/14-150603145201143.jpg"];
     ydimage.time = 3;
     ydimage.delegate = self;
     ydimage.defaultImage = @"33333";
