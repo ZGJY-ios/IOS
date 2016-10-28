@@ -9,7 +9,7 @@
 #import "GZGPersonalCenterViewController.h"
 #import "GZGAddressManageViewController.h"
 #import "GZGYOrderViewController.h"
-
+#import "GZGYAftersalesViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -194,7 +194,9 @@
                 }
                     break;
                 case 1: {
-                    NSLog(@"我的售后");
+                    GZGYAftersalesViewController * aftersales= [[GZGYAftersalesViewController alloc]init];
+                    aftersales.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:aftersales animated:YES];
                 }
                     break;
                 case 2: {
