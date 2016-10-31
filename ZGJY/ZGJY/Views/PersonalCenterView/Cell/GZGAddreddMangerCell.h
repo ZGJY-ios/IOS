@@ -14,5 +14,6 @@
 @property(nonatomic, strong) UILabel *cellTelNumber;
 @property(nonatomic, strong) UILabel *cellAddress;
 @property(nonatomic, strong) UILabel *cellIDCar;
+@property(nonatomic, strong) UIButton *cellSelectBtn;
 
 @end

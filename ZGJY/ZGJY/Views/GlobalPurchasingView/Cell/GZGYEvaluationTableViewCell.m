@@ -32,12 +32,12 @@
         dateLabel.font = [UIFont systemFontOfSize:14];
         dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
         [self addSubview:dateLabel];
-        timeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35], KScreenWigth-[GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35])];
+        timeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35], SCREENWIDTH-[GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35])];
         timeLabel.text = @"12:35";
         timeLabel.font = [UIFont systemFontOfSize:14];
         timeLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
         [self addSubview:timeLabel];
-        lineLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:85], KScreenWigth-[GZGApplicationTool control_wide:40], 2)];
+        lineLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:85], SCREENWIDTH-[GZGApplicationTool control_wide:40], 2)];
         lineLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
         [self addSubview:lineLabel];
         
@@ -52,7 +52,7 @@
             }
             [self addSubview:starView];
         }
-        contentLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:85], [GZGApplicationTool control_height:140], [GZGApplicationTool control_wide:KScreenWigth-[GZGApplicationTool control_wide:85]], [GZGApplicationTool control_height:35])];
+        contentLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:85], [GZGApplicationTool control_height:140], [GZGApplicationTool control_wide:SCREENWIDTH-[GZGApplicationTool control_wide:85]], [GZGApplicationTool control_height:35])];
         contentLabel.text = @"非常好用!";
         [self addSubview:contentLabel];
         

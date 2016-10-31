@@ -72,10 +72,10 @@
 #pragma mark --- 搜索框
 -(void)SearchInterface
 {
-    UIView* textview = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, [GZGApplicationTool control_height:100])];
+    UIView* textview = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:100])];
     textview.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:textview];
-    UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:25], KScreenWigth-[GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:60])];
+    UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:25], SCREENWIDTH-[GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:60])];
     textfiled.backgroundColor = [UIColor colorWithRed:214/255.0 green:213/255.0 blue:211/255.0 alpha:1.0];
     textfiled.borderStyle = UITextBorderStyleRoundedRect;
     textfiled.placeholder = @"请输入品牌名称";
@@ -88,18 +88,18 @@
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
-    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:200]+[GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:200]-self.tabBarController.tabBar.frame.size.height)];
+    self.ScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:200]+[GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:200]-self.tabBarController.tabBar.frame.size.height)];
     self.ScrollView.delegate = self;
     self.ScrollView.pagingEnabled = YES;
     self.ScrollView.bounces = NO;
-    self.ScrollView.contentSize = CGSizeMake(KScreenWigth * _NameArray.count, self.ScrollView.frame.size.height);
+    self.ScrollView.contentSize = CGSizeMake(SCREENWIDTH * _NameArray.count, self.ScrollView.frame.size.height);
     self.ScrollView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     [self.view addSubview:self.ScrollView];
 }
 #pragma mark --- Seg
 -(void)SegViewInterface
 {
-    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101]+[GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, [GZGApplicationTool control_height:95]) NameArray:_NameArray];
+    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:101]+[GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:95]) NameArray:_NameArray];
     self.segView.delegate = self;
     self.segView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.segView];
@@ -108,7 +108,7 @@
 #pragma mark --- tableview collection
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (_TableView == nil) {
-        _TableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, KScreenWigth/3-7, self.ScrollView.frame.size.height)];
+        _TableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH/3-7, self.ScrollView.frame.size.height)];
         _TableView.delegate = self;
         _TableView.dataSource = self;
     }
@@ -116,8 +116,8 @@
     
     if (_CollectionView == nil) {
         UICollectionViewFlowLayout*flowlay = [[UICollectionViewFlowLayout alloc]init];
-        flowlay.headerReferenceSize = CGSizeMake(KScreenWigth/3*2, KScreenHeight/20+10);
-        _CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(KScreenWigth/3, 59, KScreenWigth/3*2, self.ScrollView.frame.size.height) collectionViewLayout:flowlay];
+        flowlay.headerReferenceSize = CGSizeMake(SCREENWIDTH/3*2, SCREENHEIGHT/20+10);
+        _CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREENWIDTH/3, 59, SCREENWIDTH/3*2, self.ScrollView.frame.size.height) collectionViewLayout:flowlay];
         flowlay.minimumLineSpacing = 5;
         flowlay.minimumInteritemSpacing = 0;
         flowlay.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
@@ -132,14 +132,14 @@
     }
     [self.ScrollView addSubview:self.CollectionView];
     
-//    self.twoView = [[UIView alloc]initWithFrame:CGRectMake(KScreenWigth, 0, KScreenWigth, self.ScrollView.frame.size.height)];
+//    self.twoView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, self.ScrollView.frame.size.height)];
 //    self.twoView.backgroundColor = [UIColor redColor];
 //    [self.ScrollView addSubview:self.twoView];
     
     if (_brandCollection == nil) {
         UICollectionViewFlowLayout*brandflowlay = [[UICollectionViewFlowLayout alloc]init];
-        brandflowlay.headerReferenceSize = CGSizeMake(KScreenWigth, KScreenHeight/20+10);
-        _brandCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(KScreenWigth, 0, KScreenWigth, self.ScrollView.frame.size.height) collectionViewLayout:brandflowlay];
+        brandflowlay.headerReferenceSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT/20+10);
+        _brandCollection = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, self.ScrollView.frame.size.height) collectionViewLayout:brandflowlay];
         brandflowlay.minimumLineSpacing = 5;
         brandflowlay.minimumInteritemSpacing = 0;
         brandflowlay.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
@@ -152,9 +152,9 @@
         _brandCollection.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self.ScrollView addSubview:self.brandCollection];
     }
-//    UIScrollView*collscroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:190], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:190]-self.tabBarController.tabBar.frame.size.height)];
+//    UIScrollView*collscroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:190], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:190]-self.tabBarController.tabBar.frame.size.height)];
 //    collscroll.delegate = self;
-//    collscroll.contentSize = CGSizeMake(KScreenWigth * _NameArray.count, self.ScrollView.frame.size.height);
+//    collscroll.contentSize = CGSizeMake(SCREENWIDTH * _NameArray.count, self.ScrollView.frame.size.height);
 //    [self.ScrollView addSubview:collscroll];
 }
 
@@ -222,11 +222,11 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:self.CollectionView]) {
         if (indexPath.section == 1) {
-            return CGSizeMake(KScreenWigth/3-10, [GZGApplicationTool control_height:110]);
+            return CGSizeMake(SCREENWIDTH/3-10, [GZGApplicationTool control_height:110]);
         }
-        return CGSizeMake(KScreenWigth/9*2-10, KScreenHeight/8);
+        return CGSizeMake(SCREENWIDTH/9*2-10, SCREENHEIGHT/8);
     }else{
-        return CGSizeMake(KScreenWigth/9*3-10, [GZGApplicationTool control_height:100]);
+        return CGSizeMake(SCREENWIDTH/9*3-10, [GZGApplicationTool control_height:100]);
     }
 }
 
@@ -258,12 +258,12 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if ([collectionView isEqual:self.CollectionView]) {
         if (section==0) {
-            return CGSizeMake(KScreenWigth/3*2, [GZGApplicationTool control_height:255]);
+            return CGSizeMake(SCREENWIDTH/3*2, [GZGApplicationTool control_height:255]);
         }else{
-            return CGSizeMake(KScreenWigth/3*2, KScreenHeight/20);
+            return CGSizeMake(SCREENWIDTH/3*2, SCREENHEIGHT/20);
         }
     }else{
-        return CGSizeMake(KScreenWigth, [GZGApplicationTool control_height:90]);
+        return CGSizeMake(SCREENWIDTH, [GZGApplicationTool control_height:90]);
     }
 }
 
@@ -276,14 +276,14 @@
         if (indexPath.section == 0) {
             if (number == 5) {
                 UIImageView*imgHeadView = [[UIImageView alloc]init];
-                imgHeadView.frame = CGRectMake(0, 0, KScreenWigth/3*2, [GZGApplicationTool control_height:305]);
+                imgHeadView.frame = CGRectMake(0, 0, SCREENWIDTH/3*2, [GZGApplicationTool control_height:305]);
                 imgHeadView.image = [UIImage imageNamed:@"sy_xspic3.jpg"];
                 [headerView addSubview:imgHeadView];
             }else{
                 NSLog(@"不建了");
             }
         }else{
-            UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, KScreenWigth/3*2, KScreenHeight/20)];
+            UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, SCREENWIDTH/3*2, SCREENHEIGHT/20)];
             HeadLabel.font = [UIFont systemFontOfSize:13];
             HeadLabel.text = _SecArray[indexPath.section];
             HeadLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
@@ -292,7 +292,7 @@
         return headerView;
     }else{
         UICollectionReusableView*headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, KScreenHeight/20)];
+        UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT/20)];
         HeadLabel.font = [UIFont systemFontOfSize:13];
         HeadLabel.text = @"世界品牌";
         HeadLabel.backgroundColor = [UIColor whiteColor];
@@ -341,29 +341,29 @@
     }
     else
     {
-        float xx = scrollView.contentOffset.x * (0.5) - KScreenWigth/2;
+        float xx = scrollView.contentOffset.x * (0.5) - SCREENWIDTH/2;
         NSLog(@"%f",xx);
-        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth, self.segView.HeaderScroller.frame.size.height) animated:YES];
-        int i = (scrollView.contentOffset.x / KScreenWigth);
+        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.HeaderScroller.frame.size.height) animated:YES];
+        int i = (scrollView.contentOffset.x / SCREENWIDTH);
         [self refreshTableView:i];
     }
 }
 - (void)refreshTableView:(int)index {
     if (index == 0) {
-        CGRect frame = CGRectMake(0, 0, KScreenWigth/3-7, self.ScrollView.frame.size.height);
-        CGRect frame1 = CGRectMake(KScreenWigth/3, 0, KScreenWigth/3*2, self.ScrollView.frame.size.height);
+        CGRect frame = CGRectMake(0, 0, SCREENWIDTH/3-7, self.ScrollView.frame.size.height);
+        CGRect frame1 = CGRectMake(SCREENWIDTH/3, 0, SCREENWIDTH/3*2, self.ScrollView.frame.size.height);
         frame.origin.x = 0;
-        frame1.origin.x = KScreenWigth/3;
+        frame1.origin.x = SCREENWIDTH/3;
         [self.TableView setFrame:frame];
         [self.CollectionView setFrame:frame1];
     }else{
-        CGRect frame = CGRectMake(KScreenWigth, 0, KScreenWigth, self.ScrollView.frame.size.height);
-        frame.origin.x = KScreenWigth;
+        CGRect frame = CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, self.ScrollView.frame.size.height);
+        frame.origin.x = SCREENWIDTH;
         [self.twoView setFrame:frame];
     }
 //    self.exchangeView = _viewArray[index];
 //    CGRect frame = self.exchangeView.frame;
-//    frame.origin.x = KScreenWigth * index;
+//    frame.origin.x = SCREENWIDTH * index;
 //    [self.exchangeView setFrame:frame];
 //    _NameTitle = _NameArray[index];
 //    self.navigationItem.title = _NameTitle;
@@ -373,9 +373,9 @@
 {
     NSLog(@"%ld",sender);
 //    _NameTitle = _NameArray[sender];
-    [self.ScrollView setContentOffset:CGPointMake(KScreenWigth * sender, 0) animated:YES];
-    float xx = KScreenWigth * (sender - 1) * (0.5) - KScreenWigth/2;
-    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth, self.segView.frame.size.height) animated:YES];
+    [self.ScrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (0.5) - SCREENWIDTH/2;
+    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.frame.size.height) animated:YES];
     [self refreshTableView:(int)sender];
 }
 

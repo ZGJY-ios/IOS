@@ -114,6 +114,8 @@
 		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
 		04A2D0581DB9B51C003966DA /* index-Japan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0541DB9B51C003966DA /* index-Japan.jpg */; };
 		04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0551DB9B51C003966DA /* index-Korea.jpg */; };
+		04A44BC61DC2F819007F87D5 /* GZGADDAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */; };
+		04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */; };
 		04A4A4B71DBF394500897F5A /* sy_myzq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A4A4B61DBF394500897F5A /* sy_myzq.jpg */; };
 		04A4A4BA1DBF3CC400897F5A /* GZGAddressManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A4A4B91DBF3CC400897F5A /* GZGAddressManageViewController.m */; };
 		04A4A4C11DBF3E6100897F5A /* gzg_gg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A4A4BB1DBF3E6100897F5A /* gzg_gg1.png */; };
@@ -382,6 +384,10 @@
 		04A2D0531DB9B51C003966DA /* index-Europe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Europe.jpg"; sourceTree = "<group>"; };
 		04A2D0541DB9B51C003966DA /* index-Japan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Japan.jpg"; sourceTree = "<group>"; };
 		04A2D0551DB9B51C003966DA /* index-Korea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Korea.jpg"; sourceTree = "<group>"; };
+		04A44BC41DC2F819007F87D5 /* GZGADDAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressViewController.h; sourceTree = "<group>"; };
+		04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewController.m; sourceTree = "<group>"; };
+		04A44BC71DC2F8E7007F87D5 /* GZGADDAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressCell.h; sourceTree = "<group>"; };
+		04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressCell.m; sourceTree = "<group>"; };
 		04A4A4B61DBF394500897F5A /* sy_myzq.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sy_myzq.jpg; sourceTree = "<group>"; };
 		04A4A4B81DBF3CC400897F5A /* GZGAddressManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAddressManageViewController.h; sourceTree = "<group>"; };
 		04A4A4B91DBF3CC400897F5A /* GZGAddressManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAddressManageViewController.m; sourceTree = "<group>"; };
@@ -854,6 +860,8 @@
 				5340A23C1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m */,
 				04A4A4C71DBF414800897F5A /* GZGAddreddMangerCell.h */,
 				04A4A4C81DBF414800897F5A /* GZGAddreddMangerCell.m */,
+				04A44BC71DC2F8E7007F87D5 /* GZGADDAddressCell.h */,
+				04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1019,6 +1027,8 @@
 				532B00111DBDEBE0002D2E61 /* GZGYOrderViewController.m */,
 				04A4A4B81DBF3CC400897F5A /* GZGAddressManageViewController.h */,
 				04A4A4B91DBF3CC400897F5A /* GZGAddressManageViewController.m */,
+				04A44BC41DC2F819007F87D5 /* GZGADDAddressViewController.h */,
+				04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -1383,6 +1393,7 @@
 				53975D561DB9B4CF00478004 /* GZGYDetailsView.m in Sources */,
 				044DA3971D5C458E00DD06EC /* FMDatabaseQueue.m in Sources */,
 				04FBA2721D98C87000AD147A /* GZGRootViewController.m in Sources */,
+				04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */,
 				E55B23FE1DBE1AE000904216 /* GZGShoppingCartReusableView.m in Sources */,
 				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
@@ -1426,6 +1437,7 @@
 				532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */,
 				044DA3961D5C458E00DD06EC /* FMDatabasePool.m in Sources */,
 				5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */,
+				04A44BC61DC2F819007F87D5 /* GZGADDAddressViewController.m in Sources */,
 				048F4EBA1DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.m in Sources */,
 				044DA3B11D5C466300DD06EC /* AFURLSessionManager.m in Sources */,
 				535FA4741DBCA5BA0048D966 /* GZGYEvaluaImgTableViewCell.m in Sources */,
@@ -1659,8 +1671,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ed1e6ef3-2f43-4347-b711-bf73d29f2a12";
-				PROVISIONING_PROFILE_SPECIFIER = CSZH;
+				PROVISIONING_PROFILE = "daca5d4a-08eb-4bce-9973-3c96e2ef2118";
+				PROVISIONING_PROFILE_SPECIFIER = cczz;
 			};
 			name = Debug;
 		};
@@ -1677,8 +1689,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2b25d504-9f33-4266-b082-be995affff02";
-				PROVISIONING_PROFILE_SPECIFIER = KFZS;
+				PROVISIONING_PROFILE = "3660c4c8-dd0c-41fe-9af7-3825ec2e50ce";
+				PROVISIONING_PROFILE_SPECIFIER = kkzz;
 			};
 			name = Release;
 		};

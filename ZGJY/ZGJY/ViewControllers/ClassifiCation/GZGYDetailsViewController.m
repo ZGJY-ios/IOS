@@ -29,6 +29,34 @@
 @property(nonatomic,strong)UITableView*etableView;
 @end
 
+
+@interface UIImage (PersonalCenter)
+
+- (UIImage *)imageWithTintColor:(UIColor *)tintColor;
+
+@end
+
+@implementation UIImage (PersonalCenter)
+
+- (UIImage *)imageWithTintColor:(UIColor *)tintColor {
+    //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
+    [tintColor setFill];
+    CGRect bounds = CGRectMake(0, 0, self.size.width, self.size.height);
+    UIRectFill(bounds);
+    
+    //Draw the tinted image in context
+    [self drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0f];
+    
+    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tintedImage;
+}
+
+@end
+
+
 @implementation GZGYDetailsViewController
 
 - (void)viewDidLoad {
@@ -62,7 +90,11 @@
 #pragma mark --- Nav
 -(void)NavViewInterface
 {
-    self.segView = [[GZGYNavView alloc]initWithFrame:CGRectMake(KScreenWigth/4, [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:75], KScreenWigth/2, [GZGApplicationTool control_height:75]) NameArray:nameArray];
+    
+   
+    
+    
+    self.segView = [[GZGYNavView alloc]initWithFrame:CGRectMake(SCREENWIDTH/4, [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:75], SCREENWIDTH/2, [GZGApplicationTool control_height:75]) NameArray:nameArray];
     self.segView.delegate = self;
     self.navBarView = self.segView;
     [self.view addSubview: self.segView];
@@ -70,11 +102,11 @@
     
     UIButton * sharebutton = [UIButton buttonWithType:UIButtonTypeCustom];
     sharebutton.frame = CGRectMake([GZGApplicationTool control_wide:575], [GZGApplicationTool control_height:30]+20, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
-    [sharebutton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+    [sharebutton setImage:[[UIImage imageNamed:@"share.png"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     [sharebutton addTarget:self action:@selector(sharebutttonAction) forControlEvents:UIControlEventTouchUpInside];
     UIButton * rightbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightbutton.frame = CGRectMake([GZGApplicationTool control_wide:680], [GZGApplicationTool control_height:30]+20, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
-    [rightbutton setImage:[UIImage imageNamed:@"etc.png"] forState:UIControlStateNormal];
+    [rightbutton setImage:[[UIImage imageNamed:@"etc.png"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     [rightbutton addTarget:self action:@selector(rightbuttonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sharebutton];
     [self.view addSubview:rightbutton];
@@ -82,29 +114,29 @@
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
-    self.mainScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], KScreenWigth, KScreenHeight-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize])];
+    self.mainScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize])];
     self.mainScroll.delegate = self;
     self.mainScroll.pagingEnabled = YES;
     self.mainScroll.bounces = NO;
-    self.mainScroll.contentSize = CGSizeMake(KScreenWigth * nameArray.count, self.mainScroll.frame.size.height);
+    self.mainScroll.contentSize = CGSizeMake(SCREENWIDTH * nameArray.count, self.mainScroll.frame.size.height);
     self.mainScroll.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.mainScroll];
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (self.oneScroll == nil) {
-        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, self.mainScroll.frame.size.height)];
-        self.oneScroll.contentSize = CGSizeMake(KScreenWigth, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]);
+        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height)];
+        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]);
 //        self.oneScroll.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         [self.mainScroll addSubview:self.oneScroll];
     }
     if (self.twoScroll == nil) {
-        self.twoScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(KScreenWigth, 0, KScreenWigth, KScreenHeight-64)];
-        self.twoScroll.contentSize = CGSizeMake(KScreenWigth, self.twoScroll.frame.size.height+10);
+        self.twoScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, SCREENHEIGHT-64)];
+        self.twoScroll.contentSize = CGSizeMake(SCREENWIDTH, self.twoScroll.frame.size.height+10);
         self.twoScroll.backgroundColor = [UIColor redColor];
         [self.mainScroll addSubview:self.twoScroll];
     }
     if (self.etableView == nil) {
-        self.etableView = [[UITableView alloc]initWithFrame:CGRectMake(KScreenWigth*2, 0, KScreenWigth, self.mainScroll.frame.size.height)];
+        self.etableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH*2, 0, SCREENWIDTH, self.mainScroll.frame.size.height)];
         self.etableView.delegate = self;
         self.etableView.dataSource = self;
         [self.mainScroll addSubview:self.etableView];
@@ -113,7 +145,7 @@
 -(void)DetailsInterface
 {
     NSArray * arrayImg = @[@"sy_hlpic2",@"sy_hlpic2.jpg",@"sy_hlpic3.jpg"];
-    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth, self.oneScroll.frame.size.height) andImageArr:arrayImg];
+    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height) andImageArr:arrayImg];
     [self.oneScroll addSubview:detailsView];
     [detailsView.speButton addTarget:self action:@selector(specifications) forControlEvents:UIControlEventTouchUpInside];
     [detailsView.disButton addTarget:self action:@selector(distribution) forControlEvents:UIControlEventTouchUpInside];
@@ -126,14 +158,14 @@
 #pragma mark --- btnview
 -(void)BtnInterface
 {
-    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, KScreenHeight-[GZGApplicationTool control_height:100], KScreenWigth, [GZGApplicationTool control_height:100])];
+    btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-[GZGApplicationTool control_height:100], SCREENWIDTH, [GZGApplicationTool control_height:100])];
     btnView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:btnView];
 }
 #pragma mark --- ChoiceView
 -(void)ChoiceViewInterface
 {
-    choiceView = [[GZGYChoiceView alloc] initWithFrame:CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight)];
+    choiceView = [[GZGYChoiceView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
     choiceView.delegate = self;
     [self.view addSubview:choiceView];
     choiceView.hidden = YES;
@@ -209,25 +241,25 @@
     }
     else
     {
-        float xx = scrollView.contentOffset.x * (0.5) - KScreenWigth/2;
+        float xx = scrollView.contentOffset.x * (0.5) - SCREENWIDTH/2;
         NSLog(@"%f",xx);
-        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth/2, self.segView.HeaderScroller.frame.size.height) animated:YES];
-        int i = (scrollView.contentOffset.x / KScreenWigth);
+        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH/2, self.segView.HeaderScroller.frame.size.height) animated:YES];
+        int i = (scrollView.contentOffset.x / SCREENWIDTH);
         [self refreshTableView:i];
     }
 }
 - (void)refreshTableView:(int)index {
     if (index == 0) {
-        CGRect frame = CGRectMake(0, 0, KScreenWigth, self.mainScroll.frame.size.height);
+        CGRect frame = CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height);
         frame.origin.x = 0;
         [self.oneScroll setFrame:frame];
     }else if (index == 1){
-        CGRect frame = CGRectMake(KScreenWigth, 0, KScreenWigth, self.mainScroll.frame.size.height);
-        frame.origin.x = KScreenWigth;
+        CGRect frame = CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, self.mainScroll.frame.size.height);
+        frame.origin.x = SCREENWIDTH;
         [self.twoScroll setFrame:frame];
     }else{
-        CGRect frame = CGRectMake(KScreenWigth*2, 0, KScreenWigth, self.mainScroll.frame.size.height);
-        frame.origin.x = KScreenWigth*2;
+        CGRect frame = CGRectMake(SCREENWIDTH*2, 0, SCREENWIDTH, self.mainScroll.frame.size.height);
+        frame.origin.x = SCREENWIDTH*2;
         [self.twoScroll setFrame:frame];
     }
 }
@@ -236,9 +268,9 @@
 {
     NSLog(@"%ld",sender);
     //    _NameTitle = _NameArray[sender];
-    [self.mainScroll setContentOffset:CGPointMake(KScreenWigth * sender, 0) animated:YES];
-    float xx = KScreenWigth * (sender - 1) * (1/3) - KScreenWigth/3;
-    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth/2, self.segView.frame.size.height) animated:YES];
+    [self.mainScroll setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (1/3) - SCREENWIDTH/3;
+    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH/2, self.segView.frame.size.height) animated:YES];
     [self refreshTableView:(int)sender];
 }
 #pragma mark --- 右侧消息监听
@@ -264,7 +296,7 @@
         detailsView.center = center;
         detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.8,0.8);
         
-        choiceView.frame =CGRectMake(0, 0, KScreenWigth, KScreenHeight);
+        choiceView.frame =CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
         btnView.alpha = 0;
     } completion: nil];
 }
@@ -273,7 +305,7 @@
     center.y += 64;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [UIView animateWithDuration: 0.35 animations: ^{
-        choiceView.frame =CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight);
+        choiceView.frame =CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
         detailsView.center = center;
         detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
         btnView.alpha = 1;
@@ -285,7 +317,7 @@
     center.y += 64;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [UIView animateWithDuration: 0.35 animations: ^{
-        choiceView.frame =CGRectMake(0, KScreenHeight, KScreenWigth, KScreenHeight);
+        choiceView.frame =CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
         detailsView.center = center;
         detailsView.transform = CGAffineTransformScale(CGAffineTransformIdentity,1.0,1.0);
     } completion: nil];

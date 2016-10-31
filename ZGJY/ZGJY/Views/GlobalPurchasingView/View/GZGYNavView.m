@@ -15,13 +15,13 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KScreenWigth/2, [GZGApplicationTool control_height:75])];
+        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/2, [GZGApplicationTool control_height:75])];
         HeaderScroller.pagingEnabled = YES;
         HeaderScroller.bounces = NO;
-        [HeaderScroller setContentSize:CGSizeMake(KScreenWigth/6 * NameArray.count, HeaderScroller.frame.size.height)];
+        [HeaderScroller setContentSize:CGSizeMake(SCREENWIDTH/6 * NameArray.count, HeaderScroller.frame.size.height)];
         for (int i = 0; i<NameArray.count; i++) {
             SegBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-            [SegBtn setFrame:CGRectMake(KScreenWigth/6 * i, 0, KScreenWigth/6, HeaderScroller.frame.size.height)];
+            [SegBtn setFrame:CGRectMake(SCREENWIDTH/6 * i, 0, SCREENWIDTH/6, HeaderScroller.frame.size.height)];
             [SegBtn setTitle:NameArray[i] forState:UIControlStateNormal];
             [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -31,7 +31,7 @@
             [HeaderScroller addSubview:SegBtn];
         }
         
-        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height -2, KScreenWigth/6, 2)];
+        LineView = [[UIView alloc]initWithFrame:CGRectMake(0, HeaderScroller.frame.size.height -2, SCREENWIDTH/6, 2)];
         [LineView setBackgroundColor:[UIColor whiteColor]];
         [HeaderScroller addSubview:LineView];
         [self addSubview:HeaderScroller];

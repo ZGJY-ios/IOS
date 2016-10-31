@@ -19,6 +19,7 @@
 #import "GZGYSalaTableViewCell.h"
 #import "GZGSearchViewController.h"
 #import "GZGCountriesPavilionViewController.h"
+#import "ZGNetWork.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -57,6 +58,16 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 
 - (void)navTitleUI{
+    
+    
+//    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/user/tes" parameters:nil success:^(id responseObject, NSInteger task) {
+//        NSLog(@"%@",responseObject);
+//    } failure:^(NSError *failure, NSInteger task) {
+//        NSLog(@"%@  %ld",failure,(long)task);
+//    }];
+    
+    
+    
     [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
     [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
     self.titles.hidden = YES;
@@ -118,7 +129,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     if (indexPath.section == 0) {
         return [GZGApplicationTool control_height:300.0f];
     }else if (indexPath.section == 1){
-        return [GZGApplicationTool control_height:550];
+        return [GZGApplicationTool control_height:560];
     }else if (indexPath.section == 2){
         return [GZGApplicationTool control_height:235.0f];
     }else if (indexPath.section == 3){

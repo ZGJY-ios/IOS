@@ -26,7 +26,7 @@ NSInteger const CrossBorsBtnTag = 1000;
     NSArray *titleArr = @[NSLocalizedString(@"盛天屋 豆腐面膜 150g 美白保湿", nil),
                           NSLocalizedString(@"KAO 花王 蒸汽发热眼膜", nil),
                           NSLocalizedString(@"盛田屋 豆腐面膜", nil),
-                          NSLocalizedString(@"擦。面膜好多", nil)];
+                          NSLocalizedString(@"面膜好多", nil)];
     NSArray *imageArr = @[@"sy_kjpic1.jpg",@"sy_kjpic2.jpg",@"sy_kjpic3.jpg",@"sy_kjpic2.jpg"];
     CGFloat ww = [GZGApplicationTool control_wide:158.0f],hh = [GZGApplicationTool control_height:183.0f];
     CGFloat xx = SCREENWIDTH,yy = [GZGApplicationTool control_height:530.0f];

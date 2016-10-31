@@ -8,6 +8,7 @@
 
 #import "GZGAddressManageViewController.h"
 #import "GZGAddreddMangerCell.h"
+#import "GZGADDAddressViewController.h"
 @interface GZGAddressManageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong) UITableView *mainTableView;
 @end
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.titles.text = NSLocalizedString(@"GZGADDress_ADDressMager", nil);
+    
     [self buildUI];
 }
 
@@ -31,11 +34,20 @@
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
                                                                    [GZGApplicationTool navBarAndStatusBarSize],
                                                                    SCREENWIDTH,
-                                                                   SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:106]) style:UITableViewStylePlain];
+                                                                   SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:100]) style:UITableViewStylePlain];
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;
-    
+    _mainTableView.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:_mainTableView];
+    
+    
+    
+    UIButton *addDress = [UIButton buttonWithType:UIButtonTypeCustom];
+    addDress.frame = CGRectMake(0, SCREENHEIGHT - [GZGApplicationTool control_height:100], SCREENWIDTH, [GZGApplicationTool control_height:100]);
+    [addDress setTitle:NSLocalizedString(@"GZGADDress_ADD", nil) forState:UIControlStateNormal];
+    addDress.backgroundColor = [UIColor redColor];
+    [addDress addTarget:self action:@selector(addDressDown) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addDress];
     
 }
 
@@ -64,7 +76,12 @@
     cell.cellTelNumber.text = @"13333333333";
     cell.cellAddress.text = @"北京市 朝阳区 惠中路 远大中心 B 1201室 北京市 朝阳区 惠中路 远大中心 B 1201室";
     cell.cellIDCar.text = @"321542525115152365";
-    
+    cell.cellSelectBtn.tag = indexPath.row+1000;
+    [cell.cellSelectBtn addTarget:self action:@selector(cellSelectBtnDown:) forControlEvents:UIControlEventTouchUpInside];
+    if (indexPath.row == 0) {
+        cell.cellSelectBtn.backgroundColor = [UIColor blackColor];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -113,6 +130,25 @@
 
 
 #pragma mark 自己的方法
+
+- (void)cellSelectBtnDown:(UIButton *)btn{
+    
+    
+    
+    for (NSInteger i=0; i<3; i++) {
+        UIButton *btnxxx = (UIButton *)[self.view viewWithTag:1000 + i];
+        btnxxx.backgroundColor = [UIColor redColor];
+        
+    }
+    
+    btn.backgroundColor = [UIColor blackColor];
+}
+
+- (void)addDressDown{
+    GZGADDAddressViewController *vc = [[GZGADDAddressViewController alloc] init];
+    [vc setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

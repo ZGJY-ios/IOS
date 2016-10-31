@@ -45,17 +45,17 @@
 #pragma mark --- ScrollInterface
 -(void)ScrollInterface
 {
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64+ [GZGApplicationTool control_height:105], KScreenWigth, KScreenHeight-64-[GZGApplicationTool control_height:105])];
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64+ [GZGApplicationTool control_height:105], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:105])];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.bounces = NO;
-    self.scrollView.contentSize = CGSizeMake(KScreenWigth * self.nameArray.count, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(SCREENWIDTH * self.nameArray.count, self.scrollView.frame.size.height);
     [self.view addSubview:self.scrollView];
 }
 #pragma mark --- 订单分类
 -(void)OrdersInterface
 {
-    self.ordersView = [[GZGYOrders alloc]initWithFrame:CGRectMake(0, 64, KScreenWigth, [GZGApplicationTool control_height:105]) NameArray:self.nameArray];
+    self.ordersView = [[GZGYOrders alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, [GZGApplicationTool control_height:105]) NameArray:self.nameArray];
     self.ordersView.delegate = self;
     [self.view addSubview:self.ordersView];
     [self addTableViewToScrollView:self.scrollView count:self.nameArray.count frame:CGRectZero];
@@ -63,7 +63,7 @@
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     for (int i = 0; i < pageCount; i++) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(KScreenWigth * i, 0 , KScreenWigth, KScreenHeight - self.ordersView.frame.size.height - 64)];
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, SCREENHEIGHT - self.ordersView.frame.size.height - 64)];
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.tag = i;
@@ -147,10 +147,10 @@
     }
     else
     {
-        float xx = scrollView.contentOffset.x * (0.2) - KScreenWigth/5;
+        float xx = scrollView.contentOffset.x * (0.2) - SCREENWIDTH/5;
         NSLog(@"%f",xx);
-        [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth, self.ordersView.HeaderScroller.frame.size.height) animated:YES];
-        int i = (scrollView.contentOffset.x / KScreenWigth);
+        [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.ordersView.HeaderScroller.frame.size.height) animated:YES];
+        int i = (scrollView.contentOffset.x / SCREENWIDTH);
         [self refreshTableView:i];
     }
 }
@@ -158,16 +158,16 @@
     self.reloadTableView = _tableArray[index];
     NSLog(@"%@,%@",_tableArray,_tableArray[index]);
     CGRect frame = self.reloadTableView.frame;
-    frame.origin.x = KScreenWigth * index;
+    frame.origin.x = SCREENWIDTH * index;
     [self.reloadTableView setFrame:frame];
     [self.reloadTableView reloadData];
 }
 -(void)OrdersBtnDelegate:(NSInteger)sender
 {
     NSLog(@"%ld",sender);
-    [self.scrollView setContentOffset:CGPointMake(KScreenWigth * sender, 0) animated:YES];
-    float xx = KScreenWigth * (sender - 1) * (0.2) - KScreenWigth/5;
-    [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, KScreenWigth, self.ordersView.frame.size.height) animated:YES];
+    [self.scrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (0.2) - SCREENWIDTH/5;
+    [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.ordersView.frame.size.height) animated:YES];
     [self refreshTableView:(int)sender];
 }
 

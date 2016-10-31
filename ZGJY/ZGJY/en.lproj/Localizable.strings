@@ -30,4 +30,14 @@
 "GZGGPClassifiCationCell_ADLYG" = "澳大利亚馆";
 "GZGGPClassifiCationCell_OZG" = "欧洲馆";
 "GZGGPMaternalInfant_CCGDSP" = "查看更多商品";
-//
+//GZGAddressManageViewController 添加地址
+"GZGADDress_ADD" = "+添加新地址";
+"GZGADDress_ADDressMager" = "地址管理";
+"GZGADDress_TextFile_UserName" = "收件人姓名：";
+"GZGADDress_TextFile_PhoneNumber" = "手机号码：";
+"GZGADDress_TextFile_IDCar" = "身份证号码：";
+"GZGADDress_TextFile_Provincee" = "省市区：";
+"GZGADDress_TextFile_DetailedAddress" = "详细地址：";
+"GZGADDress_TextFile_Default" = "设为默认地址";
+"GZGADDress_TextFilePre_RealUserName" = "需与身份证上姓名一致";
+"GZGADDress_TextFilePre_ExplanaIDCar" = "用于清关使用，填写后加密";

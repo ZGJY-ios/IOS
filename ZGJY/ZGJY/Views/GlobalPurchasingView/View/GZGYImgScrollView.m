@@ -39,7 +39,7 @@
         path = [[NSBundle mainBundle] pathForResource:@"icon_ksss_off@3x" ofType:@"png"];
         pageControl.pageIndicatorTintColor = [UIColor colorWithPatternImage:[UIImage imageWithContentsOfFile:path]];
         [self addSubview:pageControl];
-        pageControl.frame = CGRectMake(KScreenWigth/3, self.frame.size.height-20, KScreenWigth/3, 10);
+        pageControl.frame = CGRectMake(SCREENWIDTH/3, self.frame.size.height-20, SCREENWIDTH/3, 10);
     }
     return self;
 }
