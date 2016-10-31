@@ -43,7 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"分类";
+//    self.navigationItem.title = @"分类";
+    self.leftBtn.hidden = YES;
 //    self.navigationController.navigationBar.hidden = NO;
 //    self.navBarView.hidden = YES;
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
