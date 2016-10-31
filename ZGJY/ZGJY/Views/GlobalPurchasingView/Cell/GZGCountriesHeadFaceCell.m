@@ -29,7 +29,7 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 //    NSLog(@"%@  %@  %@",self.cellCountriesTitle,self.cellTitleName,self.cellPriceLab);
     
 
-    NSArray *titleArr = @[@"面部护理",@"营养肌肤",@"洗发护发",@"彩妆修颜"];
+    NSArray *titleArr = @[@"  面部护理",@"营养肌肤",@"洗发护发",@"彩妆修颜",@"亮甲美甲",@"洗发护发"];
 
     
     self.ydTopTitleRollingView = [[YDTopTitleRolling alloc] initWithFrame:

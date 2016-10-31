@@ -1,26 +1,24 @@
 //
-//  GZGYDeliveryTableViewCell.m
+//  GZGYAftersalesTableViewCell.m
 //  ZGJY
 //
-//  Created by YYS on 16/10/24.
+//  Created by YYS on 16/10/26.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
 
-#import "GZGYDeliveryTableViewCell.h"
+#import "GZGYAftersalesTableViewCell.h"
 
-@implementation GZGYDeliveryTableViewCell
-@synthesize orderLabel,numberLabel,dateLabel,lineLabel,orderImg,nameLabel,priceLabel,countLabel,stateLabel,dividerLabel,deliveryBtn;
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+@implementation GZGYAftersalesTableViewCell
+@synthesize orderLabel,numberLabel,dateLabel,lineLabel,orderImg,nameLabel,priceLabel,countLabel,stateLabel,forgoodsBtn;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         orderLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:120], [GZGApplicationTool control_height:35])];
         orderLabel.text = @"订单号:";
         [self addSubview:orderLabel];
         numberLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:155], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:35])];
         numberLabel.text = @"12323123123";
         [self addSubview:numberLabel];
+        
         dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-[GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
         dateLabel.font = [UIFont systemFontOfSize:13];
         dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
@@ -50,19 +48,16 @@
         stateLabel.textColor = [UIColor colorWithRed:179/255.0 green:51/255.0 blue:54/255.0 alpha:1.0];
         stateLabel.text = @"交易已完成";
         [self addSubview:stateLabel];
-        dividerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:295], SCREENWIDTH, 1)];
-        dividerLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-        [self addSubview:dividerLabel];
-        deliveryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        deliveryBtn.frame = CGRectMake([GZGApplicationTool control_wide:500], [GZGApplicationTool control_height:315], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:70]);
-        deliveryBtn.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
-        [deliveryBtn setTitle:@"待发货" forState:UIControlStateNormal];
-        [deliveryBtn setTitleColor:[UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0] forState:UIControlStateNormal];
-        deliveryBtn.layer.cornerRadius = 5;
-        deliveryBtn.layer.borderColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0].CGColor;
-        deliveryBtn.layer.borderWidth = 1;
-        [deliveryBtn.layer setMasksToBounds:YES];
-        [self addSubview:deliveryBtn];
+        forgoodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        forgoodsBtn.frame = CGRectMake([GZGApplicationTool control_wide:500], [GZGApplicationTool control_height:190], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:70]);
+        forgoodsBtn.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+        [forgoodsBtn setTitle:@"申请售后" forState:UIControlStateNormal];
+        [forgoodsBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        forgoodsBtn.layer.cornerRadius = 5;
+        forgoodsBtn.layer.borderColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0].CGColor;
+        forgoodsBtn.layer.borderWidth = 1;
+        [forgoodsBtn.layer setMasksToBounds:YES];
+        [self addSubview:forgoodsBtn];
     }
     return self;
 }

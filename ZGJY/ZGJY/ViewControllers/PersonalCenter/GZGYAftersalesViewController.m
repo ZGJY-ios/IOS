@@ -1,27 +1,25 @@
 //
-//  GZGYOrderViewController.m
+//  GZGYAftersalesViewController.m
 //  ZGJY
 //
-//  Created by YYS on 16/10/24.
+//  Created by YYS on 16/10/27.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
 
-#import "GZGYOrderViewController.h"
-#import "GZGYOrders.h"
-#import "GZGYOrderTableViewCell.h"
-#import "GZGYPaymentTableViewCell.h"
-#import "GZGYSingleTableViewCell.h"
-#import "GZGYDeliveryTableViewCell.h"
-#import "GZGYDorgoodsTableViewCell.h"
-@interface GZGYOrderViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,OrdersDelegeteClickProtocol>
-@property(nonatomic, strong)NSMutableArray * tableArray;
+#import "GZGYAftersalesViewController.h"
+#import "GZGYSegView.h"
+#import "GZGYAftersalesTableViewCell.h"
+#import "GZGYProgressTableViewCell.h"
+#import "GZGYNopromptTableViewCell.h"
+@interface GZGYAftersalesViewController ()<SegDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic, strong)GZGYSegView * segView;
 @property(nonatomic, strong)NSArray * nameArray;
-@property(nonatomic, strong)GZGYOrders * ordersView;
 @property(nonatomic, strong)UIScrollView * scrollView;
+@property(nonatomic, strong)NSMutableArray * tableArray;
 @property(nonatomic, strong)UITableView * reloadTableView;
 @end
 
-@implementation GZGYOrderViewController
+@implementation GZGYAftersalesViewController
 -(NSMutableArray*)TableArray
 {
     if (_tableArray == nil) {
@@ -31,20 +29,15 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.titles.text = @"我的订单";
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.nameArray = @[@"全部",@"待付款",@"待发货",@"待收货",@"待评价"];
-    //scrollview
+    self.nameArray = @[@"售后申请",@"进度查询"];
     [self ScrollInterface];
-    //ordersView
-    [self OrdersInterface];
+    [self SegViewInterface];
     // Do any additional setup after loading the view.
 }
 #pragma mark --- ScrollInterface
 -(void)ScrollInterface
 {
+    
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64+ [GZGApplicationTool control_height:105], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:105])];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
@@ -52,18 +45,18 @@
     self.scrollView.contentSize = CGSizeMake(SCREENWIDTH * self.nameArray.count, self.scrollView.frame.size.height);
     [self.view addSubview:self.scrollView];
 }
-#pragma mark --- 订单分类
--(void)OrdersInterface
+#pragma mark --- Seg
+-(void)SegViewInterface
 {
-    self.ordersView = [[GZGYOrders alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, [GZGApplicationTool control_height:105]) NameArray:self.nameArray];
-    self.ordersView.delegate = self;
-    [self.view addSubview:self.ordersView];
+    self.segView = [[GZGYSegView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:95]) NameArray:_nameArray];
+    self.segView.delegate = self;
+    self.segView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.segView];
     [self addTableViewToScrollView:self.scrollView count:self.nameArray.count frame:CGRectZero];
-
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     for (int i = 0; i < pageCount; i++) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, SCREENHEIGHT - self.ordersView.frame.size.height - 64)];
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, SCREENHEIGHT - self.segView.frame.size.height - 64)];
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.tag = i;
@@ -83,49 +76,46 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [GZGApplicationTool control_height:410];
+    if (tableView.tag == 0) {
+        return [GZGApplicationTool control_height:300];
+    }else{
+        if (indexPath.section == 0) {
+            return [GZGApplicationTool control_height:435];
+        }
+        return [GZGApplicationTool control_height:300];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"cell";
     if (tableView.tag == 0) {
-        GZGYOrderTableViewCell* cell = (GZGYOrderTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+        GZGYAftersalesTableViewCell* cell = (GZGYAftersalesTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell==nil) {
-            cell = [[GZGYOrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        }
-        return cell;
-    }else if (tableView.tag == 1){
-        GZGYPaymentTableViewCell* cell = (GZGYPaymentTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-        if (cell==nil) {
-            cell = [[GZGYPaymentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        }
-        return cell;
-    }else if (tableView.tag == 2){
-        GZGYDeliveryTableViewCell* cell = (GZGYDeliveryTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-        if (cell==nil) {
-            cell = [[GZGYDeliveryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        }
-        return cell;
-    }else if (tableView.tag == 3){
-        GZGYDorgoodsTableViewCell* cell = (GZGYDorgoodsTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-        if (cell==nil) {
-            cell = [[GZGYDorgoodsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            cell = [[GZGYAftersalesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
         return cell;
     }else{
-        GZGYSingleTableViewCell* cell = (GZGYSingleTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-        if (cell==nil) {
-            cell = [[GZGYSingleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        if (indexPath.section == 0) {
+            GZGYProgressTableViewCell* cell = (GZGYProgressTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+            if (cell==nil) {
+                cell = [[GZGYProgressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            }
+            return cell;
+        }else{
+            GZGYNopromptTableViewCell* cell = (GZGYNopromptTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+            if (cell==nil) {
+                cell = [[GZGYNopromptTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            }
+            return cell;
         }
-        return cell;
     }
 }
 - (void)changeView:(float)x {
-    float xx = x*(1.0f/5.0f);
+    float xx = x*(1.0f/2.0f);
     NSLog(@"~~~~~~~~%f",xx);
-    CGRect frame = self.ordersView.LineView.frame;
+    CGRect frame = self.segView.LineView.frame;
     frame.origin.x = xx;
-    [self.ordersView.LineView setFrame:frame];
+    [self.segView.LineView setFrame:frame];
 }
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -147,9 +137,9 @@
     }
     else
     {
-        float xx = scrollView.contentOffset.x * (0.2) - SCREENWIDTH/5;
+        float xx = scrollView.contentOffset.x * (0.5) - SCREENWIDTH/2;
         NSLog(@"%f",xx);
-        [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.ordersView.HeaderScroller.frame.size.height) animated:YES];
+        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.HeaderScroller.frame.size.height) animated:YES];
         int i = (scrollView.contentOffset.x / SCREENWIDTH);
         [self refreshTableView:i];
     }
@@ -162,15 +152,14 @@
     [self.reloadTableView setFrame:frame];
     [self.reloadTableView reloadData];
 }
--(void)OrdersBtnDelegate:(NSInteger)sender
+-(void)SegBtnDelegate:(NSInteger)sender
 {
     NSLog(@"%ld",sender);
     [self.scrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
-    float xx = SCREENWIDTH * (sender - 1) * (0.2) - SCREENWIDTH/5;
-    [self.ordersView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.ordersView.frame.size.height) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (0.5) - SCREENWIDTH/2;
+    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.frame.size.height) animated:YES];
     [self refreshTableView:(int)sender];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

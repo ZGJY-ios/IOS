@@ -39,7 +39,8 @@ GZGCountriesHeadFaceCellDelegate
     
     _cancelTableScrollew = YES;
     self.titles.text = self.countriesTitle;
-    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
+    self.rightBtn.hidden = YES;
+    
 //    E0334B
     self.navBarView.backgroundColor = self.navColor;
     self.view.backgroundColor = self.backViewColor;;

@@ -9,7 +9,7 @@
 #import "GZGPersonalCenterViewController.h"
 #import "GZGAddressManageViewController.h"
 #import "GZGYOrderViewController.h"
-
+#import "GZGYAftersalesViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -48,6 +48,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"我的中港", nil);
+    
+    self.leftBtn.hidden = YES;
+    
     [self.rightBtn setImage:[[UIImage imageNamed:@"PersonalCenterSet"]imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     NSArray * myInformationGroupImages = [NSArray arrayWithObjects:@"PersonalCenterForPayment",@"PersonalCenterForGoods",@"PersonalCenterToEvaluate",@"PersonalCenterHasCompleted", nil];
     NSArray * myInformationGroupTitles = [NSArray arrayWithObjects:@"待付款",@"待收货",@"待评价",@"已完成", nil];
@@ -184,17 +187,19 @@
                 case 0: {
 
                     NSLog(@"我的订单");
-//                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
-//                    [addredssManger setHidesBottomBarWhenPushed:YES];
-//                    [self.navigationController pushViewController:addredssManger animated:YES];
+                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+                    [addredssManger setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:addredssManger animated:YES];
 
-                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
-                    orders.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:orders animated:YES];
+//                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+//                    orders.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:orders animated:YES];
                 }
                     break;
                 case 1: {
-                    NSLog(@"我的售后");
+                    GZGYAftersalesViewController * aftersales= [[GZGYAftersalesViewController alloc]init];
+                    aftersales.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:aftersales animated:YES];
                 }
                     break;
                 case 2: {

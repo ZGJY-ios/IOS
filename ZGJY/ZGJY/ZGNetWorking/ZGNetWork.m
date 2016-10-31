@@ -24,35 +24,50 @@ static NSInteger const _timeDelay                   = 30;
 
 + (AFHTTPSessionManager *)setRequestManger{
     
+    
+    
+ 
+    
+//    @"text/plain",
+//    @"text/html",
+//    @"application/x-www-form-urlencoded",
+//    @"application/json",
+//    @"text/json",
+//    @"text/javascript",
+//    @"image/png",
+//    @"image/jpeg",
+//    @"application/rtf",
+//    @"image/gif",
+//    @"application/zip",
+//    @"audio/x-wav",
+//    @"image/tiff",
+//    @"application/vnd.ms-powerpoint",
+//    @"video/mpeg",@"video/quicktime",
+//    @"application/x-javascript",
+//    @"application/x-gzip",
+//    @"application/x-gtar",
+//    @"application/msword",
+//    @"text/css",
+//    @"video/x-msvideo",
+//    @"text/xml"
+    
+    
     AFHTTPSessionManager  *requestManager = [AFHTTPSessionManager manager];
     requestManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
-                                                                @"text/plain",
-                                                                @"text/html",
-                                                                @"application/x-www-form-urlencoded",
                                                                 @"application/json",
                                                                 @"text/json",
                                                                 @"text/javascript",
-                                                                @"image/png",
-                                                                @"image/jpeg",
-                                                                @"application/rtf",
-                                                                @"image/gif",
-                                                                @"application/zip",
-                                                                @"audio/x-wav",
-                                                                @"image/tiff",
-                                                                @"application/vnd.ms-powerpoint",
-                                                                @"video/mpeg",@"video/quicktime",
-                                                                @"application/x-javascript",
-                                                                @"application/x-gzip",
-                                                                @"application/x-gtar",
-                                                                @"application/msword",
-                                                                @"text/css",
-                                                                @"video/x-msvideo",
-                                                                @"text/xml", nil];
+                                                                @"text/html", nil];
+//    requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
     requestManager.requestSerializer = [AFHTTPRequestSerializer serializer];
     requestManager.requestSerializer.timeoutInterval = _timeDelay;
     
     return requestManager;
 }
+
+
+
+
 /**
  *  转Json数据
  *
@@ -142,6 +157,14 @@ static NSInteger const _timeDelay                   = 30;
                     failure:(void(^)(NSError *failure,NSInteger  task))errors{
     
     AFHTTPSessionManager *manger = [self setRequestManger];
+    
+    
+    
+    
+    
+    
+    
+    
     [manger GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

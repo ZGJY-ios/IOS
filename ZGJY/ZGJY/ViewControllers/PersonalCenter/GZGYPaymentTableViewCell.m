@@ -21,12 +21,12 @@
         numberLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:155], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:35])];
         numberLabel.text = @"12323123123";
         [self addSubview:numberLabel];
-        dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(KScreenWigth-[GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
+        dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-[GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
         dateLabel.font = [UIFont systemFontOfSize:13];
         dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
         dateLabel.text = @"2016-10-11";
         [self addSubview:dateLabel];
-        lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:90], KScreenWigth, 1)];
+        lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:90], SCREENWIDTH, 1)];
         lineLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         [self addSubview:lineLabel];
         orderImg = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:135], [GZGApplicationTool control_wide:125], [GZGApplicationTool control_height:125])];
@@ -54,7 +54,7 @@
         promptLabel.font = [UIFont systemFontOfSize:14];
         promptLabel.text = @"(订单将在60分钟内取消)";
         [self addSubview:promptLabel];
-        dividerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:295], KScreenWigth, 1)];
+        dividerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:295], SCREENWIDTH, 1)];
         dividerLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         [self addSubview:dividerLabel];
         cancleBtn = [UIButton buttonWithType:UIButtonTypeCustom];

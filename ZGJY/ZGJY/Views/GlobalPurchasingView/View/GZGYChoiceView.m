@@ -20,7 +20,7 @@
         alphaiView.alpha = 0.2;
         [self addSubview:alphaiView];
         //装载商品信息的视图
-        choiceView = [[UIView alloc] initWithFrame:CGRectMake(0, KScreenHeight-[GZGApplicationTool control_height:715], self.frame.size.width, [GZGApplicationTool control_height:715])];
+        choiceView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT-[GZGApplicationTool control_height:715], self.frame.size.width, [GZGApplicationTool control_height:715])];
         choiceView.backgroundColor = [UIColor whiteColor];
         [self addSubview:choiceView];
 //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
@@ -93,13 +93,13 @@
         [choiceView addSubview:addBtn];
         
         collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        collectionBtn.frame = CGRectMake(0, [GZGApplicationTool control_height:620], KScreenWigth/2, [GZGApplicationTool control_height:95]);
+        collectionBtn.frame = CGRectMake(0, [GZGApplicationTool control_height:620], SCREENWIDTH/2, [GZGApplicationTool control_height:95]);
         collectionBtn.backgroundColor = [UIColor colorWithRed:82/255.0 green:181/255.0 blue:128/255.0 alpha:1.0];
         [collectionBtn setTitle:@"加入收藏" forState:UIControlStateNormal];
         [choiceView addSubview:collectionBtn];
         
         receiptBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        receiptBtn.frame = CGRectMake(KScreenWigth/2, [GZGApplicationTool control_height:620], KScreenWigth/2, [GZGApplicationTool control_height:95]);
+        receiptBtn.frame = CGRectMake(SCREENWIDTH/2, [GZGApplicationTool control_height:620], SCREENWIDTH/2, [GZGApplicationTool control_height:95]);
         receiptBtn.backgroundColor = [UIColor colorWithRed:179/255.0 green:51/255.0 blue:54/255.0 alpha:1.0];
         [receiptBtn setTitle:@"加入进货单" forState:UIControlStateNormal];
         [choiceView addSubview:receiptBtn];

@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        goodsImgScro = [[GZGYImgScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWigth, [GZGApplicationTool control_height:750]) andImageArr:imageArr];
+        goodsImgScro = [[GZGYImgScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:750]) andImageArr:imageArr];
         goodsImgScro.delegete = self;
         [self addSubview:goodsImgScro];
         imgGolbal = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Oayep-tag"]];
@@ -99,7 +99,7 @@
         [speButton setTitle:@"经典版" forState:UIControlStateNormal];
         [speButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self addSubview:speButton];
-        UIView * serviceView = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:1420], KScreenWigth, [GZGApplicationTool control_height:140])];
+        UIView * serviceView = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:1420], SCREENWIDTH, [GZGApplicationTool control_height:140])];
         serviceView.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
         [self addSubview:serviceView];
         NSArray * imgArray = @[@"pass-red",@"pass-red",@"pass-red",@"tip"];
