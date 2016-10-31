@@ -328,3 +328,16 @@
 + (UIColor *)subjectPersonalCenterColor {return [@"ffffff" hexStringToColor];}
 
 @end
+
+@implementation GZGColorClass (ConfirmOrderColor)
+
+/**
+ *  提交订单 按钮颜色
+ */
++ (UIColor *)subjectConfirmOrderItemColor {return [@"#B23336" hexStringToColor];}
+/**
+ *  提交订单 浅灰色
+ */
++ (UIColor *)subjectConfirmOrderLightGreyColor {return [@"#9FA0A0" hexStringToColor];}
+
+@end

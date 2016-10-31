@@ -318,3 +318,16 @@
 + (UIColor *)subjectPersonalCenterColor;
 
 @end
+
+@interface GZGColorClass (ConfirmOrderColor)
+
+/**
+ *  提交订单 按钮颜色
+ */
++ (UIColor *)subjectConfirmOrderItemColor;
+/**
+ *  提交订单 浅灰色
+ */
++ (UIColor *)subjectConfirmOrderLightGreyColor;
+
+@end
