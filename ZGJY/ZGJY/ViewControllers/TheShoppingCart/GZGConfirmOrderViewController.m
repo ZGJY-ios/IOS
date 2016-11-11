@@ -7,6 +7,7 @@
 //
 
 #import "GZGConfirmOrderViewController.h"
+#import "GZGOrderPayViewController.h"
 #import "GZGAddreddMangerCell.h"
 #import "GZGConfirmOrderCell.h"
 
@@ -128,6 +129,11 @@
         cell = [[GZGCommodityTogetherCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     }
     [cell setModel];
+    [cell setSubmitOrderBlock:^(NSString * amount) {
+        GZGOrderPayViewController * orderPayVC = [[GZGOrderPayViewController alloc] init];
+        orderPayVC.payTheAmountString = amount;
+        [self.navigationController pushViewController:orderPayVC animated:YES];
+    }];
     return cell;
 }
 

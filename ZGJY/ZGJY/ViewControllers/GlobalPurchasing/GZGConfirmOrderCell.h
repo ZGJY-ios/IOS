@@ -62,4 +62,6 @@
 
 - (void)setModel;
 
+@property (nonatomic, copy) void(^submitOrderBlock)(NSString * amount);
+
 @end

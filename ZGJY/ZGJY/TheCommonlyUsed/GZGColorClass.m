@@ -341,3 +341,21 @@
 + (UIColor *)subjectConfirmOrderLightGreyColor {return [@"#9FA0A0" hexStringToColor];}
 
 @end
+
+@implementation GZGColorClass (HelpColor)
+
+/**
+ * 建议 提交 背景色
+ */
++ (UIColor *)subjectHelpSubmitBackgroundColor {return [@"b53232" hexStringToColor];}
+
+@end
+
+@implementation GZGColorClass (CouponsColor)
+
+/**
+ *  优惠券 图片背景色
+ */
++ (UIColor *)subjectCouponsImageBackgroundColor {return [@"e03430" hexStringToColor];}
+
+@end

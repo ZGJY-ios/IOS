@@ -180,7 +180,14 @@
 		BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDDF8191D51B992002723AB /* LaunchScreen.storyboard */; };
 		BDDDF8261D51B993002723AB /* ZGJYTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDDF8251D51B993002723AB /* ZGJYTests.m */; };
 		BDDDF8311D51B993002723AB /* ZGJYUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDDF8301D51B993002723AB /* ZGJYUITests.m */; };
+		E5201B381DD450CE007EDFAB /* GZGChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5201B371DD450CE007EDFAB /* GZGChangePasswordViewController.m */; };
+		E5201B3B1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5201B3A1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m */; };
+		E5201B3E1DD457A9007EDFAB /* GZGSpecialPerformanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5201B3D1DD457A9007EDFAB /* GZGSpecialPerformanceView.m */; };
+		E5201B411DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5201B401DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m */; };
 		E524093A1DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.m in Sources */ = {isa = PBXBuildFile; fileRef = E52409391DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.m */; };
+		E528868C1DC71A650056496C /* GZGOrderPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E528868B1DC71A650056496C /* GZGOrderPayCell.m */; };
+		E54312441DD434BF0007C12D /* GZGCouponsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E54312431DD434BF0007C12D /* GZGCouponsView.m */; };
+		E54312471DD4378D0007C12D /* GZGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E54312461DD4378D0007C12D /* GZGAuthenticateViewController.m */; };
 		E55B23FE1DBE1AE000904216 /* GZGShoppingCartReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E55B23FD1DBE1AE000904216 /* GZGShoppingCartReusableView.m */; };
 		E55EE5301DB63F29003F12C4 /* GZGSearchListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EE52F1DB63F29003F12C4 /* GZGSearchListController.m */; };
 		E5648D2E1DBC82280077A165 /* PersonalCenterBackgroundImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E5648D2D1DBC82280077A165 /* PersonalCenterBackgroundImage.jpg */; };
@@ -193,10 +200,24 @@
 		E574BDBD1DB9D4A1004971C2 /* searchList-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = E574BDBB1DB9D4A1004971C2 /* searchList-icon2.png */; };
 		E576614B1DB7357E0078D96F /* GZGSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E576614A1DB7357E0078D96F /* GZGSegmentControl.m */; };
 		E576614E1DB74C7C0078D96F /* GZGSearchListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E576614D1DB74C7C0078D96F /* GZGSearchListCell.m */; };
+		E577CF821DC9BD8E00C8052A /* GZGLogisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E577CF811DC9BD8E00C8052A /* GZGLogisticsViewController.m */; };
+		E57E64431DCD77A2001346C2 /* GZGHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E57E64421DCD77A2001346C2 /* GZGHelpViewController.m */; };
 		E58005141DBF00CD00421727 /* GZGHotRecommendedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E58005131DBF00CD00421727 /* GZGHotRecommendedCell.m */; };
 		E58005161DBF058800421727 /* 热门推荐.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E58005151DBF058800421727 /* 热门推荐.jpg */; };
 		E58005181DBF18A800421727 /* ssss 副本.png in Resources */ = {isa = PBXBuildFile; fileRef = E58005171DBF18A800421727 /* ssss 副本.png */; };
 		E580051B1DBF25E200421727 /* GZGConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */; };
+		E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */; };
+		E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */; };
+		E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */; };
+		E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */; };
+		E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */; };
+		E5ABE6981DD1C41500D2E59D /* GZGCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6971DD1C41500D2E59D /* GZGCouponsViewController.m */; };
+		E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */; };
+		E5C7C8F61DD0585A00229EF0 /* GZGHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */; };
+		E5C7C8F91DD05B4900229EF0 /* GZGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */; };
+		E5C7C8FC1DD061D400229EF0 /* GZGPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8FB1DD061D400229EF0 /* GZGPushViewController.m */; };
+		E5E170D01DC874A1004AC304 /* GZGPayCOmpleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E170CF1DC874A1004AC304 /* GZGPayCOmpleteViewController.m */; };
+		E5F3C15E1DCB0CA7006AEDF8 /* GZGLogisticsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F3C15D1DCB0CA7006AEDF8 /* GZGLogisticsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -511,8 +532,22 @@
 		BDDDF82C1D51B993002723AB /* ZGJYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZGJYUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDDF8301D51B993002723AB /* ZGJYUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGJYUITests.m; sourceTree = "<group>"; };
 		BDDDF8321D51B993002723AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5201B361DD450CE007EDFAB /* GZGChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGChangePasswordViewController.h; sourceTree = "<group>"; };
+		E5201B371DD450CE007EDFAB /* GZGChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGChangePasswordViewController.m; sourceTree = "<group>"; };
+		E5201B391DD45665007EDFAB /* GZGSpecialPerformanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpecialPerformanceViewController.h; sourceTree = "<group>"; };
+		E5201B3A1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpecialPerformanceViewController.m; sourceTree = "<group>"; };
+		E5201B3C1DD457A9007EDFAB /* GZGSpecialPerformanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpecialPerformanceView.h; sourceTree = "<group>"; };
+		E5201B3D1DD457A9007EDFAB /* GZGSpecialPerformanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpecialPerformanceView.m; sourceTree = "<group>"; };
+		E5201B3F1DD46CD6007EDFAB /* GZGSpecialPerformanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpecialPerformanceCell.h; sourceTree = "<group>"; };
+		E5201B401DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpecialPerformanceCell.m; sourceTree = "<group>"; };
 		E52409381DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGShoppingCartSettlementView.h; path = ZGJY/ViewControllers/GlobalPurchasing/GZGShoppingCartSettlementView.h; sourceTree = SOURCE_ROOT; };
 		E52409391DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGShoppingCartSettlementView.m; path = ZGJY/ViewControllers/GlobalPurchasing/GZGShoppingCartSettlementView.m; sourceTree = SOURCE_ROOT; };
+		E528868A1DC71A650056496C /* GZGOrderPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGOrderPayCell.h; path = ZGJY/ViewControllers/TheShoppingCart/GZGOrderPayCell.h; sourceTree = SOURCE_ROOT; };
+		E528868B1DC71A650056496C /* GZGOrderPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGOrderPayCell.m; path = ZGJY/ViewControllers/TheShoppingCart/GZGOrderPayCell.m; sourceTree = SOURCE_ROOT; };
+		E54312421DD434BF0007C12D /* GZGCouponsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGCouponsView.h; path = ZGJY/Views/GlobalPurchasingView/View/GZGCouponsView.h; sourceTree = SOURCE_ROOT; };
+		E54312431DD434BF0007C12D /* GZGCouponsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGCouponsView.m; path = ZGJY/Views/GlobalPurchasingView/View/GZGCouponsView.m; sourceTree = SOURCE_ROOT; };
+		E54312451DD4378D0007C12D /* GZGAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAuthenticateViewController.h; sourceTree = "<group>"; };
+		E54312461DD4378D0007C12D /* GZGAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAuthenticateViewController.m; sourceTree = "<group>"; };
 		E55B23FC1DBE1AE000904216 /* GZGShoppingCartReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGShoppingCartReusableView.h; path = ZGJY/ViewControllers/GlobalPurchasing/GZGShoppingCartReusableView.h; sourceTree = SOURCE_ROOT; };
 		E55B23FD1DBE1AE000904216 /* GZGShoppingCartReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGShoppingCartReusableView.m; path = ZGJY/ViewControllers/GlobalPurchasing/GZGShoppingCartReusableView.m; sourceTree = SOURCE_ROOT; };
 		E55EE52E1DB63F29003F12C4 /* GZGSearchListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSearchListController.h; sourceTree = "<group>"; };
@@ -533,12 +568,37 @@
 		E576614A1DB7357E0078D96F /* GZGSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSegmentControl.m; sourceTree = "<group>"; };
 		E576614C1DB74C7C0078D96F /* GZGSearchListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSearchListCell.h; sourceTree = "<group>"; };
 		E576614D1DB74C7C0078D96F /* GZGSearchListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSearchListCell.m; sourceTree = "<group>"; };
+		E577CF801DC9BD8E00C8052A /* GZGLogisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGLogisticsViewController.h; sourceTree = "<group>"; };
+		E577CF811DC9BD8E00C8052A /* GZGLogisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGLogisticsViewController.m; sourceTree = "<group>"; };
+		E57E64411DCD77A2001346C2 /* GZGHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpViewController.h; sourceTree = "<group>"; };
+		E57E64421DCD77A2001346C2 /* GZGHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpViewController.m; sourceTree = "<group>"; };
 		E58005121DBF00CD00421727 /* GZGHotRecommendedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGHotRecommendedCell.h; path = ZGJY/ViewControllers/GlobalPurchasing/GZGHotRecommendedCell.h; sourceTree = SOURCE_ROOT; };
 		E58005131DBF00CD00421727 /* GZGHotRecommendedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGHotRecommendedCell.m; path = ZGJY/ViewControllers/GlobalPurchasing/GZGHotRecommendedCell.m; sourceTree = SOURCE_ROOT; };
 		E58005151DBF058800421727 /* 热门推荐.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "热门推荐.jpg"; sourceTree = "<group>"; };
 		E58005171DBF18A800421727 /* ssss 副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ssss 副本.png"; sourceTree = "<group>"; };
 		E58005191DBF25E200421727 /* GZGConfirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGConfirmOrderViewController.h; sourceTree = "<group>"; };
 		E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGConfirmOrderViewController.m; sourceTree = "<group>"; };
+		E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@2x.png"; sourceTree = "<group>"; };
+		E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@3x.png"; sourceTree = "<group>"; };
+		E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCouponsCell.h; sourceTree = "<group>"; };
+		E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCouponsCell.m; sourceTree = "<group>"; };
+		E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OfficialAddress.png; sourceTree = "<group>"; };
+		E5ABE6931DD16D6100D2E59D /* GZGAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAboutUsViewController.h; sourceTree = "<group>"; };
+		E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAboutUsViewController.m; sourceTree = "<group>"; };
+		E5ABE6961DD1C41500D2E59D /* GZGCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCouponsViewController.h; sourceTree = "<group>"; };
+		E5ABE6971DD1C41500D2E59D /* GZGCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCouponsViewController.m; sourceTree = "<group>"; };
+		E5BD7D971DD014BF00C95DFB /* GZGHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpCell.h; sourceTree = "<group>"; };
+		E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpCell.m; sourceTree = "<group>"; };
+		E5C7C8F41DD0585A00229EF0 /* GZGHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpSuccessViewController.h; sourceTree = "<group>"; };
+		E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpSuccessViewController.m; sourceTree = "<group>"; };
+		E5C7C8F71DD05B4900229EF0 /* GZGSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSettingViewController.h; sourceTree = "<group>"; };
+		E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSettingViewController.m; sourceTree = "<group>"; };
+		E5C7C8FA1DD061D400229EF0 /* GZGPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGPushViewController.h; sourceTree = "<group>"; };
+		E5C7C8FB1DD061D400229EF0 /* GZGPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGPushViewController.m; sourceTree = "<group>"; };
+		E5E170CE1DC874A1004AC304 /* GZGPayCOmpleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGPayCOmpleteViewController.h; sourceTree = "<group>"; };
+		E5E170CF1DC874A1004AC304 /* GZGPayCOmpleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGPayCOmpleteViewController.m; sourceTree = "<group>"; };
+		E5F3C15C1DCB0CA7006AEDF8 /* GZGLogisticsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGLogisticsCell.h; sourceTree = "<group>"; };
+		E5F3C15D1DCB0CA7006AEDF8 /* GZGLogisticsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGLogisticsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +652,9 @@
 		04104EAB1D9CACEF00A940F1 /* product */ = {
 			isa = PBXGroup;
 			children = (
+				E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */,
+				E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */,
+				E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */,
 				04A4A4BB1DBF3E6100897F5A /* gzg_gg1.png */,
 				04A4A4BC1DBF3E6100897F5A /* gzg_gg2.png */,
 				04A4A4BD1DBF3E6100897F5A /* gzg_gg3.png */,
@@ -880,6 +943,12 @@
 				04A4A4C81DBF414800897F5A /* GZGAddreddMangerCell.m */,
 				04A44BC71DC2F8E7007F87D5 /* GZGADDAddressCell.h */,
 				04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */,
+				E5F3C15C1DCB0CA7006AEDF8 /* GZGLogisticsCell.h */,
+				E5F3C15D1DCB0CA7006AEDF8 /* GZGLogisticsCell.m */,
+				E5BD7D971DD014BF00C95DFB /* GZGHelpCell.h */,
+				E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */,
+				E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */,
+				E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */,
 				53904BB71DC199EC00ED0922 /* YYS */,
 			);
 			path = Cell;
@@ -903,6 +972,8 @@
 				E55B23FD1DBE1AE000904216 /* GZGShoppingCartReusableView.m */,
 				E58005121DBF00CD00421727 /* GZGHotRecommendedCell.h */,
 				E58005131DBF00CD00421727 /* GZGHotRecommendedCell.m */,
+				E528868A1DC71A650056496C /* GZGOrderPayCell.h */,
+				E528868B1DC71A650056496C /* GZGOrderPayCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -924,6 +995,8 @@
 				043CDFF21DA8D93E0095B3F5 /* GZGCountriesPavilionCell.m */,
 				043CDFF71DA8E58C0095B3F5 /* GZGCountriesCollectionViewCell.h */,
 				043CDFF81DA8E58C0095B3F5 /* GZGCountriesCollectionViewCell.m */,
+				E5201B3F1DD46CD6007EDFAB /* GZGSpecialPerformanceCell.h */,
+				E5201B401DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m */,
 				5372CA631DB71B63009C6CA1 /* YYS */,
 				E576614C1DB74C7C0078D96F /* GZGSearchListCell.h */,
 				E576614D1DB74C7C0078D96F /* GZGSearchListCell.m */,
@@ -944,6 +1017,8 @@
 			children = (
 				532B00131DBDEC97002D2E61 /* GZGYOrders.h */,
 				532B00141DBDEC97002D2E61 /* GZGYOrders.m */,
+				E54312421DD434BF0007C12D /* GZGCouponsView.h */,
+				E54312431DD434BF0007C12D /* GZGCouponsView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -971,6 +1046,8 @@
 				048F710A1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m */,
 				043CDFF41DA8DAF10095B3F5 /* GZGCountriesPavilionView.h */,
 				043CDFF51DA8DAF10095B3F5 /* GZGCountriesPavilionView.m */,
+				E5201B3C1DD457A9007EDFAB /* GZGSpecialPerformanceView.h */,
+				E5201B3D1DD457A9007EDFAB /* GZGSpecialPerformanceView.m */,
 				53039BD21DB71BE50091DE1D /* YYS */,
 				E57661491DB7357E0078D96F /* GZGSegmentControl.h */,
 				E576614A1DB7357E0078D96F /* GZGSegmentControl.m */,
@@ -1033,6 +1110,8 @@
 				04A753D61DB74EF600D01BAE /* GZGSearchViewController.m */,
 				04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */,
 				04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */,
+				E5201B391DD45665007EDFAB /* GZGSpecialPerformanceViewController.h */,
+				E5201B3A1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m */,
 			);
 			path = GlobalPurchasing;
 			sourceTree = "<group>";
@@ -1050,6 +1129,24 @@
 				04A4A4B91DBF3CC400897F5A /* GZGAddressManageViewController.m */,
 				04A44BC41DC2F819007F87D5 /* GZGADDAddressViewController.h */,
 				04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */,
+				E577CF801DC9BD8E00C8052A /* GZGLogisticsViewController.h */,
+				E577CF811DC9BD8E00C8052A /* GZGLogisticsViewController.m */,
+				E57E64411DCD77A2001346C2 /* GZGHelpViewController.h */,
+				E57E64421DCD77A2001346C2 /* GZGHelpViewController.m */,
+				E5C7C8F41DD0585A00229EF0 /* GZGHelpSuccessViewController.h */,
+				E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */,
+				E5C7C8F71DD05B4900229EF0 /* GZGSettingViewController.h */,
+				E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */,
+				E5ABE6961DD1C41500D2E59D /* GZGCouponsViewController.h */,
+				E5ABE6971DD1C41500D2E59D /* GZGCouponsViewController.m */,
+				E5C7C8FA1DD061D400229EF0 /* GZGPushViewController.h */,
+				E5C7C8FB1DD061D400229EF0 /* GZGPushViewController.m */,
+				E5ABE6931DD16D6100D2E59D /* GZGAboutUsViewController.h */,
+				E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */,
+				E54312451DD4378D0007C12D /* GZGAuthenticateViewController.h */,
+				E54312461DD4378D0007C12D /* GZGAuthenticateViewController.m */,
+				E5201B361DD450CE007EDFAB /* GZGChangePasswordViewController.h */,
+				E5201B371DD450CE007EDFAB /* GZGChangePasswordViewController.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -1076,6 +1173,8 @@
 				E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */,
 				E56AA6981DC2F8FD006AC1A9 /* GZGOrderPayViewController.h */,
 				E56AA6991DC2F8FD006AC1A9 /* GZGOrderPayViewController.m */,
+				E5E170CE1DC874A1004AC304 /* GZGPayCOmpleteViewController.h */,
+				E5E170CF1DC874A1004AC304 /* GZGPayCOmpleteViewController.m */,
 			);
 			path = TheShoppingCart;
 			sourceTree = "<group>";
@@ -1150,20 +1249,6 @@
 		53904BB71DC199EC00ED0922 /* YYS */ = {
 			isa = PBXGroup;
 			children = (
-				532B000A1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.h */,
-				532B000B1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m */,
-				532B000D1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.h */,
-				532B000E1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m */,
-				532B00161DBE0088002D2E61 /* GZGYPaymentTableViewCell.h */,
-				532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */,
-				5340A2351DBE059F00AF2FEA /* GZGYSingleTableViewCell.h */,
-				5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */,
-				5340A2381DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.h */,
-				5340A2391DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m */,
-				5340A23B1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.h */,
-				5340A23C1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m */,
-				04A4A4C71DBF414800897F5A /* GZGAddreddMangerCell.h */,
-				04A4A4C81DBF414800897F5A /* GZGAddreddMangerCell.m */,
 				53603F911DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.h */,
 				53603F921DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m */,
 				53AB54E61DC1F56F00C8B264 /* GZGYProgressTableViewCell.h */,
@@ -1370,7 +1455,9 @@
 				047B69131D5DA0630057CE61 /* 123456.png in Resources */,
 				047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */,
 				53975D5F1DB9DF9800478004 /* etc@2x.png in Resources */,
+				E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */,
 				047467CF1DAB859B009E4EAA /* nav_ozg.jpg in Resources */,
+				E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */,
 				E5648D301DBC83540077A165 /* PersonalHead@2x.png in Resources */,
 				04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */,
 				047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */,
@@ -1406,6 +1493,7 @@
 				044DA3991D5C458E00DD06EC /* Info.plist in Resources */,
 				04104ECE1D9CACEF00A940F1 /* sy_mypic2.jpg in Resources */,
 				04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */,
+				E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */,
 				BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */,
 				BDDDF8181D51B992002723AB /* Assets.xcassets in Resources */,
 				E58005181DBF18A800421727 /* ssss 副本.png in Resources */,
@@ -1444,8 +1532,10 @@
 				044DA4021D5C60B200DD06EC /* UIImageView+AFNetworking.m in Sources */,
 				53975D561DB9B4CF00478004 /* GZGYDetailsView.m in Sources */,
 				044DA3971D5C458E00DD06EC /* FMDatabaseQueue.m in Sources */,
+				E5C7C8FC1DD061D400229EF0 /* GZGPushViewController.m in Sources */,
 				04FBA2721D98C87000AD147A /* GZGRootViewController.m in Sources */,
 				04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */,
+				E5201B3E1DD457A9007EDFAB /* GZGSpecialPerformanceView.m in Sources */,
 				E55B23FE1DBE1AE000904216 /* GZGShoppingCartReusableView.m in Sources */,
 				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
@@ -1456,12 +1546,14 @@
 				E570D15E1DB871EA00F821C1 /* GZGDropDownMenu.m in Sources */,
 				044DA3FF1D5C60B200DD06EC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				048F710B1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m in Sources */,
+				E5C7C8F91DD05B4900229EF0 /* GZGSettingViewController.m in Sources */,
 				535FA47B1DBCBF950048D966 /* GZGYPartitionView.m in Sources */,
 				044DA3B01D5C466300DD06EC /* AFURLResponseSerialization.m in Sources */,
 				04104EA91D9CA02300A940F1 /* GZGSpellGroupCell.m in Sources */,
 				044DA4011D5C60B200DD06EC /* UIButton+AFNetworking.m in Sources */,
 				048B783D1D98D702009F7C37 /* GZGColorClass.m in Sources */,
 				04FBA2771D98C8B100AD147A /* GZGSubViewController.m in Sources */,
+				E5201B3B1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m in Sources */,
 				E524093A1DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.m in Sources */,
 				04A63CF01DBB46D100961F81 /* YDTopTitleRolling.m in Sources */,
 				044DA3941D5C458E00DD06EC /* FMDatabase.m in Sources */,
@@ -1469,6 +1561,8 @@
 				044DA4001D5C60B200DD06EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */,
 				5340A23D1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m in Sources */,
+				E5201B411DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m in Sources */,
+				E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */,
 				044DA3D81D5C467100DD06EC /* SDWebImageDecoder.m in Sources */,
 				049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */,
 				532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */,
@@ -1483,6 +1577,7 @@
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
 				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
 				043CDFF01DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m in Sources */,
+				E5E170D01DC874A1004AC304 /* GZGPayCOmpleteViewController.m in Sources */,
 				049DC6521DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m in Sources */,
 				53603F931DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m in Sources */,
 				044DA3AC1D5C466300DD06EC /* AFHTTPSessionManager.m in Sources */,
@@ -1490,9 +1585,13 @@
 				040DDA4F1D9925CC00C2FB75 /* UIImageView+YDWebCache.m in Sources */,
 				532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */,
 				53AB54E81DC1F56F00C8B264 /* GZGYProgressTableViewCell.m in Sources */,
+				E54312441DD434BF0007C12D /* GZGCouponsView.m in Sources */,
 				044DA3961D5C458E00DD06EC /* FMDatabasePool.m in Sources */,
+				E5ABE6981DD1C41500D2E59D /* GZGCouponsViewController.m in Sources */,
 				5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */,
+				E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */,
 				04A44BC61DC2F819007F87D5 /* GZGADDAddressViewController.m in Sources */,
+				E5F3C15E1DCB0CA7006AEDF8 /* GZGLogisticsCell.m in Sources */,
 				048F4EBA1DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.m in Sources */,
 				044DA3B11D5C466300DD06EC /* AFURLSessionManager.m in Sources */,
 				535FA4741DBCA5BA0048D966 /* GZGYEvaluaImgTableViewCell.m in Sources */,
@@ -1501,8 +1600,10 @@
 				044DA3981D5C458E00DD06EC /* FMResultSet.m in Sources */,
 				044DA3FD1D5C60B200DD06EC /* AFAutoPurgingImageCache.m in Sources */,
 				5372CA5B1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m in Sources */,
+				E5C7C8F61DD0585A00229EF0 /* GZGHelpSuccessViewController.m in Sources */,
 				044DA4031D5C60B200DD06EC /* UIProgressView+AFNetworking.m in Sources */,
 				53975D531DB9B31000478004 /* GZGYDetailsViewController.m in Sources */,
+				E577CF821DC9BD8E00C8052A /* GZGLogisticsViewController.m in Sources */,
 				5372CA611DB71AC5009C6CA1 /* GZGYClassModel.m in Sources */,
 				044DA39D1D5C461300DD06EC /* MBProgressHUD.m in Sources */,
 				048F4EFC1DBCB13400DFA1C6 /* GZGCountriesTheCostomTableView.m in Sources */,
@@ -1511,6 +1612,7 @@
 				E5648D331DBCAB2E0077A165 /* GZGShoppingCartCell.m in Sources */,
 				E580051B1DBF25E200421727 /* GZGConfirmOrderViewController.m in Sources */,
 				E58005141DBF00CD00421727 /* GZGHotRecommendedCell.m in Sources */,
+				E5201B381DD450CE007EDFAB /* GZGChangePasswordViewController.m in Sources */,
 				044DA3DC1D5C467100DD06EC /* SDWebImagePrefetcher.m in Sources */,
 				044DA3AE1D5C466300DD06EC /* AFSecurityPolicy.m in Sources */,
 				53975D591DB9B52200478004 /* GZGYImgScrollView.m in Sources */,
@@ -1538,13 +1640,17 @@
 				532B00151DBDEC97002D2E61 /* GZGYOrders.m in Sources */,
 				047B690F1D5D7B080057CE61 /* ZGNetDealImage.m in Sources */,
 				04FBA26F1D98C87000AD147A /* GZGClassifiCationViewController.m in Sources */,
+				E54312471DD4378D0007C12D /* GZGAuthenticateViewController.m in Sources */,
 				5372CA551DB712CB009C6CA1 /* GZGYSalaTableViewCell.m in Sources */,
 				04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */,
+				E57E64431DCD77A2001346C2 /* GZGHelpViewController.m in Sources */,
 				53D4FE2B1DB8AEAA001A5E1F /* GZGYBrandCollectionViewCell.m in Sources */,
 				043CDFF31DA8D93E0095B3F5 /* GZGCountriesPavilionCell.m in Sources */,
 				044DA3D71D5C467100DD06EC /* SDWebImageCompat.m in Sources */,
 				532B000F1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m in Sources */,
 				53975D5C1DB9BEF100478004 /* GZGYNavView.m in Sources */,
+				E528868C1DC71A650056496C /* GZGOrderPayCell.m in Sources */,
+				E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */,
 				53975D6A1DBA2DB500478004 /* GZGYBbtnView.m in Sources */,
 				535FA4711DBCA5A10048D966 /* GZGYEvaluationTableViewCell.m in Sources */,
 				049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */,

@@ -272,7 +272,9 @@
     [self.contentView addSubview:label];
 }
 - (void)buttonClick:(UIButton *)button {
-    NSLog(@"提交订单");
+    if (self.submitOrderBlock) {
+        self.submitOrderBlock(self.totalPriceLabel.text);
+    }
 }
 - (void)drawRect:(CGRect)rect {
     

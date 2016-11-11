@@ -19,6 +19,7 @@
 #import "GZGYSalaTableViewCell.h"
 #import "GZGSearchViewController.h"
 #import "GZGCountriesPavilionViewController.h"
+#import "GZGSpecialPerformanceViewController.h"
 #import "ZGNetWork.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
@@ -385,6 +386,19 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 
 - (void)limitedBtnDown:(UIButton *)btn{
     NSLog(@"tag = %ld",btn.tag);
+    
+    switch (btn.tag) {
+        case 4: {
+            NSLog(@"母婴专场");
+            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 #pragma mark --- CollectionView点击事件
 -(void)CollectionViewDelegeteClick:(NSInteger)sender

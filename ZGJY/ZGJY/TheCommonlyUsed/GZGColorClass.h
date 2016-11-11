@@ -331,3 +331,20 @@
 + (UIColor *)subjectConfirmOrderLightGreyColor;
 
 @end
+
+// 帮助与反馈
+@interface GZGColorClass (HelpColor)
+
+/**
+ * 建议 提交 背景色
+ */
++ (UIColor *)subjectHelpSubmitBackgroundColor;
+@end
+// 优惠券
+@interface GZGColorClass (CouponsColor)
+/**
+ *  优惠券 图片背景色
+ */
++ (UIColor *)subjectCouponsImageBackgroundColor;
+
+@end

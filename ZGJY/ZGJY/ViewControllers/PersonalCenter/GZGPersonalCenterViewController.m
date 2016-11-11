@@ -10,6 +10,10 @@
 #import "GZGAddressManageViewController.h"
 #import "GZGYOrderViewController.h"
 #import "GZGYAftersalesViewController.h"
+#import "GZGHelpViewController.h"
+#import "GZGSettingViewController.h"
+#import "GZGCouponsViewController.h"
+#import "GZGAuthenticateViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -149,7 +153,9 @@
 }
 #pragma mark - 复用
 - (void)rightBtnDown{
-    NSLog(@"设置");
+    GZGSettingViewController * settingVC = [[GZGSettingViewController alloc] init];
+    settingVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 #pragma mark - 系统的代理
 #pragma mark - UITableViewDataSource
@@ -187,13 +193,10 @@
                 case 0: {
 
                     NSLog(@"我的订单");
-                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
-                    [addredssManger setHidesBottomBarWhenPushed:YES];
-                    [self.navigationController pushViewController:addredssManger animated:YES];
 
-//                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
-//                    orders.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:orders animated:YES];
+                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+                    orders.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:orders animated:YES];
                 }
                     break;
                 case 1: {
@@ -208,14 +211,23 @@
                     break;
                 case 3: {
                     NSLog(@"我的优惠券");
+                    GZGCouponsViewController * couponsVC = [[GZGCouponsViewController alloc] init];
+                    couponsVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:couponsVC animated:YES];
                 }
                     break;
                 case 4: {
                     NSLog(@"收货地址管理");
+                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+                    [addredssManger setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:addredssManger animated:YES];
                 }
                     break;
                 case 5: {
                     NSLog(@"密码管理");
+                    GZGAuthenticateViewController * authenticateVC = [[GZGAuthenticateViewController alloc] init];
+                    authenticateVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:authenticateVC animated:YES];
                 }
                     break;
                 case 6: {
@@ -230,6 +242,9 @@
             switch (indexPath.row) {
                 case 0: {
                     NSLog(@"评价与反馈");
+                    GZGHelpViewController * helpVC = [[GZGHelpViewController alloc] init];
+                    helpVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:helpVC animated:YES];
                 }
                     break;
             }
