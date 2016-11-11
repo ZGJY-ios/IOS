@@ -10,5 +10,7 @@
 
 @interface GZGADDAddressCell : UITableViewCell
 @property(nonatomic, strong) UILabel *cellText;
+@property(nonatomic, strong) UILabel *cellAfterText;
+@property(nonatomic, strong) UISwitch *cellSWitch;
 @property(nonatomic, strong) UITextField *cellTextFiled;
 @end
