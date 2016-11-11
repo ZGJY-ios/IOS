@@ -7,15 +7,45 @@
 //
 
 #import "GZGSpecialPerformanceViewController.h"
+#import "GZGTheShoppingCartViewController.h"
+#import "GZGSearchViewController.h"
 #import "GZGSpecialPerformanceView.h"
 #import "GZGSpecialPerformanceCell.h"
+#import "GZGSPDropMenuView.h"
 
+@interface UIImage (PersonalCenter)
+
+- (UIImage *)imageWithTintColor:(UIColor *)tintColor;
+
+@end
+
+@implementation UIImage (PersonalCenter)
+
+- (UIImage *)imageWithTintColor:(UIColor *)tintColor {
+    //We want to keep alpha, set opaque to NO; Use 0.0f for scale to use the scale factor of the device’s main screen.
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
+    [tintColor setFill];
+    CGRect bounds = CGRectMake(0, 0, self.size.width, self.size.height);
+    UIRectFill(bounds);
+    
+    //Draw the tinted image in context
+    [self drawInRect:bounds blendMode:kCGBlendModeDestinationIn alpha:1.0f];
+    
+    UIImage *tintedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tintedImage;
+}
+
+@end
 
 @interface GZGSpecialPerformanceViewController () <SpecialPerformanceDelegeteClickProtocol, GZGPageViewDelegate,GZGPageViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate> {
     GZGPageView * _pageView;
     GZGSpecialPerformanceView * segment;
     NSArray * nameArray;
 }
+/** 下拉菜单 */
+@property (nonatomic, strong) GZGSPDropMenuView *dropdownMenu;
 @end
 
 @implementation GZGSpecialPerformanceViewController
@@ -25,6 +55,11 @@
     // Do any additional setup after loading the view.
     
     self.titles.text = NSLocalizedString(@"母婴专场", nil);
+    
+    [self.rightBtn setImage:[[UIImage imageNamed:@"GlobalPurchaaingEtc"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    
+    /** 初始化下拉菜单 */
+    [self setupDropDownMenu];
     
     nameArray = @[@"妈妈最爱",@"进口奶粉",@"大牌尿裤",@"健康辅助"];
     
@@ -44,6 +79,68 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark - 自己的方法
+/** 初始化下拉菜单 */
+- (void)setupDropDownMenu {
+    NSArray *modelsArray = [self getMenuModelsArray];
+    
+    self.dropdownMenu = [GZGSPDropMenuView ff_DefaultStyleDropDownMenuWithMenuModelsArray:modelsArray menuWidth:FFDefaultFloat eachItemHeight:FFDefaultFloat menuRightMargin:FFDefaultFloat triangleRightMargin:FFDefaultFloat];
+    self.dropdownMenu.triangleColor = [UIColor lightGrayColor];
+    self.dropdownMenu.menuItemBackgroundColor = FFColor(0, 0, 0, 0.6);
+}
+
+
+
+/** 获取菜单模型数组 */
+- (NSArray *)getMenuModelsArray {
+    __weak typeof(self) weakSelf = self;
+    
+    //菜单模型0
+    FFDropDownMenuModel *menuModel0 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"消息" menuItemIconName:@"QQG_Message"  menuBlock:^{
+        NSLog(@"消息");
+    }];
+    
+    
+    //菜单模型1
+    FFDropDownMenuModel *menuModel1 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"首页" menuItemIconName:@"QQG_Home" menuBlock:^{
+        NSLog(@"首页");
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    
+    //菜单模型2
+    FFDropDownMenuModel *menuModel2 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"搜索" menuItemIconName:@"QQG_Search" menuBlock:^{
+        NSLog(@"搜索");
+        GZGSearchViewController * searchVC = [[GZGSearchViewController alloc] init];
+        [weakSelf.navigationController pushViewController:searchVC animated:YES];
+    }];
+    
+    //菜单模型3
+    FFDropDownMenuModel *menuModel3 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"购物车" menuItemIconName:@"QQG_ShoppingCart"  menuBlock:^{
+        NSLog(@"购物车");
+        GZGTheShoppingCartViewController * shoppingCartVC = [[GZGTheShoppingCartViewController alloc] init];
+        shoppingCartVC.view.frame = CGRectMake(shoppingCartVC.view.frame.origin.x, shoppingCartVC.view.frame.origin.y, shoppingCartVC.view.frame.size.width, shoppingCartVC.view.frame.size.height + 44);
+        [weakSelf.navigationController pushViewController:shoppingCartVC animated:YES];
+    }];
+//    //菜单模型4
+//    FFDropDownMenuModel *menuModel4 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"WeChat" menuItemIconName:@"menu4"  menuBlock:^{
+//        NSLog(@"WeChat");
+//    }];
+//    //菜单模型5
+//    FFDropDownMenuModel *menuModel5 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"Facebook" menuItemIconName:@"menu5"  menuBlock:^{
+//        NSLog(@"Facebook");
+//    }];
+    
+    NSArray *menuModelArr = @[menuModel0, menuModel1, menuModel2, menuModel3];
+    return menuModelArr;
+}
+
+/** 显示下拉菜单 */
+- (void)showDropDownMenu {
+    [self.dropdownMenu showMenu];
+}
+- (void)rightBtnDown{
+    [self showDropDownMenu];
 }
 #pragma mark - JXPageViewDataSource
 -(NSInteger)numberOfItemInJXPageView:(GZGPageView *)pageView{

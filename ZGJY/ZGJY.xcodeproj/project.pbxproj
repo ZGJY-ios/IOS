@@ -215,6 +215,7 @@
 		E5AD87551DD55CDB00EDB8B3 /* GZGCouponsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87521DD55CDB00EDB8B3 /* GZGCouponsView.m */; };
 		E5AD87561DD55CDB00EDB8B3 /* GZGYOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87541DD55CDB00EDB8B3 /* GZGYOrders.m */; };
 		E5AD87591DD55D5000EDB8B3 /* GZGADDAddressViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */; };
+		E5B1701C1DD5A09400FDAE24 /* GZGSPDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */; };
 		E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */; };
 		E5C7C8F61DD0585A00229EF0 /* GZGHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */; };
 		E5C7C8F91DD05B4900229EF0 /* GZGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */; };
@@ -595,6 +596,8 @@
 		E5AD87541DD55CDB00EDB8B3 /* GZGYOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYOrders.m; sourceTree = "<group>"; };
 		E5AD87571DD55D5000EDB8B3 /* GZGADDAddressViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressViewCell.h; sourceTree = "<group>"; };
 		E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewCell.m; sourceTree = "<group>"; };
+		E5B1701A1DD5A09400FDAE24 /* GZGSPDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSPDropMenuView.h; sourceTree = "<group>"; };
+		E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSPDropMenuView.m; sourceTree = "<group>"; };
 		E5BD7D971DD014BF00C95DFB /* GZGHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpCell.h; sourceTree = "<group>"; };
 		E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpCell.m; sourceTree = "<group>"; };
 		E5C7C8F41DD0585A00229EF0 /* GZGHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpSuccessViewController.h; sourceTree = "<group>"; };
@@ -1047,6 +1050,8 @@
 				043CDFF51DA8DAF10095B3F5 /* GZGCountriesPavilionView.m */,
 				E5201B3C1DD457A9007EDFAB /* GZGSpecialPerformanceView.h */,
 				E5201B3D1DD457A9007EDFAB /* GZGSpecialPerformanceView.m */,
+				E5B1701A1DD5A09400FDAE24 /* GZGSPDropMenuView.h */,
+				E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */,
 				53039BD21DB71BE50091DE1D /* YYS */,
 				E57661491DB7357E0078D96F /* GZGSegmentControl.h */,
 				E576614A1DB7357E0078D96F /* GZGSegmentControl.m */,
@@ -1555,6 +1560,7 @@
 				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
 				049DC64F1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m in Sources */,
+				E5B1701C1DD5A09400FDAE24 /* GZGSPDropMenuView.m in Sources */,
 				044DA3E01D5C467100DD06EC /* UIImage+WebP.m in Sources */,
 				04104EE01D9CB26300A940F1 /* GZGGPMaternalInfantCell.m in Sources */,
 				044DA3D51D5C467100DD06EC /* NSData+ImageContentType.m in Sources */,
