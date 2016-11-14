@@ -14,6 +14,8 @@
 #import "GZGSettingViewController.h"
 #import "GZGCouponsViewController.h"
 #import "GZGAuthenticateViewController.h"
+#import "GZGYCollectionViewController.h"
+#import "GZGYEvaluationViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -206,6 +208,9 @@
                 }
                     break;
                 case 2: {
+                    GZGYCollectionViewController * collection= [[GZGYCollectionViewController alloc]init];
+                    collection.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:collection animated:YES];
                     NSLog(@"我的收藏");
                 }
                     break;
@@ -231,6 +236,9 @@
                 }
                     break;
                 case 6: {
+                    GZGYEvaluationViewController * evaluation = [[GZGYEvaluationViewController alloc] init];
+                    evaluation.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:evaluation animated:YES];
                     NSLog(@"评价管理");
                 }
                     break;

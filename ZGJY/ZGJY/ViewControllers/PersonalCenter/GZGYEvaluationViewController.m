@@ -1,17 +1,16 @@
 //
-//  GZGYAftersalesViewController.m
+//  GZGYEvaluationViewController.m
 //  ZGJY
 //
-//  Created by YYS on 16/10/27.
+//  Created by YYS on 16/11/10.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
 
-#import "GZGYAftersalesViewController.h"
+#import "GZGYEvaluationViewController.h"
+#import "GZGYWaitingTableViewCell.h"
+#import "GZGYAlreadyTableViewCell.h"
 #import "GZGYSegView.h"
-#import "GZGYAftersalesTableViewCell.h"
-#import "GZGYProgressTableViewCell.h"
-#import "GZGYNopromptTableViewCell.h"
-@interface GZGYAftersalesViewController ()<SegDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface GZGYEvaluationViewController ()<SegDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic, strong)GZGYSegView * segView;
 @property(nonatomic, strong)NSArray * nameArray;
 @property(nonatomic, strong)UIScrollView * scrollView;
@@ -19,7 +18,7 @@
 @property(nonatomic, strong)UITableView * reloadTableView;
 @end
 
-@implementation GZGYAftersalesViewController
+@implementation GZGYEvaluationViewController
 -(NSMutableArray*)TableArray
 {
     if (_tableArray == nil) {
@@ -29,8 +28,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = @"我的售后";
-    self.nameArray = @[@"售后申请",@"进度查询"];
+    self.titles.text = @"评价中心";
+    self.nameArray = @[@"待评价",@"已评价"];
     [self ScrollInterface];
     [self SegViewInterface];
     // Do any additional setup after loading the view.
@@ -38,7 +37,6 @@
 #pragma mark --- ScrollInterface
 -(void)ScrollInterface
 {
-    
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,64+ [GZGApplicationTool control_height:105], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:105])];
     self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
@@ -77,38 +75,23 @@
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.tag == 0) {
-        return [GZGApplicationTool control_height:300];
-    }else{
-        if (indexPath.section == 0) {
-            return [GZGApplicationTool control_height:435];
-        }
-        return [GZGApplicationTool control_height:300];
-    }
+    return [GZGApplicationTool control_height:195];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"cell";
     if (tableView.tag == 0) {
-        GZGYAftersalesTableViewCell* cell = (GZGYAftersalesTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+        GZGYWaitingTableViewCell* cell = (GZGYWaitingTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell==nil) {
-            cell = [[GZGYAftersalesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            cell = [[GZGYWaitingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
         return cell;
     }else{
-        if (indexPath.section == 0) {
-            GZGYProgressTableViewCell* cell = (GZGYProgressTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-            if (cell==nil) {
-                cell = [[GZGYProgressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-            }
-            return cell;
-        }else{
-            GZGYNopromptTableViewCell* cell = (GZGYNopromptTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-            if (cell==nil) {
-                cell = [[GZGYNopromptTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-            }
-            return cell;
+        GZGYAlreadyTableViewCell* cell = (GZGYAlreadyTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell==nil) {
+            cell = [[GZGYAlreadyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
+        return cell;
     }
 }
 - (void)changeView:(float)x {

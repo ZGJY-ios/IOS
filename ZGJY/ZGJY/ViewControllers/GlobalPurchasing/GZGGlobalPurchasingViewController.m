@@ -21,6 +21,8 @@
 #import "GZGCountriesPavilionViewController.h"
 #import "GZGSpecialPerformanceViewController.h"
 #import "ZGNetWork.h"
+#import "GZGYLimitViewController.h"
+#import "GZGYSpellgroupViewController.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -275,6 +277,15 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 2) {
+        GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
+        spell.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:spell animated:YES];
+    }
+}
 #pragma mark 各个Cell的HeadView
 - (UIView *)tableViewHeadView{
     UIView *scrToFigureView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
@@ -403,7 +414,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark --- CollectionView点击事件
 -(void)CollectionViewDelegeteClick:(NSInteger)sender
 {
-    NSLog(@"我靠%ld",sender);
+    GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
+    limit.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:limit animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,7 +9,8 @@
 #import "GZGSettingViewController.h"
 #import "GZGPushViewController.h"
 #import "GZGAboutUsViewController.h"
-
+#import "GZGYLoginViewController.h"
+#import "GZGYRegisteredViewController.h"
 @interface GZGSettingViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *settings;
 @property (nonatomic, strong) UITableView * tableView;
@@ -36,6 +37,8 @@
     
     UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"退出" message:@"是否要退出当前账号" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        GZGYLoginViewController * login = [[GZGYLoginViewController alloc]init];
+        [self presentViewController:login animated:YES completion:nil];
         NSLog(@"退出");
     }];
     UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

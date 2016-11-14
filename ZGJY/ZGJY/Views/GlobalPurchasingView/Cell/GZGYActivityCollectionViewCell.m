@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, self.frame.size.width, [GZGApplicationTool control_height:65])];
-        imgView.image = [UIImage imageNamed:@"sy_ad1.jpg"];
+        imgView.image = [UIImage imageNamed:@"time-limit"];
         [self addSubview:imgView];
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:70], self.frame.size.width, 30)];
         titleLabel.text = @"限时抢购 先到先得";

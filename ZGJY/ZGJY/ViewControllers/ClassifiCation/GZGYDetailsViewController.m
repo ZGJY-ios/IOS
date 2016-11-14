@@ -145,7 +145,7 @@
 -(void)DetailsInterface
 {
     NSArray * arrayImg = @[@"sy_hlpic2",@"sy_hlpic2.jpg",@"sy_hlpic3.jpg"];
-    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height) andImageArr:arrayImg];
+    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]) andImageArr:arrayImg];
     [self.oneScroll addSubview:detailsView];
     [detailsView.speButton addTarget:self action:@selector(specifications) forControlEvents:UIControlEventTouchUpInside];
     [detailsView.disButton addTarget:self action:@selector(distribution) forControlEvents:UIControlEventTouchUpInside];
@@ -290,7 +290,7 @@
     center = detailsView.center;
     center.y -= 64;
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [UIView animateWithDuration: 0.35 animations: ^{
         
         detailsView.center = center;
@@ -303,7 +303,7 @@
 -(void)ChoiceBtnDelegate:(NSInteger)sender
 {
     center.y += 64;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [UIView animateWithDuration: 0.35 animations: ^{
         choiceView.frame =CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
         detailsView.center = center;
@@ -315,7 +315,7 @@
 -(void)dismiss
 {
     center.y += 64;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [UIView animateWithDuration: 0.35 animations: ^{
         choiceView.frame =CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
         detailsView.center = center;
