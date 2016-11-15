@@ -12,6 +12,8 @@
 #import "GZGSpecialPerformanceView.h"
 #import "GZGSpecialPerformanceCell.h"
 #import "GZGSPDropMenuView.h"
+#import "GZGSpecialPerformanceModel.h"
+#import "ZGNetWork.h"
 
 @interface UIImage (PersonalCenter)
 
@@ -74,6 +76,8 @@
     [_pageView reloadData];
     [_pageView changeToItemAtIndex:0];
     [self.view addSubview:_pageView];
+    
+    [self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +85,22 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - 自己的方法
+/** 数据请求 */
+- (void)requestData {
+    
+    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/topic/baby" parameters:nil success:^(id responseObject, NSInteger task) {
+//        NSLog(@"%@",responseObject);
+        NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];
+        NSArray * array = dict[@"list"];
+        for (int i = 0; i < array.count; i ++) {
+            NSDictionary * dict1 = array[i];
+            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
+            NSLog(@"%ld",model.brand_id);
+        }
+    } failure:^(NSError *failure, NSInteger task) {
+        NSLog(@"%@  %ld",failure,(long)task);
+    }];
+}
 /** 初始化下拉菜单 */
 - (void)setupDropDownMenu {
     NSArray *modelsArray = [self getMenuModelsArray];
@@ -89,8 +109,6 @@
     self.dropdownMenu.triangleColor = [UIColor lightGrayColor];
     self.dropdownMenu.menuItemBackgroundColor = FFColor(0, 0, 0, 0.6);
 }
-
-
 
 /** 获取菜单模型数组 */
 - (NSArray *)getMenuModelsArray {

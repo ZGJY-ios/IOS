@@ -235,6 +235,15 @@
 		E5AD87561DD55CDB00EDB8B3 /* GZGYOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87541DD55CDB00EDB8B3 /* GZGYOrders.m */; };
 		E5AD87591DD55D5000EDB8B3 /* GZGADDAddressViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */; };
 		E5B1701C1DD5A09400FDAE24 /* GZGSPDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */; };
+		E5B570151DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B570141DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.m */; };
+		E5B5702E1DDAB768002CA8FA /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B5701A1DDAB768002CA8FA /* JSONModel.m */; };
+		E5B5702F1DDAB768002CA8FA /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B5701C1DDAB768002CA8FA /* JSONModelClassProperty.m */; };
+		E5B570301DDAB768002CA8FA /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B5701E1DDAB768002CA8FA /* JSONModelError.m */; };
+		E5B570311DDAB768002CA8FA /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B570221DDAB768002CA8FA /* JSONAPI.m */; };
+		E5B570321DDAB768002CA8FA /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B570241DDAB768002CA8FA /* JSONHTTPClient.m */; };
+		E5B570331DDAB768002CA8FA /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B570261DDAB768002CA8FA /* JSONModel+networking.m */; };
+		E5B570341DDAB768002CA8FA /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B570291DDAB768002CA8FA /* JSONKeyMapper.m */; };
+		E5B570351DDAB768002CA8FA /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B5702B1DDAB768002CA8FA /* JSONValueTransformer.m */; };
 		E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */; };
 		E5C7C8F61DD0585A00229EF0 /* GZGHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */; };
 		E5C7C8F91DD05B4900229EF0 /* GZGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */; };
@@ -654,6 +663,26 @@
 		E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewCell.m; sourceTree = "<group>"; };
 		E5B1701A1DD5A09400FDAE24 /* GZGSPDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSPDropMenuView.h; sourceTree = "<group>"; };
 		E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSPDropMenuView.m; sourceTree = "<group>"; };
+		E5B570131DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpecialPerformanceModel.h; sourceTree = "<group>"; };
+		E5B570141DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpecialPerformanceModel.m; sourceTree = "<group>"; };
+		E5B570191DDAB768002CA8FA /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		E5B5701A1DDAB768002CA8FA /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		E5B5701B1DDAB768002CA8FA /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		E5B5701C1DDAB768002CA8FA /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		E5B5701D1DDAB768002CA8FA /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		E5B5701E1DDAB768002CA8FA /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		E5B5701F1DDAB768002CA8FA /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		E5B570211DDAB768002CA8FA /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		E5B570221DDAB768002CA8FA /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		E5B570231DDAB768002CA8FA /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		E5B570241DDAB768002CA8FA /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		E5B570251DDAB768002CA8FA /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		E5B570261DDAB768002CA8FA /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		E5B570281DDAB768002CA8FA /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		E5B570291DDAB768002CA8FA /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		E5B5702A1DDAB768002CA8FA /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		E5B5702B1DDAB768002CA8FA /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		E5B5702C1DDAB768002CA8FA /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		E5BD7D971DD014BF00C95DFB /* GZGHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpCell.h; sourceTree = "<group>"; };
 		E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpCell.m; sourceTree = "<group>"; };
 		E5C7C8F41DD0585A00229EF0 /* GZGHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpSuccessViewController.h; sourceTree = "<group>"; };
@@ -781,6 +810,7 @@
 		044D9F481D5C439200DD06EC /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E5B570161DDAB768002CA8FA /* JSONModel */,
 				040DDA481D9925CC00C2FB75 /* YDImage Shuffling */,
 				044DA3B21D5C467100DD06EC /* SDWebImage */,
 				044DA39E1D5C466300DD06EC /* AFNetworking */,
@@ -1397,6 +1427,7 @@
 		BDDDF80A1D51B992002723AB /* ZGJY */ = {
 			isa = PBXGroup;
 			children = (
+				E5B570121DDAADB6002CA8FA /* Models */,
 				04104EAA1D9CACE500A940F1 /* ThirdImage */,
 				048F70F41D9B640B00338BA6 /* Models */,
 				048F70F31D9B63FD00338BA6 /* Views */,
@@ -1452,6 +1483,64 @@
 				53860F551DD9630F0047A734 /* YYS */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E5B570121DDAADB6002CA8FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5B570131DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.h */,
+				E5B570141DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5B570161DDAB768002CA8FA /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5B570181DDAB768002CA8FA /* JSONModel */,
+				E5B5701F1DDAB768002CA8FA /* JSONModelLib.h */,
+				E5B570201DDAB768002CA8FA /* JSONModelNetworking */,
+				E5B570271DDAB768002CA8FA /* JSONModelTransformations */,
+				E5B5702C1DDAB768002CA8FA /* module.modulemap */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		E5B570181DDAB768002CA8FA /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5B570191DDAB768002CA8FA /* JSONModel.h */,
+				E5B5701A1DDAB768002CA8FA /* JSONModel.m */,
+				E5B5701B1DDAB768002CA8FA /* JSONModelClassProperty.h */,
+				E5B5701C1DDAB768002CA8FA /* JSONModelClassProperty.m */,
+				E5B5701D1DDAB768002CA8FA /* JSONModelError.h */,
+				E5B5701E1DDAB768002CA8FA /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		E5B570201DDAB768002CA8FA /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				E5B570211DDAB768002CA8FA /* JSONAPI.h */,
+				E5B570221DDAB768002CA8FA /* JSONAPI.m */,
+				E5B570231DDAB768002CA8FA /* JSONHTTPClient.h */,
+				E5B570241DDAB768002CA8FA /* JSONHTTPClient.m */,
+				E5B570251DDAB768002CA8FA /* JSONModel+networking.h */,
+				E5B570261DDAB768002CA8FA /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		E5B570271DDAB768002CA8FA /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				E5B570281DDAB768002CA8FA /* JSONKeyMapper.h */,
+				E5B570291DDAB768002CA8FA /* JSONKeyMapper.m */,
+				E5B5702A1DDAB768002CA8FA /* JSONValueTransformer.h */,
+				E5B5702B1DDAB768002CA8FA /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1672,9 +1761,11 @@
 				049DC64F1DB9F8A3001DC372 /* GZGCountriesReplenishCell.m in Sources */,
 				E5B1701C1DD5A09400FDAE24 /* GZGSPDropMenuView.m in Sources */,
 				044DA3E01D5C467100DD06EC /* UIImage+WebP.m in Sources */,
+				E5B570301DDAB768002CA8FA /* JSONModelError.m in Sources */,
 				04104EE01D9CB26300A940F1 /* GZGGPMaternalInfantCell.m in Sources */,
 				044DA3D51D5C467100DD06EC /* NSData+ImageContentType.m in Sources */,
 				E570D15E1DB871EA00F821C1 /* GZGDropDownMenu.m in Sources */,
+				E5B5702E1DDAB768002CA8FA /* JSONModel.m in Sources */,
 				044DA3FF1D5C60B200DD06EC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				53860F5B1DD9631B0047A734 /* GZGYLoginView.m in Sources */,
 				048F710B1D9B680000338BA6 /* GZGUpImageDownTitleBtn.m in Sources */,
@@ -1694,14 +1785,17 @@
 				044DA4001D5C60B200DD06EC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */,
 				5340A23D1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m in Sources */,
+				E5B570351DDAB768002CA8FA /* JSONValueTransformer.m in Sources */,
 				E5201B411DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m in Sources */,
 				E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */,
 				044DA3D81D5C467100DD06EC /* SDWebImageDecoder.m in Sources */,
 				049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */,
 				532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */,
 				044DA3AF1D5C466300DD06EC /* AFURLRequestSerialization.m in Sources */,
+				E5B570321DDAB768002CA8FA /* JSONHTTPClient.m in Sources */,
 				04FBA2711D98C87000AD147A /* GZGPersonalCenterViewController.m in Sources */,
 				53860F641DD963450047A734 /* GZGYWaitingTableViewCell.m in Sources */,
+				E5B570151DDAAEFA002CA8FA /* GZGSpecialPerformanceModel.m in Sources */,
 				04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */,
 				53860F621DD963450047A734 /* GZGYAlreadyTableViewCell.m in Sources */,
 				53AB54EB1DC1FDC200C8B264 /* GZGYNopromptTableViewCell.m in Sources */,
@@ -1712,6 +1806,7 @@
 				048F71081D9B65DF00338BA6 /* GZGGPClassifiCationCell.m in Sources */,
 				5372CA581DB7136E009C6CA1 /* GZGYCountdown.m in Sources */,
 				53860F531DD962F90047A734 /* GZGYLoginViewController.m in Sources */,
+				E5B5702F1DDAB768002CA8FA /* JSONModelClassProperty.m in Sources */,
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
 				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
 				043CDFF01DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m in Sources */,
@@ -1727,6 +1822,7 @@
 				53AB54E81DC1F56F00C8B264 /* GZGYProgressTableViewCell.m in Sources */,
 				53860F731DD964E80047A734 /* GZGYHeaderTableViewCell.m in Sources */,
 				044DA3961D5C458E00DD06EC /* FMDatabasePool.m in Sources */,
+				E5B570311DDAB768002CA8FA /* JSONAPI.m in Sources */,
 				E5ABE6981DD1C41500D2E59D /* GZGCouponsViewController.m in Sources */,
 				5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */,
 				E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */,
@@ -1765,6 +1861,7 @@
 				044DA3DA1D5C467100DD06EC /* SDWebImageDownloaderOperation.m in Sources */,
 				BDDDF80D1D51B992002723AB /* main.m in Sources */,
 				044DA3D41D5C467100DD06EC /* MKAnnotationView+WebCache.m in Sources */,
+				E5B570341DDAB768002CA8FA /* JSONKeyMapper.m in Sources */,
 				044DA3DF1D5C467100DD06EC /* UIImage+MultiFormat.m in Sources */,
 				53860F631DD963450047A734 /* GZGYCollectionTableViewCell.m in Sources */,
 				532B000C1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m in Sources */,
@@ -1794,6 +1891,7 @@
 				53D4FE2B1DB8AEAA001A5E1F /* GZGYBrandCollectionViewCell.m in Sources */,
 				53860F521DD962F90047A734 /* GZGYEvaluationViewController.m in Sources */,
 				043CDFF31DA8D93E0095B3F5 /* GZGCountriesPavilionCell.m in Sources */,
+				E5B570331DDAB768002CA8FA /* JSONModel+networking.m in Sources */,
 				044DA3D71D5C467100DD06EC /* SDWebImageCompat.m in Sources */,
 				532B000F1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m in Sources */,
 				53975D5C1DB9BEF100478004 /* GZGYNavView.m in Sources */,

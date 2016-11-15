@@ -168,7 +168,7 @@ static NSInteger const _timeDelay                   = 30;
     [manger GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         
         success(responseObject,[self urlResponseErrorCode:task.response]);
         
