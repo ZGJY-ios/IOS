@@ -11,9 +11,7 @@
 #import "GZGYSpellView.h"
 #import "GZGYSpellgroupTableViewCell.h"
 @interface GZGYSpellgroupViewController ()<UITableViewDelegate,UITableViewDataSource,SpellsegDelegeteClickProtocol>
-{
-    UITableView * ytableView;
-}
+@property(nonatomic, strong)UITableView * ytableView;
 @property(nonatomic, strong)UIView * headerSegView;
 @property(nonatomic, strong)GZGYSpellView * spellView;
 @property(nonatomic, strong)GZGYSpellSegView * segView;
@@ -33,11 +31,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
+    self.title = @"火力拼团";
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:149/255.0 green:208/255.0 blue:227/255.0 alpha:1.0];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont boldSystemFontOfSize:19],
+       NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0 + [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(back)];
     _nameArray = @[@"人气单品",@"面部护理",@"营养肌肤",@"洗发护发",@"全球正品",@"越团越惠"];
-    self.titles.text = @"活力拼团";
     [self scrollInterface];
     [self headerViewInterface];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
+#pragma mark --- 左侧按钮事件
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark --- 左侧按钮
+-(void)creatleftBtnWithTitle:(NSString*)title normalImage:(NSString*)normalImage highlightedImage:(NSString*)highlightedImage frame:(CGRect)frame action:(SEL)action{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:normalImage] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:highlightedImage] forState:UIControlStateHighlighted];
+    [btn setFrame:frame];
+    [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont boldSystemFontOfSize:14];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = item;
+    
 }
 #pragma mark --- headerView界面
 -(void)headerViewInterface
@@ -52,6 +80,29 @@
     self.segView.backgroundColor = [UIColor whiteColor];
     [self.headerSegView addSubview:self.segView];
     [self addTableViewToScrollView:self.scrollView count:_nameArray.count frame:CGRectZero];
+    
+    UIPanGestureRecognizer* singleTap = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap)];
+    [self.headerSegView addGestureRecognizer:singleTap];
+}
+-(void)handleSingleTap
+{
+    [UIView animateWithDuration: 0.1 animations: ^{
+        CGRect frame = self.headerSegView.frame;
+        frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:630];
+        self.headerSegView.frame = frame;
+        CGRect frame1 = self.scrollView.frame;
+        frame1.origin.y = [GZGApplicationTool control_height:100]+[GZGApplicationTool navBarAndStatusBarSize];
+        frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
+        self.scrollView.frame = frame1;
+        for (int i = 0; i<_tableArray.count; i++) {
+            UITableView * tableView = _tableArray[i];
+            NSLog(@"%f",tableView.frame.size.height);
+            CGRect frame2 = tableView.frame;
+            frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
+            tableView.frame = frame2;
+            NSLog(@"%f",tableView.frame.size.height);
+        }
+    } completion: nil];
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     for (int i = 0; i < pageCount; i++) {
@@ -59,7 +110,7 @@
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.tag = i;
-        tableView.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
+        tableView.backgroundColor = [UIColor colorWithRed:149/255.0 green:208/255.0 blue:227/255.0 alpha:1.0];
         [self.tableArray addObject:tableView];
         [self.scrollView addSubview:tableView];
     }
@@ -80,7 +131,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row%2 == 0&& indexPath.row != 0) {
+    if (indexPath.row%2 == 1) {
         return [GZGApplicationTool control_height:20];
     }
     return [GZGApplicationTool control_height:365];
@@ -93,16 +144,16 @@
     if (section == 3) {
         return 1;
     }
-    return 2;
+    return 3;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView * colorView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:20])];
-    colorView.backgroundColor = [UIColor colorWithDisplayP3Red:115/255.0 green:166/255.0 blue:182/255.0 alpha:1.0];
+    colorView.backgroundColor = [UIColor colorWithDisplayP3Red:149/255.0 green:208/255.0 blue:227/255.0 alpha:1.0];
     return colorView;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID = @"cell";
-    if (indexPath.row%2 == 0&&indexPath.row != 0) {
+    if (indexPath.row%2 == 1) {
         UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
@@ -125,9 +176,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark --- seg点击事件--delegate
--(void)LimitBtnDelegate:(NSInteger)sender
+-(void)SpellsegBtnDelegate:(NSInteger)sender
 {
-    
+    [self.scrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (0.2) - SCREENWIDTH/5;
+    [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.frame.size.height) animated:YES];
+    [self refreshTableView:(int)sender];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -159,7 +213,7 @@
             }
         } completion: nil];
     }
-    if (offsetY < -[GZGApplicationTool control_height:200]){
+    if (offsetY < -[GZGApplicationTool control_height:100]){
         [UIView animateWithDuration: 0.35 animations: ^{
             CGRect frame = self.headerSegView.frame;
             frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
@@ -178,5 +232,32 @@
     }
 }
 
+- (void)changeView:(float)x {
+    float xx = x*(1.0f/5.0f);
+    CGRect frame = self.segView.LineView.frame;
+    frame.origin.x = xx;
+    [self.segView.LineView setFrame:frame];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    //减速停止了时执行，手触摸时执行执行
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        
+    }
+    else
+    {
+        float xx = scrollView.contentOffset.x * (0.2) - SCREENWIDTH/5;
+        [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.HeaderScroller.frame.size.height) animated:YES];
+        int i = (scrollView.contentOffset.x / SCREENWIDTH);
+        [self refreshTableView:i];
+    }
+}
+- (void)refreshTableView:(int)index {
+    self.ytableView = _tableArray[index];
+    CGRect frame = self.ytableView.frame;
+    frame.origin.x = SCREENWIDTH * index;
+    [self.ytableView setFrame:frame];
+    [self.ytableView reloadData];
+}
 
 @end

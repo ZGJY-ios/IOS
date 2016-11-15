@@ -13,22 +13,20 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _countdown = [GZGYCountdown countDown];
-        _countdown.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-        _countdown.frame = CGRectMake(0,0, [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:28]);
-        _countdown.timestamp = 100;
-        _countdown.timerStopBlock = ^{
-            NSLog(@"倒计时结束应该做的事情");
-        };
+//        _countdown = [GZGYCountdown countDown];
+//        _countdown.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
+//        _countdown.frame = CGRectMake(0,0, [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:28]);
+//        _countdown.timestamp = 100;
+//        _countdown.timerStopBlock = ^{
+//            NSLog(@"倒计时结束应该做的事情");
+//        };
         [self addSubview:_countdown];
         _imgView = [UIImageView new];
-        _imgView.frame = CGRectMake(0,[GZGApplicationTool control_height:28], [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:170]);
-        //_imgView.frame = CGRectMake(0, 17, self.frame.size.width, self.frame.size.height-50);
+        _imgView.frame = CGRectMake(0,[GZGApplicationTool control_height:0], [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:198]);
         _imgView.image = [UIImage imageNamed:@"sy_hgpic1"];
         [self addSubview:_imgView];
         _priceLabel = [UILabel new];
         _priceLabel.frame = CGRectMake(0,[GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:30]);
-        //_priceLabel.frame = CGRectMake(5, self.frame.size.height-30, self.frame.size.width/3, 15);
         _priceLabel.textAlignment = NSTextAlignmentRight;
         _priceLabel.textColor = [UIColor redColor];
         _priceLabel.text = @"¥118";

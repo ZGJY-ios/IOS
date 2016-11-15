@@ -21,13 +21,13 @@
 //GZGGlobalPurchasingViewController
 "GZG_GlobalPurchasingTitleStr" = "港中港";
 "GZG_GlobalPurchasingTitleStr" = "港中港";
-"GZGGPClassifiCationCell_QQJX" = "全球精选";
-"GZGGPClassifiCationCell_XSTM" = "限时特卖";
-"GZGGPClassifiCationCell_HLPT" = "火力拼团";
-"GZGGPClassifiCationCell_KJZY" = "跨境直邮";
+"GZGGPClassifiCationCell_QQJX" = "限时特卖";
+"GZGGPClassifiCationCell_XSTM" = "火力拼团";
+"GZGGPClassifiCationCell_HLPT" = "母婴用品";
+"GZGGPClassifiCationCell_KJZY" = "洗护用品";
 "GZGGPClassifiCationCell_HGG" = "韩国馆";
 "GZGGPClassifiCationCell_RBG" = "日本馆";
-"GZGGPClassifiCationCell_ADLYG" = "澳大利亚馆";
+"GZGGPClassifiCationCell_ADLYG" = "澳洲馆";
 "GZGGPClassifiCationCell_OZG" = "欧洲馆";
 "GZGGPMaternalInfant_CCGDSP" = "查看更多商品";
 //GZGAddressManageViewController 添加地址

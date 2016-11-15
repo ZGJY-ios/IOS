@@ -330,6 +330,18 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     
     GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
     switch (index) {
+        case HomeItem_GlobalSelect:{
+            GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
+            limit.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:limit animated:YES];
+            break;
+        }
+        case HomeItem_LimitedTimeSale:{
+            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
+            spell.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:spell animated:YES];
+            break;
+        }
         case HomeItem_SouthKorea:{
             vc.countriesTitle = @"韩国馆";
             vc.countriesIndex = CountriesEnterThe_SouthKorea;
@@ -348,7 +360,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             break;
         }
         case HomeItem_Australia:{
-            vc.countriesTitle = @"澳大利亚馆";
+            vc.countriesTitle = @"澳洲馆";
             vc.countriesIndex = CountriesEnterThe_Australia;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
             [vc setHidesBottomBarWhenPushed:YES];

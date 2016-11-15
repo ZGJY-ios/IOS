@@ -11,7 +11,6 @@
 #import "GZGYLimitTableViewCell.h"
 @interface GZGYLimitViewController ()<UITableViewDelegate,UITableViewDataSource,LimitDelegeteClickProtocol>
 {
-    UITableView * ytableView;
     UIView * headerView;
     UIImageView * imgView;
 }
@@ -19,6 +18,7 @@
 @property(nonatomic, strong)UIScrollView * scrollView;
 @property(nonatomic, strong)NSArray * nameArray;
 @property(nonatomic, strong)NSMutableArray * tableArray;
+@property(nonatomic, strong)UITableView * ytableView;
 @end
 
 @implementation GZGYLimitViewController
@@ -35,7 +35,15 @@
     self.titles.text = @"限时特卖";
     [self scrollInterface];
     [self headerViewInterface];
+    [self LimitData];
     // Do any additional setup after loading the view.
+}
+#pragma mark --- 数据
+-(void)LimitData
+{
+    NSDictionary*dict = @{@"a":@"tag_recommend",@"action":@"sub",@"c":@"topic"};
+    [[GZGYAPIHelper shareAPIHelper]MaternalandChildURL:@"http://api.budejie.com/api/api_open.php" Dict:dict Finsh:^{
+    }];
 }
 #pragma mark --- headerView界面
 -(void)headerViewInterface
@@ -44,7 +52,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
 //    [self.view addSubview:headerView];
     imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:295])];
-    imgView.image = [UIImage imageNamed:@"sy_ad1.jpg"];
+    imgView.image = [UIImage imageNamed:@"04-1APP 限时特卖banner750.psd"];
     [self.view addSubview:imgView];
     self.limitView = [[GZGYLimitView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:315]+[GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:105]) NameArray:_nameArray];
     self.limitView.delegate = self;
@@ -130,7 +138,10 @@
 #pragma mark --- seg点击事件--delegate
 -(void)LimitBtnDelegate:(NSInteger)sender
 {
-    
+    [self.scrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
+    float xx = SCREENWIDTH * (sender - 1) * (0.25) - SCREENWIDTH/4;
+    [self.limitView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.limitView.frame.size.height) animated:YES];
+    [self refreshTableView:(int)sender];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -138,49 +149,77 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    CGFloat imageH = self.limitView.frame.size.height+[GZGApplicationTool navBarAndStatusBarSize];
-    //获取偏移量
-    CGFloat offsetY = scrollView.contentOffset.y;
-    NSLog(@"%f,%f",imageH,offsetY);
-    if (offsetY>imageH) {
-        [UIView animateWithDuration: 0.35 animations: ^{
-        imgView.hidden = YES;
-        CGRect frame = _limitView.frame;
-        frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
-        _limitView.frame = frame;
-        CGRect frame1 = self.scrollView.frame;
-        frame1.origin.y = [GZGApplicationTool control_height:105]+[GZGApplicationTool navBarAndStatusBarSize];
-        frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
-        self.scrollView.frame = frame1;
-        for (int i = 0; i<_tableArray.count; i++) {
-            UITableView * tableView = _tableArray[i];
-            NSLog(@"%f",tableView.frame.size.height);
-            CGRect frame2 = tableView.frame;
-            frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
-            tableView.frame = frame2;
-            NSLog(@"%f",tableView.frame.size.height);
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        CGFloat imageH = self.limitView.frame.size.height+[GZGApplicationTool navBarAndStatusBarSize];
+        //获取偏移量
+        CGFloat offsetY = scrollView.contentOffset.y;
+        if (offsetY>imageH) {
+            [UIView animateWithDuration: 0.35 animations: ^{
+                imgView.hidden = YES;
+                CGRect frame = _limitView.frame;
+                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
+                _limitView.frame = frame;
+                CGRect frame1 = self.scrollView.frame;
+                frame1.origin.y = [GZGApplicationTool control_height:105]+[GZGApplicationTool navBarAndStatusBarSize];
+                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
+                self.scrollView.frame = frame1;
+                for (int i = 0; i<_tableArray.count; i++) {
+                    UITableView * tableView = _tableArray[i];
+                    CGRect frame2 = tableView.frame;
+                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
+                    tableView.frame = frame2;
+                }
+            } completion: nil];
         }
-        } completion: nil];
-    }
-    if (offsetY < -[GZGApplicationTool control_height:200]){
-        [UIView animateWithDuration: 0.35 animations: ^{
-        imgView.hidden = NO;
-        CGRect frame = _limitView.frame;
-        frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]+[GZGApplicationTool control_height:315];
-        _limitView.frame = frame;
-        CGRect frame1 = self.scrollView.frame;
-        frame1.origin.y = [GZGApplicationTool control_height:420]+[GZGApplicationTool navBarAndStatusBarSize];
-        frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
-        self.scrollView.frame = frame1;
-        for (int i = 0; i<_tableArray.count; i++) {
-            UITableView * tableView = _tableArray[i];
-            CGRect frame2 = tableView.frame;
-            frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
-            tableView.frame = frame2;
+        if (offsetY < -[GZGApplicationTool control_height:100]){
+            [UIView animateWithDuration: 0.35 animations: ^{
+                imgView.hidden = NO;
+                CGRect frame = _limitView.frame;
+                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]+[GZGApplicationTool control_height:315];
+                _limitView.frame = frame;
+                CGRect frame1 = self.scrollView.frame;
+                frame1.origin.y = [GZGApplicationTool control_height:420]+[GZGApplicationTool navBarAndStatusBarSize];
+                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
+                self.scrollView.frame = frame1;
+                for (int i = 0; i<_tableArray.count; i++) {
+                    UITableView * tableView = _tableArray[i];
+                    CGRect frame2 = tableView.frame;
+                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
+                    tableView.frame = frame2;
+                }
+            } completion: nil];
         }
-        } completion: nil];
+    }else{
+        [self changeView:scrollView.contentOffset.x];
     }
 }
 
+
+- (void)changeView:(float)x {
+    float xx = x*(1.0f/4.0f);
+    CGRect frame = self.limitView.LineView.frame;
+    frame.origin.x = xx;
+    [self.limitView.LineView setFrame:frame];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    //减速停止了时执行，手触摸时执行执行
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        
+    }
+    else
+    {
+        float xx = scrollView.contentOffset.x * (0.2) - SCREENWIDTH/4;
+        [self.limitView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.limitView.HeaderScroller.frame.size.height) animated:YES];
+        int i = (scrollView.contentOffset.x / SCREENWIDTH);
+        [self refreshTableView:i];
+    }
+}
+- (void)refreshTableView:(int)index {
+    self.ytableView = _tableArray[index];
+    CGRect frame = self.ytableView.frame;
+    frame.origin.x = SCREENWIDTH * index;
+    [self.ytableView setFrame:frame];
+    [self.ytableView reloadData];
+}
 @end

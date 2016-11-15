@@ -16,6 +16,7 @@
 #import "GZGAuthenticateViewController.h"
 #import "GZGYCollectionViewController.h"
 #import "GZGYEvaluationViewController.h"
+#import "GZGYTheOrderViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -133,25 +134,10 @@
     return view;
 }
 - (void)firstGroupViewItemClick:(UIButton *)button {
-    
-    switch (button.tag) {
-        case 0: {
-            NSLog(@"待付款");
-        }
-            break;
-        case 1: {
-            NSLog(@"待收货");
-        }
-            break;
-        case 2: {
-            NSLog(@"待评价");
-        }
-            break;
-        case 3: {
-            NSLog(@"已完成");
-        }
-            break;
-    }
+    GZGYTheOrderViewController * theorder = [[GZGYTheOrderViewController alloc] init];
+    theorder.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:theorder animated:YES];
+    theorder.tagString = [NSString stringWithFormat:@"%ld",button.tag];
 }
 #pragma mark - 复用
 - (void)rightBtnDown{

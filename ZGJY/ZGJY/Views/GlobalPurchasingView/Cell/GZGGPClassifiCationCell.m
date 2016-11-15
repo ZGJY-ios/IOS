@@ -30,9 +30,9 @@ static const NSInteger classifiCationBtnTag = 1000;
                           NSLocalizedString(@"GZGGPClassifiCationCell_RBG", nil),
                           NSLocalizedString(@"GZGGPClassifiCationCell_ADLYG", nil),
                           NSLocalizedString(@"GZGGPClassifiCationCell_OZG", nil)];
-    NSArray *btnImage = @[@"QQG_QQJX",
-                          @"QQG_XSTM",
+    NSArray *btnImage = @[@"QQG_XSTM",
                           @"QQG_HLPT",
+                          @"QQG_QQJX",
                           @"QQG_KJZY",
                           @"QQG_G_HGG",
                           @"QQG_G_RBG",

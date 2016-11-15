@@ -16,7 +16,7 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
         backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        backBtn.frame = CGRectMake([GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:[GZGApplicationTool control_wide:40]], [GZGApplicationTool control_height:40]);
+        backBtn.frame = CGRectMake([GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:[GZGApplicationTool control_wide:50]], [GZGApplicationTool control_height:40]);
         [backBtn setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(Back:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backBtn];

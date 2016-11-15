@@ -7,9 +7,9 @@
 //
 
 #import "GZGYRightCollectionViewCell.h"
+#import "GZGYClassModel.h"
 #define KScreenWigth     [[UIScreen mainScreen] bounds].size.width
 #define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
-#import "GZGYClassModel.h"
 @implementation GZGYRightCollectionViewCell
 @synthesize ImgView,NameLabel;
 -(id)initWithFrame:(CGRect)frame

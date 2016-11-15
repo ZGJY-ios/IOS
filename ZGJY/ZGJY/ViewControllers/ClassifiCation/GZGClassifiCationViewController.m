@@ -76,15 +76,21 @@
     UIView* textview = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:100])];
     textview.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:textview];
-    UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:25], SCREENWIDTH-[GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:60])];
-    textfiled.backgroundColor = [UIColor colorWithRed:214/255.0 green:213/255.0 blue:211/255.0 alpha:1.0];
-    textfiled.borderStyle = UITextBorderStyleRoundedRect;
+    UIView * fieldView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:20], SCREENWIDTH-[GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:60])];
+    fieldView.backgroundColor = [UIColor colorWithRed:214/255.0 green:213/255.0 blue:211/255.0 alpha:1.0];
+    fieldView.layer.cornerRadius = 5;
+    fieldView.layer.borderColor = [UIColor colorWithRed:214/255.0 green:213/255.0 blue:211/255.0 alpha:1.0].CGColor;
+    fieldView.layer.borderWidth = 1;
+    [fieldView.layer setMasksToBounds:YES];
+    [textview addSubview:fieldView];
+    UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:60], 0, SCREENWIDTH-[GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:60])];
+    textfiled.font = [UIFont systemFontOfSize:14];
     textfiled.placeholder = @"请输入品牌名称";
+    textfiled.delegate = self;
+    [fieldView addSubview:textfiled];
     UIImageView * searchImg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"-magnify-glass@2x"]];
-    searchImg.frame = CGRectMake(0, 0, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
-    textfiled.leftView = searchImg;
-    textfiled.leftViewMode = UITextFieldViewModeAlways;
-    [textview addSubview:textfiled];
+    searchImg.frame = CGRectMake([GZGApplicationTool control_wide:10], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:40]);
+    [fieldView addSubview:searchImg];
 }
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
@@ -176,6 +182,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.view endEditing:YES];
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     [_CollectionView scrollRectToVisible:CGRectMake(0, -5, self.CollectionView.frame.size.width, self.CollectionView.frame.size.height) animated:YES];
     
@@ -305,6 +312,7 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.view endEditing:YES];
     NSLog(@"%ld",indexPath.row);
     if ([collectionView isEqual:self.CollectionView]) {
         GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
@@ -323,6 +331,7 @@
 }
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
     //只要滚动了就会触发
     if ([scrollView isKindOfClass:[UITableView class]]) {
         
@@ -372,6 +381,7 @@
 
 -(void)SegBtnDelegate:(NSInteger)sender
 {
+    [self.view endEditing:YES];
     NSLog(@"%ld",sender);
 //    _NameTitle = _NameArray[sender];
     [self.ScrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];

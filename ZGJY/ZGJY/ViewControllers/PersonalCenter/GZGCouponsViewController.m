@@ -118,7 +118,7 @@
     }
 }
 - (void)changeView:(float)x {
-    float xx = x*(1.0f/2.0f);
+    float xx = x*(1.0f/3.0f);
     NSLog(@"~~~~~~~~%f",xx);
     CGRect frame = self.segView.LineView.frame;
     frame.origin.x = xx;

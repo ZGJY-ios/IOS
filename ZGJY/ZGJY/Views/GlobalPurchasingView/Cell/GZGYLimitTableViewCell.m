@@ -9,7 +9,7 @@
 #import "GZGYLimitTableViewCell.h"
 
 @implementation GZGYLimitTableViewCell
-@synthesize imgView,backView,startLabel,countLabel,countdown,whiteView,AMOSLabel,nameLabel,placeLabel,originLabel,priceLabel,marketLabel,marketPrice,panicLable,stripView,flowLabel,proportion,berserkBtn;
+@synthesize imgView,backView,startLabel,countLabel,whiteView,AMOSLabel,nameLabel,placeLabel,originLabel,priceLabel,marketLabel,marketPrice,panicLable,stripView,flowLabel,proportion,berserkBtn;
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,7 +20,7 @@
         backView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:265], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:100])];
         backView.backgroundColor = [UIColor colorWithRed:220/255.0 green:204/255.0 blue:158/255.0 alpha:1.0];
         [self addSubview:backView];
-        startLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:15], [GZGApplicationTool control_wide:110], [GZGApplicationTool control_height:40])];
+        startLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:30], [GZGApplicationTool control_wide:110], [GZGApplicationTool control_height:40])];
         startLabel.text = @"10件起售";
         startLabel.font = [UIFont systemFontOfSize:13];
         startLabel.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1.0];
@@ -29,7 +29,7 @@
         startLabel.layer.borderWidth = 1;
         [startLabel.layer setMasksToBounds:YES];
         [backView addSubview:startLabel];
-        countLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:180], [GZGApplicationTool control_height:15], [GZGApplicationTool control_wide:125], [GZGApplicationTool control_height:40])];
+        countLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:180], [GZGApplicationTool control_height:30], [GZGApplicationTool control_wide:125], [GZGApplicationTool control_height:40])];
         countLabel.text = @"已售156件";
         countLabel.font = [UIFont systemFontOfSize:13];
         countLabel.backgroundColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1.0];
@@ -38,14 +38,14 @@
         countLabel.layer.borderWidth = 1;
         [countLabel.layer setMasksToBounds:YES];
         [backView addSubview:countLabel];
-        countdown = [GZGYSettimeView countDown];
-        countdown.backgroundColor = [UIColor clearColor];
-        countdown.frame = CGRectMake(0,[GZGApplicationTool control_height:55], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:35]);
-        countdown.timestamp = 100;
-        countdown.timerStopBlock = ^{
-            NSLog(@"倒计时结束应该做的事情");
-        };
-        [backView addSubview:countdown];
+//        countdown = [GZGYSettimeView countDown];
+//        countdown.backgroundColor = [UIColor clearColor];
+//        countdown.frame = CGRectMake(0,[GZGApplicationTool control_height:55], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:35]);
+//        countdown.timestamp = 100;
+//        countdown.timerStopBlock = ^{
+//            NSLog(@"倒计时结束应该做的事情");
+//        };
+//        [backView addSubview:countdown];
         whiteView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:385], 0, [GZGApplicationTool control_wide:345], [GZGApplicationTool control_height:265])];
         whiteView.backgroundColor = [UIColor whiteColor];
         [self addSubview:whiteView];
