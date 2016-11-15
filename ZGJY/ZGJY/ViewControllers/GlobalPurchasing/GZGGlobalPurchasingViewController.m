@@ -63,7 +63,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)navTitleUI{
     
     
-//    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/user/tes" parameters:nil success:^(id responseObject, NSInteger task) {
+//    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/topic/baby" parameters:nil success:^(id responseObject, NSInteger task) {
 //        NSLog(@"%@",responseObject);
 //    } failure:^(NSError *failure, NSInteger task) {
 //        NSLog(@"%@  %ld",failure,(long)task);
