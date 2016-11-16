@@ -22,9 +22,9 @@
         for (int i = 0; i<NameArray.count; i++) {
             SegBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [SegBtn setFrame:CGRectMake(SCREENWIDTH/2 * i, 0, SCREENWIDTH/2, HeaderScroller.frame.size.height)];
-            if (i == 0) {
-                SegBtn.selected = YES;
-            }
+//            if (i == 0) {
+//                SegBtn.selected = YES;
+//            }
             [SegBtn setTitle:NameArray[i] forState:UIControlStateNormal];
             [SegBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             if (i == 0) {
@@ -64,5 +64,4 @@
     }
     return _nameArray;
 }
-
 @end

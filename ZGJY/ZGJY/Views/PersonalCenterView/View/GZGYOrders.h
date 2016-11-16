@@ -16,5 +16,6 @@
 @property(nonatomic,strong)UIView*LineView;
 @property(nonatomic,strong)UIButton*SegBtn;
 @property(nonatomic,retain)id<OrdersDelegeteClickProtocol>delegate;
+@property(nonatomic, strong)NSMutableArray * nameArray;
 -(instancetype)initWithFrame:(CGRect)frame NameArray:(NSArray*)NameArray;
 @end

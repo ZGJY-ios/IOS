@@ -157,7 +157,6 @@
 		5372CA581DB7136E009C6CA1 /* GZGYCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA571DB7136E009C6CA1 /* GZGYCountdown.m */; };
 		5372CA5B1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA5A1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m */; };
 		5372CA5E1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA5D1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.m */; };
-		538047651DDAE3C300C75869 /* GZGYAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 538047641DDAE3C300C75869 /* GZGYAPIHelper.m */; };
 		538047681DDAE7C600C75869 /* GZGYClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 538047671DDAE7C600C75869 /* GZGYClassModel.m */; };
 		538047711DDAEE0B00C75869 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476A1DDAEE0B00C75869 /* SVIndefiniteAnimatedView.m */; };
 		538047721DDAEE0B00C75869 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476C1DDAEE0B00C75869 /* SVProgressHUD.m */; };
@@ -520,8 +519,6 @@
 		5372CA5A1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYStrikeThroughLabel.m; sourceTree = "<group>"; };
 		5372CA5C1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYSalaCollectionViewCell.h; sourceTree = "<group>"; };
 		5372CA5D1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYSalaCollectionViewCell.m; sourceTree = "<group>"; };
-		538047631DDAE3C300C75869 /* GZGYAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYAPIHelper.h; sourceTree = "<group>"; };
-		538047641DDAE3C300C75869 /* GZGYAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYAPIHelper.m; sourceTree = "<group>"; };
 		538047661DDAE7C600C75869 /* GZGYClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYClassModel.h; sourceTree = "<group>"; };
 		538047671DDAE7C600C75869 /* GZGYClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYClassModel.m; sourceTree = "<group>"; };
 		538047691DDAEE0B00C75869 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -1262,8 +1259,6 @@
 				049DC6571DBA065A001DC372 /* GZGCommonleView.h */,
 				049DC6581DBA065A001DC372 /* GZGCommonleView.m */,
 				04FBA27D1D98C98200AD147A /* ZGJY.pch */,
-				538047631DDAE3C300C75869 /* GZGYAPIHelper.h */,
-				538047641DDAE3C300C75869 /* GZGYAPIHelper.m */,
 			);
 			path = TheCommonlyUsed;
 			sourceTree = "<group>";
@@ -1773,7 +1768,6 @@
 				53975D531DB9B31000478004 /* GZGYDetailsViewController.m in Sources */,
 				E577CF821DC9BD8E00C8052A /* GZGLogisticsViewController.m in Sources */,
 				048F4EFC1DBCB13400DFA1C6 /* GZGCountriesTheCostomTableView.m in Sources */,
-				538047651DDAE3C300C75869 /* GZGYAPIHelper.m in Sources */,
 				044DA3E11D5C467100DD06EC /* UIImageView+HighlightedWebCache.m in Sources */,
 				044DA3D91D5C467100DD06EC /* SDWebImageDownloader.m in Sources */,
 				E5648D331DBCAB2E0077A165 /* GZGShoppingCartCell.m in Sources */,

@@ -189,46 +189,49 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    CGFloat imageH = self.segView.frame.size.height+[GZGApplicationTool navBarAndStatusBarSize];
-    //获取偏移量
-    CGFloat offsetY = scrollView.contentOffset.y;
-    NSLog(@"%f,%f",imageH,offsetY);
-    if (offsetY>imageH) {
-        [UIView animateWithDuration: 0.1 animations: ^{
-            CGRect frame = self.headerSegView.frame;
-            frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:630];
-            self.headerSegView.frame = frame;
-            CGRect frame1 = self.scrollView.frame;
-            frame1.origin.y = [GZGApplicationTool control_height:100]+[GZGApplicationTool navBarAndStatusBarSize];
-            frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
-            self.scrollView.frame = frame1;
-            for (int i = 0; i<_tableArray.count; i++) {
-                UITableView * tableView = _tableArray[i];
-                NSLog(@"%f",tableView.frame.size.height);
-                CGRect frame2 = tableView.frame;
-                frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
-                tableView.frame = frame2;
-                NSLog(@"%f",tableView.frame.size.height);
-            }
-        } completion: nil];
-    }
-    if (offsetY < -[GZGApplicationTool control_height:100]){
-        [UIView animateWithDuration: 0.35 animations: ^{
-            CGRect frame = self.headerSegView.frame;
-            frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
-            self.headerSegView.frame = frame;
-            CGRect frame1 = self.scrollView.frame;
-            frame1.origin.y = [GZGApplicationTool control_height:730]+[GZGApplicationTool navBarAndStatusBarSize];
-            frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:730]-[GZGApplicationTool navBarAndStatusBarSize];
-            self.scrollView.frame = frame1;
-            for (int i = 0; i<_tableArray.count; i++) {
-                UITableView * tableView = _tableArray[i];
-                CGRect frame2 = tableView.frame;
-                frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:730]-[GZGApplicationTool navBarAndStatusBarSize];
-                tableView.frame = frame2;
-            }
-        } completion: nil];
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        CGFloat imageH = self.segView.frame.size.height+[GZGApplicationTool navBarAndStatusBarSize];
+        //获取偏移量
+        CGFloat offsetY = scrollView.contentOffset.y;
+        NSLog(@"%f,%f",imageH,offsetY);
+        if (offsetY>imageH) {
+            [UIView animateWithDuration: 0.1 animations: ^{
+                CGRect frame = self.headerSegView.frame;
+                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:630];
+                self.headerSegView.frame = frame;
+                CGRect frame1 = self.scrollView.frame;
+                frame1.origin.y = [GZGApplicationTool control_height:100]+[GZGApplicationTool navBarAndStatusBarSize];
+                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
+                self.scrollView.frame = frame1;
+                for (int i = 0; i<_tableArray.count; i++) {
+                    UITableView * tableView = _tableArray[i];
+                    NSLog(@"%f",tableView.frame.size.height);
+                    CGRect frame2 = tableView.frame;
+                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:100]-[GZGApplicationTool navBarAndStatusBarSize];
+                    tableView.frame = frame2;
+                    NSLog(@"%f",tableView.frame.size.height);
+                }
+            } completion: nil];
+        }
+        if (offsetY < -[GZGApplicationTool control_height:100]){
+            [UIView animateWithDuration: 0.35 animations: ^{
+                CGRect frame = self.headerSegView.frame;
+                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
+                self.headerSegView.frame = frame;
+                CGRect frame1 = self.scrollView.frame;
+                frame1.origin.y = [GZGApplicationTool control_height:730]+[GZGApplicationTool navBarAndStatusBarSize];
+                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:730]-[GZGApplicationTool navBarAndStatusBarSize];
+                self.scrollView.frame = frame1;
+                for (int i = 0; i<_tableArray.count; i++) {
+                    UITableView * tableView = _tableArray[i];
+                    CGRect frame2 = tableView.frame;
+                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:730]-[GZGApplicationTool navBarAndStatusBarSize];
+                    tableView.frame = frame2;
+                }
+            } completion: nil];
+        }
+    }else{
+        [self changeView:scrollView.contentOffset.x];
     }
 }
 
@@ -259,5 +262,4 @@
     [self.ytableView setFrame:frame];
     [self.ytableView reloadData];
 }
-
 @end

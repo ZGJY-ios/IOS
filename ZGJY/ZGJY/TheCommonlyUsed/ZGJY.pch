@@ -13,7 +13,7 @@
 #import "GZGCommonlySet.h"
 #import "ZGNetWork.h"
 #import "GZGCommonleView.h"
-#import "GZGYAPIHelper.h"
+//#import "GZGYAPIHelper.h"
 #import "SVProgressHUD.h"
 
 
