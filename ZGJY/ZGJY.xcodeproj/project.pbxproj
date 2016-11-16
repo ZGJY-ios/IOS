@@ -232,6 +232,15 @@
 		E580051B1DBF25E200421727 /* GZGConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */; };
 		E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */; };
 		E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */; };
+		E5941B9A1DDBF8E50069B757 /* GZGSpecialPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941B991DDBF8E50069B757 /* GZGSpecialPerformanceModel.m */; };
+		E5941BB11DDBF9A70069B757 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941B9E1DDBF9A70069B757 /* JSONModel.m */; };
+		E5941BB21DDBF9A70069B757 /* JSONModelClassProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BA01DDBF9A70069B757 /* JSONModelClassProperty.m */; };
+		E5941BB31DDBF9A70069B757 /* JSONModelError.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BA21DDBF9A70069B757 /* JSONModelError.m */; };
+		E5941BB41DDBF9A70069B757 /* JSONAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BA61DDBF9A70069B757 /* JSONAPI.m */; };
+		E5941BB51DDBF9A70069B757 /* JSONHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BA81DDBF9A70069B757 /* JSONHTTPClient.m */; };
+		E5941BB61DDBF9A70069B757 /* JSONModel+networking.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAA1DDBF9A70069B757 /* JSONModel+networking.m */; };
+		E5941BB71DDBF9A70069B757 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */; };
+		E5941BB81DDBF9A70069B757 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */; };
 		E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */; };
 		E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */; };
 		E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */; };
@@ -654,6 +663,26 @@
 		E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGConfirmOrderViewController.m; sourceTree = "<group>"; };
 		E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@2x.png"; sourceTree = "<group>"; };
 		E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@3x.png"; sourceTree = "<group>"; };
+		E5941B981DDBF8E50069B757 /* GZGSpecialPerformanceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpecialPerformanceModel.h; sourceTree = "<group>"; };
+		E5941B991DDBF8E50069B757 /* GZGSpecialPerformanceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpecialPerformanceModel.m; sourceTree = "<group>"; };
+		E5941B9D1DDBF9A70069B757 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		E5941B9E1DDBF9A70069B757 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		E5941B9F1DDBF9A70069B757 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		E5941BA01DDBF9A70069B757 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		E5941BA11DDBF9A70069B757 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		E5941BA21DDBF9A70069B757 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		E5941BA31DDBF9A70069B757 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		E5941BA51DDBF9A70069B757 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		E5941BA61DDBF9A70069B757 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		E5941BA71DDBF9A70069B757 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		E5941BA81DDBF9A70069B757 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		E5941BA91DDBF9A70069B757 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		E5941BAA1DDBF9A70069B757 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		E5941BAC1DDBF9A70069B757 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		E5941BAE1DDBF9A70069B757 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		E5941BB01DDBF9A70069B757 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCouponsCell.h; sourceTree = "<group>"; };
 		E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCouponsCell.m; sourceTree = "<group>"; };
 		E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OfficialAddress.png; sourceTree = "<group>"; };
@@ -800,6 +829,7 @@
 		044D9F481D5C439200DD06EC /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E5941B9B1DDBF9A70069B757 /* JSONModel */,
 				040DDA481D9925CC00C2FB75 /* YDImage Shuffling */,
 				044DA3B21D5C467100DD06EC /* SDWebImage */,
 				044DA39E1D5C466300DD06EC /* AFNetworking */,
@@ -1419,6 +1449,7 @@
 		BDDDF80A1D51B992002723AB /* ZGJY */ = {
 			isa = PBXGroup;
 			children = (
+				E5941B971DDBF8E50069B757 /* Models */,
 				04104EAA1D9CACE500A940F1 /* ThirdImage */,
 				048F70F31D9B63FD00338BA6 /* Views */,
 				04FBA25D1D98C87000AD147A /* ViewControllers */,
@@ -1460,6 +1491,64 @@
 				BDDDF8321D51B993002723AB /* Info.plist */,
 			);
 			path = ZGJYUITests;
+			sourceTree = "<group>";
+		};
+		E5941B971DDBF8E50069B757 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5941B981DDBF8E50069B757 /* GZGSpecialPerformanceModel.h */,
+				E5941B991DDBF8E50069B757 /* GZGSpecialPerformanceModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E5941B9B1DDBF9A70069B757 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5941B9C1DDBF9A70069B757 /* JSONModel */,
+				E5941BA31DDBF9A70069B757 /* JSONModelLib.h */,
+				E5941BA41DDBF9A70069B757 /* JSONModelNetworking */,
+				E5941BAB1DDBF9A70069B757 /* JSONModelTransformations */,
+				E5941BB01DDBF9A70069B757 /* module.modulemap */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		E5941B9C1DDBF9A70069B757 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				E5941B9D1DDBF9A70069B757 /* JSONModel.h */,
+				E5941B9E1DDBF9A70069B757 /* JSONModel.m */,
+				E5941B9F1DDBF9A70069B757 /* JSONModelClassProperty.h */,
+				E5941BA01DDBF9A70069B757 /* JSONModelClassProperty.m */,
+				E5941BA11DDBF9A70069B757 /* JSONModelError.h */,
+				E5941BA21DDBF9A70069B757 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		E5941BA41DDBF9A70069B757 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				E5941BA51DDBF9A70069B757 /* JSONAPI.h */,
+				E5941BA61DDBF9A70069B757 /* JSONAPI.m */,
+				E5941BA71DDBF9A70069B757 /* JSONHTTPClient.h */,
+				E5941BA81DDBF9A70069B757 /* JSONHTTPClient.m */,
+				E5941BA91DDBF9A70069B757 /* JSONModel+networking.h */,
+				E5941BAA1DDBF9A70069B757 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		E5941BAB1DDBF9A70069B757 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				E5941BAC1DDBF9A70069B757 /* JSONKeyMapper.h */,
+				E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */,
+				E5941BAE1DDBF9A70069B757 /* JSONValueTransformer.h */,
+				E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
 		E5AD874B1DD55CB100EDB8B3 /* View */ = {
@@ -1713,6 +1802,7 @@
 				538047711DDAEE0B00C75869 /* SVIndefiniteAnimatedView.m in Sources */,
 				E5201B3B1DD45665007EDFAB /* GZGSpecialPerformanceViewController.m in Sources */,
 				E524093A1DBE2F5F00AEA85F /* GZGShoppingCartSettlementView.m in Sources */,
+				E5941BB41DDBF9A70069B757 /* JSONAPI.m in Sources */,
 				04A63CF01DBB46D100961F81 /* YDTopTitleRolling.m in Sources */,
 				044DA3941D5C458E00DD06EC /* FMDatabase.m in Sources */,
 				5366839B1DBB2ED300186457 /* GZGYChoiceView.m in Sources */,
@@ -1730,6 +1820,7 @@
 				53860F641DD963450047A734 /* GZGYWaitingTableViewCell.m in Sources */,
 				04E8D61F1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m in Sources */,
 				53860F621DD963450047A734 /* GZGYAlreadyTableViewCell.m in Sources */,
+				E5941B9A1DDBF8E50069B757 /* GZGSpecialPerformanceModel.m in Sources */,
 				53AB54EB1DC1FDC200C8B264 /* GZGYNopromptTableViewCell.m in Sources */,
 				53860F511DD962F90047A734 /* GZGYCollectionViewController.m in Sources */,
 				53975D631DB9EB9800478004 /* GZGYButton.m in Sources */,
@@ -1740,6 +1831,7 @@
 				53860F531DD962F90047A734 /* GZGYLoginViewController.m in Sources */,
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
 				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
+				E5941BB51DDBF9A70069B757 /* JSONHTTPClient.m in Sources */,
 				043CDFF01DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m in Sources */,
 				E5E170D01DC874A1004AC304 /* GZGPayCOmpleteViewController.m in Sources */,
 				049DC6521DB9FB36001DC372 /* GZGCountriesReplenishCollectionCell.m in Sources */,
@@ -1752,6 +1844,7 @@
 				532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */,
 				53AB54E81DC1F56F00C8B264 /* GZGYProgressTableViewCell.m in Sources */,
 				53860F731DD964E80047A734 /* GZGYHeaderTableViewCell.m in Sources */,
+				E5941BB11DDBF9A70069B757 /* JSONModel.m in Sources */,
 				044DA3961D5C458E00DD06EC /* FMDatabasePool.m in Sources */,
 				538047751DDAEE0B00C75869 /* SVProgressHUD-dummy.m in Sources */,
 				E5ABE6981DD1C41500D2E59D /* GZGCouponsViewController.m in Sources */,
@@ -1772,6 +1865,7 @@
 				044DA4031D5C60B200DD06EC /* UIProgressView+AFNetworking.m in Sources */,
 				53975D531DB9B31000478004 /* GZGYDetailsViewController.m in Sources */,
 				E577CF821DC9BD8E00C8052A /* GZGLogisticsViewController.m in Sources */,
+				E5941BB31DDBF9A70069B757 /* JSONModelError.m in Sources */,
 				048F4EFC1DBCB13400DFA1C6 /* GZGCountriesTheCostomTableView.m in Sources */,
 				538047651DDAE3C300C75869 /* GZGYAPIHelper.m in Sources */,
 				044DA3E11D5C467100DD06EC /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1779,6 +1873,7 @@
 				E5648D331DBCAB2E0077A165 /* GZGShoppingCartCell.m in Sources */,
 				E580051B1DBF25E200421727 /* GZGConfirmOrderViewController.m in Sources */,
 				E58005141DBF00CD00421727 /* GZGHotRecommendedCell.m in Sources */,
+				E5941BB61DDBF9A70069B757 /* JSONModel+networking.m in Sources */,
 				E5201B381DD450CE007EDFAB /* GZGChangePasswordViewController.m in Sources */,
 				044DA3DC1D5C467100DD06EC /* SDWebImagePrefetcher.m in Sources */,
 				044DA3AE1D5C466300DD06EC /* AFSecurityPolicy.m in Sources */,
@@ -1828,13 +1923,16 @@
 				E528868C1DC71A650056496C /* GZGOrderPayCell.m in Sources */,
 				E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */,
 				53975D6A1DBA2DB500478004 /* GZGYBbtnView.m in Sources */,
+				E5941BB81DDBF9A70069B757 /* JSONValueTransformer.m in Sources */,
 				535FA4711DBCA5A10048D966 /* GZGYEvaluationTableViewCell.m in Sources */,
 				049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */,
 				044DA3FE1D5C60B200DD06EC /* AFImageDownloader.m in Sources */,
 				044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */,
+				E5941BB21DDBF9A70069B757 /* JSONModelClassProperty.m in Sources */,
 				044DA3AD1D5C466300DD06EC /* AFNetworkReachabilityManager.m in Sources */,
 				5372CA5E1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.m in Sources */,
 				044DA3951D5C458E00DD06EC /* FMDatabaseAdditions.m in Sources */,
+				E5941BB71DDBF9A70069B757 /* JSONKeyMapper.m in Sources */,
 				E576614B1DB7357E0078D96F /* GZGSegmentControl.m in Sources */,
 				53860F6C1DD964D20047A734 /* GZGYSpellgroupViewController.m in Sources */,
 				E56AA69A1DC2F8FD006AC1A9 /* GZGOrderPayViewController.m in Sources */,

@@ -60,6 +60,7 @@ static NSInteger const _timeDelay                   = 30;
                                                                 @"text/html", nil];
 //    requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
     requestManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    ((AFJSONResponseSerializer *)requestManager.responseSerializer).removesKeysWithNullValues = YES;
     requestManager.requestSerializer.timeoutInterval = _timeDelay;
     
     return requestManager;

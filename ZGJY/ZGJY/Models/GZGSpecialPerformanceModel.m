@@ -18,4 +18,13 @@
     return model;
 }
 
+- (void)setNilValueForKey:(NSString *)key {
+    
+    if ([key isEqualToString:@"distance"]) {
+        _weight = 0;
+    } else {
+        [super setNilValueForKey:key];
+    }
+}
+
 @end
