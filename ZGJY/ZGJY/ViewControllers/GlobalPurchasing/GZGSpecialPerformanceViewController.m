@@ -14,6 +14,7 @@
 #import "GZGSPDropMenuView.h"
 #import "GZGSpecialPerformanceModel.h"
 #import "GZGYAPIHelper.h"
+#import "GZGYDetailsViewController.h"
 
 @interface UIImage (PersonalCenter)
 
@@ -48,10 +49,17 @@
 }
 /** 下拉菜单 */
 @property (nonatomic, strong) GZGSPDropMenuView *dropdownMenu;
+@property (nonatomic, strong) NSMutableArray * mutableDatas;
 @end
 
 @implementation GZGSpecialPerformanceViewController
-
+- (NSMutableArray *)mutableDatas {
+    
+    if (_mutableDatas == nil) {
+        _mutableDatas = [NSMutableArray array];
+    }
+    return _mutableDatas;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -77,7 +85,7 @@
     [_pageView changeToItemAtIndex:0];
     [self.view addSubview:_pageView];
     
-    [self requestData];
+    [self requestDataWithProductCategoryId:@"11"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,15 +94,20 @@
 }
 #pragma mark - 自己的方法
 /** 数据请求 */
-- (void)requestData {
-    [[GZGYAPIHelper shareAPIHelper] specialPerformanceURL:@"http://192.168.0.110:8080/topic/baby" dict:nil finish:^(NSArray *goods) {
+- (void)requestDataWithProductCategoryId:(NSString *)productCategoryId {
+    NSDictionary * dict = @{@"productCategoryId":productCategoryId};
+    [[GZGYAPIHelper shareAPIHelper] specialPerformanceURL:@"http://192.168.0.110:8080/appTopic/baby" dict:dict finish:^(NSArray *goods) {
+        [_mutableDatas removeAllObjects];
         for (int i = 0; i < goods.count; i ++) {
             NSDictionary * dict1 = goods[i];
             GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
-            NSLog(@"%ld",model.brand_id);
+            [_mutableDatas addObject:model];
         }
+        UICollectionView * collectionView = _pageView.itemsArray[_pageView.currentIndex];
+        
+        [collectionView reloadData];
     } failed:^(NSError *error) {
-        NSLog(@"错误信息");
+        NSLog(@"错误信息:%@",error);
     }];
 }
 /** 初始化下拉菜单 */
@@ -136,14 +149,6 @@
         shoppingCartVC.view.frame = CGRectMake(shoppingCartVC.view.frame.origin.x, shoppingCartVC.view.frame.origin.y, shoppingCartVC.view.frame.size.width, shoppingCartVC.view.frame.size.height + 44);
         [weakSelf.navigationController pushViewController:shoppingCartVC animated:YES];
     }];
-//    //菜单模型4
-//    FFDropDownMenuModel *menuModel4 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"WeChat" menuItemIconName:@"menu4"  menuBlock:^{
-//        NSLog(@"WeChat");
-//    }];
-//    //菜单模型5
-//    FFDropDownMenuModel *menuModel5 = [FFDropDownMenuModel ff_DropDownMenuModelWithMenuItemTitle:@"Facebook" menuItemIconName:@"menu5"  menuBlock:^{
-//        NSLog(@"Facebook");
-//    }];
     
     NSArray *menuModelArr = @[menuModel0, menuModel1, menuModel2, menuModel3];
     return menuModelArr;
@@ -178,6 +183,28 @@
 #pragma mark - JXSegmentDelegate
 - (void)segment:(GZGSpecialPerformanceView*)segment didSelectIndex:(NSInteger)index{
     [_pageView changeToItemAtIndex:index];
+    switch (_pageView.currentIndex) {
+        case 0: {
+            // 妈妈最爱
+            [self requestDataWithProductCategoryId:@"11"];
+        }
+            break;
+        case 1: {
+            // 进口奶粉
+            [self requestDataWithProductCategoryId:@"31"];
+        }
+            break;
+        case 2: {
+            // 大牌尿裤
+            [self requestDataWithProductCategoryId:@"21"];
+        }
+            break;
+        case 3: {
+            // 健康辅助
+            [self requestDataWithProductCategoryId:@"41"];
+        }
+            break;
+    }
 }
 
 #pragma mark - JXPageViewDelegate
@@ -190,17 +217,32 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 6;
+    return self.mutableDatas.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     GZGSpecialPerformanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SpecialPerformance" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.type = SpecialPerformanceTypeSpecialPackagesMailed;
+    GZGSpecialPerformanceModel * model = self.mutableDatas[indexPath.row];
+    cell.commodityNameLabel.text = model.name;
+    cell.commodityNowPriceLabel.text = [NSString stringWithFormat:@"￥%.0f",model.price];
+    cell.commodityOriginalPriceLabel.attributedText = [cell attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"￥%.0f",model.market_price]];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:urlString]];
+        });
+    });
     return cell;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake([GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:25]);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
 

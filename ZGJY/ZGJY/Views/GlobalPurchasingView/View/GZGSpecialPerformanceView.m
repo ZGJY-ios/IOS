@@ -90,7 +90,6 @@
     
     [selectedButton setSelected:YES];
     _selectedIndex = selectedButton.tag - 1000;
-    
     NSInteger totalW = 0;
     for (int i=0; i<_selectedIndex; i++) {
         totalW += [[widthArray objectAtIndex:i] integerValue];
@@ -124,10 +123,8 @@
 
 
 @interface GZGPageView () <UIScrollViewDelegate> {
-    NSInteger _currentIndex;
+    
 }
-
-@property (nonatomic,strong) NSMutableArray *itemsArray;
 
 @end
 

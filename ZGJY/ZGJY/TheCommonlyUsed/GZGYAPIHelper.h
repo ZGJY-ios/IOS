@@ -14,4 +14,6 @@
 - (void)MaternalandChildURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)())result;
 //母婴用品接口
 - (void)specialPerformanceURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
+//国家馆接口
+- (void)pavilionURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 @end

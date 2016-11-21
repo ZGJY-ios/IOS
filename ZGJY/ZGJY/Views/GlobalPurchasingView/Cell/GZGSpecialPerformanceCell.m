@@ -66,7 +66,7 @@
         });
         _commodityNowPriceLabel = ({
             UILabel * label = [[UILabel alloc] init];
-            label.text = NSLocalizedString(@"￥218", nil);
+            label.text = NSLocalizedString(@"￥9999", nil);
             label.textColor = [@"e5007f" hexStringToColor];
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
             CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, [GZGApplicationTool control_height:40])];
@@ -75,7 +75,7 @@
         });
         _commodityOriginalPriceLabel = ({
             UILabel * label = [[UILabel alloc] init];
-            label.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"￥280", nil)];
+            label.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"￥9999", nil)];
             label.textColor = [GZGColorClass subjectShoppingCartOriginPriceColor];
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:17]];
             CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, [GZGApplicationTool control_height:20])];

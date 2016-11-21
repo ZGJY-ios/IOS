@@ -23,4 +23,9 @@ typedef NS_ENUM(NSInteger, SpecialPerformanceType) {
 @property (nonatomic, strong) UILabel * commodityOriginalPriceLabel; // 商品原价格
 @property (nonatomic, strong) UIButton * cartItem; // 购物车
 @property (nonatomic) SpecialPerformanceType type;
+
+/**
+ *  给字符串添加横线
+ */
+- (NSMutableAttributedString *)attributedStringHorzontalLineWithString:(NSString *)string;
 @end
