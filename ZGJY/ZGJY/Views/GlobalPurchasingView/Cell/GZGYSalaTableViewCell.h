@@ -10,6 +10,7 @@
 #import "GZGYCountdown.h"
 #import "GZGYStrikeThroughLabel.h"
 #import "GZGYSalaCollectionViewCell.h"
+@class GZGYRootLimitModel;
 @protocol CollectionViewDelegeteClickProtocol <NSObject>
 
 - (void)CollectionViewDelegeteClick:(NSInteger)sender;
@@ -18,5 +19,6 @@
 @interface GZGYSalaTableViewCell : UITableViewCell
 <UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong)id <CollectionViewDelegeteClickProtocol>delegete;
+@property (nonatomic, strong) NSArray<GZGYRootLimitModel *> *model;
 @property(nonatomic,strong)UICollectionView*collectionView;
 @end

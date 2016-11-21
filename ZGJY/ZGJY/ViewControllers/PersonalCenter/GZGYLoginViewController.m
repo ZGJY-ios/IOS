@@ -9,6 +9,7 @@
 #import "GZGYLoginViewController.h"
 #import "GZGYLoginView.h"
 #import "GZGYRegisteredViewController.h"
+#import "GZGYEmailsViewController.h"
 @interface GZGYLoginViewController ()<LoginDelegeteClickProtocol>
 {
     GZGYLoginView * loginView;
@@ -33,8 +34,10 @@
 #pragma mark --- 注册事件
 -(void)RegDelegeteClick:(id)sender
 {
-    GZGYRegisteredViewController * regisred = [[GZGYRegisteredViewController alloc]init];
-    [self presentViewController:regisred animated:YES completion:nil];
+//    GZGYRegisteredViewController * regisred = [[GZGYRegisteredViewController alloc]init];
+//    [self presentViewController:regisred animated:YES completion:nil];
+    GZGYEmailsViewController * emails = [[GZGYEmailsViewController alloc]init];
+    [self presentViewController:emails animated:YES completion:nil];
 }
 #pragma mark --- 忘记密码
 -(void)ForgetDelegeteClick:(id)sender

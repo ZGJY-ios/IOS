@@ -14,6 +14,9 @@
 #import "GZGYEvaluationTableViewCell.h"
 #import "GZGYEvaluaImgTableViewCell.h"
 #import "GZGYOrderViewController.h"
+#import "GZGYDetailsModel.h"
+#import "GZGYPhotoViewController.h"
+#import "UIScrollView+JYPaging.h"
 @interface GZGYDetailsViewController ()<NavDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate,ChoiceDelegeteClickProtocol>
 {
     NSArray*nameArray;
@@ -21,7 +24,10 @@
     GZGYBbtnView * btnView;
     CGPoint center;
     GZGYChoiceView * choiceView;
+    NSInteger number;
+    NSString * introduction;
 }
+@property(nonatomic, strong)NSArray<GZGYDetailsModel *> * model;
 @property(nonatomic, strong)GZGYNavView *segView;
 @property(nonatomic,strong)UIScrollView*mainScroll;
 @property(nonatomic,strong)UIScrollView*oneScroll;
@@ -64,6 +70,7 @@
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.view.backgroundColor = [UIColor whiteColor];
     nameArray = @[@"商品",@"详情",@"评价"];
+    NSLog(@"%@",self.shopID);
     [self Animation];
     [self ScrollViewInterface];
     //nav
@@ -74,7 +81,26 @@
     [self BtnInterface];
     //choiceView
     [self ChoiceViewInterface];
+    //数据
+    [self ClasstionData];
     // Do any additional setup after loading the view.
+}
+#pragma mark --- 数据
+-(void)ClasstionData
+{
+    NSDictionary * dict = @{@"taglds":@"5",@"id":self.shopID};
+    [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dict Finsh:^(NSArray * dataArray){
+        self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
+        detailsView.model = self.model[0];
+        NSDictionary * dictionary = dataArray[0];
+        introduction = dictionary[@"introduction"];
+        GZGYPhotoViewController *photo = [[GZGYPhotoViewController alloc] init];
+        photo.introduction = introduction;
+        [self addChildViewController:photo];
+        if (photo.view != nil) {
+            self.oneScroll.secondScrollView = photo.scrollView;
+        }
+    }];
 }
 #pragma mark --- 波纹动画
 -(void)Animation
@@ -124,9 +150,8 @@
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (self.oneScroll == nil) {
-        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height)];
-        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]);
-//        self.oneScroll.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
+        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:150])];
+        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:150]);
         [self.mainScroll addSubview:self.oneScroll];
     }
     if (self.twoScroll == nil) {
@@ -144,15 +169,12 @@
 }
 -(void)DetailsInterface
 {
-    NSArray * arrayImg = @[@"sy_hlpic2",@"sy_hlpic2.jpg",@"sy_hlpic3.jpg"];
-    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:450]) andImageArr:arrayImg];
+    NSArray * arrayImg = @[self.shopImg];
+    detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height) andImageArr:arrayImg];
+    detailsView.shopName.text = self.shopName;
     [self.oneScroll addSubview:detailsView];
-    [detailsView.speButton addTarget:self action:@selector(specifications) forControlEvents:UIControlEventTouchUpInside];
-    [detailsView.disButton addTarget:self action:@selector(distribution) forControlEvents:UIControlEventTouchUpInside];
-    [detailsView.disTimeBtn addTarget:self action:@selector(disTime) forControlEvents:UIControlEventTouchUpInside];
     [detailsView.reduceButton addTarget:self action:@selector(reduce) forControlEvents:UIControlEventTouchUpInside];
     [detailsView.addButton addTarget:self action:@selector(add) forControlEvents:UIControlEventTouchUpInside];
-
 
 }
 #pragma mark --- btnview
@@ -188,7 +210,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID = @"cell";
     if (indexPath.section == 0) {
@@ -336,13 +357,20 @@
 #pragma mark --- 减少事件监听
 -(void)reduce
 {
-    
+    number = [detailsView.countField.text integerValue];
+    number--;
+    if (number>1) {
+        detailsView.countField.text = [NSString stringWithFormat:@"%ld",number];
+    }else{
+        detailsView.countField.text = @"1";
+    }
 }
 #pragma mark --- 增加事件监听
 -(void)add
 {
-    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
-    [self.navigationController pushViewController:orders animated:YES];
+    number = [detailsView.countField.text integerValue];
+    number++;
+    detailsView.countField.text = [NSString stringWithFormat:@"%ld",number];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

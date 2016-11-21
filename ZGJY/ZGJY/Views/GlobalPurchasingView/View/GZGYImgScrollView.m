@@ -24,7 +24,10 @@
         for (int i = 0; i<imageArr.count; i++)
         {
             UIImageView *img = [[UIImageView alloc] init];
-            img.image = [UIImage imageNamed:[imageArr objectAtIndex:i]];
+//            img.image = [UIImage imageNamed:[imageArr objectAtIndex:i]];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [img setHeader:imageArr[i]];
+            });
             img.frame = CGRectMake(i*self.frame.size.width, 0,self.frame.size.width, self.frame.size.height);
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImgTapClick:)];
             [img addGestureRecognizer:tap];

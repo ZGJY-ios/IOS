@@ -34,7 +34,7 @@
 @property (nonatomic, copy) NSString * cost;
 @property (nonatomic, copy) NSString * create_by;
 @property (nonatomic, copy) NSString * creation_date;
-@property (nonatomic) BOOL * delete_flag;
+@property (nonatomic) BOOL delete_flag;
 @property (nonatomic, copy) NSString * full_name;
 @property (nonatomic, assign) NSInteger goods_id; // 商品ID
 @property (nonatomic, assign) NSInteger hits;
@@ -75,7 +75,7 @@
 @property (nonatomic, copy) NSString * week_hits_date;
 @property (nonatomic, assign) NSInteger week_sales;
 @property (nonatomic, copy) NSString * week_sales_date;
-@property (nonatomic, assign ) CGFloat weight;
+@property (nonatomic, assign) CGFloat weight;
 
 + (instancetype)specialPerformanceWithDict:(NSDictionary *)dict;
 @end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GZGSubViewController.h"
 @interface GZGYDetailsViewController : GZGSubViewController
-
+@property(nonatomic, strong)NSString * shopID;
+@property(nonatomic, strong)NSString * shopImg;
+@property(nonatomic, strong)NSString * shopName;
 @end

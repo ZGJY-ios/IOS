@@ -12,8 +12,8 @@
 #import "GZGSpecialPerformanceView.h"
 #import "GZGSpecialPerformanceCell.h"
 #import "GZGSPDropMenuView.h"
-//#import "GZGSpecialPerformanceModel.h"
-#import "ZGNetWork.h"
+#import "GZGSpecialPerformanceModel.h"
+#import "GZGYAPIHelper.h"
 
 @interface UIImage (PersonalCenter)
 
@@ -87,18 +87,14 @@
 #pragma mark - 自己的方法
 /** 数据请求 */
 - (void)requestData {
-    
-    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/topic/baby" parameters:nil success:^(id responseObject, NSInteger task) {
-//        NSLog(@"%@",responseObject);
-        NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];
-        NSArray * array = dict[@"list"];
-        for (int i = 0; i < array.count; i ++) {
-            NSDictionary * dict1 = array[i];
-//            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
-//            NSLog(@"%ld",model.brand_id);
+    [[GZGYAPIHelper shareAPIHelper] specialPerformanceURL:@"http://192.168.0.110:8080/topic/baby" dict:nil finish:^(NSArray *goods) {
+        for (int i = 0; i < goods.count; i ++) {
+            NSDictionary * dict1 = goods[i];
+            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
+            NSLog(@"%ld",model.brand_id);
         }
-    } failure:^(NSError *failure, NSInteger task) {
-        NSLog(@"%@  %ld",failure,(long)task);
+    } failed:^(NSError *error) {
+        NSLog(@"错误信息");
     }];
 }
 /** 初始化下拉菜单 */
