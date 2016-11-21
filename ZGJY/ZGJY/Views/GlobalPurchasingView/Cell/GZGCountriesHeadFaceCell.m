@@ -9,7 +9,7 @@
 #import "GZGCountriesHeadFaceCell.h"
 #import "GZGCountriesHeadFaceCollectionCell.h"
 #import "UIImageView+WebCache.h"
-#import "GZGSpecialPerformanceModel.h"
+
 static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollectionCell";
 
 @interface GZGCountriesHeadFaceCell()<YDTopTitleRollingDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -98,6 +98,10 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld",indexPath.row);
+    
+    GZGSpecialPerformanceModel * model = self.dataArr[indexPath.row];
+    
+    [self.delegate cellSelectedModel:model];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

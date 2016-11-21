@@ -245,6 +245,28 @@
     detailsVC.shopName = model.name;
     detailsVC.shopImg = model.image;
     detailsVC.shopID = model.ID;
+    switch (_pageView.currentIndex) {
+        case 0: {
+            // 妈妈最爱
+            detailsVC.productCategoryId = @"11";
+        }
+            break;
+        case 1: {
+            // 进口奶粉
+            detailsVC.productCategoryId = @"31";
+        }
+            break;
+        case 2: {
+            // 大牌尿裤
+            detailsVC.productCategoryId = @"21";
+        }
+            break;
+        case 3: {
+            // 健康辅助
+            detailsVC.productCategoryId = @"41";
+        }
+            break;
+    }
     [self.navigationController pushViewController:detailsVC animated:YES];
 }
 

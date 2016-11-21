@@ -12,6 +12,7 @@
 #import "YDTopTitleRolling.h"
 #import "GZGCountriesTheCostomTableView.h"
 #import "GZGSpecialPerformanceModel.h"
+#import "GZGYDetailsViewController.h"
 
 
 @interface GZGCountriesPavilionViewController ()<
@@ -28,6 +29,7 @@ GZGCountriesHeadFaceCellDelegate
 
 @property(nonatomic, strong) NSMutableArray *headFaceArray;
 @property (nonatomic, strong) NSMutableArray * mutableDatas;
+@property (nonatomic, copy) NSString * prodictCategoryId;
 
 @property(nonatomic, strong) YDTopTitleRolling *ydTopTitleRollingView;
 @end
@@ -51,7 +53,9 @@ GZGCountriesHeadFaceCellDelegate
 //    [self loadHeadFacedata];
     [self notififatation];
     
-    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:@"1"];
+    // 母婴
+    self.prodictCategoryId = @"1";
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
     
     
 //    [self topTItleRollingUI];
@@ -84,7 +88,6 @@ GZGCountriesHeadFaceCellDelegate
     
     NSString * url;
     NSDictionary * dict;
-    
     switch (countriesIndex) {
         case CountriesEnterThe_SouthKorea: {
             // 韩国
@@ -264,13 +267,24 @@ GZGCountriesHeadFaceCellDelegate
 //tabBar的TapTitleDelegate
 - (void)topTitleIndex:(UILabel *)lab{
     if ([lab.text isEqualToString:@"母婴用品"]) {
-        [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:@"1"];
+        self.prodictCategoryId = @"1";
     } else if ([lab.text isEqualToString:@"洗护用品"]) {
-        [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:@"3"];
+        self.prodictCategoryId = @"3";
     }
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
 //    [_mainTableView reloadData];
 }
-
+- (void)cellSelectedModel:(GZGSpecialPerformanceModel *)model {
+    
+    // 跳转
+    
+    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    detailsVC.shopName = model.name;
+    detailsVC.shopImg = model.image;
+    detailsVC.shopID = model.ID;
+    detailsVC.productCategoryId = self.prodictCategoryId;
+    [self.navigationController pushViewController:detailsVC animated:YES];
+}
 
 #pragma mark 自己的方法
 
