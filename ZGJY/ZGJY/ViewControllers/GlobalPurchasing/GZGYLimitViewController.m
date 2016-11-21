@@ -9,217 +9,137 @@
 #import "GZGYLimitViewController.h"
 #import "GZGYLimitView.h"
 #import "GZGYLimitTableViewCell.h"
+#import "GZGYLimitModel.h"
+#import "GZGYDetailsViewController.h"
 @interface GZGYLimitViewController ()<UITableViewDelegate,UITableViewDataSource,LimitDelegeteClickProtocol>
 {
-    UIView * headerView;
     UIImageView * imgView;
+    UITableView * ytableView;
 }
-@property(nonatomic, strong)GZGYLimitView * limitView;
-@property(nonatomic, strong)UIScrollView * scrollView;
-@property(nonatomic, strong)NSArray * nameArray;
-@property(nonatomic, strong)NSMutableArray * tableArray;
-@property(nonatomic, strong)UITableView * ytableView;
+@property(nonatomic, strong)NSArray<GZGYLimitModel *> * model;
+@property(nonatomic, strong)NSMutableArray * limitArray;
+@property(nonatomic, strong)NSMutableArray * ImgArray;
+@property(nonatomic, strong)NSMutableArray * nameArray;
 @end
 
 @implementation GZGYLimitViewController
--(NSMutableArray *)tableArray
+-(NSMutableArray *)limitArray
 {
-    if (_tableArray == nil) {
-        _tableArray = [NSMutableArray arrayWithCapacity:1];
+    if (_limitArray == nil) {
+        _limitArray = [NSMutableArray arrayWithCapacity:1];
     }
-    return _tableArray;
+    return _limitArray;
+}
+-(NSMutableArray *)ImgArray
+{
+    if (_ImgArray == nil) {
+        _ImgArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _ImgArray;
+}
+-(NSMutableArray *)nameArray
+{
+    if (_nameArray == nil) {
+        _nameArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _nameArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _nameArray = @[@"10:00",@"12:00",@"14:00",@"16:00"];
     self.titles.text = @"限时特卖";
-    [self scrollInterface];
-    [self headerViewInterface];
+    [self tableViewInterface];
     [self LimitData];
     // Do any additional setup after loading the view.
 }
 #pragma mark --- 数据
 -(void)LimitData
 {
-    NSDictionary*dict = @{@"a":@"tag_recommend",@"action":@"sub",@"c":@"topic"};
-    [[GZGYAPIHelper shareAPIHelper]MaternalandChildURL:@"http://api.budejie.com/api/api_open.php" Dict:dict Finsh:^{
+    NSDictionary * dict = @{@"tagIds":@"5"};
+    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dict Finsh:^(NSArray * dataArray){
+        self.model = [GZGYLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
+        for (int i = 0; i<dataArray.count; i++) {
+            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+            dic = dataArray[i];
+            [self.limitArray addObject:dic[@"id"]];
+            [self.nameArray addObject:dic[@"full_name"]];
+            if (dic[@"image"] == nil) {
+                [self.ImgArray addObject:@""];
+            }else{
+                [self.ImgArray addObject:dic[@"image"]];
+            }
+        }
+        [ytableView reloadData];
     }];
 }
-#pragma mark --- headerView界面
--(void)headerViewInterface
+#pragma mark --- tableView界面
+-(void)tableViewInterface
 {
-//    headerView = [[UIView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:420])];
     self.view.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
-//    [self.view addSubview:headerView];
-    imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:295])];
+    imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:295])];
     imgView.image = [UIImage imageNamed:@"04-1APP 限时特卖banner750.psd"];
-    [self.view addSubview:imgView];
-    self.limitView = [[GZGYLimitView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:315]+[GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:105]) NameArray:_nameArray];
-    self.limitView.delegate = self;
-    self.limitView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.limitView];
-    [self addTableViewToScrollView:self.scrollView count:_nameArray.count frame:CGRectZero];
-}
-- (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
-    for (int i = 0; i < pageCount; i++) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, scrollView.frame.size.height)];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.tag = i;
-        tableView.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
-        [self.tableArray addObject:tableView];
-        [self.scrollView addSubview:tableView];
-    }
-}
-#pragma mark --- 定义tableview
--(void)scrollInterface
-{
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,[GZGApplicationTool navBarAndStatusBarSize]+ [GZGApplicationTool control_height:420], SCREENWIDTH, SCREENHEIGHT-[GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool control_height:420])];
-    self.scrollView.delegate = self;
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.bounces = NO;
-    self.scrollView.contentSize = CGSizeMake(SCREENWIDTH * self.nameArray.count, self.scrollView.frame.size.height);
-    [self.view addSubview:self.scrollView];
+    ytableView = [[UITableView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize] , SCREENWIDTH, SCREENHEIGHT-[GZGApplicationTool navBarAndStatusBarSize])];
+    ytableView.delegate = self;
+    ytableView.dataSource = self;
+    ytableView.tableHeaderView = imgView;
+    [self.view addSubview:ytableView];
+    __weak __typeof(self) weakSelf = self;
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    //    [tableview.header beginRefreshing];
+    ytableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf LimitData];
+        [ytableView.header performSelector:@selector(endRefreshing) withObject:nil afterDelay:1.0];
+    }];
+
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return self.model.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row%2 == 0) {
-        return [GZGApplicationTool control_height:20];
-    }
     return [GZGApplicationTool control_height:365];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return [GZGApplicationTool control_height:120];
-    }
-    return [GZGApplicationTool control_height:0];
+    return [GZGApplicationTool control_height:20];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 1;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 1) {
-        UIImageView * imggView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:120])];
-        imggView.image = [UIImage imageNamed:@"sy_ad1.jpg"];
+        UIImageView * imggView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:20])];
+    imggView.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
         return imggView;
-    }else{
-        return nil;
-    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *ID = @"cell";
-    if (indexPath.row%2 == 0) {
-        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        }
-        cell.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
-        return cell;
-    }else{
-        GZGYLimitTableViewCell* cell = (GZGYLimitTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
-        if (cell==nil) {
-            cell = [[GZGYLimitTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        }
-        cell.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
-        return cell;
+    GZGYLimitTableViewCell* cell = (GZGYLimitTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell==nil) {
+        cell = [[GZGYLimitTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
+    cell.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;//点击cell无高亮
+    cell.model = self.model[indexPath.section];
+//    if (_nameArray != nil) {
+//        [self.ImgArray addObject:cell.imgView];
+//    }
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //取消点击事件的阴影 就是点击之后在返回cell上还是有点击的阴影 加上这句话可以消除阴影
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-#pragma mark --- seg点击事件--delegate
--(void)LimitBtnDelegate:(NSInteger)sender
-{
-    [self.scrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
-    float xx = SCREENWIDTH * (sender - 1) * (0.25) - SCREENWIDTH/4;
-    [self.limitView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.limitView.frame.size.height) animated:YES];
-    [self refreshTableView:(int)sender];
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = self.limitArray[indexPath.section];
+    details.shopImg = self.ImgArray[indexPath.section];
+    details.shopName = self.nameArray[indexPath.section];
+    GZGLog(@"%@",details.shopID);
+    [self.navigationController pushViewController:details animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if ([scrollView isKindOfClass:[UITableView class]]) {
-        CGFloat imageH = self.limitView.frame.size.height+[GZGApplicationTool navBarAndStatusBarSize];
-        //获取偏移量
-        CGFloat offsetY = scrollView.contentOffset.y;
-        if (offsetY>imageH) {
-            [UIView animateWithDuration: 0.35 animations: ^{
-                imgView.hidden = YES;
-                CGRect frame = _limitView.frame;
-                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize];
-                _limitView.frame = frame;
-                CGRect frame1 = self.scrollView.frame;
-                frame1.origin.y = [GZGApplicationTool control_height:105]+[GZGApplicationTool navBarAndStatusBarSize];
-                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
-                self.scrollView.frame = frame1;
-                for (int i = 0; i<_tableArray.count; i++) {
-                    UITableView * tableView = _tableArray[i];
-                    CGRect frame2 = tableView.frame;
-                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:105]-[GZGApplicationTool navBarAndStatusBarSize];
-                    tableView.frame = frame2;
-                }
-            } completion: nil];
-        }
-        if (offsetY < -[GZGApplicationTool control_height:100]){
-            [UIView animateWithDuration: 0.35 animations: ^{
-                imgView.hidden = NO;
-                CGRect frame = _limitView.frame;
-                frame.origin.y = [GZGApplicationTool navBarAndStatusBarSize]+[GZGApplicationTool control_height:315];
-                _limitView.frame = frame;
-                CGRect frame1 = self.scrollView.frame;
-                frame1.origin.y = [GZGApplicationTool control_height:420]+[GZGApplicationTool navBarAndStatusBarSize];
-                frame1.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
-                self.scrollView.frame = frame1;
-                for (int i = 0; i<_tableArray.count; i++) {
-                    UITableView * tableView = _tableArray[i];
-                    CGRect frame2 = tableView.frame;
-                    frame2.size.height = SCREENHEIGHT-[GZGApplicationTool control_height:420]-[GZGApplicationTool navBarAndStatusBarSize];
-                    tableView.frame = frame2;
-                }
-            } completion: nil];
-        }
-    }else{
-        [self changeView:scrollView.contentOffset.x];
-    }
-}
-
-
-- (void)changeView:(float)x {
-    float xx = x*(1.0f/4.0f);
-    CGRect frame = self.limitView.LineView.frame;
-    frame.origin.x = xx;
-    [self.limitView.LineView setFrame:frame];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    //减速停止了时执行，手触摸时执行执行
-    if ([scrollView isKindOfClass:[UITableView class]]) {
-        
-    }
-    else
-    {
-        float xx = scrollView.contentOffset.x * (0.2) - SCREENWIDTH/4;
-        [self.limitView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.limitView.HeaderScroller.frame.size.height) animated:YES];
-        int i = (scrollView.contentOffset.x / SCREENWIDTH);
-        [self refreshTableView:i];
-    }
-}
-- (void)refreshTableView:(int)index {
-    self.ytableView = _tableArray[index];
-    CGRect frame = self.ytableView.frame;
-    frame.origin.x = SCREENWIDTH * index;
-    [self.ytableView setFrame:frame];
-    [self.ytableView reloadData];
-}
 @end

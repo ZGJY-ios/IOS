@@ -9,7 +9,7 @@
 #import "GZGYSpellgroupTableViewCell.h"
 
 @implementation GZGYSpellgroupTableViewCell
-@synthesize imgView,blackView,functionLabel,backView,startLabel,countLabel,AbulkLabel,whiteView,AMOSLabel,nameLabel,placeLabel,originLabel,priceLabel,marketLabel,marketPrice,panicLable,stripView,flowLabel,proportion,berserkBtn;
+@synthesize imgView,backView,reasonLabel,whiteView,nameLabel,priceLabel,pricenumber,marketLabel,marketPrice,berserkBtn;
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -17,103 +17,65 @@
         imgView = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], 0, [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:265])];
         imgView.image = [UIImage imageNamed:@"sy_xspic3.jpg"];
         [self addSubview:imgView];
-        blackView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:45])];
-        blackView.backgroundColor = [UIColor blackColor];
-        blackView.alpha = 0.8;
-        [self addSubview:blackView];
-        functionLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:45])];
-        functionLabel.text = @"适合所有发质  重塑头发健康";
-        functionLabel.textColor = [UIColor whiteColor];
-        functionLabel.textAlignment = NSTextAlignmentCenter;
-        functionLabel.font = [UIFont systemFontOfSize:13];
-        [blackView addSubview:functionLabel];
-        
         backView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:265], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:100])];
         backView.backgroundColor = [UIColor colorWithRed:220/255.0 green:204/255.0 blue:158/255.0 alpha:1.0];
         [self addSubview:backView];
-        startLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:145], [GZGApplicationTool control_height:40])];
-        startLabel.text = @"已售220件";
-        startLabel.textColor = [UIColor whiteColor];
-        startLabel.font = [UIFont systemFontOfSize:13];
-        startLabel.backgroundColor = [UIColor colorWithRed:184/255.0 green:184/255.0 blue:184/255.0 alpha:1.0];
-        startLabel.textAlignment = NSTextAlignmentCenter;
-        [backView addSubview:startLabel];
-        countLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:190], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:40])];
-        countLabel.textAlignment = NSTextAlignmentCenter;
-        countLabel.text = @"剩余780件";
-        countLabel.font = [UIFont systemFontOfSize:13];
-        countLabel.backgroundColor = [UIColor colorWithRed:147/255.0 green:142/255.0 blue:130/255.0 alpha:1.0];
-        countLabel.textColor = [UIColor whiteColor];
-        [backView addSubview:countLabel];
-        AbulkLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:0], [GZGApplicationTool control_height:55], [GZGApplicationTool control_wide:375], [GZGApplicationTool control_height:40])];
-        AbulkLabel.text = @"20件起享受团购价";
-        AbulkLabel.font = [UIFont boldSystemFontOfSize:20];
-        AbulkLabel.textAlignment = NSTextAlignmentCenter;
-        [backView addSubview:AbulkLabel];
+        reasonLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:325], [GZGApplicationTool control_height:80])];
+        reasonLabel.text = @"[推荐理由]美国B.toys儿童帐篷，宝宝玩躲猫猫最佳玩具";
+        reasonLabel.font = [UIFont systemFontOfSize:14];
+        reasonLabel.numberOfLines = 0;
+        reasonLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
+        [backView addSubview:reasonLabel];
         whiteView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:385], 0, [GZGApplicationTool control_wide:345], [GZGApplicationTool control_height:265])];
         whiteView.backgroundColor = [UIColor whiteColor];
         [self addSubview:whiteView];
-        AMOSLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:180], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:165], [GZGApplicationTool control_height:30])];
-        AMOSLabel.text = @"AMOS";
-        AMOSLabel.font = [UIFont boldSystemFontOfSize:16];
-        [whiteView addSubview:AMOSLabel];
-        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:70], [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:275], [GZGApplicationTool control_height:80])];
+        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:305], [GZGApplicationTool control_height:80])];
         nameLabel.numberOfLines = 2;
-        nameLabel.text = @"韩国至纯去屑发膜韩国至纯去屑发膜";
+        nameLabel.text = @"印第安儿童帐篷宝宝室内户外过家家玩具出游出行游戏屋";
         nameLabel.font = [UIFont boldSystemFontOfSize:16];
         nameLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
         [whiteView addSubview:nameLabel];
-        placeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:70], [GZGApplicationTool control_height:130], [GZGApplicationTool control_wide:180], [GZGApplicationTool control_height:35])];
-        placeLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
-        placeLabel.text = @"原产国(地区):";
-        placeLabel.font = [UIFont boldSystemFontOfSize:14];
-        [whiteView addSubview:placeLabel];
-        originLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:130], [GZGApplicationTool control_wide:95], [GZGApplicationTool control_height:35])];
-        originLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
-        originLabel.text = @"韩国";
-        originLabel.font = [UIFont boldSystemFontOfSize:15];
-        [whiteView addSubview:originLabel];
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:30], [GZGApplicationTool control_height:170], [GZGApplicationTool control_wide:120], [GZGApplicationTool control_height:40])];
-        priceLabel.text = @"¥118";
-        priceLabel.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
-        priceLabel.font = [UIFont boldSystemFontOfSize:20];
+        
+        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:130], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:30])];
+        priceLabel.text = @"拼团价:";
+        priceLabel.textColor = [UIColor colorWithRed:252/255.0 green:14/255.0 blue:59/255.0 alpha:1.0];
+        priceLabel.font = [UIFont systemFontOfSize:20];
         [whiteView addSubview:priceLabel];
-        marketLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:175], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:35])];
-        marketLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
-        marketLabel.font = [UIFont boldSystemFontOfSize:14];
+        pricenumber = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:155], [GZGApplicationTool control_height:130], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
+        pricenumber.text = @"¥768.00";
+        pricenumber.textColor = [UIColor colorWithRed:252/255.0 green:14/255.0 blue:59/255.0 alpha:1.0];
+        pricenumber.font = [UIFont systemFontOfSize:20];
+        [whiteView addSubview:pricenumber];
+        marketLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:190], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:30])];
         marketLabel.text = @"市场价:";
+        marketLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
+        marketLabel.font = [UIFont systemFontOfSize:15];
         [whiteView addSubview:marketLabel];
-        marketPrice = [[GZGYStrikeThroughLabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:175], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:35])];
-        marketPrice.strikeThroughEnabled = YES;
+        marketPrice = [[GZGYStrikeThroughLabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:155], [GZGApplicationTool control_height:190], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:30])];
+        marketPrice.text = @"¥123.00";
         marketPrice.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
-        marketPrice.font = [UIFont boldSystemFontOfSize:15];
-        marketPrice.text = @"¥240";
+        marketPrice.font = [UIFont systemFontOfSize:15];
         [whiteView addSubview:marketPrice];
-        panicLable = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:15], [GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:80], [GZGApplicationTool control_height:30])];
-        panicLable.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
-        panicLable.text = @"已抢购";
-        panicLable.font = [UIFont systemFontOfSize:12];
-        [whiteView addSubview:panicLable];
-        stripView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:90], [GZGApplicationTool control_height:225], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:20])];
-        stripView.layer.borderColor = [UIColor colorWithRed:253/255.0 green:129/255.0 blue:154/255.0 alpha:1.0].CGColor;
-        stripView.layer.borderWidth = 1;
-        [stripView.layer setMasksToBounds:YES];
-        [whiteView addSubview:stripView];
-        flowLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, stripView.frame.size.width*0.62, stripView.frame.size.height)];
-        flowLabel.backgroundColor = [UIColor colorWithRed:253/255.0 green:129/255.0 blue:154/255.0 alpha:1.0];
-        [stripView addSubview:flowLabel];
-        proportion = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:295], [GZGApplicationTool control_height:225], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:20])];
-        proportion.text = @"62%";
-        proportion.font = [UIFont systemFontOfSize:12];
-        proportion.textColor = [UIColor colorWithRed:253/255.0 green:129/255.0 blue:154/255.0 alpha:1.0];
-        [whiteView addSubview:proportion];
+        
         berserkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         berserkBtn.frame = CGRectMake([GZGApplicationTool control_wide:385], [GZGApplicationTool control_height:265], [GZGApplicationTool control_wide:345], [GZGApplicationTool control_height:100]);
         berserkBtn.backgroundColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
-        [berserkBtn setTitle:@"马上进货 >" forState:UIControlStateNormal];
+        [berserkBtn setTitle:@"马上疯抢 >" forState:UIControlStateNormal];
         [self addSubview:berserkBtn];
     }
     return self;
+}
+-(void)setModel:(GZGYSpellModel *)model
+{
+    _model = model;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        [imgView setHeader:urlString];
+    });
+    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    pricenumber.text = [NSString stringWithFormat:@"%.2f",self.model.price];
+    marketPrice.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
+    //    reasonLabel.text = [NSString stringWithFormat:@"%@",self.model.last_updated_by];
 }
 
 

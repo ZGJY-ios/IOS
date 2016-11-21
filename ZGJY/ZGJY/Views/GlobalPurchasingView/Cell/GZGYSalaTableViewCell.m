@@ -7,6 +7,7 @@
 //
 
 #import "GZGYSalaTableViewCell.h"
+#import "GZGYRootLimitModel.h"
 #define KScreenWigth     [[UIScreen mainScreen] bounds].size.width
 #define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
 @implementation GZGYSalaTableViewCell
@@ -30,34 +31,43 @@
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         //每次滚动都只便宜一个Wigth便宜量
-        _collectionView.pagingEnabled = YES;
+//        _collectionView.pagingEnabled = YES;
         //        _CollectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
         _collectionView.showsVerticalScrollIndicator = NO;
         //水平滑动条
         _collectionView.showsHorizontalScrollIndicator = NO;
         [self addSubview:_collectionView];
+        [self LimitData];
     }
     return self;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12;
+    return self.model.count;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString*identify = @"cell";
     GZGYSalaCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+    cell.model = self.model[indexPath.row];
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"！！！%ld",indexPath.row);
     [self.delegete CollectionViewDelegeteClick:indexPath.row];
 }
-
-
+#pragma mark --- 限时抢购数据
+-(void)LimitData
+{
+    NSDictionary * dic = @{@"tagIds":@"5"};
+    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dic Finsh:^(NSArray * dataArray){
+        self.model = [GZGYRootLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
+        [self.collectionView reloadData];
+        GZGLog(@"多少个%ld",self.model.count);
+    }];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

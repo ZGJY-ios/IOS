@@ -70,6 +70,7 @@
 //    [self ScrollViewInterface];
     [self refreshTableView:0];
 }
+
 #pragma mark --- 搜索框
 -(void)SearchInterface
 {
@@ -139,9 +140,6 @@
     }
     [self.ScrollView addSubview:self.CollectionView];
     
-//    self.twoView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH, 0, SCREENWIDTH, self.ScrollView.frame.size.height)];
-//    self.twoView.backgroundColor = [UIColor redColor];
-//    [self.ScrollView addSubview:self.twoView];
     
     if (_brandCollection == nil) {
         UICollectionViewFlowLayout*brandflowlay = [[UICollectionViewFlowLayout alloc]init];
@@ -159,10 +157,7 @@
         _brandCollection.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self.ScrollView addSubview:self.brandCollection];
     }
-//    UIScrollView*collscroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:190], SCREENWIDTH, SCREENHEIGHT-64-[GZGApplicationTool control_height:190]-self.tabBarController.tabBar.frame.size.height)];
-//    collscroll.delegate = self;
-//    collscroll.contentSize = CGSizeMake(SCREENWIDTH * _NameArray.count, self.ScrollView.frame.size.height);
-//    [self.ScrollView addSubview:collscroll];
+
 }
 
 #pragma mark --- tableview

@@ -13,48 +13,52 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        _countdown = [GZGYCountdown countDown];
-//        _countdown.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-//        _countdown.frame = CGRectMake(0,0, [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:28]);
-//        _countdown.timestamp = 100;
-//        _countdown.timerStopBlock = ^{
-//            NSLog(@"倒计时结束应该做的事情");
-//        };
-        [self addSubview:_countdown];
         _imgView = [UIImageView new];
         _imgView.frame = CGRectMake(0,[GZGApplicationTool control_height:0], [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:198]);
         _imgView.image = [UIImage imageNamed:@"sy_hgpic1"];
         [self addSubview:_imgView];
+        _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:168], [GZGApplicationTool control_wide:240], [GZGApplicationTool control_height:30])];
+        _nameLabel.alpha = 0.5;
+        _nameLabel.backgroundColor = [UIColor blackColor];
+        _nameLabel.textColor = [UIColor whiteColor];
+        _nameLabel.font = [UIFont systemFontOfSize:10];
+        _nameLabel.textAlignment = NSTextAlignmentCenter;
+        [_imgView addSubview:_nameLabel];
         _priceLabel = [UILabel new];
-        _priceLabel.frame = CGRectMake(0,[GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:30]);
-        _priceLabel.textAlignment = NSTextAlignmentRight;
+        _priceLabel.frame = CGRectMake([GZGApplicationTool control_wide:5],[GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30]);
+        _priceLabel.textAlignment = NSTextAlignmentLeft;
         _priceLabel.textColor = [UIColor redColor];
         _priceLabel.text = @"¥118";
         _priceLabel.font = [UIFont systemFontOfSize:13];
         [self addSubview:_priceLabel];
         _originalLabel = [[GZGYStrikeThroughLabel alloc] initWithFrame:CGRectZero];
-        _originalLabel.frame = CGRectMake([GZGApplicationTool control_wide:62],[GZGApplicationTool control_height:230], [GZGApplicationTool control_wide:50], [GZGApplicationTool control_height:20]);
-        //_originalLabel.frame = CGRectMake(self.frame.size.width/3+5, self.frame.size.height-25, 30, 10);
+        _originalLabel.frame = CGRectMake([GZGApplicationTool control_wide:92],[GZGApplicationTool control_height:230], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:20]);
         _originalLabel.strikeThroughEnabled = YES;
         _originalLabel.font = [UIFont systemFontOfSize:8];
         _originalLabel.text = @"¥150";
         [self addSubview:_originalLabel];
-        _amqcLabel = [UILabel new];
-        _amqcLabel.frame = CGRectMake([GZGApplicationTool control_wide:160],[GZGApplicationTool control_height:210], [GZGApplicationTool control_wide:80], [GZGApplicationTool control_height:25]);
-        //_amqcLabel.frame = CGRectMake(self.frame.size.width-50, self.frame.size.height-30, 50, 10);
-        _amqcLabel.textAlignment = NSTextAlignmentRight;
-        _amqcLabel.text = @"AMQS";
-        _amqcLabel.font = [UIFont systemFontOfSize:10];
-        [self addSubview:_amqcLabel];
-        _brandLabel = [UILabel new];
-        _brandLabel.frame = CGRectMake([GZGApplicationTool control_wide:160],[GZGApplicationTool control_height:230], [GZGApplicationTool control_wide:80], [GZGApplicationTool control_height:25]);
-        //_brandLabel.frame = CGRectMake(self.frame.size.width-70, self.frame.size.height-20, 70, 10);
-        _brandLabel.text = @"NMMYWK";
-        _brandLabel.font = [UIFont systemFontOfSize:8];
-        _brandLabel.textAlignment = NSTextAlignmentRight;
-        [self addSubview:_brandLabel];
+        _salesLabel = [UILabel new];
+        _salesLabel.frame = CGRectMake([GZGApplicationTool control_wide:120],[GZGApplicationTool control_height:225], [GZGApplicationTool control_wide:115], [GZGApplicationTool control_height:30]);
+//        _salesLabel.backgroundColor = [UIColor blackColor];
+        _salesLabel.text = @"月销售100";
+        _salesLabel.font = [UIFont systemFontOfSize:10];
+        _salesLabel.textAlignment = NSTextAlignmentRight;
+        [self addSubview:_salesLabel];
     }
     return self;
+}
+-(void)setModel:(GZGYRootLimitModel *)model
+{
+    _model = model;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        
+        [_imgView setHeader:urlString];
+    });
+    _salesLabel.text = [NSString stringWithFormat:@"月销售%@",self.model.month_sales];
+    _priceLabel.text = [NSString stringWithFormat:@"%.2f",self.model.price];
+    _originalLabel.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
+    _nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
 }
 
 @end

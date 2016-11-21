@@ -23,6 +23,9 @@
 #import "ZGNetWork.h"
 #import "GZGYLimitViewController.h"
 #import "GZGYSpellgroupViewController.h"
+#import "GZGYDetailsViewController.h"
+#import "GZGYSpellTableViewCell.h"
+#import "GZGYRootSpellModel.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -35,6 +38,7 @@ GZGGPMaternalInfantCellDelegate,
 GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 >
 @property(nonatomic, strong) UITableView *mainTableView;
+@property (nonatomic, strong) NSArray<GZGYRootSpellModel *> *spellModel;
 @end
 
 
@@ -57,20 +61,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)buildUI{
     [self navTitleUI];
     [self tableViewUI];
+    [self SpellData];
     
 }
 
 - (void)navTitleUI{
-    
-    
-//    [ZGNetWork GETRequestMethodUrl:@"http://192.168.0.110:8080/topic/baby" parameters:nil success:^(id responseObject, NSInteger task) {
-//        NSLog(@"%@",responseObject);
-//    } failure:^(NSError *failure, NSInteger task) {
-//        NSLog(@"%@  %ld",failure,(long)task);
-//    }];
-    
-    
-    
     [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
     [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
     self.titles.hidden = YES;
@@ -105,6 +100,15 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     _mainTableView.showsVerticalScrollIndicator = NO;
     _mainTableView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:_mainTableView];
+}
+#pragma mark --- 拼团数据
+-(void)SpellData
+{
+    NSDictionary * dic = @{@"tagIds":@"6"};
+    [[GZGYAPIHelper shareAPIHelper]SpellGroupURL:@"http://192.168.0.110:8080/appTopic/SpellGroup" Dict:dic Finsh:^(NSArray * dataArray){
+        self.spellModel = [GZGYRootSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
+        [self.mainTableView reloadData];
+    }];
 }
 #pragma mark 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -193,7 +197,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
-        static NSString *vvv = @"xxdfsx";
+        static NSString *vvv = @"sala";
         GZGYSalaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:vvv];
         if (!cell) {
             cell = [[GZGYSalaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:vvv];
@@ -201,21 +205,16 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         cell.delegete = self;
         return cell;
     }else if (indexPath.section == 2){
-        static NSString * gZGSpellGroupCellStr = @"gZGSpellGroupCellStr";
-        GZGSpellGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:gZGSpellGroupCellStr];
+        static NSString * gZGSpellGroupCellstr = @"gZGSpellGroupCellStr";
+        GZGYSpellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:gZGSpellGroupCellstr];
         if (!cell) {
-            cell = [[GZGSpellGroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:gZGSpellGroupCellStr];
+            cell = [[GZGYSpellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:gZGSpellGroupCellstr];
         }
-        
-        NSArray *arrImage = @[@"gzg_gg1",@"gzg_gg2",@"gzg_gg3"];
-        
-        
-        [cell setModel:[UIImage imageNamed:arrImage[indexPath.row]]];
-    
-        [cell setGZGSpellGroupCellBlock:^(UIButton * button) {
-            NSLog(@"block");
-        }];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor colorWithRed:250/255.0 green:239/255.0 blue:208/255.0 alpha:1.0];
+        cell.model = self.spellModel[indexPath.row];
+        cell.replenishBtn.tag = indexPath.row;
+        [cell.replenishBtn addTarget:self action:@selector(SpellBtn:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }else if (indexPath.section == 3){
         static  NSString *globalSelectCellStr = @"globalSelectCellStr";
@@ -281,9 +280,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
-        GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
-        spell.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:spell animated:YES];
+        GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+        details.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:details animated:YES];
     }
 }
 #pragma mark 各个Cell的HeadView
@@ -342,6 +341,22 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             [self.navigationController pushViewController:spell animated:YES];
             break;
         }
+        case HomeItem_FireAlsoGroup: {
+            // 母婴
+            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+            specialPerformanceVC.titles.text = NSLocalizedString(@"母婴用品", nil);
+            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+        }
+            break;
+        case HomeItem_CrossBorderDirectMail: {
+            // 洗护
+            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+            specialPerformanceVC.titles.text = NSLocalizedString(@"洗护用品", nil);
+            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+        }
+            break;
         case HomeItem_SouthKorea:{
             vc.countriesTitle = @"韩国馆";
             vc.countriesIndex = CountriesEnterThe_SouthKorea;
@@ -411,6 +426,20 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     NSLog(@"tag = %ld",btn.tag);
     
     switch (btn.tag) {
+        case 1:{
+            GZGLog(@"限时特卖");
+            GZGYLimitViewController * limit = [[GZGYLimitViewController alloc] init];
+            limit.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:limit animated:YES];
+            break;
+        }
+        case 2:{
+            GZGLog(@"火力拼团");
+            GZGYSpellgroupViewController * spellgroup = [[GZGYSpellgroupViewController alloc] init];
+            spellgroup.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:spellgroup animated:YES];
+            break;
+        }
         case 4: {
             NSLog(@"母婴专场");
             GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
@@ -426,9 +455,16 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark --- CollectionView点击事件
 -(void)CollectionViewDelegeteClick:(NSInteger)sender
 {
-    GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
-    limit.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:limit animated:YES];
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:details animated:YES];
+}
+#pragma mark --- 火力拼团进货事件
+-(void)SpellBtn:(UIButton *)btn
+{
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:details animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

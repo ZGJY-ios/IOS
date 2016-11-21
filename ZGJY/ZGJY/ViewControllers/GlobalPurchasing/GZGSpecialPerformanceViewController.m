@@ -64,8 +64,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titles.text = NSLocalizedString(@"母婴专场", nil);
-    
     [self.rightBtn setImage:[[UIImage imageNamed:@"GlobalPurchaaingEtc"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     
     /** 初始化下拉菜单 */
@@ -241,7 +239,12 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    GZGSpecialPerformanceModel * model = self.mutableDatas[indexPath.row];
+    
     GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    detailsVC.shopName = model.name;
+    detailsVC.shopImg = model.image;
+    detailsVC.shopID = model.ID;
     [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
