@@ -134,6 +134,7 @@
     details.shopID = self.limitArray[indexPath.section];
     details.shopImg = self.ImgArray[indexPath.section];
     details.shopName = self.nameArray[indexPath.section];
+    details.gDetails = GoodsDetailsLimited;
     GZGLog(@"%@",details.shopID);
     [self.navigationController pushViewController:details animated:YES];
 }

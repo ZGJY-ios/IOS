@@ -298,6 +298,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         details.shopID = self.limitArray[indexPath.row];
         details.shopName = self.nameArray[indexPath.row];
         details.shopImg = self.ImgArray[indexPath.row];
+        details.gDetails = GoodsDetailsFireAlsoGroup;
         details.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:details animated:YES];
     }
@@ -476,6 +477,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     details.shopID = sender[0];
     details.shopName = sender[1];
     details.shopImg = sender[2];
+    details.gDetails = GoodsDetailsLimited;
     details.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:details animated:YES];
 }
