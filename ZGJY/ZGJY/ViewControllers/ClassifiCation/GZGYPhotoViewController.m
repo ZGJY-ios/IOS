@@ -18,6 +18,16 @@
     [super viewDidLoad];
     NSLog(@"%@",self.introduction);
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSString *string = self.introduction;
+//    NSRange startRange = [string rangeOfString:@"http://192.168.0.110:8080/"];
+//    NSRange endRange = [string rangeOfString:@".jpg"];
+//    NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//    NSString *result = [string substringWithRange:range];
+//    NSMutableArray * ImageArr = [NSMutableArray arrayWithArray:[result   componentsSeparatedByString:@""]];
+//    GZGLog(@"%@",ImageArr);
+    
+    
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize])];
     self.scrollView.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT);
     [self.view addSubview:self.scrollView];

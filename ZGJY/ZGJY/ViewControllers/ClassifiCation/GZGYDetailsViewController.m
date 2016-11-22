@@ -128,10 +128,6 @@
             self.oneScroll.secondScrollView = photo.scrollView;
         }
     }];
-    //字符串转变为数组1
-    NSMutableString * str=[[NSMutableString alloc]initWithFormat:@""];
-    //字符串转变为数组2
-    NSMutableArray * ImageArr = [NSMutableArray arrayWithArray:[str   componentsSeparatedByString:@","]];
 }
 #pragma mark --- 波纹动画
 -(void)Animation

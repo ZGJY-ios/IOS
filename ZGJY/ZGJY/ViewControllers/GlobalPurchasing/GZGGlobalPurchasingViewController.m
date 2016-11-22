@@ -479,6 +479,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     details.shopImg = sender[2];
     details.gDetails = GoodsDetailsLimited;
     details.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:details animated:YES];
 }
 #pragma mark --- 火力拼团进货事件
