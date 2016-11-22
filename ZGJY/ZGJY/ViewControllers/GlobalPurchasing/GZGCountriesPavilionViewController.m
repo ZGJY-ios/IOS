@@ -279,6 +279,15 @@ GZGCountriesHeadFaceCellDelegate
     // 跳转
     
     GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    if (self.countriesIndex == CountriesEnterThe_SouthKorea) {
+        detailsVC.gDetails = GoodsDetailsKorea;
+    } else if (self.countriesIndex == CountriesEnterThe_Japan) {
+        detailsVC.gDetails = GoodsDetailsJapan;
+    } else if (self.countriesIndex == CountriesEnterThe_TheEuropean) {
+        detailsVC.gDetails = GoodsDetailsEurope;
+    } else if (self.countriesIndex == CountriesEnterThe_Australia) {
+        detailsVC.gDetails = GoodsDetailsAussie;
+    }
     detailsVC.shopName = model.name;
     detailsVC.shopImg = model.image;
     detailsVC.shopID = model.ID;
