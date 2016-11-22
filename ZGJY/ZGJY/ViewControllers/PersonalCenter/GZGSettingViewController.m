@@ -38,7 +38,9 @@
     UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"退出" message:@"是否要退出当前账号" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         GZGYLoginViewController * login = [[GZGYLoginViewController alloc]init];
-        [self presentViewController:login animated:YES completion:nil];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERID"];
+        [self presentViewController:nav animated:YES completion:NULL];
         NSLog(@"退出");
     }];
     UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

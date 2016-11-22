@@ -39,9 +39,9 @@
         [phoneView addSubview:phoneField];
         lineLable = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:260], [GZGApplicationTool control_wide:[GZGApplicationTool control_wide:710]], [GZGApplicationTool control_height:25])];
         lineLable.textColor = [UIColor redColor];
-        lineLable.text = @"用户名已存在";
+//        lineLable.text = @"用户名已存在";
         lineLable.font = [UIFont systemFontOfSize:12];
-//        [self addSubview:lineLable];
+        [self addSubview:lineLable];
         
         
         UIView * codeView = viewArray[1];
@@ -60,9 +60,9 @@
         [onceView addSubview:onceField];
         promptLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:710], [GZGApplicationTool control_wide:710], [GZGApplicationTool control_height:25])];
         promptLabel.textColor = [UIColor redColor];
-        promptLabel.text = @"该邮箱已被使用";
+//        promptLabel.text = @"该邮箱已被使用";
         promptLabel.font = [UIFont systemFontOfSize:12];
-//        [self addSubview:promptLabel];
+        [self addSubview:promptLabel];
         
         completeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         completeBtn.frame = CGRectMake([GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:825], [GZGApplicationTool control_wide:670], [GZGApplicationTool control_height:100]);

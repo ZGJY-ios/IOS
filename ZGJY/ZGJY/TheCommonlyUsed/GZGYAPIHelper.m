@@ -71,26 +71,60 @@
     }];
 }
 #pragma mark --- 检查用户名接口
--(void)UserNameURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string))result
+-(void)UserNameURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
 {
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"检查用户名%@",responseObject);
-        NSString * str;
-        result(str);
+        NSString * nameString= [NSString stringWithFormat:@"%@",responseObject[@"content"]];
+        NSString * typeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
+        result(nameString,typeString);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         GZGLog(@"%@",failure);
     }];
 }
 #pragma mark --- 检查邮箱接口
--(void)EmailsURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string))result
+-(void)EmailsURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
 {
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"检查邮箱%@",responseObject);
-        NSString * str;
-        result(str);
+        NSString * nameString= [NSString stringWithFormat:@"%@",responseObject[@"content"]];
+        NSString * typeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
+        result(nameString,typeString);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        GZGLog(@"%@",failure);
+    }];
+}
+#pragma mark --- 邮箱注册接口
+-(void)EmailsRegisterURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * idString,NSString * typeString,NSString * content))result
+{
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"邮箱注册%@",responseObject);
+        NSString * IDstring = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
+        NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
+        NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
+        result(IDstring,TypeString,contentString);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        GZGLog(@"%@",failure);
+    }];
+}
+#pragma mark --- 登录接口
+-(void)LoginURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result
+{
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"登录%@",responseObject);
+        NSString * idString = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
+        NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
+        NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
+        result(idString,TypeString,contentString);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         GZGLog(@"%@",failure);

@@ -20,7 +20,7 @@
         UICollectionViewFlowLayout*flowlay = [[UICollectionViewFlowLayout alloc]init];
         flowlay.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc]initWithFrame:self.frame collectionViewLayout:flowlay];
-        flowlay.itemSize = CGSizeMake([GZGApplicationTool control_wide:245],[GZGApplicationTool control_height:270]);
+        flowlay.itemSize = CGSizeMake([GZGApplicationTool control_wide:245],[GZGApplicationTool control_height:310]);
         flowlay.minimumLineSpacing = 5;
         flowlay.minimumInteritemSpacing = 0;
         flowlay.sectionInset = UIEdgeInsetsMake([GZGApplicationTool control_height:10], 0, 0, 0);
@@ -56,7 +56,8 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegete CollectionViewDelegeteClick:indexPath.row];
+    NSArray * dataArr = @[self.limitArray[indexPath.row],self.nameArray[indexPath.row],self.ImgArray[indexPath.row]];
+    [self.delegete CollectionViewDelegeteClick:dataArr];
 }
 #pragma mark --- 限时抢购数据
 -(void)LimitData
@@ -64,6 +65,17 @@
     NSDictionary * dic = @{@"tagIds":@"5"};
     [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYRootLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
+        for (int i = 0; i<dataArray.count; i++) {
+            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+            dic = dataArray[i];
+            [self.limitArray addObject:dic[@"id"]];
+            [self.nameArray addObject:dic[@"full_name"]];
+            if (dic[@"image"] == nil) {
+                [self.ImgArray addObject:@""];
+            }else{
+                [self.ImgArray addObject:dic[@"image"]];
+            }
+        }
         [self.collectionView reloadData];
         GZGLog(@"多少个%ld",self.model.count);
     }];
@@ -73,5 +85,25 @@
 
     // Configure the view for the selected state
 }
-
+-(NSMutableArray *)nameArray
+{
+    if (_nameArray == nil) {
+        _nameArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _nameArray;
+}
+-(NSMutableArray *)limitArray
+{
+    if (_limitArray == nil) {
+        _limitArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _limitArray;
+}
+-(NSMutableArray *)ImgArray
+{
+    if (_ImgArray == nil) {
+        _ImgArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _ImgArray;
+}
 @end

@@ -11,21 +11,32 @@
 #define KScreenWigth     [[UIScreen mainScreen] bounds].size.width
 #define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
 @implementation GZGYRightCollectionViewCell
-@synthesize ImgView,NameLabel;
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        ImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, KScreenWigth/9*2-20, KScreenWigth/9*2-20)];
-        ImgView.image = [UIImage imageNamed:@"sy_mypic6.jpg"];
-        [self addSubview:ImgView];
-        NameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, KScreenWigth/9*2-10, KScreenWigth/9*2-10, 15)];
-        NameLabel.textAlignment = NSTextAlignmentCenter;
-        NameLabel.font = [UIFont systemFontOfSize:13];
-        NameLabel.text = @"你猜";
-        [self addSubview:NameLabel];
+        [self addSubview:self.ImgView];
+        [self addSubview:self.NameLabel];
     }
     return self;
+}
+-(UIImageView *)ImgView
+{
+    if (_ImgView == nil) {
+        _ImgView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 5, KScreenWigth/9*2-20, KScreenWigth/9*2-20)];
+        _ImgView.image = [UIImage imageNamed:@"sy_mypic6.jpg"];
+    }
+    return _ImgView;
+}
+-(UILabel *)NameLabel
+{
+    if (_NameLabel == nil) {
+        _NameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, KScreenWigth/9*2-10, KScreenWigth/9*2-10, 15)];
+        _NameLabel.textAlignment = NSTextAlignmentCenter;
+        _NameLabel.font = [UIFont systemFontOfSize:13];
+        _NameLabel.text = @"你猜";
+    }
+    return _NameLabel;
 }
 -(void)setModel:(GZGYClassModel *)model
 {

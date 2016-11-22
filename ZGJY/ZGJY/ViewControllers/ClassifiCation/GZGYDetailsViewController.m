@@ -71,7 +71,7 @@
 //    self.view.backgroundColor = [UIColor whiteColor];
     nameArray = @[@"商品",@"详情",@"评价"];
     NSLog(@"%@",self.shopID);
-    [self Animation];
+//    [self Animation];
     [self ScrollViewInterface];
     //nav
     [self NavViewInterface];
@@ -101,6 +101,10 @@
             self.oneScroll.secondScrollView = photo.scrollView;
         }
     }];
+    //字符串转变为数组1
+    NSMutableString * str=[[NSMutableString alloc]initWithFormat:@""];
+    //字符串转变为数组2
+    NSMutableArray * ImageArr = [NSMutableArray arrayWithArray:[str   componentsSeparatedByString:@","]];
 }
 #pragma mark --- 波纹动画
 -(void)Animation
@@ -150,8 +154,9 @@
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (self.oneScroll == nil) {
-        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:150])];
-        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:150]);
+        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:70])];
+        self.oneScroll.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
+        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:70]);
         [self.mainScroll addSubview:self.oneScroll];
     }
     if (self.twoScroll == nil) {
@@ -171,6 +176,7 @@
 {
     NSArray * arrayImg = @[self.shopImg];
     detailsView = [[GZGYDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.oneScroll.frame.size.height) andImageArr:arrayImg];
+//    detailsView.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
     detailsView.shopName.text = self.shopName;
     [self.oneScroll addSubview:detailsView];
     [detailsView.reduceButton addTarget:self action:@selector(reduce) forControlEvents:UIControlEventTouchUpInside];

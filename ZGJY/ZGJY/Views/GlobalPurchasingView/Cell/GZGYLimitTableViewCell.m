@@ -14,17 +14,18 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        imgView = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], 0, [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:265])];
+        imgView = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], 0, [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:365])];
 //        imgView.image = [UIImage imageNamed:@"sy_xspic3.jpg"];
         [self addSubview:imgView];
         backView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:265], [GZGApplicationTool control_wide:365], [GZGApplicationTool control_height:100])];
+        backView.alpha = 0.7;
         backView.backgroundColor = [UIColor colorWithRed:220/255.0 green:204/255.0 blue:158/255.0 alpha:1.0];
         [self addSubview:backView];
         reasonLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:10], [GZGApplicationTool control_wide:325], [GZGApplicationTool control_height:80])];
         reasonLabel.text = @"[推荐理由]美国B.toys儿童帐篷，宝宝玩躲猫猫最佳玩具";
         reasonLabel.font = [UIFont systemFontOfSize:14];
         reasonLabel.numberOfLines = 0;
-        reasonLabel.textColor = [UIColor colorWithRed:103/255.0 green:95/255.0 blue:95/255.0 alpha:1.0];
+        reasonLabel.textColor = [UIColor blackColor];
         [backView addSubview:reasonLabel];
         whiteView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:385], 0, [GZGApplicationTool control_wide:345], [GZGApplicationTool control_height:265])];
         whiteView.backgroundColor = [UIColor whiteColor];

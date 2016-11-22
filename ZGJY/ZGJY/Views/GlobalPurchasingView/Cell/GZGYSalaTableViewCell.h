@@ -13,7 +13,7 @@
 @class GZGYRootLimitModel;
 @protocol CollectionViewDelegeteClickProtocol <NSObject>
 
-- (void)CollectionViewDelegeteClick:(NSInteger)sender;
+- (void)CollectionViewDelegeteClick:(NSArray *)sender;
 
 @end
 @interface GZGYSalaTableViewCell : UITableViewCell
@@ -21,4 +21,7 @@
 @property(nonatomic,strong)id <CollectionViewDelegeteClickProtocol>delegete;
 @property (nonatomic, strong) NSArray<GZGYRootLimitModel *> *model;
 @property(nonatomic,strong)UICollectionView*collectionView;
+@property(nonatomic, strong)NSMutableArray * limitArray;
+@property(nonatomic, strong)NSMutableArray * nameArray;
+@property(nonatomic, strong)NSMutableArray * ImgArray;
 @end

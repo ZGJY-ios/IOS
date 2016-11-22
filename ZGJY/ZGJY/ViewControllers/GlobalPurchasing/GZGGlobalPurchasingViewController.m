@@ -39,6 +39,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 >
 @property(nonatomic, strong) UITableView *mainTableView;
 @property (nonatomic, strong) NSArray<GZGYRootSpellModel *> *spellModel;
+@property(nonatomic, strong)NSMutableArray * limitArray;
+@property(nonatomic, strong)NSMutableArray * nameArray;
+@property(nonatomic, strong)NSMutableArray * ImgArray;
 @end
 
 
@@ -107,6 +110,17 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     NSDictionary * dic = @{@"tagIds":@"6"};
     [[GZGYAPIHelper shareAPIHelper]SpellGroupURL:@"http://192.168.0.110:8080/appTopic/SpellGroup" Dict:dic Finsh:^(NSArray * dataArray){
         self.spellModel = [GZGYRootSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
+        for (int i = 0; i<dataArray.count; i++) {
+            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+            dic = dataArray[i];
+            [self.limitArray addObject:dic[@"id"]];
+            [self.nameArray addObject:dic[@"full_name"]];
+            if (dic[@"image"] == nil) {
+                [self.ImgArray addObject:@""];
+            }else{
+                [self.ImgArray addObject:dic[@"image"]];
+            }
+        }
         [self.mainTableView reloadData];
     }];
 }
@@ -136,9 +150,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     if (indexPath.section == 0) {
         return [GZGApplicationTool control_height:300.0f];
     }else if (indexPath.section == 1){
-        return [GZGApplicationTool control_height:560];
+        return [GZGApplicationTool control_height:640];
     }else if (indexPath.section == 2){
-        return [GZGApplicationTool control_height:235.0f];
+        return [GZGApplicationTool control_height:260.0f];
     }else if (indexPath.section == 3){
         return [GZGApplicationTool control_height:387.0f];
     }else if (indexPath.section == 4){
@@ -281,6 +295,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
         GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+        details.shopID = self.limitArray[indexPath.row];
+        details.shopName = self.nameArray[indexPath.row];
+        details.shopImg = self.ImgArray[indexPath.row];
         details.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:details animated:YES];
     }
@@ -437,9 +454,12 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }
 }
 #pragma mark --- CollectionView点击事件
--(void)CollectionViewDelegeteClick:(NSInteger)sender
+-(void)CollectionViewDelegeteClick:(NSArray *)sender
 {
     GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = sender[0];
+    details.shopName = sender[1];
+    details.shopImg = sender[2];
     details.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:details animated:YES];
 }
@@ -455,14 +475,26 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+-(NSMutableArray *)nameArray
+{
+    if (_nameArray == nil) {
+        _nameArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _nameArray;
+}
+-(NSMutableArray *)limitArray
+{
+    if (_limitArray == nil) {
+        _limitArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _limitArray;
+}
+-(NSMutableArray *)ImgArray
+{
+    if (_ImgArray == nil) {
+        _ImgArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _ImgArray;
+}
 
 @end
