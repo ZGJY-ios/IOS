@@ -7,6 +7,7 @@
 //
 
 #import "GZGRootViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface GZGSubViewController : GZGRootViewController
 @property (nonatomic, strong) UIView *navBarView;

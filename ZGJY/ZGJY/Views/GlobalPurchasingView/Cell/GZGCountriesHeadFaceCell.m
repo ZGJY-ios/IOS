@@ -9,6 +9,7 @@
 #import "GZGCountriesHeadFaceCell.h"
 #import "GZGCountriesHeadFaceCollectionCell.h"
 #import "UIImageView+WebCache.h"
+
 static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollectionCell";
 
 @interface GZGCountriesHeadFaceCell()<YDTopTitleRollingDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -29,7 +30,9 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 //    NSLog(@"%@  %@  %@",self.cellCountriesTitle,self.cellTitleName,self.cellPriceLab);
     
 
-    NSArray *titleArr = @[@"  面部护理",@"营养肌肤",@"洗发护发",@"彩妆修颜",@"亮甲美甲",@"洗发护发"];
+//    NSArray *titleArr = @[@"  面部护理",@"营养肌肤",@"洗发护发",@"彩妆修颜",@"亮甲美甲",@"洗发护发"];
+    
+     NSArray *titleArr = @[@"母婴用品",@"洗护用品"];
 
     
     self.ydTopTitleRollingView = [[YDTopTitleRolling alloc] initWithFrame:
@@ -74,14 +77,20 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 
     
 
-    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:self.cellHeadImageUrl] placeholderImage:self.cellPlaceholderHeadImage];
-    cell.cellCountriesTitle.text = self.dataArr[indexPath.row][0];
-    cell.cellTitleName.text = self.dataArr[indexPath.row][1];
-    cell.cellTitleQuality.text = self.dataArr[indexPath.row][2];
-    cell.cellPriceLab.text = self.dataArr[indexPath.row][3];
+//    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:self.cellHeadImageUrl] placeholderImage:self.cellPlaceholderHeadImage];
+//    cell.cellCountriesTitle.text = self.dataArr[indexPath.row][0];
+//    cell.cellTitleName.text = self.dataArr[indexPath.row][1];
+//    cell.cellTitleQuality.text = self.dataArr[indexPath.row][2];
+//    cell.cellPriceLab.text = self.dataArr[indexPath.row][3];
 //    [self priceLab:cell.cellPriceLab rang:NSMakeRange(0, 1) font:[UIFont systemFontOfSize:[GZGApplicationTool control_wide:16]]];
     [cell.cellShonpingBtn setImage:[UIImage imageNamed:@"QQG_ADD_GWC"] forState:UIControlStateNormal];
     
+    GZGSpecialPerformanceModel * model = self.dataArr[indexPath.row];
+    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:self.cellPlaceholderHeadImage];
+    cell.cellCountriesTitle.text = model.name;
+    cell.cellTitleName.text = model.name;
+    cell.cellTitleQuality.text = model.name;
+    cell.cellPriceLab.text = [NSString stringWithFormat:@"%f",model.price];
     
     
     return cell;
@@ -89,6 +98,10 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%ld",indexPath.row);
+    
+    GZGSpecialPerformanceModel * model = self.dataArr[indexPath.row];
+    
+    [self.delegate cellSelectedModel:model];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

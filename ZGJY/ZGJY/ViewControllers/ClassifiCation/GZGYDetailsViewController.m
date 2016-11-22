@@ -88,8 +88,35 @@
 #pragma mark --- 数据
 -(void)ClasstionData
 {
-    NSDictionary * dict = @{@"taglds":@"5",@"id":self.shopID};
-    [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dict Finsh:^(NSArray * dataArray){
+    NSDictionary * dict;
+    NSString * url;
+    if (self.gDetails == GoodsDetailsMaternalAndInfant) {
+        // 母婴
+        dict = @{@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/baby";
+    } else if (self.gDetails == GoodsDetailsKorea) {
+        dict = @{@"taglds":@"8",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/Korea";
+    } else if (self.gDetails == GoodsDetailsJapan) {
+        // 日本馆
+        dict = @{@"taglds":@"7",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/Janpan";
+    } else if (self.gDetails == GoodsDetailsEurope) {
+        // 欧洲
+        dict = @{@"taglds":@"11",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/Europe";
+    } else if (self.gDetails == GoodsDetailsAussie) {
+        // 澳洲
+        dict = @{@"taglds":@"12",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/Europe";
+    }
+    else {
+        dict = @{@"taglds":@"5",@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/Limitshop";
+    }
+    
+    
+    [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleURL:url Dict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
         detailsView.model = self.model[0];
         NSDictionary * dictionary = dataArray[0];

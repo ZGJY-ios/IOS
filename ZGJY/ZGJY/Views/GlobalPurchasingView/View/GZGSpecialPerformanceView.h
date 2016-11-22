@@ -37,6 +37,8 @@
 @end
 
 @interface GZGPageView : UIView
+@property (nonatomic,assign) NSInteger currentIndex;
+@property (nonatomic,strong) NSMutableArray *itemsArray;
 @property(nonatomic,strong) UIScrollView *scrollview;
 @property(nonatomic,assign) NSInteger numberOfItems;
 @property(nonatomic,assign) BOOL scrollAnimation;

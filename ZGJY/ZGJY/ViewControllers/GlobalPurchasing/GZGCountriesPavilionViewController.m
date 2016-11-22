@@ -11,6 +11,8 @@
 #import "GZGCountriesHeadFaceCell.h"
 #import "YDTopTitleRolling.h"
 #import "GZGCountriesTheCostomTableView.h"
+#import "GZGSpecialPerformanceModel.h"
+#import "GZGYDetailsViewController.h"
 
 
 @interface GZGCountriesPavilionViewController ()<
@@ -26,6 +28,8 @@ GZGCountriesHeadFaceCellDelegate
 @property(nonatomic, assign) BOOL cancelTableScrollew;
 
 @property(nonatomic, strong) NSMutableArray *headFaceArray;
+@property (nonatomic, strong) NSMutableArray * mutableDatas;
+@property (nonatomic, copy) NSString * prodictCategoryId;
 
 @property(nonatomic, strong) YDTopTitleRolling *ydTopTitleRollingView;
 @end
@@ -36,6 +40,7 @@ GZGCountriesHeadFaceCellDelegate
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _headFaceArray = [NSMutableArray array];
+    _mutableDatas = [NSMutableArray array];
     
     _cancelTableScrollew = YES;
     self.titles.text = self.countriesTitle;
@@ -45,8 +50,12 @@ GZGCountriesHeadFaceCellDelegate
     self.navBarView.backgroundColor = self.navColor;
     self.view.backgroundColor = self.backViewColor;;
     [self buildUI];
-    [self loadHeadFacedata];
+//    [self loadHeadFacedata];
     [self notififatation];
+    
+    // 母婴
+    self.prodictCategoryId = @"1";
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
     
     
 //    [self topTItleRollingUI];
@@ -75,7 +84,51 @@ GZGCountriesHeadFaceCellDelegate
 - (void)notififatation{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(banSliding:) name:GZGCountriesTableBanSlideNotification object:nil];
 }
-
+- (void)requestDataWithCountriesIndex:(CountriesEnterThe)countriesIndex prodictCategoryId:(NSString *)prodictCategoryId {
+    
+    NSString * url;
+    NSDictionary * dict;
+    switch (countriesIndex) {
+        case CountriesEnterThe_SouthKorea: {
+            // 韩国
+            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Korea"];
+            dict = @{@"tagIds":@"8",@"prodictCategoryId":prodictCategoryId}; // 母婴
+        }
+            break;
+        case CountriesEnterThe_Japan: {
+            // 日本
+            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Japan"];
+            dict = @{@"tagIds":@"7",@"prodictCategoryId":prodictCategoryId}; // 母婴
+        }
+            break;
+        case CountriesEnterThe_Australia: {
+            // 澳大利亚
+            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Aussie"];
+            dict = @{@"tagIds":@"12",@"prodictCategoryId":prodictCategoryId}; // 母婴
+        }
+            break;
+        case CountriesEnterThe_TheEuropean: {
+            // 欧洲
+            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Europe"];
+            dict = @{@"tagIds":@"11",@"prodictCategoryId":prodictCategoryId}; // 母婴
+        }
+            break;
+        default:
+            break;
+    }
+    
+    [[GZGYAPIHelper shareAPIHelper] pavilionURL:url dict:dict finish:^(NSArray *goods) {
+        [_mutableDatas removeAllObjects];
+        for (int i = 0; i < goods.count; i ++) {
+            NSDictionary * dict1 = goods[i];
+            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
+            [_mutableDatas addObject:model];
+        }
+        [_mainTableView reloadData];
+    } failed:^(NSError *error) {
+        NSLog(@"错误信息:%@",error);
+    }];
+}
 
 
 #pragma mark 系统代理
@@ -163,8 +216,8 @@ GZGCountriesHeadFaceCellDelegate
         
         cell.delegate = self;
         
-        cell.dataArr = _headFaceArray;
-        
+//        cell.dataArr = _headFaceArray;
+        cell.dataArr = _mutableDatas;
         cell.cellHeadImageUrl = @"";
         cell.cellPlaceholderHeadImage = [UIImage imageNamed:@"index-Korea.jpg"];
         [cell.collection reloadData];
@@ -213,9 +266,25 @@ GZGCountriesHeadFaceCellDelegate
 #pragma mark 自己的代理
 //tabBar的TapTitleDelegate
 - (void)topTitleIndex:(UILabel *)lab{
-    [_mainTableView reloadData];
+    if ([lab.text isEqualToString:@"母婴用品"]) {
+        self.prodictCategoryId = @"1";
+    } else if ([lab.text isEqualToString:@"洗护用品"]) {
+        self.prodictCategoryId = @"3";
+    }
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
+//    [_mainTableView reloadData];
 }
-
+- (void)cellSelectedModel:(GZGSpecialPerformanceModel *)model {
+    
+    // 跳转
+    
+    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+    detailsVC.shopName = model.name;
+    detailsVC.shopImg = model.image;
+    detailsVC.shopID = model.ID;
+    detailsVC.productCategoryId = self.prodictCategoryId;
+    [self.navigationController pushViewController:detailsVC animated:YES];
+}
 
 #pragma mark 自己的方法
 

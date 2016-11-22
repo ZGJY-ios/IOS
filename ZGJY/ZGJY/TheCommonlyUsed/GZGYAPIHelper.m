@@ -56,6 +56,16 @@
         failed(failure);
     }];
 }
+//国家馆接口
+- (void)pavilionURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];
+        NSArray * array = dict[@"list"];
+        result(array);
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+    }];
+}
 #pragma mark --- 商品详情接口
 - (void)DetailssTimeSaleURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
@@ -130,4 +140,5 @@
         GZGLog(@"%@",failure);
     }];
 }
+        
 @end

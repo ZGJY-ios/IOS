@@ -38,7 +38,7 @@
 @property (nonatomic, copy) NSString * full_name;
 @property (nonatomic, assign) NSInteger goods_id; // 商品ID
 @property (nonatomic, assign) NSInteger hits;
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, copy) NSString * ID;
 @property (nonatomic, copy) NSString * image;
 @property (nonatomic, copy) NSString * introduction;
 @property (nonatomic) BOOL is_gift;

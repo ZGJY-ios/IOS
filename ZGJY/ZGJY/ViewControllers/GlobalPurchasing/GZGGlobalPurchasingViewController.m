@@ -358,6 +358,22 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             [self.navigationController pushViewController:spell animated:YES];
             break;
         }
+        case HomeItem_FireAlsoGroup: {
+            // 母婴
+            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+            specialPerformanceVC.titles.text = NSLocalizedString(@"母婴用品", nil);
+            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+        }
+            break;
+        case HomeItem_CrossBorderDirectMail: {
+            // 洗护
+            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+            specialPerformanceVC.titles.text = NSLocalizedString(@"洗护用品", nil);
+            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+        }
+            break;
         case HomeItem_SouthKorea:{
             vc.countriesTitle = @"韩国馆";
             vc.countriesIndex = CountriesEnterThe_SouthKorea;

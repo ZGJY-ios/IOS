@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "YDTopTitleRolling.h"
+#import "GZGSpecialPerformanceModel.h"
 
 @protocol GZGCountriesHeadFaceCellDelegate <NSObject>
 
 - (void)topTitleIndex:(UILabel *)lab;
+- (void)cellSelectedModel:(GZGSpecialPerformanceModel *)model;
 
 @end
 
