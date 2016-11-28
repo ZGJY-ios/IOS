@@ -23,6 +23,8 @@
 @end
 
 @implementation GZGYLimitViewController
+
+
 -(NSMutableArray *)limitArray
 {
     if (_limitArray == nil) {
@@ -55,7 +57,7 @@
 -(void)LimitData
 {
     NSDictionary * dict = @{@"tagIds":@"5"};
-    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dict Finsh:^(NSArray * dataArray){
+    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleDict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];

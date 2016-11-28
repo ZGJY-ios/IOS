@@ -8,12 +8,12 @@
 
 #import "GZGSubViewController.h"
 
-typedef NS_ENUM(NSUInteger,CountriesEnterThe) {
-    CountriesEnterThe_SouthKorea = 0,                       //韩国
-    CountriesEnterThe_Japan,                                //日本
-    CountriesEnterThe_Australia,                            //澳大利亚
-    CountriesEnterThe_TheEuropean                           //欧洲
-};
+//typedef NS_ENUM(NSUInteger,CountriesEnterThe) {
+//    CountriesEnterThe_SouthKorea = 0,                       //韩国
+//    CountriesEnterThe_Japan,                                //日本
+//    CountriesEnterThe_Australia,                            //澳大利亚
+//    CountriesEnterThe_TheEuropean                           //欧洲
+//};
 
 
 

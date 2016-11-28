@@ -355,6 +355,8 @@
 		04104EC41D9CACEF00A940F1 /* 图层-33.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图层-33.jpg"; sourceTree = "<group>"; };
 		04104EDE1D9CB26300A940F1 /* GZGGPMaternalInfantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGGPMaternalInfantCell.h; sourceTree = "<group>"; };
 		04104EDF1D9CB26300A940F1 /* GZGGPMaternalInfantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGGPMaternalInfantCell.m; sourceTree = "<group>"; };
+		04128D2F1DEBBCD10028BD25 /* GZGLogText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GZGLogText.h; sourceTree = "<group>"; };
+		04128D301DEBCDF60028BD25 /* GZGNetworkPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GZGNetworkPort.h; path = ../TheCommonlyUsed/GZGNetworkPort.h; sourceTree = "<group>"; };
 		043CDFEE1DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCrossBorderDirectMailCell.h; sourceTree = "<group>"; };
 		043CDFEF1DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCrossBorderDirectMailCell.m; sourceTree = "<group>"; };
 		043CDFF11DA8D93E0095B3F5 /* GZGCountriesPavilionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesPavilionCell.h; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 				044DA3E61D5C4AC300DD06EC /* ZGNetWork.m */,
 				047B690D1D5D7B080057CE61 /* ZGNetDealImage.h */,
 				047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */,
+				04128D301DEBCDF60028BD25 /* GZGNetworkPort.h */,
 			);
 			path = ZGNetWorking;
 			sourceTree = "<group>";
@@ -1425,6 +1428,7 @@
 				049DC6571DBA065A001DC372 /* GZGCommonleView.h */,
 				049DC6581DBA065A001DC372 /* GZGCommonleView.m */,
 				04FBA27D1D98C98200AD147A /* ZGJY.pch */,
+				04128D2F1DEBBCD10028BD25 /* GZGLogText.h */,
 				538047631DDAE3C300C75869 /* GZGYAPIHelper.h */,
 				538047641DDAE3C300C75869 /* GZGYAPIHelper.m */,
 			);

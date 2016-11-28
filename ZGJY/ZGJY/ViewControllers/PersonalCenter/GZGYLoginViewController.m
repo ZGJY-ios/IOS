@@ -61,7 +61,7 @@
         [SVProgressHUD showErrorWithStatus:@"请输入正确的密码"];
     }else{
         NSDictionary * dict = @{@"username":loginView.phoneField.text,@"password":loginView.passageField.text};
-        [[GZGYAPIHelper shareAPIHelper]LoginURL:@"http://192.168.0.110:8080/appLogin/submit" Dict:dict Finsh:^(NSString * string,NSString * typeString,NSString * content){
+        [[GZGYAPIHelper shareAPIHelper]LoginDict:dict Finsh:^(NSString * string,NSString * typeString,NSString * content){
             if ([typeString isEqualToString:@"error"]) {
                 [SVProgressHUD showErrorWithStatus:content];
             }else{

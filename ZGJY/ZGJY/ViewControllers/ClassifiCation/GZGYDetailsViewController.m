@@ -90,34 +90,55 @@
 {
     NSDictionary * dict;
     NSString * url;
-    if (self.gDetails == GoodsDetailsMaternalAndInfant) {
-        // 母婴
-        dict = @{@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/baby";
-    } else if (self.gDetails == GoodsDetailsKorea) {
-        dict = @{@"taglds":@"8",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/Korea";
-    } else if (self.gDetails == GoodsDetailsJapan) {
-        // 日本馆
-        dict = @{@"taglds":@"7",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/Janpan";
-    } else if (self.gDetails == GoodsDetailsEurope) {
-        // 欧洲
-        dict = @{@"taglds":@"11",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/Europe";
-    } else if (self.gDetails == GoodsDetailsAussie) {
-        // 澳洲
-        dict = @{@"taglds":@"12",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/Europe";
-    } else if (self.gDetails == GoodsDetailsFireAlsoGroup){
-        dict = @{@"taglds":@"6",@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/SpellGroup";
+   
+    switch (self.gDetails) {
+        case GoodsDetailsMaternalAndInfant:
+        {
+            dict = @{@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsKorea:
+        {
+            dict = @{@"taglds":@"8",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsJapan:
+        {
+            dict = @{@"taglds":@"7",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsEurope:
+        {
+            dict = @{@"taglds":@"11",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsAussie:
+        {
+            dict = @{@"taglds":@"12",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsWashProtect:
+        {
+            dict = @{@"taglds":@"5",@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsLimited:
+        {
+            dict = @{@"taglds":@"5",@"id":self.shopID};
+            break;
+        }
+        case GoodsDetailsFireAlsoGroup:
+        {
+            dict = @{@"taglds":@"5",@"id":self.shopID};
+            break;
+        }
+        default:
+            break;
     }
-    else {
-        dict = @{@"taglds":@"5",@"id":self.shopID};
-        url = @"http://192.168.0.110:8080/appTopic/Limitshop";
-    }
-    [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleURL:url Dict:dict Finsh:^(NSArray * dataArray){
+    
+    
+    
+    [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleCountries:self.gDetails Dict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
         detailsView.model = self.model[0];
         NSDictionary * dictionary = dataArray[0];
