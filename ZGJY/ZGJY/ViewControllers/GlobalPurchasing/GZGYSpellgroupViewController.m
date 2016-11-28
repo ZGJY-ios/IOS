@@ -30,7 +30,7 @@
 -(void)SpellData
 {
     NSDictionary * dic = @{@"tagIds":@"6"};
-    [[GZGYAPIHelper shareAPIHelper]SpellGroupURL:@"http://192.168.0.110:8080/appTopic/SpellGroup" Dict:dic Finsh:^(NSArray * dataArray){
+    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
         [self.ytableView reloadData];
     }];

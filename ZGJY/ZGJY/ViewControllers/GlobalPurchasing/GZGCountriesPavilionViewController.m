@@ -117,7 +117,8 @@ GZGCountriesHeadFaceCellDelegate
             break;
     }
     
-    [[GZGYAPIHelper shareAPIHelper] pavilionURL:url dict:dict finish:^(NSArray *goods) {
+
+    [[GZGYAPIHelper shareAPIHelper] pavilionCountries:countriesIndex dict:dict finish:^(NSArray *goods) {
         [_mutableDatas removeAllObjects];
         for (int i = 0; i < goods.count; i ++) {
             NSDictionary * dict1 = goods[i];
@@ -128,6 +129,7 @@ GZGCountriesHeadFaceCellDelegate
     } failed:^(NSError *error) {
         NSLog(@"错误信息:%@",error);
     }];
+
 }
 
 
