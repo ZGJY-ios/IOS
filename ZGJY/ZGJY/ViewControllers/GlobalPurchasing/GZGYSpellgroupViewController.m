@@ -11,12 +11,37 @@
 #import "GZGYSpellView.h"
 #import "GZGYSpellgroupTableViewCell.h"
 #import "GZGYSpellModel.h"
+#import "GZGYDetailsViewController.h"
 @interface GZGYSpellgroupViewController ()<UITableViewDelegate,UITableViewDataSource,SpellsegDelegeteClickProtocol>
 @property(nonatomic, strong)UITableView * ytableView;
 @property(nonatomic, strong)GZGYSpellView * spellView;
 @property (nonatomic, strong) NSArray<GZGYSpellModel *> *model;
+@property(nonatomic, strong)NSMutableArray * limitArray;
+@property(nonatomic, strong)NSMutableArray * nameArray;
+@property(nonatomic, strong)NSMutableArray * ImgArray;
 @end
 @implementation GZGYSpellgroupViewController
+-(NSMutableArray *)nameArray
+{
+    if (_nameArray == nil) {
+        _nameArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _nameArray;
+}
+-(NSMutableArray *)limitArray
+{
+    if (_limitArray == nil) {
+        _limitArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _limitArray;
+}
+-(NSMutableArray *)ImgArray
+{
+    if (_ImgArray == nil) {
+        _ImgArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _ImgArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titles.text = @"火力拼团";
@@ -32,6 +57,17 @@
     NSDictionary * dic = @{@"tagIds":@"6"};
     [[GZGYAPIHelper shareAPIHelper]SpellGroupURL:@"http://192.168.0.110:8080/appTopic/SpellGroup" Dict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
+        for (int i = 0; i<dataArray.count; i++) {
+            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+            dic = dataArray[i];
+            [self.limitArray addObject:dic[@"id"]];
+            [self.nameArray addObject:dic[@"full_name"]];
+            if (dic[@"image"] == nil) {
+                [self.ImgArray addObject:@""];
+            }else{
+                [self.ImgArray addObject:dic[@"image"]];
+            }
+        }
         [self.ytableView reloadData];
     }];
 }
@@ -83,6 +119,12 @@
 {
     //取消点击事件的阴影 就是点击之后在返回cell上还是有点击的阴影 加上这句话可以消除阴影
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = self.limitArray[indexPath.section];
+    details.shopName = self.nameArray[indexPath.section];
+    details.shopImg = self.ImgArray[indexPath.section];
+    details.gDetails = GoodsDetailsFireAlsoGroup;
+    [self.navigationController pushViewController:details animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

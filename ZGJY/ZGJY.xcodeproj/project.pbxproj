@@ -137,7 +137,6 @@
 		04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA27C1D98C98200AD147A /* GZGApplicationTool.m */; };
 		53039BD51DB71C900091DE1D /* GZGYRightCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53039BD41DB71C900091DE1D /* GZGYRightCollectionViewCell.m */; };
 		53039BD81DB71CEA0091DE1D /* GZGYActivityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53039BD71DB71CEA0091DE1D /* GZGYActivityCollectionViewCell.m */; };
-		532B000C1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B000B1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m */; };
 		532B000F1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B000E1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m */; };
 		532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00111DBDEBE0002D2E61 /* GZGYOrderViewController.m */; };
 		532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */; };
@@ -536,8 +535,6 @@
 		53039BD41DB71C900091DE1D /* GZGYRightCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYRightCollectionViewCell.m; sourceTree = "<group>"; };
 		53039BD61DB71CEA0091DE1D /* GZGYActivityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYActivityCollectionViewCell.h; sourceTree = "<group>"; };
 		53039BD71DB71CEA0091DE1D /* GZGYActivityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYActivityCollectionViewCell.m; sourceTree = "<group>"; };
-		532B000A1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYAddressTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYAddressTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		532B000B1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYAddressTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYAddressTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		532B000D1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYOrderTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYOrderTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		532B000E1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYOrderTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYOrderTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		532B00101DBDEBE0002D2E61 /* GZGYOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYOrderViewController.h; sourceTree = "<group>"; };
@@ -1541,8 +1538,6 @@
 		53904BB71DC199EC00ED0922 /* YYS */ = {
 			isa = PBXGroup;
 			children = (
-				532B000A1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.h */,
-				532B000B1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m */,
 				532B000D1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.h */,
 				532B000E1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m */,
 				532B00161DBE0088002D2E61 /* GZGYPaymentTableViewCell.h */,
@@ -2168,7 +2163,6 @@
 				044DA3D41D5C467100DD06EC /* MKAnnotationView+WebCache.m in Sources */,
 				044DA3DF1D5C467100DD06EC /* UIImage+MultiFormat.m in Sources */,
 				53860F631DD963450047A734 /* GZGYCollectionTableViewCell.m in Sources */,
-				532B000C1DBDDCF6002D2E61 /* GZGYAddressTableViewCell.m in Sources */,
 				E51566FB1DE2CFD200B3DF3E /* UIScrollView+JYPaging.m in Sources */,
 				04A4A4C91DBF414800897F5A /* GZGAddreddMangerCell.m in Sources */,
 				53860F811DD9650C0047A734 /* GZGYSpellView.m in Sources */,

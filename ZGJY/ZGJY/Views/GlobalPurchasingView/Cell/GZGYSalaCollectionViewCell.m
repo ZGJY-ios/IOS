@@ -16,7 +16,6 @@
         [self addSubview:self.imgView];
         [self addSubview:self.priceLabel];
         [self addSubview:self.originalLabel];
-        [self addSubview:self.salesLabel];
     }
     return self;
 }
@@ -59,18 +58,6 @@
     }
     return _originalLabel;
 }
--(UILabel *)salesLabel
-{
-    if (_salesLabel == nil) {
-        _salesLabel = [UILabel new];
-        _salesLabel.frame = CGRectMake([GZGApplicationTool control_wide:120],[GZGApplicationTool control_height:265], [GZGApplicationTool control_wide:115], [GZGApplicationTool control_height:30]);
-        _salesLabel.text = @"月销售100";
-        _salesLabel.font = [UIFont systemFontOfSize:10];
-        _salesLabel.textAlignment = NSTextAlignmentRight;
-
-    }
-    return _salesLabel;
-}
 -(void)setModel:(GZGYRootLimitModel *)model
 {
     _model = model;
@@ -79,7 +66,6 @@
         
         [_imgView setHeader:urlString];
     });
-    _salesLabel.text = [NSString stringWithFormat:@"月销售%@",self.model.month_sales];
     _priceLabel.text = [NSString stringWithFormat:@"%.2f",self.model.price];
     _originalLabel.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
     _nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];

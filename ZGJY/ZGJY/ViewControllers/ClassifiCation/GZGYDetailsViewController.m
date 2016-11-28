@@ -109,13 +109,14 @@
         // 澳洲
         dict = @{@"taglds":@"12",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
         url = @"http://192.168.0.110:8080/appTopic/Europe";
+    } else if (self.gDetails == GoodsDetailsFireAlsoGroup){
+        dict = @{@"taglds":@"6",@"id":self.shopID};
+        url = @"http://192.168.0.110:8080/appTopic/SpellGroup";
     }
     else {
         dict = @{@"taglds":@"5",@"id":self.shopID};
         url = @"http://192.168.0.110:8080/appTopic/Limitshop";
     }
-    
-    
     [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleURL:url Dict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
         detailsView.model = self.model[0];
@@ -212,6 +213,11 @@
     btnView = [[GZGYBbtnView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-[GZGApplicationTool control_height:100], SCREENWIDTH, [GZGApplicationTool control_height:100])];
     btnView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:btnView];
+    [btnView.serviceBtn addTarget:self action:@selector(Service:) forControlEvents:UIControlEventTouchUpInside];
+    [btnView.focusBtn addTarget:self action:@selector(Focus:) forControlEvents:UIControlEventTouchUpInside];
+    [btnView.cartBtn addTarget:self action:@selector(Cart:) forControlEvents:UIControlEventTouchUpInside];
+    [btnView.addBtn addTarget:self action:@selector(Receipt:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 #pragma mark --- ChoiceView
 -(void)ChoiceViewInterface
@@ -400,6 +406,26 @@
     number = [detailsView.countField.text integerValue];
     number++;
     detailsView.countField.text = [NSString stringWithFormat:@"%ld",number];
+}
+#pragma mark --- 客服事件监听
+-(void)Service:(UIButton *)sender
+{
+    GZGLog(@"客服");
+}
+#pragma mark --- 关注事件监听
+-(void)Focus:(UIButton *)sender
+{
+    GZGLog(@"关注");
+}
+#pragma mark --- 购物车事件监听
+-(void)Cart:(UIButton *)sender
+{
+    GZGLog(@"购物车");
+}
+#pragma mark --- 加入进货单事件监听
+-(void)Receipt:(UIButton *)sender
+{
+    GZGLog(@"加入进货单");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
