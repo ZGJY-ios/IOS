@@ -129,6 +129,16 @@
         }
     }];
 }
+// 添加购物车
+- (void)requestDataWithAddCart {
+    
+    NSDictionary * dict = @{@"id":self.shopID};
+    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"http://192.168.0.110:8080/appCart/add" Dict:dict Finished:^(NSArray *carts) {
+        NSLog(@"添加成功");
+    } failed:^(NSError *error) {
+        NSLog(@"添加失败");
+    }];
+}
 #pragma mark --- 波纹动画
 -(void)Animation
 {

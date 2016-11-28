@@ -13,6 +13,8 @@
 #import "GZGShoppingCartReusableView.h"
 #import "GZGShoppingCartSettlementView.h"
 #import "GZGHotRecommendedCell.h"
+#import "ZGNetWork.h"
+#import "GZGYLoginViewController.h"
 
 @interface UIImage (PersonalCenter)
 
@@ -49,7 +51,11 @@
 @end
 
 @implementation GZGTheShoppingCartViewController
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self requestData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -98,7 +104,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)requestData {
+    
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * userID = [userDefaults objectForKey:@"USERID"];
+    if (userID != nil) {
+        [ZGNetWork POSTRequestMethodUrl:@"http://192.168.0.110:8080/appCart/list" parameters:nil success:^(id responseObject, NSInteger task) {
+            NSLog(@"购物车列表:%@",responseObject);
+        } failure:^(NSError *failure, NSInteger task) {
+            NSLog(@"%@",failure);
+        }];
+    } else {
+        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+}
 #pragma mark - 自己的方法
 - (void)rightBtnDown{
     NSLog(@"信息");

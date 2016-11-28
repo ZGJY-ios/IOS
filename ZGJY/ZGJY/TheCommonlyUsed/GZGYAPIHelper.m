@@ -80,6 +80,15 @@
         GZGLog(@"%@",failure);
     }];
 }
+// 添加到购物车
+- (void)addToCartURL:(NSString *)url Dict:(NSDictionary *)dict Finished:(void(^)(NSArray * carts))result failed:(void(^)(NSError * error))failed {
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        GZGLog(@"添加到购物车：%@",responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"添加购物车失败:%@",failure);
+    }];
+}
 #pragma mark --- 检查用户名接口
 -(void)UserNameURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
 {

@@ -20,6 +20,8 @@
 - (void)pavilionURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 //商品详情接口
 - (void)DetailssTimeSaleURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result;
+// 添加到购物车
+- (void)addToCartURL:(NSString *)url Dict:(NSDictionary *)dict Finished:(void(^)(NSArray * carts))result failed:(void(^)(NSError * error))failed;
 //检查用户名接口
 -(void)UserNameURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result;
 //检查邮箱接口
