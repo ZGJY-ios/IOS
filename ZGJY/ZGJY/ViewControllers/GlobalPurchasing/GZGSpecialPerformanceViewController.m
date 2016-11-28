@@ -94,7 +94,7 @@
 /** 数据请求 */
 - (void)requestDataWithProductCategoryId:(NSString *)productCategoryId {
     NSDictionary * dict = @{@"productCategoryId":productCategoryId};
-    [[GZGYAPIHelper shareAPIHelper] specialPerformanceURL:@"http://192.168.0.110:8080/appTopic/baby" dict:dict finish:^(NSArray *goods) {
+    [[GZGYAPIHelper shareAPIHelper] specialPerformanceDict:dict finish:^(NSArray *goods) {
         [_mutableDatas removeAllObjects];
         for (int i = 0; i < goods.count; i ++) {
             NSDictionary * dict1 = goods[i];

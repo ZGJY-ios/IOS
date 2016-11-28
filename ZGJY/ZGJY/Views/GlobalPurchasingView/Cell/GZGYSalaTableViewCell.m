@@ -63,7 +63,7 @@
 -(void)LimitData
 {
     NSDictionary * dic = @{@"tagIds":@"5"};
-    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleURL:@"http://192.168.0.110:8080/appTopic/Limitshop" Dict:dic Finsh:^(NSArray * dataArray){
+    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleDict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYRootLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];

@@ -18,8 +18,6 @@
 
 @property(nonatomic, strong)GZGYStrikeThroughLabel * originalLabel;//原价
 
-@property(nonatomic, strong)UILabel * salesLabel;//月销售
-
 @property(nonatomic, strong)UILabel * nameLabel;//商品名字
 
 @property (nonatomic, strong)GZGYRootLimitModel * model;

@@ -30,7 +30,6 @@
     return YES;
 }
 
-
 - (void)setTabBarViewControllerType:(NSInteger)type{
 
     GZGGlobalPurchasingViewController *globalVC = [[GZGGlobalPurchasingViewController alloc] init];

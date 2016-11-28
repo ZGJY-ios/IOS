@@ -108,7 +108,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 -(void)SpellData
 {
     NSDictionary * dic = @{@"tagIds":@"6"};
-    [[GZGYAPIHelper shareAPIHelper]SpellGroupURL:@"http://192.168.0.110:8080/appTopic/SpellGroup" Dict:dic Finsh:^(NSArray * dataArray){
+    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
         self.spellModel = [GZGYRootSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];

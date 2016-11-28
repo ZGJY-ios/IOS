@@ -32,7 +32,7 @@
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     if ([textField isEqual:emails.phoneField]) {
         NSDictionary * dict = @{@"username":emails.phoneField.text};
-        [[GZGYAPIHelper shareAPIHelper]UserNameURL:@"http://192.168.0.110:8080/appRegister/checkUsername" Dict:dict Finsh:^(NSString * string,NSString * contentString){
+        [[GZGYAPIHelper shareAPIHelper]UserNameDict:dict Finsh:^(NSString * string,NSString * contentString){
             if ([contentString isEqualToString:@"error"]) {
                 emails.lineLable.text = string;
             }else{
@@ -41,7 +41,7 @@
         }];
     }else if ([textField isEqual:emails.phoneField]){
         NSDictionary * dict = @{@"email":emails.onceField.text};
-        [[GZGYAPIHelper shareAPIHelper]EmailsURL:@"http://192.168.0.110:8080/appRegister/checkEmail" Dict:dict Finsh:^(NSString * string,NSString * contentString){
+        [[GZGYAPIHelper shareAPIHelper]EmailsDict:dict Finsh:^(NSString * string,NSString * contentString){
             if ([contentString isEqualToString:@"error"]) {
                 emails.promptLabel.text = string;
             }else{
@@ -77,7 +77,7 @@
         [SVProgressHUD showErrorWithStatus:@"请输入邮箱密码"];
     }else{
         NSDictionary * dict = @{@"email":emails.onceField.text,@"username":emails.phoneField.text,@"password":emails.passField.text};
-        [[GZGYAPIHelper shareAPIHelper]EmailsRegisterURL:@"http://192.168.0.110:8080/appRegister/submit" Dict:dict Finsh:^(NSString * idString,NSString * typeString,NSString * content){
+        [[GZGYAPIHelper shareAPIHelper]EmailsRegisterDict:dict Finsh:^(NSString * idString,NSString * typeString,NSString * content){
             if ([typeString isEqualToString:@"error"]) {
                 [SVProgressHUD showErrorWithStatus:content];
             }else{

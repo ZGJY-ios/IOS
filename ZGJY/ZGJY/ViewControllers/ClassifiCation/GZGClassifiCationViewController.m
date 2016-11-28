@@ -13,7 +13,7 @@
 #import "GZGYSegView.h"
 #import "GZGYBrandCollectionViewCell.h"
 #import "GZGYDetailsViewController.h"
-@interface GZGClassifiCationViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,SegDelegeteClickProtocol>
+@interface GZGClassifiCationViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,SegDelegeteClickProtocol,UITextFieldDelegate>
 {
     UIView*ViewHead;
     NSArray*DataArray;

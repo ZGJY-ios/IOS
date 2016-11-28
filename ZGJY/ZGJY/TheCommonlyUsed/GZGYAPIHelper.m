@@ -18,9 +18,10 @@
     return help;
 }
 #pragma mark ---限时特卖
-- (void)LimitedTimeSaleURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
+- (void)LimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
     [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"Limitshop"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"限时特卖%@",responseObject);
@@ -33,9 +34,11 @@
     }];
 }
 #pragma mark --- 火力拼团
--(void)SpellGroupURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
+-(void)SpellGroupDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
     [SVProgressHUD show];
+    
+    NSString *url = @"appTopic/SpellGroup";
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"火力拼团%@",responseObject);
@@ -47,7 +50,10 @@
     }];
 }
 //母婴用品接口
-- (void)specialPerformanceURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+- (void)specialPerformanceDict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+    
+    NSString *url = @"appTopic/baby";
+    
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];
         NSArray * array = dict[@"list"];
@@ -56,8 +62,38 @@
         failed(failure);
     }];
 }
+
+
 //国家馆接口
-- (void)pavilionURL:(NSString *)url dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+- (void)pavilionCountries:(NSInteger)countries dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+    
+    NSString *url = nil;
+    switch (countries) {
+        case CountriesEnterThe_SouthKorea: {
+            // 韩国
+            url = [NSString stringWithFormat:@"appTopic/Korea"];
+        }
+            break;
+        case CountriesEnterThe_Japan: {
+            // 日本
+            url = [NSString stringWithFormat:@"appTopic/Japan"];
+        }
+            break;
+        case CountriesEnterThe_Australia: {
+            // 澳大利亚
+            url = [NSString stringWithFormat:@"appTopic/Aussie"];
+        }
+            break;
+        case CountriesEnterThe_TheEuropean: {
+            // 欧洲
+            url = [NSString stringWithFormat:@"appTopic/Europe"];
+        }
+            break;
+
+        default:
+            break;
+    }
+    
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];
         NSArray * array = dict[@"list"];
@@ -66,9 +102,60 @@
         failed(failure);
     }];
 }
+
+
 #pragma mark --- 商品详情接口
-- (void)DetailssTimeSaleURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
+- (void)DetailssTimeSaleCountries:(NSInteger)countries Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
+    NSString *url = nil;
+    
+    
+    switch (countries) {
+        case GoodsDetailsMaternalAndInfant:
+        {
+            url = @"appTopic/baby";
+            break;
+        }
+        case GoodsDetailsKorea:
+        {
+            url = @"appTopic/Korea";
+            break;
+        }
+        case GoodsDetailsJapan:
+        {
+            url = @"appTopic/Janpan";
+            break;
+        }
+        case GoodsDetailsEurope:
+        {
+            url = @"appTopic/Europe";
+            break;
+        }
+        case GoodsDetailsAussie:
+        {
+            url = @"appTopic/Europe";
+            break;
+        }
+        case GoodsDetailsWashProtect:
+        {
+            url = @"appTopic/Limitshop";
+            break;
+        }
+        case GoodsDetailsLimited:
+        {
+            url = @"appTopic/Limitshop";
+            break;
+        }
+        case GoodsDetailsFireAlsoGroup:
+        {
+            url = @"appTopic/Limitshop";
+            break;
+        }
+        default:
+            break;
+    }
+ 
+    
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
@@ -90,8 +177,11 @@
     }];
 }
 #pragma mark --- 检查用户名接口
--(void)UserNameURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
+-(void)UserNameDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
 {
+    
+    NSString *url = @"appRegister/checkUsername";
+    
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"检查用户名%@",responseObject);
@@ -104,8 +194,9 @@
     }];
 }
 #pragma mark --- 检查邮箱接口
--(void)EmailsURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
+-(void)EmailsDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * contentString))result
 {
+    NSString *url = @"appRegister/checkEmail";
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"检查邮箱%@",responseObject);
@@ -118,8 +209,9 @@
     }];
 }
 #pragma mark --- 邮箱注册接口
--(void)EmailsRegisterURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * idString,NSString * typeString,NSString * content))result
+-(void)EmailsRegisterDict:(NSDictionary *)dict Finsh:(void (^)(NSString * idString,NSString * typeString,NSString * content))result
 {
+    NSString *url = @"appRegister/submit";
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
@@ -134,8 +226,9 @@
     }];
 }
 #pragma mark --- 登录接口
--(void)LoginURL:(NSString *)url Dict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result
+-(void)LoginDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result
 {
+    NSString *url = @"appLogin/submit";
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];

@@ -9,67 +9,102 @@
 #import "GZGYSpellTableViewCell.h"
 
 @implementation GZGYSpellTableViewCell
-@synthesize imgView,nameLabel,reasonLabel,priceLabel,pricenumber,marketPrice,marketLabel,replenishBtn,lineLabel;
+//@synthesize imgView,nameLabel,reasonLabel,priceLabel,pricenumber,marketPrice,marketLabel,replenishBtn,lineLabel;
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        imgView = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:220])];
-        imgView.image = [UIImage imageNamed:@"gzg_gg3"];
-        [self addSubview:imgView];
-        nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:25], SCREENWIDTH - [GZGApplicationTool control_wide:300], [GZGApplicationTool control_height:25])];
-        nameLabel.text = @"美国Skip Hop儿童动物卡通书包";
-        nameLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
-        nameLabel.font = [UIFont systemFontOfSize:12];
-        [self addSubview:nameLabel];
-        reasonLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:70], SCREENWIDTH - [GZGApplicationTool control_wide:300], [GZGApplicationTool control_height:60])];
-        reasonLabel.text = @"[推荐理由]Skip Hop儿童动物书包----送给孩子好的礼物";
-        reasonLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
-        reasonLabel.font = [UIFont systemFontOfSize:12];
-        reasonLabel.numberOfLines = 0;
-        [self addSubview:reasonLabel];
-        priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
-        priceLabel.text = @"拼团价:";
-        priceLabel.font = [UIFont systemFontOfSize:14];
-        priceLabel.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
-        [self addSubview:priceLabel];
-        pricenumber = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:380], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
-        pricenumber.text = @"¥249.00";
-        pricenumber.font = [UIFont systemFontOfSize:14];
-        pricenumber.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
-        [self addSubview:pricenumber];
-        marketLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:195], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
-        marketLabel.text = @"市场价:";
-        marketLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
-        marketLabel.font = [UIFont systemFontOfSize:12];
-        [self addSubview:marketLabel];
-        marketPrice = [[GZGYStrikeThroughLabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:380], [GZGApplicationTool control_height:195], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
-        marketPrice.text = @"¥223.00";
-        marketPrice.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
-        marketPrice.font = [UIFont systemFontOfSize:12];
-        [self addSubview:marketPrice];
-        replenishBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        replenishBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:190], [GZGApplicationTool control_wide:120], [GZGApplicationTool control_height:40]);
-        replenishBtn.backgroundColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
-        replenishBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [replenishBtn setTitle:@"马上进货>" forState:UIControlStateNormal];
-        [self addSubview:replenishBtn];
-        lineLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:258], SCREENWIDTH-[GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:2])];
-        lineLabel.backgroundColor = [UIColor whiteColor];
-        [self addSubview:lineLabel];
+        [self addSubview:self.imgView];
+        [self addSubview:self.nameLabel];
+        [self addSubview:self.reasonLabel];
+        [self addSubview:self.priceLabel];
+        [self addSubview:self.pricenumber];
+        [self addSubview:self.marketLabel];
+        [self addSubview:self.marketPrice];
+        [self addSubview:self.replenishBtn];
+        [self addSubview:self.lineLabel];
     }
     return self;
+}
+-(UIImageView *)imgView{
+    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:220])];
+    _imgView.image = [UIImage imageNamed:@"gzg_gg3"];
+    return _imgView;
+}
+-(UILabel *)nameLabel
+{
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:25], SCREENWIDTH - [GZGApplicationTool control_wide:300], [GZGApplicationTool control_height:25])];
+    _nameLabel.text = @"美国Skip Hop儿童动物卡通书包";
+    _nameLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
+    _nameLabel.font = [UIFont systemFontOfSize:12];
+    return _nameLabel;
+}
+-(UILabel *)reasonLabel
+{
+    _reasonLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:70], SCREENWIDTH - [GZGApplicationTool control_wide:300], [GZGApplicationTool control_height:60])];
+    _reasonLabel.text = @"[推荐理由]Skip Hop儿童动物书包----送给孩子好的礼物";
+    _reasonLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
+    _reasonLabel.font = [UIFont systemFontOfSize:12];
+    _reasonLabel.numberOfLines = 0;
+    return _reasonLabel;
+}
+-(UILabel *)priceLabel
+{
+    _priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
+    _priceLabel.text = @"拼团价:";
+    _priceLabel.font = [UIFont systemFontOfSize:14];
+    _priceLabel.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
+    return _priceLabel;
+}
+-(UILabel *)pricenumber
+{
+    _pricenumber = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:380], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
+    _pricenumber.text = @"¥249.00";
+    _pricenumber.font = [UIFont systemFontOfSize:14];
+    _pricenumber.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
+    return _priceLabel;
+}
+-(UILabel *)marketLabel
+{
+    _marketLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:195], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
+    _marketLabel.text = @"市场价:";
+    _marketLabel.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
+    _marketLabel.font = [UIFont systemFontOfSize:12];
+    return _marketLabel;
+}
+-(GZGYStrikeThroughLabel *)marketPrice
+{
+    _marketPrice = [[GZGYStrikeThroughLabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:380], [GZGApplicationTool control_height:195], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
+    _marketPrice.text = @"¥223.00";
+    _marketPrice.textColor = [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0];
+    _marketPrice.font = [UIFont systemFontOfSize:12];
+    return _marketPrice;
+}
+-(UIButton *)replenishBtn
+{
+    _replenishBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _replenishBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:190], [GZGApplicationTool control_wide:120], [GZGApplicationTool control_height:40]);
+    _replenishBtn.backgroundColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];
+    _replenishBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_replenishBtn setTitle:@"马上进货>" forState:UIControlStateNormal];
+    return _replenishBtn;
+}
+-(UILabel *)lineLabel
+{
+    _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:258], SCREENWIDTH-[GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:2])];
+    _lineLabel.backgroundColor = [UIColor whiteColor];
+    return _lineLabel;
 }
 -(void)setModel:(GZGYRootSpellModel *)model
 {
     _model = model;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
-        [imgView setHeader:urlString];
+        [self.imgView setHeader:urlString];
     });
-    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
-    pricenumber.text = [NSString stringWithFormat:@"%.2f",self.model.price];
-    marketPrice.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    self.pricenumber.text = [NSString stringWithFormat:@"%.2f",self.model.price];
+    self.marketPrice.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
     //    reasonLabel.text = [NSString stringWithFormat:@"%@",self.model.last_updated_by];
 }
 
