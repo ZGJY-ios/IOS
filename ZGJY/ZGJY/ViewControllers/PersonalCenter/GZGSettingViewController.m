@@ -40,6 +40,8 @@
         GZGYLoginViewController * login = [[GZGYLoginViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERID"];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERNAME"];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"PASSWORD"];
         [self presentViewController:nav animated:YES completion:NULL];
         NSLog(@"退出");
     }];
