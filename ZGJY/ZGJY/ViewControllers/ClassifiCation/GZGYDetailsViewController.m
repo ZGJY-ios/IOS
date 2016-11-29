@@ -209,9 +209,9 @@
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (self.oneScroll == nil) {
-        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:70])];
+        self.oneScroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.mainScroll.frame.size.height+[GZGApplicationTool control_height:100])];
         self.oneScroll.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0];
-        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:70]);
+        self.oneScroll.contentSize = CGSizeMake(SCREENWIDTH, self.oneScroll.frame.size.height+[GZGApplicationTool control_height:100]);
         [self.mainScroll addSubview:self.oneScroll];
     }
     if (self.twoScroll == nil) {

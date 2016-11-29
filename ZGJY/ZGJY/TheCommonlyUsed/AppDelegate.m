@@ -26,10 +26,10 @@
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
     [self setTabBarViewControllerType:0];
-    
+    //自动登录
+    [self AutomaticLogin];
     return YES;
 }
-
 - (void)setTabBarViewControllerType:(NSInteger)type{
 
     GZGGlobalPurchasingViewController *globalVC = [[GZGGlobalPurchasingViewController alloc] init];
@@ -96,12 +96,28 @@
     tabBar.viewControllers = controllerArr;
     tabBar.selectedIndex = 0;
     self.window.rootViewController = tabBar;
-    
-    
-    
-    
 }
 
+#pragma mark --- 自动登录
+-(void)AutomaticLogin
+{
+    NSString * userName = [[NSUserDefaults standardUserDefaults]objectForKey:@"USERNAME"];
+    NSString * passWord = [[NSUserDefaults standardUserDefaults]objectForKey:@"PASSWORD"];
+    if (userName.length == 0||passWord.length == 0) {
+        GZGLog(@"未登录状态");
+    }else{
+        NSDictionary * dict = @{@"username":userName,@"password":passWord};
+        [[GZGYAPIHelper shareAPIHelper]LoginDict:dict Between:@"0" Finsh:^(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password){
+            if ([typeString isEqualToString:@"error"]) {
+                GZGLog(@"登录失败%@",content);
+            }else{
+                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERID"];
+                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERNAME"];
+                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"PASSWORD"];
+            }
+        }];
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

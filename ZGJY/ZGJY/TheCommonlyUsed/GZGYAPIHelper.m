@@ -235,7 +235,7 @@
     }];
 }
 #pragma mark --- 登录接口
--(void)LoginDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result
+-(void)LoginDict:(NSDictionary *)dict Between:(NSString *)line Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password))result
 {
     NSString *url = @"appLogin/submit";
     [SVProgressHUD show];
@@ -245,10 +245,16 @@
         NSString * idString = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
         NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
         NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
-        result(idString,TypeString,contentString);
+        NSString * nameString = [NSString stringWithFormat:@"%@",responseObject[@"username"]];
+        NSString *password = [NSString stringWithFormat:@"%@",responseObject[@"password"]];
+        result(idString,TypeString,contentString,nameString,password);
     } failure:^(NSError *failure, NSInteger task) {
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
-        GZGLog(@"%@",failure);
+        if ([line isEqualToString:@"0"]) {
+            GZGLog(@"%@",failure);
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+            GZGLog(@"%@",failure);
+        }
     }];
 }
         
