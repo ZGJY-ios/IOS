@@ -154,8 +154,8 @@
 // 添加购物车
 - (void)requestDataWithAddCart {
     
-    NSDictionary * dict = @{@"id":self.shopID};
-    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"http://192.168.0.110:8080/appCart/add" Dict:dict Finished:^(NSArray *carts) {
+    NSDictionary * dict = @{@"id":self.shopID,@"quantity":detailsView.countField.text};
+    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
         NSLog(@"添加成功");
     } failed:^(NSError *error) {
         NSLog(@"添加失败");
@@ -457,6 +457,7 @@
 -(void)Receipt:(UIButton *)sender
 {
     GZGLog(@"加入进货单");
+    [self requestDataWithAddCart];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

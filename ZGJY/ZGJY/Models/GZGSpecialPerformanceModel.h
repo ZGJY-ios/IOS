@@ -60,6 +60,7 @@
 @property (nonatomic, assign) NSInteger product_category_id;
 @property (nonatomic, copy) NSString * qprice;
 @property (nonatomic, copy) NSString * qsum;
+@property (nonatomic, assign) NSInteger quantity; // 商品个数
 @property (nonatomic, assign) NSInteger sales;
 @property (nonatomic, assign) NSInteger score;
 @property (nonatomic, assign) NSInteger score_count;
