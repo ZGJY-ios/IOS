@@ -104,6 +104,7 @@
 -(void)ClasstionData
 {
     NSDictionary * dict;
+
     switch (self.gDetails) {
         case GoodsDetailsMaternalAndInfant:
         {
@@ -162,9 +163,22 @@
     
     NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
     [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
-        NSLog(@"添加成功");
+        GZGLog(@"添加成功");
     } failed:^(NSError *error) {
-        NSLog(@"添加失败");
+        GZGLog(@"添加失败");
+    }];
+}
+// 添加收藏
+- (void)requestDataWithAddCollection {
+    
+    NSDictionary * dict = @{@"id":self.shopID};
+    [[GZGYAPIHelper shareAPIHelper] addCollectionDict:dict Finsh:^(id responseObject) {
+        GZGLog(@"添加收藏成功:%@",responseObject);
+        if ([responseObject[@"type"] isEqualToString:@"success"]) {
+            
+        }
+    } failed:^(NSError *error) {
+        GZGLog(@"添加收藏失败:%@",error);
     }];
 }
 #pragma mark --- Nav
@@ -691,6 +705,7 @@
 -(void)Focus:(UIButton *)sender
 {
     GZGLog(@"关注");
+    [self requestDataWithAddCollection];
 }
 #pragma mark --- 购物车事件监听
 -(void)Cart:(UIButton *)sender

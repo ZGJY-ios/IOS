@@ -58,6 +58,7 @@
 @property (nonatomic, assign) NSInteger point;
 @property (nonatomic, assign) CGFloat price;
 @property (nonatomic, assign) NSInteger product_category_id;
+@property (nonatomic, assign) NSInteger product_id; // 商品ID
 @property (nonatomic, copy) NSString * qprice;
 @property (nonatomic, copy) NSString * qsum;
 @property (nonatomic, assign) NSInteger quantity; // 商品个数

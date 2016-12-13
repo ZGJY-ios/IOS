@@ -34,40 +34,39 @@
         // 合计 title
         _combinedTitle = ({
             UILabel * label = [[UILabel alloc] init];
-            label.frame = CGRectMake([GZGApplicationTool control_wide:186], [GZGApplicationTool control_height:13], [GZGApplicationTool control_wide:90], [GZGApplicationTool control_height:30]);
+            label.frame = CGRectMake([GZGApplicationTool control_wide:186], [GZGApplicationTool control_height:13], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30]);
             label.textAlignment = NSTextAlignmentLeft;
-            label.text = NSLocalizedString(@"合计 ：", nil);
+            label.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"合计: ￥", nil) textColor:[UIColor blackColor] numberColor:[GZGColorClass subjectShoppingCartPriceColor]];
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
-            label.textColor = [UIColor blackColor];
             label;
         });
         // 合计 价格 title
         _combinedPriceTitle = ({
             UILabel * label = [[UILabel alloc] init];
-            label.frame = CGRectMake([GZGApplicationTool control_wide:270], [GZGApplicationTool control_height:13], [GZGApplicationTool control_wide:145], [GZGApplicationTool control_height:30]);
+            label.frame = CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:13], [GZGApplicationTool control_wide:145], [GZGApplicationTool control_height:30]);
             label.textAlignment = NSTextAlignmentLeft;
             label.textColor = [GZGColorClass subjectShoppingCartPriceColor];
-            label.text = NSLocalizedString(@"￥400.00", nil);
+            label.text = NSLocalizedString(@"0.00", nil);
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
             label;
         });
         // 运费 title
         _freightTitle = ({
             UILabel * label = [[UILabel alloc] init];
-            label.frame = CGRectMake([GZGApplicationTool control_wide:186], [GZGApplicationTool control_height:56], [GZGApplicationTool control_wide:90], [GZGApplicationTool control_height:22]);
+            label.frame = CGRectMake([GZGApplicationTool control_wide:186], [GZGApplicationTool control_height:56], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:22]);
             label.textColor = [UIColor blackColor];
             label.textAlignment = NSTextAlignmentLeft;
-            label.text = NSLocalizedString(@"含运费：", nil);
+            label.attributedText = [self attributedStringWithStringColorWithString:NSLocalizedString(@"含运费: ￥", nil) textColor:[UIColor blackColor] numberColor:[GZGColorClass subjectShoppingCartPriceColor]];
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:20]];
             label;
         });
         // 运费 价格 title
         _freightPriceTitle = ({
             UILabel * label = [[UILabel alloc] init];
-            label.frame = CGRectMake([GZGApplicationTool control_wide:270], [GZGApplicationTool control_height:56], [GZGApplicationTool control_wide:145], [GZGApplicationTool control_height:22]);
+            label.frame = CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:56], [GZGApplicationTool control_wide:145], [GZGApplicationTool control_height:22]);
             label.textAlignment = NSTextAlignmentLeft;
             label.textColor = [GZGColorClass subjectShoppingCartPriceColor];
-            label.text = NSLocalizedString(@"￥24.00", nil);
+            label.text = NSLocalizedString(@"24.00", nil);
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:20]];
             label;
         });
@@ -85,8 +84,8 @@
         [self addSubview:self.futureGenerationsItem]; // 全选 item
         [self addSubview:self.combinedTitle]; // 合计 title
         [self addSubview:self.combinedPriceTitle]; // 合计价格 title
-        [self addSubview:self.freightTitle]; // 运费 title
-        [self addSubview:self.freightPriceTitle]; // 运费价格 title
+//        [self addSubview:self.freightTitle]; // 运费 title
+//        [self addSubview:self.freightPriceTitle]; // 运费价格 title
         [self addSubview:self.settlementItem]; // 结算 item
     }
     return self;
@@ -106,6 +105,23 @@
     CGContextMoveToPoint(context, rect.origin.x , rect.origin.y );
     CGContextAddLineToPoint(context, rect.origin.x + rect.size.width ,rect.origin.y );
     CGContextStrokePath(context);
+}
+
+/**
+ *  给字体添加不同的颜色
+ */
+- (NSMutableAttributedString *)attributedStringWithStringColorWithString:(NSString *)string textColor:(UIColor *)textColor numberColor:(UIColor *)numberColor {
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+    NSMutableArray * components = (NSMutableArray *)[string componentsSeparatedByString:@" "];
+    for (NSInteger i = 0; i < components.count; i++) {
+        NSString * tempString = components[i];
+        if ([tempString isEqualToString:@"$"] || [tempString isEqualToString:@"￥"]) {
+            [attributedString addAttribute:NSForegroundColorAttributeName value:numberColor range:[string rangeOfString:tempString]];
+        } else {
+            [attributedString addAttribute:NSForegroundColorAttributeName value:textColor range:[string rangeOfString:tempString]];
+        }
+    }
+    return attributedString;
 }
 
 @end

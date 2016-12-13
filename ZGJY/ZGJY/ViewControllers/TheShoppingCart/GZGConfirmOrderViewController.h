@@ -10,4 +10,6 @@
 
 @interface GZGConfirmOrderViewController : GZGSubViewController
 
+@property (nonatomic, assign) CGFloat totalPrice;
+
 @end

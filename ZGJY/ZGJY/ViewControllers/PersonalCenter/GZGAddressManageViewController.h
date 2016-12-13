@@ -10,4 +10,8 @@
 
 @interface GZGAddressManageViewController : GZGSubViewController
 
+@property (nonatomic) BOOL isBack; // Default NO;
+
+@property (nonatomic, copy) void(^returnAddress)(id address);
+
 @end

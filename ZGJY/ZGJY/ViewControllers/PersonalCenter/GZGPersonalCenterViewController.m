@@ -17,6 +17,7 @@
 #import "GZGYCollectionViewController.h"
 #import "GZGYEvaluationViewController.h"
 #import "GZGYTheOrderViewController.h"
+#import "GZGYLoginViewController.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -46,11 +47,29 @@
 @interface GZGPersonalCenterViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *personalCenters;
 @property (nonatomic, strong) NSDictionary *myInformationGroupDic;
+@property (nonatomic, strong) UITableView * tableView;
 @end
 
 @implementation GZGPersonalCenterViewController
 
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self requestDataWithLogin];
+}
+- (void)requestDataWithLogin {
+    
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString * userID = [userDefaults objectForKey:@"USERID"];
+    if (userID == nil) {
+        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    } else {
+        NSString * userName = [userDefaults objectForKey:@"USERNAME"];
+        self.tableView.tableHeaderView = [self tableHeaderViewWithBackgroundImage:@"PersonalCenterBackgroundImage.jpg" headImage:@"PersonalHead" title:NSLocalizedString(userName, nil)];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -76,6 +95,7 @@
     tableView.dataSource = self;
     tableView.delegate = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -157,6 +177,9 @@
     NSArray * array = dict[@"title"];
     return array.count;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [GZGApplicationTool control_height:87];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString * identifier = @"PersonalCenter";
@@ -170,6 +193,8 @@
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     NSArray * titles = dict[@"title"];
     cell.textLabel.text = titles[indexPath.row];
+    cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     if ([cell.textLabel.text isEqualToString:NSLocalizedString(@"我的优惠券", nil)]) {
         cell.detailTextLabel.text = NSLocalizedString(@"兑换优惠券", nil);
     }

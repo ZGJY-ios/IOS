@@ -25,4 +25,9 @@
 @property (nonatomic, strong) UILabel * payAmountLabel; // 支付金额
 @property (nonatomic, strong) UILabel * payRemindersLabel; // 支付提示
 
+/**
+ *  给字体添加不同的颜色
+ */
+- (NSMutableAttributedString *)attributedStringWithStringColorWithString:(NSString *)string textColor:(UIColor *)textColor numberColor:(UIColor *)numberColor;
+
 @end

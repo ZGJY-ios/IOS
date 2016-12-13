@@ -199,7 +199,7 @@
             label.textAlignment = NSTextAlignmentRight;
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
             CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, [GZGApplicationTool control_height:30])];
-            label.frame = CGRectMake([GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:30] - size.width, [GZGApplicationTool control_height:20], size.width, size.height);
+            label.frame = CGRectMake([GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:181], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:151], size.height);
             label;
         });
         self.preferentialActivitiesNumber = ({
@@ -239,7 +239,7 @@
             label.textAlignment = NSTextAlignmentRight;
             label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
             CGSize size = [label sizeThatFits:CGSizeMake(MAXFLOAT, [GZGApplicationTool control_height:32])];
-            label.frame = CGRectMake([GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:30] - size.width, [GZGApplicationTool control_height:242], size.width, size.height);
+            label.frame = CGRectMake([GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:181] , [GZGApplicationTool control_height:242], [GZGApplicationTool control_wide:151], size.height);
             label;
         });
         [self.contentView addSubview:self.commodityTotalPriceNumber];
@@ -273,7 +273,7 @@
 }
 - (void)buttonClick:(UIButton *)button {
     if (self.submitOrderBlock) {
-        self.submitOrderBlock(self.totalPriceLabel.text);
+        self.submitOrderBlock(self.totalPriceNumber.text);
     }
 }
 - (void)drawRect:(CGRect)rect {

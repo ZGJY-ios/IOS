@@ -118,26 +118,9 @@
     [self.contentView addSubview:self.cartAdd];
 }
 - (void)buttonClick:(UIButton *)button {
-    switch (button.tag) {
-        case 0: {
-            // 选中
-            button.selected = !button.isSelected;
-        }
-            break;
-        case 1: {
-            // 商品减少
-            NSInteger number = [self.cartNumber.text integerValue];
-            if (number > 1) {
-                self.cartNumber.text = [NSString stringWithFormat:@"%ld",--number];
-            }
-        }
-            break;
-        case 2: {
-            // 商品添加
-            NSInteger number = [self.cartNumber.text integerValue];
-            self.cartNumber.text = [NSString stringWithFormat:@"%ld",++number];
-        }
-            break;
+    
+    if (self.buttonClick) {
+        self.buttonClick(button);
     }
 }
 - (CGSize)computingSizeWithString:(NSString *)string forFont:(UIFont *)font {
