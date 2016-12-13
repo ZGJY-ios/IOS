@@ -20,7 +20,7 @@
     NSArray*classArray;
     NSInteger number;
 }
-@property(nonatomic,retain)NSMutableArray*SecArray;
+@property(nonatomic,retain)NSArray*SecArray;
 @property(nonatomic,strong)NSArray<GZGYClassModel*>*model;
 @property(nonatomic,strong)UICollectionView*CollectionView;
 @property(nonatomic,strong)UITableView*TableView;
@@ -33,13 +33,6 @@
 @end
 
 @implementation GZGClassifiCationViewController
--(NSMutableArray*)SecArray
-{
-    if (_SecArray == nil) {
-        _SecArray = [NSMutableArray arrayWithCapacity:1];
-    }
-    return _SecArray;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,14 +40,9 @@
     self.titles.text = @"分类";
     number = 0;
     self.view.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-    classArray = @[@"精品男装",@"潮流女装",@"母婴用品",@"儿童玩具",@"个护化妆",@"家用电器",@"电脑办公",@"手机数码",@"母婴童装",@"图书音像",@"家居家纺",@"家居生活",@"家具建材",@"食品生鲜",@"酒水饮料",@"运动户外",@"奢品礼品"];
+    classArray = @[@"精品男装",@"潮流女装",@"母婴用品",@"儿童玩具",@"个护化妆",@"家用电器",@"电脑办公",@"手机数码",@"母婴童装",@"图书音像"];
     self.NameArray = @[@"分类",@"品牌"];
-    DataArray = @[@{@"SecStr":@"常用分类",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]},@{@"SecStr":@"专场推荐",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]},@{@"SecStr":@"热门分类",@"STR":@[@{@"ImgUrl":@"qweqwe",@"NameStr":@"潮流女装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"},@{@"ImgUrl":@"qweqwe",@"NameStr":@"品牌男装"}]}];
-    self.model = DataArray;
-    for (int i = 0; i<DataArray.count; i++) {
-        NSString*String = DataArray[i][@"SecStr"];
-        [self.SecArray addObject:String];
-    }
+    self.SecArray = @[@"服装类",@"玩具类",@"图书类"];
     //搜索框
     [self SearchInterface];
     [self ScrollViewInterface];
@@ -113,7 +101,7 @@
 #pragma mark --- tableview collection
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     if (_TableView == nil) {
-        _TableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH/3-7, self.ScrollView.frame.size.height)];
+        _TableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/3-7, self.ScrollView.frame.size.height)];
         _TableView.delegate = self;
         _TableView.dataSource = self;
     }
@@ -122,7 +110,7 @@
     if (_CollectionView == nil) {
         UICollectionViewFlowLayout*flowlay = [[UICollectionViewFlowLayout alloc]init];
         flowlay.headerReferenceSize = CGSizeMake(SCREENWIDTH/3*2, SCREENHEIGHT/20+10);
-        _CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREENWIDTH/3, 59, SCREENWIDTH/3*2, self.ScrollView.frame.size.height) collectionViewLayout:flowlay];
+        _CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREENWIDTH/3, 0, SCREENWIDTH/3*2, self.ScrollView.frame.size.height) collectionViewLayout:flowlay];
         flowlay.minimumLineSpacing = 5;
         flowlay.minimumInteritemSpacing = 0;
         flowlay.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
@@ -156,29 +144,36 @@
 }
 
 #pragma mark --- tableview
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 3;
+//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return classArray.count;
 }
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+//    return self.SecArray[section];
+//}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
     cell.textLabel.text = [NSString stringWithFormat:@"%@",classArray[indexPath.row]];
-    
+    cell.textLabel.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [self.view endEditing:YES];
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     [_CollectionView scrollRectToVisible:CGRectMake(0, -5, self.CollectionView.frame.size.width, self.CollectionView.frame.size.height) animated:YES];
-    
-    
     //    _selectedIndex = indexPath.row;
-    
     [_CollectionView reloadData];
 }
 #pragma mark --- collectionview
@@ -194,12 +189,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if ([collectionView isEqual:self.CollectionView]) {
-        if (section == 0) {
-            return 0;
-        }else if (section == 1){
-            return 4;
-        }
-        return 10;
+        return 20;
     }else{
         if (section == 0) {
             return 4;
@@ -212,16 +202,13 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     if ([collectionView isEqual:self.CollectionView]) {
-        return 3;
+        return 1;
     }else{
         return 3;
     }
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:self.CollectionView]) {
-        if (indexPath.section == 1) {
-            return CGSizeMake(SCREENWIDTH/3-10, [GZGApplicationTool control_height:110]);
-        }
         return CGSizeMake(SCREENWIDTH/9*2-10, SCREENHEIGHT/8);
     }else{
         return CGSizeMake(SCREENWIDTH/9*3-10, [GZGApplicationTool control_height:100]);
@@ -231,19 +218,11 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([collectionView isEqual:self.CollectionView]) {
-        if (indexPath.section == 1) {
-            static NSString*identify = @"cell";
-            GZGYActivityCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-            [cell sizeToFit];//自适应 Label就是label自适应 Image就是调整图片大小与image一直
-            return cell;
-        }else{
-            static NSString*identify = @"Rcell";
-            GZGYRightCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-            [cell sizeToFit];//自适应 Label就是label自适应 Image就是调整图片大小与image一直
-            cell.model =[self.model[indexPath.section] valueForKey:@"STR"][indexPath.row];
-            NSLog(@"%@",cell.model);
-            return cell;
-        }
+        static NSString*identify = @"Rcell";
+        GZGYRightCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+        [cell sizeToFit];//自适应 Label就是label自适应 Image就是调整图片大小与image一直
+        cell.NameLabel.text = @"品牌男装";
+        return cell;
     }else{
         static NSString*identify = @"cell";
         GZGYBrandCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
@@ -255,48 +234,28 @@
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if ([collectionView isEqual:self.CollectionView]) {
-        if (section==0) {
-            return CGSizeMake(SCREENWIDTH/3*2, [GZGApplicationTool control_height:255]);
-        }else{
-            return CGSizeMake(SCREENWIDTH/3*2, SCREENHEIGHT/20);
-        }
+        return CGSizeMake(SCREENWIDTH/3*2, [GZGApplicationTool control_height:190]);
     }else{
-        return CGSizeMake(SCREENWIDTH, [GZGApplicationTool control_height:90]);
+        return CGSizeMake(SCREENWIDTH, [GZGApplicationTool control_height:50]);
     }
 }
-
 -(UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     number++;
     NSLog(@"你吗呀%ld",number);
     if ([collectionView isEqual:self.CollectionView]) {
         UICollectionReusableView*headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        if (indexPath.section == 0) {
-            if (number == 5) {
-                UIImageView*imgHeadView = [[UIImageView alloc]init];
-                imgHeadView.frame = CGRectMake(0, 0, SCREENWIDTH/3*2, [GZGApplicationTool control_height:305]);
-                imgHeadView.image = [UIImage imageNamed:@"sy_xspic3.jpg"];
-                [headerView addSubview:imgHeadView];
-            }else{
-                NSLog(@"不建了");
-            }
-        }else{
-            UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, SCREENWIDTH/3*2, SCREENHEIGHT/20)];
-            HeadLabel.font = [UIFont systemFontOfSize:13];
-            HeadLabel.text = _SecArray[indexPath.section];
-            HeadLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
-            [headerView addSubview:HeadLabel];
-        }
+        UIImageView * imgHeadView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/3*2, [GZGApplicationTool control_height:200])];
+        imgHeadView.image = [UIImage imageNamed:@"sy_ad1.jpg"];
+        [headerView addSubview:imgHeadView];
         return headerView;
     }else{
         UICollectionReusableView*headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT/20)];
-        HeadLabel.font = [UIFont systemFontOfSize:13];
+        UILabel*HeadLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:10], SCREENWIDTH, [GZGApplicationTool control_height:30])];
+        HeadLabel.font = [UIFont systemFontOfSize:15];
         HeadLabel.text = @"世界品牌";
         HeadLabel.backgroundColor = [UIColor whiteColor];
         [headerView addSubview:HeadLabel];
-        
-        
         return headerView;
     }
 }
@@ -304,12 +263,12 @@
 {
     [self.view endEditing:YES];
     NSLog(@"%ld",indexPath.row);
-    if ([collectionView isEqual:self.CollectionView]) {
-        GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
-        details.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:details animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
-    }
+//    if ([collectionView isEqual:self.CollectionView]) {
+//        GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+//        details.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:details animated:YES];
+//        self.hidesBottomBarWhenPushed = NO;
+//    }
 }
 
 - (void)changeView:(float)x {

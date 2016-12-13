@@ -10,7 +10,7 @@
 
 @protocol YDTopTitleRollingDelegate <NSObject>
 
-- (void)titleRollingIndex:(UILabel *)lab ;
+- (void)titleRollingIndex:(NSInteger)index ;
 
 
 @end

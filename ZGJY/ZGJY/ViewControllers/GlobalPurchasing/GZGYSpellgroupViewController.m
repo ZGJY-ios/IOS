@@ -42,6 +42,11 @@
     }
     return _ImgArray;
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titles.text = @"火力拼团";

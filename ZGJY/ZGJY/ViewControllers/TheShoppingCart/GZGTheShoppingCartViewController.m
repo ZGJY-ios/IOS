@@ -53,6 +53,7 @@
 @property (nonatomic, assign) CGFloat collectionViewHeight;
 @property (nonatomic, strong) GZGShoppingCartSettlementView * settlementView;
 @property (nonatomic, strong) NSMutableArray * mutables;
+@property (nonatomic) BOOL isFutureGenerations; // 是否全选
 @end
 
 @implementation GZGTheShoppingCartViewController
@@ -72,6 +73,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"购物车", nil);
+    self.isFutureGenerations = NO;
+    [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.rightBtn setImage:[[UIImage imageNamed:@"TheShoppingCartPushMessage"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     _editorBtn = ({
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -99,10 +102,21 @@
         switch (btn.tag) {
             case 0: {
                 btn.selected = !btn.isSelected;
+//                for (GZGShoppingCartCell * cell in [weak tableViewCells]) {
+//                    cell.cartRedio.selected = btn.isSelected;
+//                }
+                weak.isFutureGenerations = btn.isSelected;
+                if (btn.isSelected) {
+                    weak.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[weak calculateTotalPrice]];
+                } else {
+                    weak.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"0.00"];
+                }
+                [weak.tableView reloadData];
             }
                 break;
             case 1: {
                 GZGConfirmOrderViewController * confirmOrderVC = [[GZGConfirmOrderViewController alloc] init];
+                confirmOrderVC.totalPrice = weak.settlementView.combinedPriceTitle.text.floatValue;
                 confirmOrderVC.hidesBottomBarWhenPushed = YES;
                 [weak.navigationController pushViewController:confirmOrderVC animated:YES];
             }
@@ -116,11 +130,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)requestData {
+    
+    if (!_mutables) {
+        _mutables = [NSMutableArray array];
+    } else {
+        [_mutables removeAllObjects];
+    }
+    
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * userID = [userDefaults objectForKey:@"USERID"];
     if (userID != nil) {
-        NSDictionary * dict = @{@"cartId":@"5"};
+        NSDictionary * dict = @{@"memberId":userID};
         [[GZGYAPIHelper shareAPIHelper] cartListURL:@"appCart/list" dict:dict finished:^(NSArray *goods) {
             NSLog(@"购物车列表:%@",goods);
             
@@ -142,18 +164,51 @@
             logisticsVC.TbabarLogin = ^(NSString * backId){
                 blockId = backId;
             };
+            logisticsVC.backid = @"1";
             UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
             [self presentViewController:nav animated:YES completion:nil];
         }
         blockId = @"";
     }
 }
+// 添加购物车
+- (void)requestDataWithAddCartID:(NSString *)shopID number:(NSString *)number {
+    
+    NSDictionary * dict = @{@"id":shopID,@"quantity":number};
+    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
+        // 添加成功 刷新购物车列表
+        [self requestData];
+    } failed:^(NSError *error) {
+        NSLog(@"添加失败");
+    }];
+}
+// 删除购物车
+- (void)requestDataWithDeleteCartID:(NSString *)shopID number:(NSString *)number {
+    
+//    NSDictionary * dict = @{@"id":shopID,@"quantity":number};
+    NSDictionary * dict = @{@"id":shopID};
+    [[GZGYAPIHelper shareAPIHelper] deleteToCartURL:@"appCart/delete" Dict:dict Finished:^(NSArray *carts) {
+        // 删除成功 刷新购物车列表
+        [self requestData];
+    } failed:^(NSError *error) {
+        GZGLog(@"删除失败");
+    }];
+}
 #pragma mark - 自己的方法
 - (void)rightBtnDown{
     NSLog(@"信息");
 }
 - (void)editorBtnClick:(UIButton *)btn {
-    NSLog(@"编辑");
+    
+    // 修改editing属性的值，进入或退出编辑模式
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    if (self.tableView.editing) {
+        [btn setTitle:NSLocalizedString(@"完成", nil) forState:UIControlStateNormal];
+        NSLog(@"编辑");
+    } else {
+        [btn setTitle:NSLocalizedString(@"编辑", nil) forState:UIControlStateNormal];
+        NSLog(@"完成");
+    }
 }
 - (UIView *)addHeaderView {
     
@@ -173,6 +228,28 @@
     }
     
     return _collectionView;
+}
+// 获取所有cell
+- (NSArray *)tableViewCells {
+    
+    NSMutableArray * cells = [NSMutableArray arrayWithCapacity:_mutables.count];
+    for (NSInteger i = 0; i < _mutables.count; i++) {
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        GZGShoppingCartCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [cells addObject:cell];
+    }
+    return cells;
+}
+// 合计购物车总价格
+- (CGFloat)calculateTotalPrice {
+    
+    CGFloat totalPrice = 0;
+    
+    for (NSInteger i = 0; i < _mutables.count; i++) {
+        GZGSpecialPerformanceModel * model = _mutables[i];
+        totalPrice += model.price*model.quantity;
+    }
+    return totalPrice;
 }
 #pragma mark - 系统的代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -194,11 +271,104 @@
         cell = [[GZGShoppingCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     GZGSpecialPerformanceModel * model = _mutables[indexPath.row];
+    
+    __weak GZGTheShoppingCartViewController * weakSelf = self;
+    __weak GZGShoppingCartCell * weakCell = cell;
+    void (^calculateTotalPrice)(GZGSpecialPerformanceModel*) = ^(GZGSpecialPerformanceModel * model){
+        CGFloat totalPrice = [weakSelf.settlementView.combinedPriceTitle.text floatValue] + (weakCell.cartRedio.isSelected ? (model.price * weakCell.cartNumber.text.integerValue) : (- model.price * weakCell.cartNumber.text.integerValue));
+        weakSelf.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",totalPrice];
+    };
+    void (^calculateNumberPrice)(GZGSpecialPerformanceModel*,BOOL, BOOL) = ^(GZGSpecialPerformanceModel * model, BOOL addOrSub, BOOL isSelected) {
+        
+        CGFloat totalPrice;
+        if (isSelected) {
+            totalPrice = [weakSelf.settlementView.combinedPriceTitle.text floatValue] + (addOrSub ? model.price : - model.price);
+        } else {
+            totalPrice = [weakSelf.settlementView.combinedPriceTitle.text floatValue] + model.price * cell.cartNumber.text.integerValue;
+        }
+        
+        weakSelf.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",totalPrice];
+        if (addOrSub) {
+            // 添加
+            [weakSelf requestDataWithAddCartID:[NSString stringWithFormat:@"%ld",model.product_id] number:@"1"];
+        } else {
+            // 删除
+            [weakSelf requestDataWithDeleteCartID:[NSString stringWithFormat:@"%ld",model.product_id] number:@"1"];
+        }
+    };
+    void (^isSelectedFutureGenerations)() = ^() {
+        NSInteger i = 0;
+        for (GZGShoppingCartCell * tmpCell in weakSelf.tableView.visibleCells) {
+            if (!tmpCell.cartRedio.isSelected) {
+                weakSelf.isFutureGenerations = NO;
+                weakSelf.settlementView.futureGenerationsItem.selected = weakSelf.isFutureGenerations;
+            } else {
+                i++;
+            }
+        }
+        if (i == [weakSelf tableViewCells].count) {
+            weakSelf.isFutureGenerations = YES;
+//            [weakSelf.tableView reloadData];
+            weakSelf.settlementView.futureGenerationsItem.selected = weakSelf.isFutureGenerations;
+        }
+    };
+    
     cell.cartTitle.text = NSLocalizedString(model.name, nil);
+    if (self.isFutureGenerations) {
+        // 全选状态
+        cell.cartRedio.selected = self.isFutureGenerations;
+    } else {
+        // 不是全选状态
+        if (weakSelf.settlementView.combinedPriceTitle.text.floatValue == 0) {
+            cell.cartRedio.selected = self.isFutureGenerations;
+        }
+    }
     [cell.cartImage sd_setImageWithURL:[NSURL URLWithString:model.image]];
     cell.cartNumber.text = [NSString stringWithFormat:@"%ld",model.quantity];
     cell.cartPrice.text = [NSString stringWithFormat:@"￥%.2f",model.price];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setButtonClick:^(UIButton * button) {
+        switch (button.tag) {
+            case 0: {
+                // 选中
+                button.selected = !button.isSelected;
+                calculateTotalPrice(model);
+                isSelectedFutureGenerations();
+            }
+                break;
+            case 1: {
+                // 商品减少
+                NSInteger number = [weakCell.cartNumber.text integerValue];
+                if (number > 1) {
+                    weakCell.cartNumber.text = [NSString stringWithFormat:@"%ld",--number];
+                    // 按钮选中
+                    if (weakCell.cartRedio.isSelected) {
+                        calculateNumberPrice(model,NO, YES);
+                    } else {
+                        weakCell.cartRedio.selected = YES;
+                        calculateNumberPrice(model,NO, NO);
+                    }
+                }
+                isSelectedFutureGenerations();
+            }
+                break;
+            case 2: {
+                // 商品添加
+                NSInteger number = [weakCell.cartNumber.text integerValue];
+                weakCell.cartNumber.text = [NSString stringWithFormat:@"%ld",++number];
+                // 按钮选中
+                if (weakCell.cartRedio.isSelected) {
+                    calculateNumberPrice(model, YES, YES);
+                } else {
+                    weakCell.cartRedio.selected = YES;
+                    calculateNumberPrice(model, YES, NO);
+                }
+                isSelectedFutureGenerations();
+            }
+                break;
+        }
+    }];
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -217,8 +387,11 @@
     return YES;
 }
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    GZGSpecialPerformanceModel * model = _mutables[indexPath.row];
     UITableViewRowAction * deleteRow = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:NSLocalizedString(@"删除", nil) handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         // 执行的方法
+        [self.mutables removeObject:model];
+        [self requestDataWithDeleteCartID:model.ID number:@"1"];
     }];
     //
     UITableViewRowAction * collectRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"收藏" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
@@ -280,6 +453,18 @@
         return CGSizeMake([GZGApplicationTool screenWide], [GZGApplicationTool control_height:65]);
     }
     return CGSizeMake([GZGApplicationTool screenWide], [GZGApplicationTool control_height:1]);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"开发中..." message:@"此功能正在开发中......" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction * action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 @end

@@ -111,14 +111,14 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 
 
 #pragma mark Delegate
-- (void)titleRollingIndex:(UILabel *)lab{
+- (void)titleRollingIndex:(NSInteger)index{
     
     NSLog(@"%f",self.collection.contentOffset.y);
     self.collection.contentOffset = CGPointMake(0, 0);
     
     
     
-    [self.delegate topTitleIndex:lab];
+    [self.delegate topTitleIndex:index];
 }
 
 - (void)priceLab:(UILabel *)lab rang:(NSRange)rang font:(UIFont *)font{

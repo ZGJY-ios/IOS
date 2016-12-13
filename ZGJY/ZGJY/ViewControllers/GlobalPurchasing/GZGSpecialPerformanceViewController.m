@@ -15,12 +15,17 @@
 #import "GZGSpecialPerformanceModel.h"
 #import "GZGYAPIHelper.h"
 #import "GZGYDetailsViewController.h"
-
+#import "YDTopTitleRolling.h"
+#import "GZGSpeciaPerReusableView.h"
 @interface UIImage (PersonalCenter)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
 @end
+
+static NSString *SpecialPerformanceCellStr = @"SpecialPerformanceCellStr";
+
+
 
 @implementation UIImage (PersonalCenter)
 
@@ -42,7 +47,7 @@
 
 @end
 
-@interface GZGSpecialPerformanceViewController () <SpecialPerformanceDelegeteClickProtocol, GZGPageViewDelegate,GZGPageViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate> {
+@interface GZGSpecialPerformanceViewController () <SpecialPerformanceDelegeteClickProtocol, GZGPageViewDelegate,GZGPageViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate,YDTopTitleRollingDelegate> {
     GZGPageView * _pageView;
     GZGSpecialPerformanceView * segment;
     NSArray * nameArray;
@@ -50,7 +55,13 @@
 /** 下拉菜单 */
 @property (nonatomic, strong) GZGSPDropMenuView *dropdownMenu;
 @property (nonatomic, strong) NSMutableArray * mutableDatas;
+@property(nonatomic, strong) YDTopTitleRolling *ydTopTitleRollingView;
+@property(nonatomic, strong ) UICollectionView *collectionView;
+@property(nonatomic, strong) GZGSpeciaPerReusableView *speciaPerReusableView;
 @end
+
+
+
 
 @implementation GZGSpecialPerformanceViewController
 - (NSMutableArray *)mutableDatas {
@@ -69,19 +80,49 @@
     /** 初始化下拉菜单 */
     [self setupDropDownMenu];
     
-    nameArray = @[@"妈妈最爱",@"进口奶粉",@"大牌尿裤",@"健康辅助"];
+//    nameArray = @[@"妈妈最爱",@"进口奶粉",@"大牌尿裤",@"健康辅助"];
+//    
+//    segment = [[GZGSpecialPerformanceView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool control_height:90])];
+//    [segment updateChannels:nameArray];
+//    segment.delegate = self;
+//    [self.view addSubview:segment];
+////
+//    _pageView =[[GZGPageView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:90] + [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], self.view.bounds.size.height - [GZGApplicationTool control_height:90] - [GZGApplicationTool navBarAndStatusBarSize])];
+//    _pageView.datasource = self;
+//    _pageView.delegate = self;
+//    [_pageView reloadData];
+//    [_pageView changeToItemAtIndex:0];
+//    [self.view addSubview:_pageView];
     
-    segment = [[GZGSpecialPerformanceView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool control_height:90])];
-    [segment updateChannels:nameArray];
-    segment.delegate = self;
-    [self.view addSubview:segment];
     
-    _pageView =[[GZGPageView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:90] + [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], self.view.bounds.size.height - [GZGApplicationTool control_height:90] - [GZGApplicationTool navBarAndStatusBarSize])];
-    _pageView.datasource = self;
-    _pageView.delegate = self;
-    [_pageView reloadData];
-    [_pageView changeToItemAtIndex:0];
-    [self.view addSubview:_pageView];
+    NSArray *titleArr = @[@"妈妈最爱",@"进口奶粉",@"大牌尿裤",@"健康辅助"];
+    
+    
+    _ydTopTitleRollingView = [[YDTopTitleRolling alloc] initWithFrame:
+                                  CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], SCREENWIDTH, [GZGApplicationTool control_height:94])
+                                                            topTitleArray:titleArr
+                                                              selectColor:[GZGColorClass subjectCountriesHeadFaceSelectTitleColor]
+                                                             defauleColor:[GZGColorClass subjectCountriesHeadFaceCancleSelectTitleColor]
+                                                                titleFont:[UIFont systemFontOfSize:13]
+                                                             titleSpacing:10.0f
+                                                                lineWidth:2.0f
+                                  ];
+    _ydTopTitleRollingView.backgroundColor = [UIColor whiteColor];
+    _ydTopTitleRollingView.delegate = self;
+    [self.view addSubview:self.ydTopTitleRollingView];
+    
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _ydTopTitleRollingView.onTheOffset, SCREENWIDTH, SCREENHEIGHT - [GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:94]) collectionViewLayout:flowLayout];
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [_collectionView registerClass:[GZGSpecialPerformanceCell class] forCellWithReuseIdentifier:SpecialPerformanceCellStr];
+    [_collectionView registerClass:[GZGSpecialPerformanceCell class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:SpecialPerformanceCellStr];
+    _collectionView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_collectionView];
+    
     
     [self requestDataWithProductCategoryId:@"11"];
 }
@@ -101,9 +142,9 @@
             GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
             [_mutableDatas addObject:model];
         }
-        UICollectionView * collectionView = _pageView.itemsArray[_pageView.currentIndex];
         
-        [collectionView reloadData];
+        
+        [_collectionView reloadData];
     } failed:^(NSError *error) {
         NSLog(@"错误信息:%@",error);
     }];
@@ -164,51 +205,54 @@
     return nameArray.count;
 }
 
--(UIView*)pageView:(GZGPageView *)pageView viewAtIndex:(NSInteger)index{
-    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
-    UICollectionView * collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [GZGApplicationTool screenWide], _pageView.frame.size.height) collectionViewLayout:layout];
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake([GZGApplicationTool control_wide:328], [GZGApplicationTool control_height:420]);
-    collectionView.backgroundColor = [@"fee4e6" hexStringToColor];
-    [collectionView registerClass:[GZGSpecialPerformanceCell class] forCellWithReuseIdentifier:@"SpecialPerformance"];
-    collectionView.bounces = YES;
-    collectionView.dataSource = self;
-    collectionView.delegate = self;
-    
-    return collectionView;
-}
+//-(UIView*)pageView:(GZGPageView *)pageView viewAtIndex:(NSInteger)index{
+//    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
+//    UICollectionView * collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [GZGApplicationTool screenWide], _pageView.frame.size.height) collectionViewLayout:layout];
+//    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    layout.itemSize = CGSizeMake([GZGApplicationTool control_wide:328], [GZGApplicationTool control_height:420]);
+//    collectionView.backgroundColor = [@"fee4e6" hexStringToColor];
+//    [collectionView registerClass:[GZGSpecialPerformanceCell class] forCellWithReuseIdentifier:@"SpecialPerformance"];
+//    collectionView.bounces = YES;
+//    collectionView.dataSource = self;
+//    collectionView.delegate = self;
+//    
+//    return collectionView;
+//}
 
-#pragma mark - JXSegmentDelegate
-- (void)segment:(GZGSpecialPerformanceView*)segment didSelectIndex:(NSInteger)index{
-    [_pageView changeToItemAtIndex:index];
-    switch (_pageView.currentIndex) {
-        case 0: {
-            // 妈妈最爱
-            [self requestDataWithProductCategoryId:@"11"];
-        }
-            break;
-        case 1: {
-            // 进口奶粉
-            [self requestDataWithProductCategoryId:@"31"];
-        }
-            break;
-        case 2: {
-            // 大牌尿裤
-            [self requestDataWithProductCategoryId:@"21"];
-        }
-            break;
-        case 3: {
-            // 健康辅助
-            [self requestDataWithProductCategoryId:@"41"];
-        }
-            break;
-    }
-}
+//#pragma mark - JXSegmentDelegate
+//- (void)segment:(GZGSpecialPerformanceView*)segment didSelectIndex:(NSInteger)index{
+//    [_pageView changeToItemAtIndex:index];
+//    switch (_pageView.currentIndex) {
+//        case 0: {
+//            // 妈妈最爱
+//            [self requestDataWithProductCategoryId:@"11"];
+//        }
+//            break;
+//        case 1: {
+//            // 进口奶粉
+//            [self requestDataWithProductCategoryId:@"31"];
+//        }
+//            break;
+//        case 2: {
+//            // 大牌尿裤
+//            [self requestDataWithProductCategoryId:@"21"];
+//        }
+//            break;
+//        case 3: {
+//            // 健康辅助
+//            [self requestDataWithProductCategoryId:@"41"];
+//        }
+//            break;
+//    }
+//}
+//
+//#pragma mark - JXPageViewDelegate
+//- (void)didScrollToIndex:(NSInteger)index{
+//    [segment didChengeToIndex:index];
+//}
 
-#pragma mark - JXPageViewDelegate
-- (void)didScrollToIndex:(NSInteger)index{
-    [segment didChengeToIndex:index];
-}
+
+
 #pragma mark - UICollectionDataSource
 ////////======
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -217,9 +261,32 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.mutableDatas.count;
 }
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    //如果是头部视图 (因为这里的kind 有头部和尾部所以需要判断  默认是头部,严谨判断比较好)
+    /*
+     JHHeaderReusableView 头部的类
+     kHeaderID  重用标识
+     */
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        _speciaPerReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:SpecialPerformanceCellStr forIndexPath:indexPath];
+        
+        
+        return _speciaPerReusableView;
+        
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(SCREENWIDTH, [GZGApplicationTool control_height:172]);
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    GZGSpecialPerformanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SpecialPerformance" forIndexPath:indexPath];
+    GZGSpecialPerformanceCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:SpecialPerformanceCellStr forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     cell.type = SpecialPerformanceTypeSpecialPackagesMailed;
     GZGSpecialPerformanceModel * model = self.mutableDatas[indexPath.row];
@@ -234,8 +301,13 @@
     });
     return cell;
 }
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake([GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:25]);
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake([GZGApplicationTool control_wide:330.0f],[GZGApplicationTool control_height:420.0f]);
+}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    UIEdgeInsets set = UIEdgeInsetsMake([GZGApplicationTool control_height:22],[GZGApplicationTool control_wide:22],0,[GZGApplicationTool control_height:22]);
+    return set;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -268,6 +340,10 @@
             break;
     }
     [self.navigationController pushViewController:detailsVC animated:YES];
+}
+
+- (void)titleRollingIndex:(NSInteger)index{
+    NSLog(@"%ld",index);
 }
 
 

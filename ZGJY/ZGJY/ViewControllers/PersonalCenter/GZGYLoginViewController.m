@@ -39,7 +39,9 @@
 -(void)BackDelegeteClick:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    TbabarLogin(@"1");
+    if ([_backid isEqualToString:@"1"]) {
+        TbabarLogin(@"1");
+    }
 }
 #pragma mark --- 注册事件
 -(void)RegDelegeteClick:(id)sender

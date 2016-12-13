@@ -108,6 +108,7 @@
 		049DC6561DB9FEF9001DC372 /* koho-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049DC6541DB9FEF9001DC372 /* koho-2.jpg */; };
 		049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC6581DBA065A001DC372 /* GZGCommonleView.m */; };
 		049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */; };
+		049F2C721DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */; };
 		04A2D0511DB9ACCF003966DA /* GZGCountriesPavilionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */; };
 		04A2D0561DB9B51C003966DA /* index-Aussie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0521DB9B51C003966DA /* index-Aussie.jpg */; };
 		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
@@ -163,7 +164,6 @@
 		538047711DDAEE0B00C75869 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476A1DDAEE0B00C75869 /* SVIndefiniteAnimatedView.m */; };
 		538047721DDAEE0B00C75869 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476C1DDAEE0B00C75869 /* SVProgressHUD.m */; };
 		538047731DDAEE0B00C75869 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5380476D1DDAEE0B00C75869 /* SVProgressHUD.bundle */; };
-		538047741DDAEE0B00C75869 /* SVProgressHUD.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5380476E1DDAEE0B00C75869 /* SVProgressHUD.xcconfig */; };
 		538047751DDAEE0B00C75869 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476F1DDAEE0B00C75869 /* SVProgressHUD-dummy.m */; };
 		53860F511DD962F90047A734 /* GZGYCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F4A1DD962F90047A734 /* GZGYCollectionViewController.m */; };
 		53860F521DD962F90047A734 /* GZGYEvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F4C1DD962F90047A734 /* GZGYEvaluationViewController.m */; };
@@ -213,7 +213,6 @@
 		E515668D1DE2CF1E00B3DF3E /* GZGYSpellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E51566881DE2CF1E00B3DF3E /* GZGYSpellModel.m */; };
 		E51566D41DE2CF3A00B3DF3E /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E51566901DE2CF3A00B3DF3E /* MJDictionaryCache.m */; };
 		E51566D51DE2CF3A00B3DF3E /* MJExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E51566911DE2CF3A00B3DF3E /* MJExtension-dummy.m */; };
-		E51566D61DE2CF3A00B3DF3E /* MJExtension.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E51566941DE2CF3A00B3DF3E /* MJExtension.xcconfig */; };
 		E51566D71DE2CF3A00B3DF3E /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E51566961DE2CF3A00B3DF3E /* MJExtensionConst.m */; };
 		E51566D81DE2CF3A00B3DF3E /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = E51566981DE2CF3A00B3DF3E /* MJFoundation.m */; };
 		E51566D91DE2CF3A00B3DF3E /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = E515669A1DE2CF3A00B3DF3E /* MJProperty.m */; };
@@ -287,6 +286,7 @@
 		E5941BB71DDBF9A70069B757 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */; };
 		E5941BB81DDBF9A70069B757 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */; };
 		E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */; };
+		E5A983511DF5601E004D269B /* GZGAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A983501DF5601E004D269B /* GZGAddressModel.m */; };
 		E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */; };
 		E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */; };
 		E5ABE6981DD1C41500D2E59D /* GZGCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6971DD1C41500D2E59D /* GZGCouponsViewController.m */; };
@@ -296,6 +296,7 @@
 		E5AD87561DD55CDB00EDB8B3 /* GZGYOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87541DD55CDB00EDB8B3 /* GZGYOrders.m */; };
 		E5AD87591DD55D5000EDB8B3 /* GZGADDAddressViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */; };
 		E5B1701C1DD5A09400FDAE24 /* GZGSPDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */; };
+		E5B428471DF7ADBF008922FD /* GZGShoppingCartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B428461DF7ADBF008922FD /* GZGShoppingCartModel.m */; };
 		E5BD7D991DD014BF00C95DFB /* GZGHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */; };
 		E5C7C8F61DD0585A00229EF0 /* GZGHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F51DD0585A00229EF0 /* GZGHelpSuccessViewController.m */; };
 		E5C7C8F91DD05B4900229EF0 /* GZGSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C7C8F81DD05B4900229EF0 /* GZGSettingViewController.m */; };
@@ -489,6 +490,8 @@
 		049DC6581DBA065A001DC372 /* GZGCommonleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCommonleView.m; sourceTree = "<group>"; };
 		049DC65A1DBA1470001DC372 /* GZGCountriesHeadFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesHeadFaceCell.h; sourceTree = "<group>"; };
 		049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesHeadFaceCell.m; sourceTree = "<group>"; };
+		049F2C701DEFEE1200C892F1 /* GZGSpeciaPerReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpeciaPerReusableView.h; sourceTree = "<group>"; };
+		049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpeciaPerReusableView.m; sourceTree = "<group>"; };
 		04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesPavilionViewController.h; sourceTree = "<group>"; };
 		04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesPavilionViewController.m; sourceTree = "<group>"; };
 		04A2D0521DB9B51C003966DA /* index-Aussie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Aussie.jpg"; sourceTree = "<group>"; };
@@ -822,6 +825,8 @@
 		E5941BB01DDBF9A70069B757 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCouponsCell.h; sourceTree = "<group>"; };
 		E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCouponsCell.m; sourceTree = "<group>"; };
+		E5A9834F1DF5601E004D269B /* GZGAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAddressModel.h; sourceTree = "<group>"; };
+		E5A983501DF5601E004D269B /* GZGAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAddressModel.m; sourceTree = "<group>"; };
 		E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OfficialAddress.png; sourceTree = "<group>"; };
 		E5ABE6931DD16D6100D2E59D /* GZGAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAboutUsViewController.h; sourceTree = "<group>"; };
 		E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAboutUsViewController.m; sourceTree = "<group>"; };
@@ -838,6 +843,8 @@
 		E5AD87581DD55D5000EDB8B3 /* GZGADDAddressViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewCell.m; sourceTree = "<group>"; };
 		E5B1701A1DD5A09400FDAE24 /* GZGSPDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSPDropMenuView.h; sourceTree = "<group>"; };
 		E5B1701B1DD5A09400FDAE24 /* GZGSPDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSPDropMenuView.m; sourceTree = "<group>"; };
+		E5B428451DF7ADBF008922FD /* GZGShoppingCartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGShoppingCartModel.h; sourceTree = "<group>"; };
+		E5B428461DF7ADBF008922FD /* GZGShoppingCartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGShoppingCartModel.m; sourceTree = "<group>"; };
 		E5BD7D971DD014BF00C95DFB /* GZGHelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpCell.h; sourceTree = "<group>"; };
 		E5BD7D981DD014BF00C95DFB /* GZGHelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGHelpCell.m; sourceTree = "<group>"; };
 		E5C7C8F41DD0585A00229EF0 /* GZGHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGHelpSuccessViewController.h; sourceTree = "<group>"; };
@@ -1236,6 +1243,8 @@
 				049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */,
 				048F4EB81DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.h */,
 				048F4EB91DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.m */,
+				049F2C701DEFEE1200C892F1 /* GZGSpeciaPerReusableView.h */,
+				049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1755,6 +1764,8 @@
 		E5941B971DDBF8E50069B757 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E5B428441DF7AD89008922FD /* TheShoppingCart */,
+				E5A9834E1DF55F43004D269B /* PersonalCenter */,
 				E515667D1DE2CF1E00B3DF3E /* ClassifiCation */,
 				E51566801DE2CF1E00B3DF3E /* GlobalPurchasing */,
 				E5941B981DDBF8E50069B757 /* GZGSpecialPerformanceModel.h */,
@@ -1812,6 +1823,15 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		E5A9834E1DF55F43004D269B /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				E5A9834F1DF5601E004D269B /* GZGAddressModel.h */,
+				E5A983501DF5601E004D269B /* GZGAddressModel.m */,
+			);
+			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
 		E5AD874B1DD55CB100EDB8B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1823,6 +1843,15 @@
 				53860F551DD9630F0047A734 /* YYS */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E5B428441DF7AD89008922FD /* TheShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				E5B428451DF7ADBF008922FD /* GZGShoppingCartModel.h */,
+				E5B428461DF7ADBF008922FD /* GZGShoppingCartModel.m */,
+			);
+			path = TheShoppingCart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1887,7 +1916,7 @@
 		BDDDF8001D51B992002723AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = LiuYaDong;
 				TargetAttributes = {
 					BDDDF8071D51B992002723AB = {
@@ -1954,7 +1983,6 @@
 				04A4A4C61DBF3E6100897F5A /* gzg_gg6.png in Resources */,
 				047B69131D5DA0630057CE61 /* 123456.png in Resources */,
 				047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */,
-				538047741DDAEE0B00C75869 /* SVProgressHUD.xcconfig in Resources */,
 				53975D5F1DB9DF9800478004 /* etc@2x.png in Resources */,
 				E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */,
 				047467CF1DAB859B009E4EAA /* nav_ozg.jpg in Resources */,
@@ -1978,7 +2006,6 @@
 				04A4A4C11DBF3E6100897F5A /* gzg_gg1.png in Resources */,
 				040CD2881DBE10F700A12DC3 /* sy_hlpic3.png in Resources */,
 				04D60F481D87D6A400A42583 /* Localizable.strings in Resources */,
-				E51566D61DE2CF3A00B3DF3E /* MJExtension.xcconfig in Resources */,
 				047467D51DAB859B009E4EAA /* sy_ozban.jpg in Resources */,
 				04104ED01D9CACEF00A940F1 /* sy_mypic4.jpg in Resources */,
 				04104EDD1D9CACEF00A940F1 /* 图层-33.jpg in Resources */,
@@ -2064,6 +2091,7 @@
 				E51566E51DE2CF3A00B3DF3E /* MJRefreshAutoGifFooter.m in Sources */,
 				044DA3B01D5C466300DD06EC /* AFURLResponseSerialization.m in Sources */,
 				04104EA91D9CA02300A940F1 /* GZGSpellGroupCell.m in Sources */,
+				E5A983511DF5601E004D269B /* GZGAddressModel.m in Sources */,
 				E51566EF1DE2CF3A00B3DF3E /* MJRefreshGifHeader.m in Sources */,
 				044DA4011D5C60B200DD06EC /* UIButton+AFNetworking.m in Sources */,
 				53860F861DD9AB880047A734 /* GZGYTheOrderViewController.m in Sources */,
@@ -2094,6 +2122,7 @@
 				049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */,
 				E515668C1DE2CF1E00B3DF3E /* GZGYRootSpellModel.m in Sources */,
 				E51566D51DE2CF3A00B3DF3E /* MJExtension-dummy.m in Sources */,
+				E5B428471DF7ADBF008922FD /* GZGShoppingCartModel.m in Sources */,
 				532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */,
 				044DA3AF1D5C466300DD06EC /* AFURLRequestSerialization.m in Sources */,
 				04FBA2711D98C87000AD147A /* GZGPersonalCenterViewController.m in Sources */,
@@ -2173,6 +2202,7 @@
 				043CDFF91DA8E58C0095B3F5 /* GZGCountriesCollectionViewCell.m in Sources */,
 				04A4A4BA1DBF3CC400897F5A /* GZGAddressManageViewController.m in Sources */,
 				044DA3D61D5C467100DD06EC /* SDImageCache.m in Sources */,
+				049F2C721DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m in Sources */,
 				044DA3DA1D5C467100DD06EC /* SDWebImageDownloaderOperation.m in Sources */,
 				BDDDF80D1D51B992002723AB /* main.m in Sources */,
 				044DA3D41D5C467100DD06EC /* MKAnnotationView+WebCache.m in Sources */,

@@ -10,6 +10,6 @@
 #define GZGNetworkPort_h
 
 #define CountriesTopic @"app/"//首页8个点击事件
-
+#define DetailsTopic @"appTopic/App"//详情接口
 
 #endif /* GZGNetworkPort_h */
