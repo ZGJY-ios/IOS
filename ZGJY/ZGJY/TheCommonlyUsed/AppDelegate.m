@@ -112,8 +112,8 @@
                 GZGLog(@"登录失败%@",content);
             }else{
                 [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERID"];
-                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERNAME"];
-                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"PASSWORD"];
+                [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"USERNAME"];
+                [[NSUserDefaults standardUserDefaults]setObject:password forKey:@"PASSWORD"];
             }
         }];
     }

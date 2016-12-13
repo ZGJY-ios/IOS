@@ -21,11 +21,11 @@
 - (void)LimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
     [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"Limitshop"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"LimitsIndex"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"限时特卖%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
 //        [SVProgressHUD dismiss];
@@ -38,11 +38,11 @@
 {
     [SVProgressHUD show];
     
-    NSString *url = @"appTopic/SpellGroup";
+    NSString *url = @"app/SpellGrouipIndex";
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"火力拼团%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];

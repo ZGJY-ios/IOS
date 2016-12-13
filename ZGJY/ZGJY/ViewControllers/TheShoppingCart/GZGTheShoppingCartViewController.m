@@ -43,6 +43,9 @@
 @end
 
 @interface GZGTheShoppingCartViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    NSString * blockId;
+}
 @property (nonatomic, strong) UIButton * editorBtn; // 编辑按钮
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UICollectionView * collectionView;
@@ -51,11 +54,15 @@
 @end
 
 @implementation GZGTheShoppingCartViewController
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+-(void)viewWillAppear:(BOOL)animated
+{
     [self requestData];
 }
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    
+//    [self requestData];
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -105,7 +112,6 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)requestData {
-    
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * userID = [userDefaults objectForKey:@"USERID"];
     if (userID != nil) {
@@ -115,9 +121,18 @@
             NSLog(@"%@",failure);
         }];
     } else {
-        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
-        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
-        [self presentViewController:nav animated:YES completion:nil];
+        if ([blockId isEqualToString:@"1"]) {
+            NSInteger tabbarId = [[[NSUserDefaults standardUserDefaults]objectForKey:@"TABBARID"] integerValue];
+            self.tabBarController.selectedIndex = tabbarId;
+        }else{
+            GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+            logisticsVC.TbabarLogin = ^(NSString * backId){
+                blockId = backId;
+            };
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+            [self presentViewController:nav animated:YES completion:nil];
+        }
+        blockId = @"";
     }
 }
 #pragma mark - 自己的方法

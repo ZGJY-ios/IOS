@@ -152,6 +152,8 @@
 		535FA47B1DBCBF950048D966 /* GZGYPartitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FA47A1DBCBF950048D966 /* GZGYPartitionView.m */; };
 		53603F931DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53603F921DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m */; };
 		5366839B1DBB2ED300186457 /* GZGYChoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5366839A1DBB2ED300186457 /* GZGYChoiceView.m */; };
+		536BA2C21DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BA2BF1DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.m */; };
+		536BA2C31DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BA2C11DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.m */; };
 		5372CA551DB712CB009C6CA1 /* GZGYSalaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA541DB712CB009C6CA1 /* GZGYSalaTableViewCell.m */; };
 		5372CA581DB7136E009C6CA1 /* GZGYCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA571DB7136E009C6CA1 /* GZGYCountdown.m */; };
 		5372CA5B1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5372CA5A1DB713E2009C6CA1 /* GZGYStrikeThroughLabel.m */; };
@@ -564,6 +566,10 @@
 		53603F921DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYAftersalesTableViewCell.m; sourceTree = "<group>"; };
 		536683991DBB2ED300186457 /* GZGYChoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYChoiceView.h; sourceTree = "<group>"; };
 		5366839A1DBB2ED300186457 /* GZGYChoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYChoiceView.m; sourceTree = "<group>"; };
+		536BA2BE1DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYDetailsTableViewCell.h; sourceTree = "<group>"; };
+		536BA2BF1DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYDetailsTableViewCell.m; sourceTree = "<group>"; };
+		536BA2C01DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYSelectedTableViewCell.h; sourceTree = "<group>"; };
+		536BA2C11DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYSelectedTableViewCell.m; sourceTree = "<group>"; };
 		5372CA531DB712CB009C6CA1 /* GZGYSalaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYSalaTableViewCell.h; sourceTree = "<group>"; };
 		5372CA541DB712CB009C6CA1 /* GZGYSalaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYSalaTableViewCell.m; sourceTree = "<group>"; };
 		5372CA561DB7136E009C6CA1 /* GZGYCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYCountdown.h; sourceTree = "<group>"; };
@@ -1129,7 +1135,7 @@
 			isa = PBXGroup;
 			children = (
 				048F70F91D9B652B00338BA6 /* PersonalCenterView */,
-				048F70F71D9B64FE00338BA6 /* ClassifiCationView */,
+				536BA2BB1DF7A147003EE2E9 /* ClsaaifiCationView */,
 				048F70F61D9B64F400338BA6 /* TheShoppingCartView */,
 				048F70F51D9B64E600338BA6 /* GlobalPurchasingView */,
 			);
@@ -1152,15 +1158,6 @@
 				048F71001D9B65B400338BA6 /* Cell */,
 			);
 			path = TheShoppingCartView;
-			sourceTree = "<group>";
-		};
-		048F70F71D9B64FE00338BA6 /* ClassifiCationView */ = {
-			isa = PBXGroup;
-			children = (
-				048F71031D9B65C200338BA6 /* View */,
-				048F70FF1D9B65B200338BA6 /* Cell */,
-			);
-			path = ClassifiCationView;
 			sourceTree = "<group>";
 		};
 		048F70F91D9B652B00338BA6 /* PersonalCenterView */ = {
@@ -1188,13 +1185,6 @@
 				E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */,
 				E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */,
 				53904BB71DC199EC00ED0922 /* YYS */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		048F70FF1D9B65B200338BA6 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1248,13 +1238,6 @@
 				048F4EB91DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.m */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		048F71031D9B65C200338BA6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		048F71041D9B65C500338BA6 /* View */ = {
@@ -1470,6 +1453,33 @@
 				53860F7D1DD9650C0047A734 /* GZGYSpellView.m */,
 			);
 			name = YYS;
+			sourceTree = "<group>";
+		};
+		536BA2BB1DF7A147003EE2E9 /* ClsaaifiCationView */ = {
+			isa = PBXGroup;
+			children = (
+				536BA2BC1DF7A147003EE2E9 /* Cell */,
+				536BA2BD1DF7A147003EE2E9 /* View */,
+			);
+			path = ClsaaifiCationView;
+			sourceTree = "<group>";
+		};
+		536BA2BC1DF7A147003EE2E9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				536BA2BE1DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.h */,
+				536BA2BF1DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.m */,
+				536BA2C01DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.h */,
+				536BA2C11DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		536BA2BD1DF7A147003EE2E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5372CA631DB71B63009C6CA1 /* YYS */ = {
@@ -2114,6 +2124,7 @@
 				53860F741DD964E80047A734 /* GZGYLimitTableViewCell.m in Sources */,
 				E51566E61DE2CF3A00B3DF3E /* MJRefreshAutoNormalFooter.m in Sources */,
 				53860F6B1DD964D20047A734 /* GZGYLimitViewController.m in Sources */,
+				536BA2C21DF7A14F003EE2E9 /* GZGYDetailsTableViewCell.m in Sources */,
 				044DA3E21D5C467100DD06EC /* UIImageView+WebCache.m in Sources */,
 				040DDA4F1D9925CC00C2FB75 /* UIImageView+YDWebCache.m in Sources */,
 				532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */,
@@ -2168,6 +2179,7 @@
 				044DA3DF1D5C467100DD06EC /* UIImage+MultiFormat.m in Sources */,
 				53860F631DD963450047A734 /* GZGYCollectionTableViewCell.m in Sources */,
 				E51566FB1DE2CFD200B3DF3E /* UIScrollView+JYPaging.m in Sources */,
+				536BA2C31DF7A14F003EE2E9 /* GZGYSelectedTableViewCell.m in Sources */,
 				04A4A4C91DBF414800897F5A /* GZGAddreddMangerCell.m in Sources */,
 				53860F811DD9650C0047A734 /* GZGYSpellView.m in Sources */,
 				53860F801DD9650C0047A734 /* GZGYSpellSegView.m in Sources */,

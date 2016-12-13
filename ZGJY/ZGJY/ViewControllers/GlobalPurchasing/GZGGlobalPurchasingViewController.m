@@ -5,7 +5,6 @@
 //  Created by 刘亚栋 on 16/9/26.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
-
 #import "GZGGlobalPurchasingViewController.h"
 #import "GZGSearchListController.h" // 搜索列表
 #import "YDImageRoll.h"
@@ -50,11 +49,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     [self buildUI];
 }
-
 - (void)viewWillAppear:(BOOL)animated{
+    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"TABBARID"];
     [super viewWillAppear:animated];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -114,7 +112,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];
             dic = dataArray[i];
             [self.limitArray addObject:dic[@"id"]];
-            [self.nameArray addObject:dic[@"full_name"]];
+            [self.nameArray addObject:dic[@"name"]];
             if (dic[@"image"] == nil) {
                 [self.ImgArray addObject:@""];
             }else{

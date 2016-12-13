@@ -84,7 +84,7 @@
         NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
         [imgView setHeader:urlString];
     });
-    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.name];
     integralLabel.text = [NSString stringWithFormat:@"%@",self.model.point];
     salesLabel.text = [NSString stringWithFormat:@"%@",self.model.month_sales];
     priceLabel.text = [NSString stringWithFormat:@"%.2f",self.model.price];

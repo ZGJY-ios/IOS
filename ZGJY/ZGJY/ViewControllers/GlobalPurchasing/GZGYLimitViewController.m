@@ -63,7 +63,7 @@
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];
             dic = dataArray[i];
             [self.limitArray addObject:dic[@"id"]];
-            [self.nameArray addObject:dic[@"full_name"]];
+            [self.nameArray addObject:dic[@"name"]];
             if (dic[@"image"] == nil) {
                 [self.ImgArray addObject:@""];
             }else{
