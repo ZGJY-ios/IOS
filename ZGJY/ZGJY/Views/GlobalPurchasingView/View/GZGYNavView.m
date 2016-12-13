@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/2, [GZGApplicationTool control_height:75])];
+        HeaderScroller = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/2, [GZGApplicationTool control_height:85])];
         HeaderScroller.pagingEnabled = YES;
         HeaderScroller.bounces = NO;
         [HeaderScroller setContentSize:CGSizeMake(SCREENWIDTH/6 * NameArray.count, HeaderScroller.frame.size.height)];

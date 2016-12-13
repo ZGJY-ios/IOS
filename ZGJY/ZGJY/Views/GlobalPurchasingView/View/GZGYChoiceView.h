@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GZGYDetailsModel.h"
 @protocol ChoiceDelegeteClickProtocol<NSObject>
 -(void)ChoiceBtnDelegate:(NSInteger)sender;
+-(void)ReductBtnDelegate:(NSInteger)sender;
+-(void)AddBtnDelegate:(NSInteger)sender;
+-(void)CollectionBtnDelegate:(NSInteger)sender;
+-(void)ReceiptBtnDelegate:(NSInteger)sender;
 @end
 @interface GZGYChoiceView : UIView
 {
@@ -22,10 +27,13 @@
 @property(nonatomic, strong)UIImageView * imgView;//商品图片
 @property(nonatomic, strong)UIButton * cancelBtn;//取消按钮
 @property(nonatomic, strong)UILabel * priceLabel;//商品价格
+@property(nonatomic, strong)UILabel * snLabel;//商品编号
 @property(nonatomic, strong)UIButton * categoryBtn;//类别按钮
 @property(nonatomic, strong)UIButton *reduceBtn;//减少
 @property(nonatomic, strong)UIButton *addBtn;//增加
 @property(nonatomic, strong)UITextField *countField;//输入
 @property(nonatomic, strong)UIButton *collectionBtn;//收藏
 @property(nonatomic, strong)UIButton *receiptBtn;//进货单
+@property(nonatomic, strong)GZGYDetailsModel * model;
+
 @end

@@ -17,7 +17,7 @@
 @end
 
 @implementation GZGYLoginViewController
-
+@synthesize TbabarLogin;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
@@ -39,6 +39,7 @@
 -(void)BackDelegeteClick:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    TbabarLogin(@"1");
 }
 #pragma mark --- 注册事件
 -(void)RegDelegeteClick:(id)sender
@@ -61,11 +62,13 @@
         [SVProgressHUD showErrorWithStatus:@"请输入正确的密码"];
     }else{
         NSDictionary * dict = @{@"username":loginView.phoneField.text,@"password":loginView.passageField.text};
-        [[GZGYAPIHelper shareAPIHelper]LoginDict:dict Finsh:^(NSString * string,NSString * typeString,NSString * content){
+        [[GZGYAPIHelper shareAPIHelper]LoginDict:dict Between:@"1" Finsh:^(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password){
             if ([typeString isEqualToString:@"error"]) {
                 [SVProgressHUD showErrorWithStatus:content];
             }else{
                 [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERID"];
+                [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"USERNAME"];
+                [[NSUserDefaults standardUserDefaults]setObject:password forKey:@"PASSWORD"];
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }];

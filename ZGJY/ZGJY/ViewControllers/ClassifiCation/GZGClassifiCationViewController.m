@@ -43,11 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationItem.title = @"分类";
     self.leftBtn.hidden = YES;
-//    self.navigationController.navigationBar.hidden = NO;
-//    self.navBarView.hidden = YES;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.titles.text = @"分类";
     number = 0;
     self.view.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
@@ -59,8 +55,6 @@
         NSString*String = DataArray[i][@"SecStr"];
         [self.SecArray addObject:String];
     }
-    NSLog(@"%@",_SecArray);
-    
     //搜索框
     [self SearchInterface];
     [self ScrollViewInterface];
@@ -70,7 +64,10 @@
 //    [self ScrollViewInterface];
     [self refreshTableView:0];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"2" forKey:@"TABBARID"];
+}
 #pragma mark --- 搜索框
 -(void)SearchInterface
 {
@@ -149,7 +146,6 @@
         brandflowlay.minimumInteritemSpacing = 0;
         brandflowlay.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
         [_brandCollection registerClass:[GZGYBrandCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-        //_CollectionView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
         [_brandCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
         _brandCollection.delegate = self;
         _brandCollection.dataSource = self;
@@ -157,7 +153,6 @@
         _brandCollection.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self.ScrollView addSubview:self.brandCollection];
     }
-
 }
 
 #pragma mark --- tableview
@@ -366,19 +361,12 @@
         frame.origin.x = SCREENWIDTH;
         [self.twoView setFrame:frame];
     }
-//    self.exchangeView = _viewArray[index];
-//    CGRect frame = self.exchangeView.frame;
-//    frame.origin.x = SCREENWIDTH * index;
-//    [self.exchangeView setFrame:frame];
-//    _NameTitle = _NameArray[index];
-//    self.navigationItem.title = _NameTitle;
 }
 
 -(void)SegBtnDelegate:(NSInteger)sender
 {
     [self.view endEditing:YES];
     NSLog(@"%ld",sender);
-//    _NameTitle = _NameArray[sender];
     [self.ScrollView setContentOffset:CGPointMake(SCREENWIDTH * sender, 0) animated:YES];
     float xx = SCREENWIDTH * (sender - 1) * (0.5) - SCREENWIDTH/2;
     [self.segView.HeaderScroller scrollRectToVisible:CGRectMake(xx, 0, SCREENWIDTH, self.segView.frame.size.height) animated:YES];

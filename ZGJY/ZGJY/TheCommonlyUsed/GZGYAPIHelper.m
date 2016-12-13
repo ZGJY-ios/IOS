@@ -31,11 +31,11 @@
 - (void)LimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
     [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"Limitshop"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"LimitsIndex"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"限时特卖%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
 //        [SVProgressHUD dismiss];
@@ -113,7 +113,16 @@
     }];
 }
 
-
+// 购物车列表
+- (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        NSArray * array = responseObject[@"cart"];
+        result(array);
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+    }];
+}
 #pragma mark --- 商品详情接口
 - (void)DetailssTimeSaleCountries:(NSInteger)countries Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
@@ -236,7 +245,7 @@
     }];
 }
 #pragma mark --- 登录接口
--(void)LoginDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result
+-(void)LoginDict:(NSDictionary *)dict Between:(NSString *)line Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password))result
 {
     NSString *url = @"appLogin/submit";
     [SVProgressHUD show];
@@ -246,10 +255,16 @@
         NSString * idString = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
         NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
         NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
-        result(idString,TypeString,contentString);
+        NSString * nameString = [NSString stringWithFormat:@"%@",responseObject[@"username"]];
+        NSString *password = [NSString stringWithFormat:@"%@",responseObject[@"password"]];
+        result(idString,TypeString,contentString,nameString,password);
     } failure:^(NSError *failure, NSInteger task) {
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
-        GZGLog(@"%@",failure);
+        if ([line isEqualToString:@"0"]) {
+            GZGLog(@"%@",failure);
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+            GZGLog(@"%@",failure);
+        }
     }];
 }
         

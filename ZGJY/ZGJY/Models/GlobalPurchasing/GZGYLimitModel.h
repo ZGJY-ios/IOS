@@ -11,7 +11,7 @@
 @interface GZGYLimitModel : NSObject
 @property(nonatomic, strong)NSString * image;//商品图片
 //@property(nonatomic, strong)NSString * last_updated_by;//推荐理由
-@property(nonatomic, strong)NSString * full_name;//商品名字
+@property(nonatomic, strong)NSString * name;//商品名字
 @property(nonatomic, strong)NSString * point;//赠送积分
 @property(nonatomic, strong)NSString * month_sales;//月销量
 @property(nonatomic, assign)float  price;//销售价

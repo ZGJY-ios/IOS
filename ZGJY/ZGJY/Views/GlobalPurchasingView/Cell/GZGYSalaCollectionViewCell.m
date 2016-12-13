@@ -68,7 +68,7 @@
     });
     _priceLabel.text = [NSString stringWithFormat:@"%.2f",self.model.price];
     _originalLabel.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
-    _nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    _nameLabel.text = [NSString stringWithFormat:@"%@",self.model.name];
 }
 
 @end

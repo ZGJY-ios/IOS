@@ -15,6 +15,7 @@
 #import "GZGHotRecommendedCell.h"
 #import "ZGNetWork.h"
 #import "GZGYLoginViewController.h"
+#import "GZGSpecialPerformanceModel.h"
 
 @interface UIImage (PersonalCenter)
 
@@ -43,19 +44,35 @@
 @end
 
 @interface GZGTheShoppingCartViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    NSString * blockId;
+}
 @property (nonatomic, strong) UIButton * editorBtn; // 编辑按钮
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, assign) CGFloat collectionViewHeight;
 @property (nonatomic, strong) GZGShoppingCartSettlementView * settlementView;
+@property (nonatomic, strong) NSMutableArray * mutables;
 @end
 
 @implementation GZGTheShoppingCartViewController
+- (NSMutableArray *)mutables {
+    
+    if (!_mutables) {
+        _mutables = [NSMutableArray array];
+    }
+    return _mutables;
+}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [self requestData];
 }
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    
+//    [self requestData];
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -105,19 +122,35 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)requestData {
-    
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * userID = [userDefaults objectForKey:@"USERID"];
     if (userID != nil) {
-        [ZGNetWork POSTRequestMethodUrl:@"http://192.168.0.110:8080/appCart/list" parameters:nil success:^(id responseObject, NSInteger task) {
-            NSLog(@"购物车列表:%@",responseObject);
-        } failure:^(NSError *failure, NSInteger task) {
-            NSLog(@"%@",failure);
+        NSDictionary * dict = @{@"cartId":@"5"};
+        [[GZGYAPIHelper shareAPIHelper] cartListURL:@"appCart/list" dict:dict finished:^(NSArray *goods) {
+            NSLog(@"购物车列表:%@",goods);
+            
+            for (int i = 0; i < goods.count; i++) {
+                NSDictionary * dic = goods[i];
+                GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dic];
+                [_mutables addObject:model];
+            }
+            [_tableView reloadData];
+        } failed:^(NSError *error) {
+            NSLog(@"购物车列表失败:%@",error);
         }];
     } else {
-        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
-        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
-        [self presentViewController:nav animated:YES completion:nil];
+        if ([blockId isEqualToString:@"1"]) {
+            NSInteger tabbarId = [[[NSUserDefaults standardUserDefaults]objectForKey:@"TABBARID"] integerValue];
+            self.tabBarController.selectedIndex = tabbarId;
+        }else{
+            GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+            logisticsVC.TbabarLogin = ^(NSString * backId){
+                blockId = backId;
+            };
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+            [self presentViewController:nav animated:YES completion:nil];
+        }
+        blockId = @"";
     }
 }
 #pragma mark - 自己的方法
@@ -155,7 +188,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 2;
+        return _mutables.count;
     }
     return 0;
 }
@@ -165,6 +198,11 @@
     if (!cell) {
         cell = [[GZGShoppingCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    GZGSpecialPerformanceModel * model = _mutables[indexPath.row];
+    cell.cartTitle.text = NSLocalizedString(model.name, nil);
+    [cell.cartImage sd_setImageWithURL:[NSURL URLWithString:model.image]];
+    cell.cartNumber.text = [NSString stringWithFormat:@"%ld",model.quantity];
+    cell.cartPrice.text = [NSString stringWithFormat:@"￥%.2f",model.price];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

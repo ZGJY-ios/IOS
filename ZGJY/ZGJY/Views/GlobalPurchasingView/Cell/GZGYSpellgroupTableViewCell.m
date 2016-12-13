@@ -73,7 +73,7 @@
         NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
         [imgView setHeader:urlString];
     });
-    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    nameLabel.text = [NSString stringWithFormat:@"%@",self.model.name];
     pricenumber.text = [NSString stringWithFormat:@"%.2f",self.model.price];
     marketPrice.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
     //    reasonLabel.text = [NSString stringWithFormat:@"%@",self.model.last_updated_by];

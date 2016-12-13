@@ -44,7 +44,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)specialPerformanceDict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 //国家馆接口
 - (void)pavilionCountries:(NSInteger)countries dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
-
+// 购物车列表
+- (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 // 添加到购物车
 - (void)addToCartURL:(NSString *)url Dict:(NSDictionary *)dict Finished:(void(^)(NSArray * carts))result failed:(void(^)(NSError * error))failed;
 //商品详情接口
@@ -56,5 +57,5 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 //邮箱注册接口
 -(void)EmailsRegisterDict:(NSDictionary *)dict Finsh:(void (^)(NSString * idString,NSString * typeString,NSString * content))result;
 //登录接口
--(void)LoginDict:(NSDictionary *)dict Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content))result;
+-(void)LoginDict:(NSDictionary *)dict Between:(NSString *)line Finsh:(void (^)(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password))result;
 @end
