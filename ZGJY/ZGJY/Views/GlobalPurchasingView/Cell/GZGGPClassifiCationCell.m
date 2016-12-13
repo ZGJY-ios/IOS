@@ -15,28 +15,28 @@ static const NSInteger classifiCationBtnTag = 1000;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self buildUI:nil];
+//        [self buildUI:nil];
     }
     return self;
 }
 
 - (void)buildUI:(NSArray *)array{
-    NSArray *btnTitle = @[NSLocalizedString(@"GZGGPClassifiCationCell_QQJX", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_XSTM", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_HLPT", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_KJZY", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_HGG", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_RBG", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_ADLYG", nil),
-                          NSLocalizedString(@"GZGGPClassifiCationCell_OZG", nil)];
-    NSArray *btnImage = @[@"QQG_XSTM",
-                          @"QQG_HLPT",
-                          @"QQG_QQJX",
-                          @"QQG_KJZY",
-                          @"QQG_G_HGG",
-                          @"QQG_G_RBG",
-                          @"QQG_G_QDLYG",
-                          @"QQG_OZG"];
+//    NSArray *btnTitle = @[NSLocalizedString(@"GZGGPClassifiCationCell_QQJX", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_XSTM", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_HLPT", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_KJZY", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_HGG", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_RBG", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_ADLYG", nil),
+//                          NSLocalizedString(@"GZGGPClassifiCationCell_OZG", nil)];
+//    NSArray *btnImage = @[@"QQG_XSTM",
+//                          @"QQG_HLPT",
+//                          @"QQG_QQJX",
+//                          @"QQG_KJZY",
+//                          @"QQG_G_HGG",
+//                          @"QQG_G_RBG",
+//                          @"QQG_G_QDLYG",
+//                          @"QQG_OZG"];
     
     CGFloat ww = [GZGApplicationTool control_wide:71+41+16], hh = [GZGApplicationTool control_wide:71+41+16];
     CGFloat xx = SCREENWIDTH, yy = [GZGApplicationTool control_height:300];
@@ -58,8 +58,16 @@ static const NSInteger classifiCationBtnTag = 1000;
 }
 
 - (void)loadData:(NSArray *)array{
+    
+//    [self remove];
+    
+    NSArray *subviews = [[NSArray alloc] initWithArray:self.subviews];
+    for(UIView *subview in subviews) {
+        [subview removeFromSuperview];
+    }
+    
     [self buildUI:array];
-//    NSLog(@"%@",array);
+
 }
 
 - (void)cakssufuCationBtnDown:(UIButton *)btn{
