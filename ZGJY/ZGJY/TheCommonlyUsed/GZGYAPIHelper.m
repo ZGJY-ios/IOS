@@ -181,8 +181,19 @@
     
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         GZGLog(@"添加到购物车：%@",responseObject);
+        result(nil);
     } failure:^(NSError *failure, NSInteger task) {
         GZGLog(@"添加购物车失败:%@",failure);
+    }];
+}
+// 删除购物车商品
+- (void)deleteToCartURL:(NSString *)url Dict:(NSDictionary *)dict Finished:(void(^)(NSArray * carts))result failed:(void(^)(NSError * error))failed {
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        GZGLog(@"删除购物车商品content:%@",responseObject[@"message"][@"content"]);
+        GZGLog(@"删除购物车商品type:%@",responseObject[@"message"][@"type"]);
+        result(nil);
+    } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"删除购物车商品失败:%@",failure);
     }];
 }
 #pragma mark --- 检查用户名接口
@@ -257,5 +268,122 @@
         }
     }];
 }
-        
+#pragma mark - 添加地址
+// 添加地址
+- (void)addAddressDict:(NSDictionary *)dict Finsh:(void (^)(NSArray *array))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appReceiver/save";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 编辑地址
+// 编辑地址
+- (void)editorAddressDict:(NSDictionary *)dict Finsh:(void (^)(NSArray *array))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appReceiver/edit";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 更新地址
+// 更新地址
+- (void)updateAddressDict:(NSDictionary *)dict Finsh:(void (^)(NSArray *array))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appReceiver/update";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 地址列表
+// 地址列表
+- (void)addressListDict:(NSDictionary *)dict Finsh:(void (^)(NSArray *array))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appReceiver/list";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject[@"page"][@"list"]);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 删除地址
+// 删除地址
+- (void)deleteAddressDict:(NSDictionary *)dict Finsh:(void (^)(NSArray *array))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appReceiver/delete";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 确认订单
+// 确认订单
+- (void)makeSureOrderDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appOrder/info";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 提交订单
+// 提交订单
+- (void)submitOrderDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appOrder/create";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 添加收藏
+// 添加收藏
+- (void)addCollectionDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appFavorite/add";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 收藏列表
+// 收藏列表
+- (void)collectionListDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appFavorite/list";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+
 @end

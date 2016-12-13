@@ -105,6 +105,9 @@
     NSString * passWord = [[NSUserDefaults standardUserDefaults]objectForKey:@"PASSWORD"];
     if (userName.length == 0||passWord.length == 0) {
         GZGLog(@"未登录状态");
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERID"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"USERNAME"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"PASSWORD"];
     }else{
         NSDictionary * dict = @{@"username":userName,@"password":passWord};
         [[GZGYAPIHelper shareAPIHelper]LoginDict:dict Between:@"0" Finsh:^(NSString * string,NSString * typeString,NSString * content,NSString * username,NSString * password){
@@ -112,8 +115,8 @@
                 GZGLog(@"登录失败%@",content);
             }else{
                 [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERID"];
-                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERNAME"];
-                [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"PASSWORD"];
+                [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"USERNAME"];
+                [[NSUserDefaults standardUserDefaults]setObject:password forKey:@"PASSWORD"];
             }
         }];
     }

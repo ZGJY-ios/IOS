@@ -14,5 +14,9 @@
  *  支付金额
  */
 @property (nonatomic, copy) NSString * payTheAmountString;
+/**
+ *  订单号
+ */
+@property (nonatomic, copy) NSString * orderNumberString;
 
 @end

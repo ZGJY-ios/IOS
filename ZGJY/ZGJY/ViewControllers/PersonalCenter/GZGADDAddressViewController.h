@@ -7,7 +7,17 @@
 //
 
 #import "GZGSubViewController.h"
+#import "GZGAddressModel.h"
+
+typedef NS_ENUM(NSInteger, AddressType) {
+    AddressTypeEditor, // 编辑
+    AddressTypeAdd, // 添加
+};
 
 @interface GZGADDAddressViewController : GZGSubViewController
+
+@property (nonatomic) AddressType type;
+
+@property (nonatomic) GZGAddressModel * model;
 
 @end

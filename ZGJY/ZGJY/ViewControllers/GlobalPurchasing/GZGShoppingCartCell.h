@@ -20,4 +20,6 @@
 @property (nonatomic, strong) UIImageView * cartPhone; // 手机
 @property (nonatomic, strong) UIImageView * cartExclusive; // 专享
 
+@property (nonatomic, copy) void(^buttonClick)(UIButton * button);
+
 @end

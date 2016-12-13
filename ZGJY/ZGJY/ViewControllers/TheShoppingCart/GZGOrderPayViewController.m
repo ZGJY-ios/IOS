@@ -43,6 +43,7 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - 自己的方法
+
 - (void)buttonClick:(UIButton *)btn {
     
     switch (self.payInteger) {
@@ -139,15 +140,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        static NSString * cellIdentifier = @"Cell";
+        static NSString * cellIdentifier = @"OrderNumberCell";
         GZGOrderNumberCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[GZGOrderNumberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.orderNumberLabel.text = self.orderNumberString;
+        NSString * orderTimeString = [self.orderNumberString substringWithRange:NSMakeRange(0, 8)];
+        cell.orderTimeLabel.text = [NSString stringWithFormat:@"%@-%@-%@",[orderTimeString substringWithRange:NSMakeRange(0, 4)],[orderTimeString substringWithRange:NSMakeRange(4, 2)],[orderTimeString substringWithRange:NSMakeRange(6, 2)]];
+        cell.payAmountLabel.attributedText =  [cell attributedStringWithStringColorWithString:[NSString stringWithFormat:@"支付金额：￥%@",self.payTheAmountString] textColor:[UIColor blackColor] numberColor:[GZGColorClass subjectShoppingCartPriceColor]];
         return cell;
     }
-    static NSString * cellIdentifier = @"Cell";
+    static NSString * cellIdentifier = @"OrderPayCell";
     GZGOrderPayCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[GZGOrderPayCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
