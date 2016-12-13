@@ -137,12 +137,12 @@
         }
         case GoodsDetailsLimited:
         {
-            dict = @{@"taglds":@"5",@"id":self.shopID};
+            dict = @{@"taglds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
             break;
         }
         case GoodsDetailsFireAlsoGroup:
         {
-            dict = @{@"taglds":@"5",@"id":self.shopID};
+            dict = @{@"taglds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
             break;
         }
         default:

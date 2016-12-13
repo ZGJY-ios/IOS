@@ -56,7 +56,7 @@
 #pragma mark --- 数据
 -(void)LimitData
 {
-    NSDictionary * dict = @{@"tagIds":@"5"};
+    NSDictionary * dict = @{@"tagIds":@"5",@"productCategoryId":@"0"};
     [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleDict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {

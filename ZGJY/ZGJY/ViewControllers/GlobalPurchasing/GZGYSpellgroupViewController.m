@@ -54,7 +54,7 @@
 #pragma mark --- 数据
 -(void)SpellData
 {
-    NSDictionary * dic = @{@"tagIds":@"6"};
+    NSDictionary * dic = @{@"tagIds":@"6",@"productCategoryId":@"0"};
     [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {

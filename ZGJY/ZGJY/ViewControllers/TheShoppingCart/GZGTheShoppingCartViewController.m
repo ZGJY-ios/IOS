@@ -63,16 +63,11 @@
     }
     return _mutables;
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+-(void)viewWillAppear:(BOOL)animated
+{
     [self requestData];
 }
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//    [self requestData];
-//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
