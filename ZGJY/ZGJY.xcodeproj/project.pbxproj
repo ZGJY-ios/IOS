@@ -108,6 +108,7 @@
 		049DC6561DB9FEF9001DC372 /* koho-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049DC6541DB9FEF9001DC372 /* koho-2.jpg */; };
 		049DC6591DBA065A001DC372 /* GZGCommonleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC6581DBA065A001DC372 /* GZGCommonleView.m */; };
 		049DC65C1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */; };
+		049F2C721DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */; };
 		04A2D0511DB9ACCF003966DA /* GZGCountriesPavilionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */; };
 		04A2D0561DB9B51C003966DA /* index-Aussie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0521DB9B51C003966DA /* index-Aussie.jpg */; };
 		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
@@ -487,6 +488,8 @@
 		049DC6581DBA065A001DC372 /* GZGCommonleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCommonleView.m; sourceTree = "<group>"; };
 		049DC65A1DBA1470001DC372 /* GZGCountriesHeadFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesHeadFaceCell.h; sourceTree = "<group>"; };
 		049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesHeadFaceCell.m; sourceTree = "<group>"; };
+		049F2C701DEFEE1200C892F1 /* GZGSpeciaPerReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGSpeciaPerReusableView.h; sourceTree = "<group>"; };
+		049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGSpeciaPerReusableView.m; sourceTree = "<group>"; };
 		04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCountriesPavilionViewController.h; sourceTree = "<group>"; };
 		04A2D0501DB9ACCF003966DA /* GZGCountriesPavilionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCountriesPavilionViewController.m; sourceTree = "<group>"; };
 		04A2D0521DB9B51C003966DA /* index-Aussie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Aussie.jpg"; sourceTree = "<group>"; };
@@ -1246,6 +1249,8 @@
 				049DC65B1DBA1470001DC372 /* GZGCountriesHeadFaceCell.m */,
 				048F4EB81DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.h */,
 				048F4EB91DBC620700DFA1C6 /* GZGCountriesHeadFaceCollectionCell.m */,
+				049F2C701DEFEE1200C892F1 /* GZGSpeciaPerReusableView.h */,
+				049F2C711DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2162,6 +2167,7 @@
 				043CDFF91DA8E58C0095B3F5 /* GZGCountriesCollectionViewCell.m in Sources */,
 				04A4A4BA1DBF3CC400897F5A /* GZGAddressManageViewController.m in Sources */,
 				044DA3D61D5C467100DD06EC /* SDImageCache.m in Sources */,
+				049F2C721DEFEE1200C892F1 /* GZGSpeciaPerReusableView.m in Sources */,
 				044DA3DA1D5C467100DD06EC /* SDWebImageDownloaderOperation.m in Sources */,
 				BDDDF80D1D51B992002723AB /* main.m in Sources */,
 				044DA3D41D5C467100DD06EC /* MKAnnotationView+WebCache.m in Sources */,

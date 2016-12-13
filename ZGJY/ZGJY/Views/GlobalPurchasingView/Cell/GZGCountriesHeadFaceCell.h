@@ -12,7 +12,7 @@
 
 @protocol GZGCountriesHeadFaceCellDelegate <NSObject>
 
-- (void)topTitleIndex:(UILabel *)lab;
+- (void)topTitleIndex:(NSInteger)index;
 - (void)cellSelectedModel:(GZGSpecialPerformanceModel *)model;
 
 @end

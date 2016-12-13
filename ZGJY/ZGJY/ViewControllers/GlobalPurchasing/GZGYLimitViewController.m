@@ -48,7 +48,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = @"限时特卖";
+    self.titles.text = self.titleName;
     [self tableViewInterface];
     [self LimitData];
     // Do any additional setup after loading the view.

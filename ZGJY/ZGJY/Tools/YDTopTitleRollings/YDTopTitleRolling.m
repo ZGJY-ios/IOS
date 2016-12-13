@@ -20,6 +20,7 @@ static NSInteger const TopTitleLabTag = 9910;
 @property(nonatomic, strong) UIFont *titlesFont;
 @property(nonatomic, assign) CGFloat titleSpacing;
 @property(nonatomic, assign) CGFloat lineWidth;
+@property(nonatomic,assign) NSInteger index;
 
 @end
 @implementation YDTopTitleRolling
@@ -79,11 +80,11 @@ static NSInteger const TopTitleLabTag = 9910;
         [titleLab addGestureRecognizer:tap];
         
         if (i == 0) {
-//            [self titleColorChange:titleLab];
             titleLab.textColor = _selectColor;
         }
          [_scrollView addSubview:titleLab];
     }
+    _index = countIndex;
     UILabel *firstLab = _scrollView.subviews.firstObject;
     CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y, ww = [self textSize:firstLab.text font:[UIFont systemFontOfSize:13] size:self.frame.size.width].width;
     _topTitleLine = [[UIView alloc] init];
@@ -103,7 +104,7 @@ static NSInteger const TopTitleLabTag = 9910;
     UILabel *labelTitle = (UILabel *)tap.view;
     [self changeTitleColor:labelTitle];
     [self scrollTitleLabelSelectededCenter:labelTitle];
-    [self.delegate titleRollingIndex:labelTitle];
+    [self.delegate titleRollingIndex:labelTitle.tag - TopTitleLabTag];
 }
 
 /**
@@ -152,6 +153,9 @@ static NSInteger const TopTitleLabTag = 9910;
 }
 
 - (void)topTitleLab:(UILabel *)lab{
+    if (_index <= self.frame.size.width) {
+        return;
+    }
     CGFloat ww = [UIScreen mainScreen].bounds.size.width;
     CGFloat offsetX = lab.center.x - ww * 0.5;
     if (offsetX < 0) offsetX = 0;

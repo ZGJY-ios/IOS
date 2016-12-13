@@ -17,4 +17,6 @@
 
 @interface GZGGPClassifiCationCell : UITableViewCell
 @property(nonatomic, assign)id <GZGGPClassifiCationCellDelegate>delegate;
+
+- (void)loadData:(NSArray *)array;
 @end

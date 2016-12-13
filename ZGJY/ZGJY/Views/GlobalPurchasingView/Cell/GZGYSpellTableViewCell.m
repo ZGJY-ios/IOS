@@ -100,9 +100,15 @@
     _model = model;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString * urlString = [model.image stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        
+        NSLog(@"%@",urlString);
+        
         [self.imgView setHeader:urlString];
     });
-    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.model.full_name];
+    
+    NSLog(@"%.2f",model.market_price);
+    
+    self.nameLabel.text = [NSString stringWithFormat:@"%@",self.model.name];
     self.pricenumber.text = [NSString stringWithFormat:@"%.2f",self.model.price];
     self.marketPrice.text = [NSString stringWithFormat:@"%.2f",self.model.market_price];
     //    reasonLabel.text = [NSString stringWithFormat:@"%@",self.model.last_updated_by];

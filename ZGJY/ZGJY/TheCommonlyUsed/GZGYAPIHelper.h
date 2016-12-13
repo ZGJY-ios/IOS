@@ -29,6 +29,13 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 
 @interface GZGYAPIHelper : NSObject
 + (instancetype)shareAPIHelper;
+
+/**
+ 首页Icon接口
+
+ @param result 返回的结果
+ */
+- (void)homePageIconDataSuccess:(void (^)(NSDictionary *dict))result;
 //限时特卖接口
 - (void)LimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result;
 //火力拼团接口
