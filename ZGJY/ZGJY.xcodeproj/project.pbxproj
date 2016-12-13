@@ -286,6 +286,7 @@
 		E5941BB71DDBF9A70069B757 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */; };
 		E5941BB81DDBF9A70069B757 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */; };
 		E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */; };
+		E5A982F71DFFE6680081B8CD /* GZGTempMaternalInfantController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A982F61DFFE6680081B8CD /* GZGTempMaternalInfantController.m */; };
 		E5A983511DF5601E004D269B /* GZGAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A983501DF5601E004D269B /* GZGAddressModel.m */; };
 		E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */; };
 		E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5ABE6941DD16D6100D2E59D /* GZGAboutUsViewController.m */; };
@@ -825,6 +826,8 @@
 		E5941BB01DDBF9A70069B757 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		E59BDB471DD4188F008FB234 /* GZGCouponsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGCouponsCell.h; sourceTree = "<group>"; };
 		E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGCouponsCell.m; sourceTree = "<group>"; };
+		E5A982F51DFFE6680081B8CD /* GZGTempMaternalInfantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGTempMaternalInfantController.h; sourceTree = "<group>"; };
+		E5A982F61DFFE6680081B8CD /* GZGTempMaternalInfantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGTempMaternalInfantController.m; sourceTree = "<group>"; };
 		E5A9834F1DF5601E004D269B /* GZGAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGAddressModel.h; sourceTree = "<group>"; };
 		E5A983501DF5601E004D269B /* GZGAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGAddressModel.m; sourceTree = "<group>"; };
 		E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OfficialAddress.png; sourceTree = "<group>"; };
@@ -1341,6 +1344,8 @@
 				53860F681DD964D20047A734 /* GZGYLimitViewController.m */,
 				53860F691DD964D20047A734 /* GZGYSpellgroupViewController.h */,
 				53860F6A1DD964D20047A734 /* GZGYSpellgroupViewController.m */,
+				E5A982F51DFFE6680081B8CD /* GZGTempMaternalInfantController.h */,
+				E5A982F61DFFE6680081B8CD /* GZGTempMaternalInfantController.m */,
 			);
 			path = GlobalPurchasing;
 			sourceTree = "<group>";
@@ -2071,6 +2076,7 @@
 				04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */,
 				E51566D71DE2CF3A00B3DF3E /* MJExtensionConst.m in Sources */,
 				E5201B3E1DD457A9007EDFAB /* GZGSpecialPerformanceView.m in Sources */,
+				E5A982F71DFFE6680081B8CD /* GZGTempMaternalInfantController.m in Sources */,
 				E55B23FE1DBE1AE000904216 /* GZGShoppingCartReusableView.m in Sources */,
 				04FBA2741D98C87000AD147A /* GZGTheShoppingCartViewController.m in Sources */,
 				044DA3E71D5C4AC300DD06EC /* ZGNetWork.m in Sources */,
