@@ -18,6 +18,9 @@
 
 
 @interface GZGCountriesPavilionViewController : GZGSubViewController
+
+
+@property(nonatomic, strong) NSString *taglids;
 @property(nonatomic, strong) NSString *countriesTitle;
 @property(nonatomic, strong) UIColor *backViewColor;
 @property(nonatomic, strong) UIColor *navColor;

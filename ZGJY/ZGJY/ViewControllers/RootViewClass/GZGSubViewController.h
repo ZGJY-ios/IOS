@@ -14,4 +14,6 @@
 @property (nonatomic, strong) UILabel *titles;
 @property (nonatomic, strong) UIButton *leftBtn;
 @property (nonatomic, strong) UIButton *rightBtn;
+-(void)creatleftBtnWithTitle:(NSString*)title normalImage:(NSString*)normalImage highlightedImage:(NSString*)highlightedImage frame:(CGRect)frame action:(SEL)action;
+-(void)pop;
 @end

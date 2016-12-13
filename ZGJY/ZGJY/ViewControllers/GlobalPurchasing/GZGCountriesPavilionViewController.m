@@ -54,8 +54,18 @@ GZGCountriesHeadFaceCellDelegate
     [self notififatation];
     
     // 母婴
-    self.prodictCategoryId = @"1";
-    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
+    
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:(long long)0];
+    
+    
+//    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"0",@"productCategoryId",@"8",@"tagIds", nil];
+//    
+//    
+//    [ZGNetWork POSTRequestMethodUrl:@"appTopic/Korea" parameters:dic success:^(id responseObject, NSInteger task) {
+//        NSLog(@"1");
+//    } failure:^(NSError *failure, NSInteger task) {
+//        NSLog(@"2");
+//    }];
     
     
 //    [self topTItleRollingUI];
@@ -84,38 +94,38 @@ GZGCountriesHeadFaceCellDelegate
 - (void)notififatation{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(banSliding:) name:GZGCountriesTableBanSlideNotification object:nil];
 }
-- (void)requestDataWithCountriesIndex:(CountriesEnterThe)countriesIndex prodictCategoryId:(NSString *)prodictCategoryId {
+- (void)requestDataWithCountriesIndex:(CountriesEnterThe)countriesIndex prodictCategoryId:(NSInteger)productCategoryId {
     
-    NSString * url;
+    
     NSDictionary * dict;
-    switch (countriesIndex) {
-        case CountriesEnterThe_SouthKorea: {
-            // 韩国
-            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Korea"];
-            dict = @{@"tagIds":@"8",@"prodictCategoryId":prodictCategoryId}; // 母婴
-        }
-            break;
-        case CountriesEnterThe_Japan: {
-            // 日本
-            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Japan"];
-            dict = @{@"tagIds":@"7",@"prodictCategoryId":prodictCategoryId}; // 母婴
-        }
-            break;
-        case CountriesEnterThe_Australia: {
-            // 澳大利亚
-            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Aussie"];
-            dict = @{@"tagIds":@"12",@"prodictCategoryId":prodictCategoryId}; // 母婴
-        }
-            break;
-        case CountriesEnterThe_TheEuropean: {
-            // 欧洲
-            url = [NSString stringWithFormat:@"http://192.168.0.110:8080/appTopic/Europe"];
-            dict = @{@"tagIds":@"11",@"prodictCategoryId":prodictCategoryId}; // 母婴
-        }
-            break;
-        default:
-            break;
-    }
+    NSString *productCategoryIdStr = [NSString stringWithFormat:@"%ld",productCategoryId];
+    
+    dict  = @{@"tagIds":self.taglids,@"productCategoryId":productCategoryIdStr};
+    
+//    switch (countriesIndex) {
+//        case CountriesEnterThe_SouthKorea: {
+//            // 韩国
+//            dict = @{@"tagIds":@"8",@"productCategoryId":productCategoryIdStr}; // 母婴
+//        }
+//            break;
+//        case CountriesEnterThe_Japan: {
+//            // 日本
+//            dict = @{@"tagIds":@"7",@"productCategoryId":productCategoryIdStr}; // 母婴
+//        }
+//            break;
+//        case CountriesEnterThe_Australia: {
+//            // 澳大利亚
+//            dict = @{@"tagIds":@"12",@"productCategoryId":productCategoryIdStr}; // 母婴
+//        }
+//            break;
+//        case CountriesEnterThe_TheEuropean: {
+//            // 欧洲
+//            dict = @{@"tagIds":@"11",@"productCategoryId":productCategoryIdStr}; // 母婴
+//        }
+//            break;
+//        default:
+//            break;
+//    }
     
 
     [[GZGYAPIHelper shareAPIHelper] pavilionCountries:countriesIndex dict:dict finish:^(NSArray *goods) {
@@ -207,15 +217,7 @@ GZGCountriesHeadFaceCellDelegate
             cell.backgroundColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         cell.delegate = self;
         
 //        cell.dataArr = _headFaceArray;
@@ -260,21 +262,21 @@ GZGCountriesHeadFaceCellDelegate
             }
         }
     }else{
+        
+        if (_mutableDatas.count<=4) {
+           _cancelTableScrollew = YES; 
+        }
+        
         scrollView.contentOffset = CGPointMake(0, tabOffsetY);
+        
     }
   
 }
 
 #pragma mark 自己的代理
 //tabBar的TapTitleDelegate
-- (void)topTitleIndex:(UILabel *)lab{
-    if ([lab.text isEqualToString:@"母婴用品"]) {
-        self.prodictCategoryId = @"1";
-    } else if ([lab.text isEqualToString:@"洗护用品"]) {
-        self.prodictCategoryId = @"3";
-    }
-    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:self.prodictCategoryId];
-//    [_mainTableView reloadData];
+- (void)topTitleIndex:(NSInteger)index{
+    [self requestDataWithCountriesIndex:self.countriesIndex prodictCategoryId:index];
 }
 - (void)cellSelectedModel:(GZGSpecialPerformanceModel *)model {
     

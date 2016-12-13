@@ -17,15 +17,25 @@
     });
     return help;
 }
+#pragma mark --首页pageIcon
+- (void)homePageIconDataSuccess:(void (^)(NSDictionary *dict))result{
+    NSString *url = @"app/Index";
+    [ZGNetWork GETRequestMethodUrl:url parameters:nil success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"%@",failure);
+    }];
+}
+
 #pragma mark ---限时特卖
 - (void)LimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
     [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"Limitshop"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"LimitsIndex"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"限时特卖%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
 //        [SVProgressHUD dismiss];
@@ -38,11 +48,11 @@
 {
     [SVProgressHUD show];
     
-    NSString *url = @"appTopic/SpellGroup";
+    NSString *url = @"app/SpellGrouipIndex";
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"火力拼团%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
@@ -66,33 +76,33 @@
 
 //国家馆接口
 - (void)pavilionCountries:(NSInteger)countries dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
-    
-    NSString *url = nil;
-    switch (countries) {
-        case CountriesEnterThe_SouthKorea: {
-            // 韩国
-            url = [NSString stringWithFormat:@"appTopic/Korea"];
-        }
-            break;
-        case CountriesEnterThe_Japan: {
-            // 日本
-            url = [NSString stringWithFormat:@"appTopic/Japan"];
-        }
-            break;
-        case CountriesEnterThe_Australia: {
-            // 澳大利亚
-            url = [NSString stringWithFormat:@"appTopic/Aussie"];
-        }
-            break;
-        case CountriesEnterThe_TheEuropean: {
-            // 欧洲
-            url = [NSString stringWithFormat:@"appTopic/Europe"];
-        }
-            break;
-
-        default:
-            break;
-    }
+//    http://192.168.0.110:8080/appTopic/App?tagIds=3&&productCategoryId=0
+    NSString *url = @"appTopic/App";;
+//    switch (countries) {
+//        case CountriesEnterThe_SouthKorea: {
+//            // 韩国
+//            url = [NSString stringWithFormat:@"appTopic/App"];
+//        }
+//            break;
+//        case CountriesEnterThe_Japan: {
+//            // 日本
+//            url = [NSString stringWithFormat:@"appTopic/App"];
+//        }
+//            break;
+//        case CountriesEnterThe_Australia: {
+//            // 澳大利亚
+//            url = [NSString stringWithFormat:@"appTopic/Aussie"];
+//        }
+//            break;
+//        case CountriesEnterThe_TheEuropean: {
+//            // 欧洲
+//            url = [NSString stringWithFormat:@"appTopic/Europe"];
+//        }
+//            break;
+//
+//        default:
+//            break;
+//    }
     
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         NSDictionary * dict = [NSDictionary dictionaryWithDictionary:responseObject[@"page"]];

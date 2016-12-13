@@ -9,7 +9,7 @@
 #ifndef GZGNetworkPort_h
 #define GZGNetworkPort_h
 
-#define CountriesTopic @"appTopic/"//首页8个点击事件
+#define CountriesTopic @"app/"//首页8个点击事件
 
 
 #endif /* GZGNetworkPort_h */

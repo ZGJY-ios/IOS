@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "GZGSubViewController.h"
 @interface GZGYLimitViewController : GZGSubViewController
-
+@property(nonatomic,strong)NSString *titleName;
 @end

@@ -44,7 +44,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = @"火力拼团";
+    self.titles.text = self.titleName;
     self.navBarView.backgroundColor = [UIColor colorWithRed:148/255.0 green:208/255.0 blue:227/255.0 alpha:1.0];
     self.view.backgroundColor = [UIColor whiteColor];
     [self tableViewInterface];
@@ -61,7 +61,7 @@
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];
             dic = dataArray[i];
             [self.limitArray addObject:dic[@"id"]];
-            [self.nameArray addObject:dic[@"full_name"]];
+            [self.nameArray addObject:dic[@"name"]];
             if (dic[@"image"] == nil) {
                 [self.ImgArray addObject:@""];
             }else{

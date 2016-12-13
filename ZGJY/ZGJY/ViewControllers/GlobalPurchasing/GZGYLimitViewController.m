@@ -48,7 +48,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = @"限时特卖";
+    self.titles.text = self.titleName;
     [self tableViewInterface];
     [self LimitData];
     // Do any additional setup after loading the view.
@@ -63,7 +63,7 @@
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];
             dic = dataArray[i];
             [self.limitArray addObject:dic[@"id"]];
-            [self.nameArray addObject:dic[@"full_name"]];
+            [self.nameArray addObject:dic[@"name"]];
             if (dic[@"image"] == nil) {
                 [self.ImgArray addObject:@""];
             }else{

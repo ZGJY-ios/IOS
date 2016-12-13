@@ -74,7 +74,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"我的中港", nil);
-    
     self.leftBtn.hidden = YES;
     
     [self.rightBtn setImage:[[UIImage imageNamed:@"PersonalCenterSet"]imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
@@ -98,7 +97,10 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"3" forKey:@"TABBARID"];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

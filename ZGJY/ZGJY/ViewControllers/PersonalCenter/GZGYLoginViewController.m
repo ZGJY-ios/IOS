@@ -17,7 +17,7 @@
 @end
 
 @implementation GZGYLoginViewController
-
+@synthesize TbabarLogin;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
@@ -39,6 +39,7 @@
 -(void)BackDelegeteClick:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    TbabarLogin(@"1");
 }
 #pragma mark --- 注册事件
 -(void)RegDelegeteClick:(id)sender

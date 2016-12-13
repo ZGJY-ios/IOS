@@ -44,6 +44,9 @@
 @end
 
 @interface GZGTheShoppingCartViewController () <UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    NSString * blockId;
+}
 @property (nonatomic, strong) UIButton * editorBtn; // 编辑按钮
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UICollectionView * collectionView;
@@ -58,8 +61,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self requestDataWithCartList];
+    [self requestData];
 }
+//- (void)viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    
+//    [self requestData];
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -121,7 +129,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)requestDataWithCartList {
+
+- (void)requestData {
     
     if (!_mutables) {
         _mutables = [NSMutableArray array];
@@ -146,9 +155,18 @@
             NSLog(@"购物车列表失败:%@",error);
         }];
     } else {
-        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
-        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
-        [self presentViewController:nav animated:YES completion:nil];
+        if ([blockId isEqualToString:@"1"]) {
+            NSInteger tabbarId = [[[NSUserDefaults standardUserDefaults]objectForKey:@"TABBARID"] integerValue];
+            self.tabBarController.selectedIndex = tabbarId;
+        }else{
+            GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+            logisticsVC.TbabarLogin = ^(NSString * backId){
+                blockId = backId;
+            };
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+            [self presentViewController:nav animated:YES completion:nil];
+        }
+        blockId = @"";
     }
 }
 // 添加购物车
@@ -157,7 +175,7 @@
     NSDictionary * dict = @{@"id":shopID,@"quantity":number};
     [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
         // 添加成功 刷新购物车列表
-        [self requestDataWithCartList];
+        [self requestData];
     } failed:^(NSError *error) {
         NSLog(@"添加失败");
     }];
@@ -169,7 +187,7 @@
     NSDictionary * dict = @{@"id":shopID};
     [[GZGYAPIHelper shareAPIHelper] deleteToCartURL:@"appCart/delete" Dict:dict Finished:^(NSArray *carts) {
         // 删除成功 刷新购物车列表
-        [self requestDataWithCartList];
+        [self requestData];
     } failed:^(NSError *error) {
         GZGLog(@"删除失败");
     }];

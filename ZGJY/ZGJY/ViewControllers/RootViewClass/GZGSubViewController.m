@@ -62,6 +62,23 @@
 - (void)rightBtnDown{
     
 }
+-(void)creatleftBtnWithTitle:(NSString*)title normalImage:(NSString*)normalImage highlightedImage:(NSString*)highlightedImage frame:(CGRect)frame action:(SEL)action{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:normalImage] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:highlightedImage] forState:UIControlStateHighlighted];
+    [btn setFrame:frame];
+    [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont boldSystemFontOfSize:14];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem = item;
+    
+}
+-(void)pop
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

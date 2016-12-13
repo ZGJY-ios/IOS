@@ -5,7 +5,6 @@
 //  Created by 刘亚栋 on 16/9/26.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
-
 #import "GZGGlobalPurchasingViewController.h"
 #import "GZGSearchListController.h" // 搜索列表
 #import "YDImageRoll.h"
@@ -39,9 +38,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 >
 @property(nonatomic, strong) UITableView *mainTableView;
 @property (nonatomic, strong) NSArray<GZGYRootSpellModel *> *spellModel;
-@property(nonatomic, strong)NSMutableArray * limitArray;
-@property(nonatomic, strong)NSMutableArray * nameArray;
-@property(nonatomic, strong)NSMutableArray * ImgArray;
+@property (nonatomic, strong) NSMutableArray *iconArray;
+@property (nonatomic, strong)NSMutableArray * limitArray;
+@property (nonatomic, strong)NSMutableArray * nameArray;
+@property (nonatomic, strong)NSMutableArray * ImgArray;
 @end
 
 
@@ -50,21 +50,27 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
+    [self arrayInitialize];
+
     [self buildUI];
 }
-
 - (void)viewWillAppear:(BOOL)animated{
+    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"TABBARID"];
     [super viewWillAppear:animated];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
 #pragma mark 方法
+- (void)arrayInitialize{
+    _iconArray = [NSMutableArray array];
+}
 - (void)buildUI{
     [self navTitleUI];
     [self tableViewUI];
     [self SpellData];
+    [self loadIconData];
     
 }
 
@@ -107,14 +113,15 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark --- 拼团数据
 -(void)SpellData
 {
-    NSDictionary * dic = @{@"tagIds":@"6"};
-    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
+    
+    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:nil Finsh:^(NSArray * dataArray){
         self.spellModel = [GZGYRootSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
+
         for (int i = 0; i<dataArray.count; i++) {
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];
             dic = dataArray[i];
             [self.limitArray addObject:dic[@"id"]];
-            [self.nameArray addObject:dic[@"full_name"]];
+            [self.nameArray addObject:dic[@"name"]];
             if (dic[@"image"] == nil) {
                 [self.ImgArray addObject:@""];
             }else{
@@ -136,11 +143,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (section == 2){
         return 3;
     }else if (section == 3){
-        return 1;
+        return 0;                    //将不在使用！！但是没有删掉！！目前留下！！！
     }else if (section == 4){
         return 1;
     }else if (section == 5){
-        return 1;
+        return 0;                    //将不在使用！！但是没有删掉！！目前留下！！！
     }else if (section == 6){
         return 4;
     }
@@ -169,9 +176,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     
     if (section == 0) {
         return [GZGApplicationTool control_height:300.0f];
-    }else if (section == 1 || section == 2|| section == 3|| section == 5){
+    }else if (section == 1 || section == 2 ){
         return [GZGApplicationTool control_height:153.0f];
-    }else if (section == 4){
+    }else if (section == 3|| section == 5){                    //将不在使用！！但是没有删掉！！目前留下！！！
+        return [GZGApplicationTool control_height:0.00001f];
+    } else if (section == 4){
         return  [GZGApplicationTool control_height:380.0f];
     }else if (section == 6){
        return [GZGApplicationTool control_height:0.00001f];
@@ -190,11 +199,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (section == 2){
         return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_hlpt.jpg"] index:section];
     }else if (section == 3){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];
+//        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];                    //将不在使用！！但是没有删掉！！目前留下！！！
     }else if (section == 4){
         return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"sy_myzq.jpg"] index:section];
     }else if (section == 5){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];
+//        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];                    //将不在使用！！但是没有删掉！！目前留下！！！
     }
     return nil;
 }
@@ -208,6 +217,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGGPClassifiCationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
         }
         cell.delegate = self;
+//        NSLog(@"%@",_iconArray);
+        [cell loadData:_iconArray];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
@@ -230,7 +241,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         cell.replenishBtn.tag = indexPath.row;
         [cell.replenishBtn addTarget:self action:@selector(SpellBtn:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == 3){                    //将不在使用！！但是没有删掉！！目前留下！！！
         static  NSString *globalSelectCellStr = @"globalSelectCellStr";
         GZGGPGlobalSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:globalSelectCellStr];
         if (!cell) {
@@ -249,7 +260,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    else if (indexPath.section == 5){
+    else if (indexPath.section == 5){                    //将不在使用！！但是没有删掉！！目前留下！！！
         static NSString *crossBorderDirectMailCellStr = @"crossBorderDirectMailCellStr";
         GZGCrossBorderDirectMailCell *cell = [tableView dequeueReusableCellWithIdentifier:crossBorderDirectMailCellStr];
         if (!cell) {
@@ -343,26 +354,27 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     NSLog(@"点%ld张",index);
 }
 - (void)classifiCationBtnIndex:(NSInteger)index{
-    NSLog(@"点击了第%ld个按钮",index);
-    
+ 
     GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
     switch (index) {
         case HomeItem_GlobalSelect:{
             GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
             limit.hidesBottomBarWhenPushed = YES;
+            limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
             [self.navigationController pushViewController:limit animated:YES];
             break;
         }
         case HomeItem_LimitedTimeSale:{
             GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
             spell.hidesBottomBarWhenPushed = YES;
+            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
             [self.navigationController pushViewController:spell animated:YES];
             break;
         }
         case HomeItem_FireAlsoGroup: {
             // 母婴
             GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-            specialPerformanceVC.titles.text = NSLocalizedString(@"母婴用品", nil);
+            specialPerformanceVC.titles.text = [_iconArray[HomeItem_FireAlsoGroup] objectForKey:@"name"];
             specialPerformanceVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:specialPerformanceVC animated:YES];
         }
@@ -370,13 +382,14 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         case HomeItem_CrossBorderDirectMail: {
             // 洗护
             GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-            specialPerformanceVC.titles.text = NSLocalizedString(@"洗护用品", nil);
+            specialPerformanceVC.titles.text = [_iconArray[HomeItem_CrossBorderDirectMail] objectForKey:@"name"];
             specialPerformanceVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:specialPerformanceVC animated:YES];
         }
             break;
         case HomeItem_SouthKorea:{
-            vc.countriesTitle = @"韩国馆";
+            vc.countriesTitle = [_iconArray[HomeItem_SouthKorea] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_SouthKorea] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_SouthKorea;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
             vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
@@ -385,7 +398,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             break;
         }
         case HomeItem_Japan:{
-            vc.countriesTitle = @"日本馆";
+            vc.countriesTitle = [_iconArray[HomeItem_Japan] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_Japan] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_Japan;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -393,7 +407,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             break;
         }
         case HomeItem_Australia:{
-            vc.countriesTitle = @"澳洲馆";
+            vc.countriesTitle = [_iconArray[HomeItem_Australia] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_Australia] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_Australia;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -401,7 +416,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             break;
         }
         case HomeItem_TheEuropean:{
-            vc.countriesTitle = @"欧洲馆";
+            vc.countriesTitle = [_iconArray[HomeItem_TheEuropean] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_TheEuropean] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_TheEuropean;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
@@ -514,6 +530,23 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         _ImgArray = [NSMutableArray arrayWithCapacity:1];
     }
     return _ImgArray;
+}
+
+
+- (void)loadIconData{
+    [[GZGYAPIHelper shareAPIHelper] homePageIconDataSuccess:^(NSDictionary *dict) {
+        [_iconArray removeAllObjects];
+        [_iconArray addObjectsFromArray:[dict objectForKey:@"list"]];
+        NSLog(@"%@",_iconArray);
+        [self reloadSectionData:0];
+
+    }];
+}
+
+#pragma mark 刷新Table
+- (void)reloadSectionData:(NSInteger)index{
+    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:index];
+    [_mainTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
