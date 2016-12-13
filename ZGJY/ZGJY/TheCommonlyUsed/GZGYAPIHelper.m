@@ -17,6 +17,15 @@
     });
     return help;
 }
+#pragma mark --首页banner
+- (void)homeBannerDatazSuccess:(void (^)(NSDictionary *dict))result{
+    NSString *url = @"app/FindList";
+    [ZGNetWork GETRequestMethodUrl:url parameters:nil success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"%@",failure);
+    }];
+}
 #pragma mark --首页pageIcon
 - (void)homePageIconDataSuccess:(void (^)(NSDictionary *dict))result{
     NSString *url = @"app/Index";

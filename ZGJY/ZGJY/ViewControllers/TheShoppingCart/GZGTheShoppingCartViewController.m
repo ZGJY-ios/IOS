@@ -85,7 +85,15 @@
         [btn addTarget:self action:@selector(editorBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         btn;
     });
-    [self.navBarView addSubview:self.editorBtn];
+//    [self.navBarView addSubview:self.editorBtn];
+    
+    UILabel * emptyCartLabel = [[UILabel alloc] init];
+    emptyCartLabel.frame = CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool control_height:200]);
+    emptyCartLabel.text = NSLocalizedString(@"购物车列表为空", nil);
+    emptyCartLabel.textColor = [UIColor blackColor];
+    emptyCartLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
+    emptyCartLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:emptyCartLabel];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - self.navBarView.frame.size.height - self.tabBarController.tabBar.frame.size.height - [GZGApplicationTool control_height:100]) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
@@ -145,6 +153,14 @@
         NSDictionary * dict = @{@"memberId":userID};
         [[GZGYAPIHelper shareAPIHelper] cartListURL:@"appCart/list" dict:dict finished:^(NSArray *goods) {
             NSLog(@"购物车列表:%@",goods);
+            
+            if (goods.count > 0) {
+                _tableView.alpha = 1.0;
+                self.settlementView.hidden = NO;
+            } else {
+                _tableView.alpha = 0.0;
+                self.settlementView.hidden = YES;
+            }
             
             for (int i = 0; i < goods.count; i++) {
                 NSDictionary * dic = goods[i];
@@ -372,15 +388,15 @@
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
-        return self.collectionView.frame.size.height;
-    }
+//    if (section == 1) {
+//        return self.collectionView.frame.size.height;
+//    }
     return 10;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
-        return [self addHeaderView];
-    }
+//    if (section == 1) {
+//        return [self addHeaderView];
+//    }
     return nil;
 }
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

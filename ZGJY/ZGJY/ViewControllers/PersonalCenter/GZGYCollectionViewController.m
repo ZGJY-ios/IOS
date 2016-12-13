@@ -26,10 +26,6 @@
     ytableView.dataSource = self;
     [self.view addSubview:ytableView];
     _tableView = ytableView;
-//    UILabel * headlabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:80])];
-//    headlabel.text = @"   全部收藏(2)";
-//    headlabel.backgroundColor = [UIColor whiteColor];
-//    ytableView.tableHeaderView = headlabel;
     // Do any additional setup after loading the view.
     
     [self requestData];
@@ -75,11 +71,14 @@
     return [GZGApplicationTool control_height:215];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if (section == 0) {
         UILabel * headlabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:80])];
-        headlabel.text = [NSString stringWithFormat:@"全部收藏(%ld)",_collections.count > 0 ? _collections.count : 0];
+        headlabel.text = [NSString stringWithFormat:@"    全部收藏(%ld)",_collections.count > 0 ? _collections.count : 0];
         headlabel.backgroundColor = [UIColor whiteColor];
-        tableView.tableHeaderView = headlabel;
+        UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:79], SCREENWIDTH, 1)];
+        view.backgroundColor = [UIColor lightGrayColor];
+        [headlabel addSubview:view];
+        return headlabel;
     }
     return nil;
 }

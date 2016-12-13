@@ -31,6 +31,13 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 + (instancetype)shareAPIHelper;
 
 /**
+ 首页banner接口
+
+ @param result 返回结果
+ */
+- (void)homeBannerDatazSuccess:(void (^)(NSDictionary *dict))result;
+
+/**
  首页Icon接口
 
  @param result 返回的结果

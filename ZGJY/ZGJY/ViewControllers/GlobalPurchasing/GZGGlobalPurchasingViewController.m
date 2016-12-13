@@ -40,6 +40,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 @property(nonatomic, strong) UITableView *mainTableView;
 @property (nonatomic, strong) NSArray<GZGYRootSpellModel *> *spellModel;
+@property (nonatomic, strong) NSMutableArray *bannerArray;
 @property (nonatomic, strong) NSMutableArray *iconArray;
 @property (nonatomic, strong)NSMutableArray * limitArray;
 @property (nonatomic, strong)NSMutableArray * nameArray;
@@ -69,12 +70,14 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark 方法
 - (void)arrayInitialize{
     _iconArray = [NSMutableArray array];
+    _bannerArray = [NSMutableArray array];
 }
 - (void)buildUI{
     [self navTitleUI];
     [self tableViewUI];
     [self loadIconData];
     [self SpellData];
+    [self bannerLoad];
 }
 
 - (void)navTitleUI{
@@ -218,10 +221,18 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         GZGGPClassifiCationCell *cell = [tableView dequeueReusableCellWithIdentifier:str];
         if (!cell) {
             cell = [[GZGGPClassifiCationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
+            
         }
+        
+        
+        
+        
         cell.delegate = self;
 //        NSLog(@"%@",_iconArray);
+        [cell loadData:_iconArray];cell.delegate = self;
+        NSLog(@"%@",_iconArray);
         [cell loadData:_iconArray];
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
@@ -322,10 +333,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     UIView *scrToFigureView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
     
     YDImageRoll *ydimage = [[YDImageRoll alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
-    ydimage.imageUrlArray = @[@"http://www.shengpet.com/uploads/allimg/140410/2-1404100943143X.jpg",
-                              @"http://h.hiphotos.bdimg.com/album/w%3D2048/sign=69b2037aca1349547e1eef6462769358/d000baa1cd11728b707d37d9c9fcc3cec2fd2cfc.jpg",
-                              @"http://pic15.nipic.com/20110621/2678842_143658366148_2.jpg",
-                              @"http://sc.jb51.net/uploads/allimg/150603/14-150603145201143.jpg"];
+    ydimage.imageUrlArray = _bannerArray;
     ydimage.time = 3;
     ydimage.delegate = self;
     ydimage.defaultImage = @"33333";
@@ -536,12 +544,35 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 
 
+- (void)bannerLoad{
+    [[GZGYAPIHelper shareAPIHelper]homeBannerDatazSuccess:^(NSDictionary *dict) {
+        [_bannerArray removeAllObjects];
+ 
+        NSMutableArray *arr = [NSMutableArray array];
+//        NSLog(@"%d",[[dict objectForKey:@"list"] count]);
+        [arr addObjectsFromArray:[dict objectForKey:@"list"]];
+        
+        NSLog(@"%@",arr);
+        
+        
+        for (NSInteger i=0; i<arr.count; i++) {
+            [_bannerArray addObject:[[dict objectForKey:@"list"][i] objectForKey:@"path"]];
+//            NSLog(@"%@",[[dict objectForKey:@"list"][i] objectForKey:@"path"]);
+        }
+//        [_bannerArray addObjectsFromArray:[dict objectForKey:@"list"]];
+//        [_bannerArray addObjectsFromArray:arr];
+        NSLog(@"%@",arr);
+        [_mainTableView reloadData];
+        
+    }];
+}
 - (void)loadIconData{
     [[GZGYAPIHelper shareAPIHelper] homePageIconDataSuccess:^(NSDictionary *dict) {
         [_iconArray removeAllObjects];
         [_iconArray addObjectsFromArray:[dict objectForKey:@"list"]];
         NSLog(@"%@",_iconArray);
         [self reloadSectionData:0];
+//        [_mainTableView reloadData];
 
     }];
 }

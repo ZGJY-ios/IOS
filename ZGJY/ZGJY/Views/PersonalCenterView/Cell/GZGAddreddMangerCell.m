@@ -42,8 +42,10 @@
     [self addSubview:self.cellIDCar];
     
     self.cellSelectBtn = [UIButton  buttonWithType:UIButtonTypeCustom];
-    self.cellSelectBtn.backgroundColor = [UIColor    redColor];
+//    self.cellSelectBtn.backgroundColor = [UIColor    redColor];
     self.cellSelectBtn.frame = CGRectMake([GZGApplicationTool control_wide:20], ([GZGApplicationTool control_height:207] - [GZGApplicationTool control_height:35])/2, [GZGApplicationTool control_wide:40], [GZGApplicationTool control_height:35]);
+    [self.cellSelectBtn setImage:[UIImage imageNamed:@"TheShoppingCartNoHook"] forState:UIControlStateNormal];
+    [self.cellSelectBtn setImage:[UIImage imageNamed:@"TheShoppingCartSelectHook"] forState:UIControlStateSelected];
     [self addSubview:self.cellSelectBtn];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:206], SCREENWIDTH, [GZGApplicationTool control_height:1])];

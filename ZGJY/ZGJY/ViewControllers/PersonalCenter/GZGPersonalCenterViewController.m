@@ -274,6 +274,7 @@
                     GZGHelpViewController * helpVC = [[GZGHelpViewController alloc] init];
                     helpVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:helpVC animated:YES];
+
                 }
                     break;
             }

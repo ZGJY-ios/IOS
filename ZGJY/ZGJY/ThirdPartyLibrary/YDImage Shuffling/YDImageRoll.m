@@ -180,6 +180,9 @@
 - (void)setImageUrlArray:(NSArray *)imageUrlArray{
     _imageUrlArray = imageUrlArray;
     if (_currIndex >= _imageUrlArray.count) _currIndex = _imageUrlArray.count - 1;
+    if (imageUrlArray.count==0) {
+        return;
+    }
     [_currImageView yd_downloadImageUrl:_imageUrlArray[_currIndex] placeholderImage:[UIImage imageNamed:_defaultImage]];
 
 }

@@ -77,18 +77,15 @@
     
     
     cell.cellUserName.text = model.consignee;
-    cell.cellCertifiCation.text = @"已认证";
+//    cell.cellCertifiCation.text = @"已认证";
     cell.cellTelNumber.text = model.phone;
     cell.cellAddress.text = model.address;
-    cell.cellIDCar.text = @"321542525115152365";
+//    cell.cellIDCar.text = @"321542525115152365";
     cell.cellSelectBtn.tag = indexPath.row+1000;
     [cell.cellSelectBtn addTarget:self action:@selector(cellSelectBtnDown:) forControlEvents:UIControlEventTouchUpInside];
     if (model.is_default.intValue == 0) {
-        cell.cellSelectBtn.backgroundColor = [UIColor blackColor];
+        cell.cellSelectBtn.selected = YES;
     }
-//    if (indexPath.row == 0) {
-//        cell.cellSelectBtn.backgroundColor = [UIColor blackColor];
-//    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -186,13 +183,13 @@
     
     
     
-    for (NSInteger i=0; i<3; i++) {
-        UIButton *btnxxx = (UIButton *)[self.view viewWithTag:1000 + i];
-        btnxxx.backgroundColor = [UIColor redColor];
-        
-    }
-    
-    btn.backgroundColor = [UIColor blackColor];
+//    for (NSInteger i=0; i<3; i++) {
+//        UIButton *btnxxx = (UIButton *)[self.view viewWithTag:1000 + i];
+//        btnxxx.backgroundColor = [UIColor redColor];
+//        
+//    }
+//    
+//    btn.backgroundColor = [UIColor blackColor];
 }
 - (void)editorDressDownWithModel:(GZGAddressModel *)model {
     GZGADDAddressViewController *vc = [[GZGADDAddressViewController alloc] init];
