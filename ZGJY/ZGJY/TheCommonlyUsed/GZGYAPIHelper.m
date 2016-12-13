@@ -103,7 +103,16 @@
     }];
 }
 
-
+// 购物车列表
+- (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        NSArray * array = responseObject[@"cart"];
+        result(array);
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+    }];
+}
 #pragma mark --- 商品详情接口
 - (void)DetailssTimeSaleCountries:(NSInteger)countries Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
