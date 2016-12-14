@@ -16,7 +16,12 @@
 @end
 
 @implementation GZGYCollectionViewController
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navBarView.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titles.text = @"我的收藏";
@@ -106,6 +111,18 @@
     details.gDetails = GoodsDetailsFireAlsoGroup;
     details.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:details animated:YES];
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    GZGSpecialPerformanceModel * model = _collections[indexPath.row];
+    NSDictionary * dict = @{@"id":model.ID};
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[GZGYAPIHelper shareAPIHelper]delegateCollectionListDict:dict Finsh:^(NSString *dataString) {
+            [self requestData];
+        }];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

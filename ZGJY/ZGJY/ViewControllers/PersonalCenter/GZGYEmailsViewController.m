@@ -31,23 +31,28 @@
 #pragma mark --- 输入结束
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     if ([textField isEqual:emails.phoneField]) {
-        NSDictionary * dict = @{@"username":emails.phoneField.text};
-        [[GZGYAPIHelper shareAPIHelper]UserNameDict:dict Finsh:^(NSString * string,NSString * contentString){
-            if ([contentString isEqualToString:@"error"]) {
-                emails.lineLable.text = string;
-            }else{
-                emails.lineLable.text = @"此用户名可以使用";
-            }
-        }];
-    }else if ([textField isEqual:emails.phoneField]){
-        NSDictionary * dict = @{@"email":emails.onceField.text};
-        [[GZGYAPIHelper shareAPIHelper]EmailsDict:dict Finsh:^(NSString * string,NSString * contentString){
-            if ([contentString isEqualToString:@"error"]) {
-                emails.promptLabel.text = string;
-            }else{
-                emails.promptLabel.text = @"此邮箱可以使用";
-            }
-        }];
+        if (emails.phoneField.text.length != 0) {
+            NSDictionary * dict = @{@"username":emails.phoneField.text};
+            [[GZGYAPIHelper shareAPIHelper]UserNameDict:dict Finsh:^(NSString * string,NSString * contentString){
+                if ([contentString isEqualToString:@"error"]) {
+                    emails.lineLable.text = string;
+                }else{
+                    emails.lineLable.text = @"此用户名可以使用";
+                }
+            }];
+        }
+    }else if ([textField isEqual:emails.onceField]){
+        if (emails.onceField.text.length != 0) {
+            NSDictionary * dict = @{@"email":emails.onceField.text};
+            [[GZGYAPIHelper shareAPIHelper]EmailsDict:dict Finsh:^(NSString * string,NSString * contentString){
+                if ([contentString isEqualToString:@"error"]) {
+                    emails.promptLabel.text = string;
+                    NSLog(@"邮箱%@",string);
+                }else{
+                    emails.promptLabel.text = @"此邮箱可以使用";
+                }
+            }];
+        }
     }
     return YES;
 }
