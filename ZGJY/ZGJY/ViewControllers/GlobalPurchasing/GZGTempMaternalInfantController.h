@@ -9,5 +9,5 @@
 #import "GZGSubViewController.h"
 
 @interface GZGTempMaternalInfantController : GZGSubViewController
-
+@property(nonatomic, strong) NSString *taglids;
 @end
