@@ -10,6 +10,7 @@
 #import "GZGSearchListCell.h"
 
 @interface GZGTempMaternalInfantController () <UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic , strong) NSMutableArray *dataArray;
 
 @end
 
@@ -17,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _dataArray = [NSMutableArray array];
+    
     // Do any additional setup after loading the view.
     UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
     [self.leftBtn setImage:image forState:UIControlStateNormal];
@@ -29,6 +33,10 @@
     tableView.showsVerticalScrollIndicator = NO;
     tableView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:tableView];
+    
+    
+    [self loadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +57,7 @@
         cell = [[GZGSearchListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TempCell"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    [cell setModel];
+    [cell setModel:nil];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,5 +66,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+
+
+- (void)loadData{
+    NSDictionary * dict;
+    
+    
+    dict  = @{@"tagIds":self.taglids,@"productCategoryId":@"0"};
+    
+
+    
+    
+    [[GZGYAPIHelper shareAPIHelper] pavilionCountries:0 dict:dict finish:^(NSArray *goods) {
+        
+        
+        
+    } failed:^(NSError *error) {
+        NSLog(@"错误信息:%@",error);
+    }];
+}
+
 
 @end

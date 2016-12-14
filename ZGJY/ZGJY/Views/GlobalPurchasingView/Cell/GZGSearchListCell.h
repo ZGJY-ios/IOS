@@ -27,6 +27,6 @@
 @property (nonatomic, strong) NSMutableArray * commodityLabels; // 商品标签
 @property (nonatomic, strong) UILabel * commodityReferencePriceLabel; // 商品参考价
 
-- (void)setModel;
+- (void)setModel:(NSArray *)array;
 
 @end

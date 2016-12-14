@@ -369,6 +369,7 @@
         [SVProgressHUD dismiss];
     }];
 }
+
 #pragma mark --- 删除收藏
 - (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result
 {
@@ -384,4 +385,5 @@
         GZGLog(@"%@",failure);
     }];
 }
+
 @end
