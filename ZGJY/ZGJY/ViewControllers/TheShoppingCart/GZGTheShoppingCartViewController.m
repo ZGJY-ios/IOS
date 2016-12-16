@@ -150,7 +150,7 @@
     if (userID != nil) {
         NSDictionary * dict = @{@"memberId":userID};
         [[GZGYAPIHelper shareAPIHelper] cartListURL:@"appCart/list" dict:dict finished:^(NSArray *goods) {
-            NSLog(@"购物车列表:%@",goods);
+            GZGLog(@"购物车列表:%@",goods);
             
             if (goods.count > 0) {
                 _tableView.alpha = 1.0;
@@ -168,7 +168,9 @@
             self.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[self calculateTotalPrice]];
             [_tableView reloadData];
         } failed:^(NSError *error) {
-            NSLog(@"购物车列表失败:%@",error);
+            GZGLog(@"购物车列表失败:%@",error);
+            _tableView.alpha = 0.0;
+            self.settlementView.hidden = YES;
         }];
     } else {
         if ([blockId isEqualToString:@"1"]) {
@@ -194,7 +196,7 @@
         // 添加成功 刷新购物车列表
         [self requestData];
     } failed:^(NSError *error) {
-        NSLog(@"添加失败");
+        GZGLog(@"添加失败");
     }];
 }
 // 删除购物车
