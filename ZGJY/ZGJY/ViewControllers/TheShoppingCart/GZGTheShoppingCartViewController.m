@@ -104,14 +104,12 @@
     
     self.settlementView = [[GZGShoppingCartSettlementView alloc] initWithOriginY:[GZGApplicationTool screenHeight] - self.tabBarController.tabBar.frame.size.height - [GZGApplicationTool control_height:100] Height:100];
     self.settlementView.backgroundColor = [UIColor whiteColor];
+    self.isFutureGenerations = YES;
     __weak GZGTheShoppingCartViewController * weak = self;
     [self.settlementView setButtonClick:^(UIButton * btn) {
         switch (btn.tag) {
             case 0: {
                 btn.selected = !btn.isSelected;
-//                for (GZGShoppingCartCell * cell in [weak tableViewCells]) {
-//                    cell.cartRedio.selected = btn.isSelected;
-//                }
                 weak.isFutureGenerations = btn.isSelected;
                 if (btn.isSelected) {
                     weak.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[weak calculateTotalPrice]];
@@ -166,6 +164,7 @@
                 GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dic];
                 [_mutables addObject:model];
             }
+            self.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[self calculateTotalPrice]];
             [_tableView reloadData];
         } failed:^(NSError *error) {
             NSLog(@"购物车列表失败:%@",error);
@@ -203,9 +202,27 @@
     NSDictionary * dict = @{@"id":shopID};
     [[GZGYAPIHelper shareAPIHelper] deleteToCartURL:@"appCart/delete" Dict:dict Finished:^(NSArray *carts) {
         // 删除成功 刷新购物车列表
+        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
         [self requestData];
     } failed:^(NSError *error) {
         GZGLog(@"删除失败");
+        [SVProgressHUD showErrorWithStatus:@"删除失败"];
+    }];
+}
+// 添加收藏
+- (void)requestDataWithAddCollectionCartID:(NSString *)shopID {
+    
+    NSDictionary * dict = @{@"id":shopID};
+    [[GZGYAPIHelper shareAPIHelper] addCollectionDict:dict Finsh:^(id responseObject) {
+        GZGLog(@"添加收藏成功:%@",responseObject);
+        if ([responseObject[@"type"] isEqualToString:@"success"]) {
+            [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"收藏失败"];
+        }
+    } failed:^(NSError *error) {
+        GZGLog(@"添加收藏失败:%@",error);
+        [SVProgressHUD showErrorWithStatus:@"收藏失败"];
     }];
 }
 #pragma mark - 自己的方法
@@ -328,15 +345,15 @@
     };
     
     cell.cartTitle.text = NSLocalizedString(model.name, nil);
-    if (self.isFutureGenerations) {
-        // 全选状态
-        cell.cartRedio.selected = self.isFutureGenerations;
-    } else {
-        // 不是全选状态
-        if (weakSelf.settlementView.combinedPriceTitle.text.floatValue == 0) {
-            cell.cartRedio.selected = self.isFutureGenerations;
-        }
-    }
+//    if (self.isFutureGenerations) {
+//        // 全选状态
+//        cell.cartRedio.selected = self.isFutureGenerations;
+//    } else {
+//        // 不是全选状态
+//        if (weakSelf.settlementView.combinedPriceTitle.text.floatValue == 0) {
+//            cell.cartRedio.selected = self.isFutureGenerations;
+//        }
+//    }
     [cell.cartImage sd_setImageWithURL:[NSURL URLWithString:model.image]];
     cell.cartNumber.text = [NSString stringWithFormat:@"%ld",model.quantity];
     cell.cartPrice.text = [NSString stringWithFormat:@"￥%.2f",model.price];
@@ -409,8 +426,9 @@
     }];
     //
     UITableViewRowAction * collectRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"收藏" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"收藏" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"收藏" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alertView show];
+        [self requestDataWithAddCollectionCartID:model.ID];
     }];
     collectRowAction.backgroundColor = [GZGColorClass subjectShoppingCartCollectionBackgroundColor];
     return @[deleteRow, collectRowAction];
