@@ -19,7 +19,6 @@
 #import "GZGYTheOrderViewController.h"
 #import "GZGYLoginViewController.h"
 @interface UIImage (PersonalCenter)
-
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
 @end
@@ -45,6 +44,9 @@
 @end
 
 @interface GZGPersonalCenterViewController () <UITableViewDataSource,UITableViewDelegate>
+{
+    NSString * blockId;
+}
 @property (nonatomic, strong) NSMutableArray *personalCenters;
 @property (nonatomic, strong) NSDictionary *myInformationGroupDic;
 @property (nonatomic, strong) UITableView * tableView;
@@ -52,9 +54,9 @@
 
 @implementation GZGPersonalCenterViewController
 
-- (void)viewDidAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+
     [self requestDataWithLogin];
 }
 - (void)requestDataWithLogin {
@@ -62,9 +64,19 @@
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * userID = [userDefaults objectForKey:@"USERID"];
     if (userID == nil) {
-        GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
-        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
-        [self presentViewController:nav animated:YES completion:nil];
+        if ([blockId isEqualToString:@"1"]) {
+            NSInteger tabbarId = [[[NSUserDefaults standardUserDefaults]objectForKey:@"TABBARID"] integerValue];
+            self.tabBarController.selectedIndex = tabbarId;
+        }else{
+            GZGYLoginViewController * logisticsVC = [[GZGYLoginViewController alloc] init];
+            logisticsVC.TbabarLogin = ^(NSString * backId){
+                blockId = backId;
+            };
+            logisticsVC.backid = @"1";
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
+            [self presentViewController:nav animated:YES completion:nil];
+        }
+        blockId = @"";
     } else {
         NSString * userName = [userDefaults objectForKey:@"USERNAME"];
         self.tableView.tableHeaderView = [self tableHeaderViewWithBackgroundImage:@"PersonalCenterBackgroundImage.jpg" headImage:@"PersonalHead" title:NSLocalizedString(userName, nil)];
@@ -96,10 +108,6 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-}
--(void)viewWillAppear:(BOOL)animated
-{
-    [[NSUserDefaults standardUserDefaults] setObject:@"3" forKey:@"TABBARID"];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -111,7 +111,7 @@
         cell = [[GZGSearchListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    [cell setModel];
+    [cell setModel:nil];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

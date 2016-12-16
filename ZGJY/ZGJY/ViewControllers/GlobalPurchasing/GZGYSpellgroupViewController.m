@@ -42,9 +42,14 @@
     }
     return _ImgArray;
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = self.titleName;
+    self.titles.text = @"火力拼团";
     self.navBarView.backgroundColor = [UIColor colorWithRed:148/255.0 green:208/255.0 blue:227/255.0 alpha:1.0];
     self.view.backgroundColor = [UIColor whiteColor];
     [self tableViewInterface];
@@ -54,7 +59,7 @@
 #pragma mark --- 数据
 -(void)SpellData
 {
-    NSDictionary * dic = @{@"tagIds":@"6"};
+    NSDictionary * dic = @{@"tagIds":@"6",@"productCategoryId":@"0"};
     [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
         self.model = [GZGYSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {

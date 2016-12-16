@@ -46,9 +46,14 @@
     }
     return _nameArray;
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titles.text = self.titleName;
+    self.titles.text = @"限时特卖";
     [self tableViewInterface];
     [self LimitData];
     // Do any additional setup after loading the view.
@@ -56,8 +61,8 @@
 #pragma mark --- 数据
 -(void)LimitData
 {
-    NSDictionary * dict = @{@"tagIds":@"5"};
-    [[GZGYAPIHelper shareAPIHelper]LimitedTimeSaleDict:dict Finsh:^(NSArray * dataArray){
+    NSDictionary * dict = @{@"tagIds":@"5",@"productCategoryId":@"0"};
+    [[GZGYAPIHelper shareAPIHelper]AllLimitedTimeSaleDict:dict Finsh:^(NSArray * dataArray){
         self.model = [GZGYLimitModel mj_objectArrayWithKeyValuesArray:dataArray];
         for (int i = 0; i<dataArray.count; i++) {
             NSMutableDictionary * dic = [NSMutableDictionary dictionary];

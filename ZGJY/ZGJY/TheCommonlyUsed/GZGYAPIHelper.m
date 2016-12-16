@@ -47,7 +47,20 @@
         NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
-//        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
+- (void)AllLimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
+{
+    [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@",DetailsTopic];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"所有限时特卖%@",responseObject);
+        NSArray * limitArray = responseObject[@"page"][@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         NSLog(@"%@",failure);
     }];
@@ -135,57 +148,9 @@
 #pragma mark --- 商品详情接口
 - (void)DetailssTimeSaleCountries:(NSInteger)countries Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
-    NSString *url = nil;
-    
-    
-    switch (countries) {
-        case GoodsDetailsMaternalAndInfant:
-        {
-            url = @"appTopic/baby";
-            break;
-        }
-        case GoodsDetailsKorea:
-        {
-            url = @"appTopic/Korea";
-            break;
-        }
-        case GoodsDetailsJapan:
-        {
-            url = @"appTopic/Janpan";
-            break;
-        }
-        case GoodsDetailsEurope:
-        {
-            url = @"appTopic/Europe";
-            break;
-        }
-        case GoodsDetailsAussie:
-        {
-            url = @"appTopic/Europe";
-            break;
-        }
-        case GoodsDetailsWashProtect:
-        {
-            url = @"appTopic/Limitshop";
-            break;
-        }
-        case GoodsDetailsLimited:
-        {
-            url = @"appTopic/Limitshop";
-            break;
-        }
-        case GoodsDetailsFireAlsoGroup:
-        {
-            url = @"appTopic/Limitshop";
-            break;
-        }
-        default:
-            break;
-    }
- 
-    
+    NSString *url = [NSString stringWithFormat:@"%@",DetailsTopic];
     [SVProgressHUD show];
-    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+    [ZGNetWork POSTRequestMethodUrl:@"appTopic/App" parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"商品详情%@",responseObject);
         NSArray * limitArray = responseObject[@"page"][@"list"];
@@ -402,6 +367,22 @@
     } failure:^(NSError *failure, NSInteger task) {
         failed(failure);
         [SVProgressHUD dismiss];
+    }];
+}
+
+#pragma mark --- 删除收藏
+- (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result
+{
+    NSString * url = @"member/appFavorite/delete";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+//        [SVProgressHUD setStatus:@"删除成功"];
+        NSLog(@"删除收藏%@",responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        GZGLog(@"%@",failure);
     }];
 }
 

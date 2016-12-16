@@ -77,6 +77,7 @@
 @implementation GZGYDetailsViewController
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     self.navBarView.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.navigationBar.barTintColor = [GZGColorClass gzgNavBarBackColor];
@@ -138,12 +139,12 @@
         }
         case GoodsDetailsLimited:
         {
-            dict = @{@"taglds":@"5",@"id":self.shopID};
+            dict = @{@"tagIds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
             break;
         }
         case GoodsDetailsFireAlsoGroup:
         {
-            dict = @{@"taglds":@"5",@"id":self.shopID};
+            dict = @{@"tagIds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
             break;
         }
         default:
@@ -718,9 +719,8 @@
     GZGLog(@"加入进货单");
     [self requestDataWithAddCart];
 }
--(void)viewDidDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden = YES;
     self.navBarView.hidden = NO;
 }
 - (void)didReceiveMemoryWarning {

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GZGYLoginViewController : UIViewController
-@property (nonatomic ,strong)void(^TbabarLogin)(NSString * loginId);
-
+@property(nonatomic ,strong)void(^TbabarLogin)(NSString * loginId);
+@property(nonatomic, strong)NSString * backid;
 @end

@@ -85,7 +85,7 @@
     [self addSubview:self.commodityPriceLabel];
     [self addSubview:self.commodityReferencePriceLabel];
 }
-- (void)setModel {
+- (void)setModel:(NSArray *)array {
     self.commodityImageView.image = [UIImage imageNamed:@"searchList-icon2"];
     self.commodityNameLabel.text = NSLocalizedString(@"澳洲进口 体内平衡益生菌", nil);
     self.commodityIntroductionLabel.text = NSLocalizedString(@"富含最佳女性抗衰老成分OPC， 女性必吃天然西芹籽精华", nil);

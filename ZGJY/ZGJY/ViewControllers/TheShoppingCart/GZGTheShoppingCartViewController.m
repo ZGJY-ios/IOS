@@ -57,17 +57,18 @@
 @end
 
 @implementation GZGTheShoppingCartViewController
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (NSMutableArray *)mutables {
     
+    if (!_mutables) {
+        _mutables = [NSMutableArray array];
+    }
+    return _mutables;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
     [self requestData];
 }
-//- (void)viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    
-//    [self requestData];
-//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -178,6 +179,7 @@
             logisticsVC.TbabarLogin = ^(NSString * backId){
                 blockId = backId;
             };
+            logisticsVC.backid = @"1";
             UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:logisticsVC];
             [self presentViewController:nav animated:YES completion:nil];
         }

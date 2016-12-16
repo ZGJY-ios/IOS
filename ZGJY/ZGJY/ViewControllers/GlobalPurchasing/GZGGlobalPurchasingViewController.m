@@ -25,6 +25,7 @@
 #import "GZGYDetailsViewController.h"
 #import "GZGYSpellTableViewCell.h"
 #import "GZGYRootSpellModel.h"
+#import "GZGTempMaternalInfantController.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -35,7 +36,9 @@ GZGGPClassifiCationCellDelegate,
 GZGGPGlobalSelectCellDelegate,
 GZGGPMaternalInfantCellDelegate,
 GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
->
+>{
+    NSInteger number;
+}
 @property(nonatomic, strong) UITableView *mainTableView;
 @property (nonatomic, strong) NSArray<GZGYRootSpellModel *> *spellModel;
 @property (nonatomic, strong) NSMutableArray *bannerArray;
@@ -59,6 +62,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)viewWillAppear:(BOOL)animated{
     [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"TABBARID"];
     [super viewWillAppear:animated];
+    self.navBarView.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -71,11 +76,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)buildUI{
     [self navTitleUI];
     [self tableViewUI];
-    [self bannerLoad];
-    [self SpellData];
     [self loadIconData];
-    
-    
+    [self SpellData];
+    [self bannerLoad];
 }
 
 - (void)navTitleUI{
@@ -117,8 +120,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark --- 拼团数据
 -(void)SpellData
 {
-    
-    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:nil Finsh:^(NSArray * dataArray){
+    NSDictionary * dic = @{@"tagIds":@"6",@"productCategoryId":@"0"};
+    [[GZGYAPIHelper shareAPIHelper]SpellGroupDict:dic Finsh:^(NSArray * dataArray){
         self.spellModel = [GZGYRootSpellModel mj_objectArrayWithKeyValuesArray:dataArray];
 
         for (int i = 0; i<dataArray.count; i++) {
@@ -367,33 +370,40 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
     switch (index) {
         case HomeItem_GlobalSelect:{
+            GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+            vc.taglids = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"id"];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_LimitedTimeSale:{
+            
+            break;
+        }
+        case HomeItem_FireAlsoGroup: {
+//            // 母婴
+//            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+//            specialPerformanceVC.titles.text = [_iconArray[HomeItem_FireAlsoGroup] objectForKey:@"name"];
+//            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+            
             GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
             limit.hidesBottomBarWhenPushed = YES;
             limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
             [self.navigationController pushViewController:limit animated:YES];
-            break;
-        }
-        case HomeItem_LimitedTimeSale:{
-            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
-            spell.hidesBottomBarWhenPushed = YES;
-            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
-            [self.navigationController pushViewController:spell animated:YES];
-            break;
-        }
-        case HomeItem_FireAlsoGroup: {
-            // 母婴
-            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-            specialPerformanceVC.titles.text = [_iconArray[HomeItem_FireAlsoGroup] objectForKey:@"name"];
-            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
         }
             break;
         case HomeItem_CrossBorderDirectMail: {
             // 洗护
-            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-            specialPerformanceVC.titles.text = [_iconArray[HomeItem_CrossBorderDirectMail] objectForKey:@"name"];
-            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+//            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+//            specialPerformanceVC.titles.text = [_iconArray[HomeItem_CrossBorderDirectMail] objectForKey:@"name"];
+//            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+            
+            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
+            spell.hidesBottomBarWhenPushed = YES;
+            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
+            [self.navigationController pushViewController:spell animated:YES];
         }
             break;
         case HomeItem_SouthKorea:{
