@@ -90,4 +90,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)collectionListDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
 // 删除收藏
 - (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result;
+// 一级分类
+- (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
+// 二级分类
+-(void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
 @end

@@ -46,7 +46,7 @@
     }
     return _nameArray;
 }
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
     self.navBarView.hidden = NO;

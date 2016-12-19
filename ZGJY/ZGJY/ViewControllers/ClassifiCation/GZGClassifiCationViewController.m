@@ -13,15 +13,19 @@
 #import "GZGYSegView.h"
 #import "GZGYBrandCollectionViewCell.h"
 #import "GZGYDetailsViewController.h"
+#import "GZGYoneClassification.h"
+#import "GZGYsecondClassification.h"
 @interface GZGClassifiCationViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource,SegDelegeteClickProtocol,UITextFieldDelegate>
 {
     UIView*ViewHead;
     NSArray*DataArray;
-    NSArray*classArray;
     NSInteger number;
 }
-@property(nonatomic,retain)NSArray*SecArray;
-@property(nonatomic,strong)NSArray<GZGYClassModel*>*model;
+@property(nonatomic, strong)NSMutableArray * oneClassArray;
+@property(nonatomic,strong)NSArray<GZGYoneClassification*>*model;
+@property(nonatomic, strong)GZGYoneClassification * oneModel;
+@property(nonatomic,strong)NSArray<GZGYsecondClassification*>*twoModel;
+@property(nonatomic, strong)GZGYsecondClassification * secondModel;
 @property(nonatomic,strong)UICollectionView*CollectionView;
 @property(nonatomic,strong)UITableView*TableView;
 @property(nonatomic,strong)UICollectionView*brandCollection;
@@ -33,24 +37,27 @@
 @end
 
 @implementation GZGClassifiCationViewController
-
+-(NSMutableArray *)oneClassArray
+{
+    if (_oneClassArray == nil) {
+        _oneClassArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _oneClassArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.leftBtn.hidden = YES;
     self.titles.text = @"分类";
     number = 0;
     self.view.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-    classArray = @[@"精品男装",@"潮流女装",@"母婴用品",@"儿童玩具",@"个护化妆",@"家用电器",@"电脑办公",@"手机数码",@"母婴童装",@"图书音像"];
     self.NameArray = @[@"分类",@"品牌"];
-    self.SecArray = @[@"服装类",@"玩具类",@"图书类"];
     //搜索框
     [self SearchInterface];
     [self ScrollViewInterface];
     //Seg
     [self SegViewInterface];
-    //scrollview
-//    [self ScrollViewInterface];
     [self refreshTableView:0];
+    [self oneClassifcation];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -142,7 +149,27 @@
         [self.ScrollView addSubview:self.brandCollection];
     }
 }
-
+#pragma mark --- 一级分类
+-(void)oneClassifcation
+{
+    [[GZGYAPIHelper shareAPIHelper]oneClassificationDict:nil Finsh:^(NSArray *listArray) {
+        self.model = [GZGYoneClassification mj_objectArrayWithKeyValuesArray:listArray];
+        [_TableView reloadData];
+        if (self.model.count>0) {
+            [self.TableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];//设置选中第一行（默认有蓝色背景）
+            [self tableView:self.TableView didSelectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];//实现点击第一行所调用的方法
+        }
+    }];
+}
+#pragma mark --- 二级分类
+-(void)secondClassification:(NSInteger)sender
+{
+    _oneModel = self.model[sender];
+    NSDictionary * dict = @{@"productCategoryId":self.oneModel.ID};
+    [[GZGYAPIHelper shareAPIHelper]secondClassificationDict:dict Finsh:^(NSArray *listArray) {
+        self.twoModel = [GZGYoneClassification mj_objectArrayWithKeyValuesArray:listArray];    [_CollectionView reloadData];
+    }];
+}
 #pragma mark --- tableview
 //-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 //{
@@ -150,7 +177,7 @@
 //}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return classArray.count;
+    return self.model.count;
 }
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 //    return self.SecArray[section];
@@ -163,17 +190,19 @@
     }
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",classArray[indexPath.row]];
+    _oneModel = self.model[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",_oneModel.name];
     cell.textLabel.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [self.view endEditing:YES];
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     [_CollectionView scrollRectToVisible:CGRectMake(0, -5, self.CollectionView.frame.size.width, self.CollectionView.frame.size.height) animated:YES];
-    //    _selectedIndex = indexPath.row;
+    if (self.model.count>0) {
+//        [self secondClassification:indexPath.row];
+    }
     [_CollectionView reloadData];
 }
 #pragma mark --- collectionview

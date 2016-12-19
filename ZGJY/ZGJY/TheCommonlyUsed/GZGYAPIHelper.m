@@ -385,5 +385,34 @@
         GZGLog(@"%@",failure);
     }];
 }
-
+#pragma mark --- 一级分类
+- (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
+{
+    [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProductCategory"];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"一级分类%@",responseObject);
+        NSArray * limitArray = responseObject[@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
+#pragma mark --- 二级分类
+-(void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
+{
+    [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProduct"];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"二级分类%@",responseObject);
+        NSArray * limitArray = responseObject[@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
 @end
