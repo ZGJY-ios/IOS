@@ -31,8 +31,10 @@
     self.cartRedio = ({
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = CGRectMake([GZGApplicationTool control_wide:15], [GZGApplicationTool control_height:90], [GZGApplicationTool control_height:40], [GZGApplicationTool control_height:40]);
+        [button setImage:[UIImage imageNamed:@"TheShoppingCartSelectHook"] forState:UIControlStateDisabled];
         [button setImage:[UIImage imageNamed:@"TheShoppingCartNoHook"] forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:@"TheShoppingCartSelectHook"] forState:UIControlStateSelected];
+        button.enabled = NO;
         button.tag = 0;
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         button;
@@ -113,9 +115,9 @@
     [self.contentView addSubview:self.cartPhone];
     [self.contentView addSubview:self.cartExclusive];
     [self.contentView addSubview:self.cartPrice];
-    [self.contentView addSubview:self.cartSub];
+//    [self.contentView addSubview:self.cartSub];
     [self.contentView addSubview:self.cartNumber];
-    [self.contentView addSubview:self.cartAdd];
+//    [self.contentView addSubview:self.cartAdd];
 }
 - (void)buttonClick:(UIButton *)button {
     

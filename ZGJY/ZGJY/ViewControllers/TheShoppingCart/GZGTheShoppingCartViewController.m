@@ -105,14 +105,12 @@
     
     self.settlementView = [[GZGShoppingCartSettlementView alloc] initWithOriginY:[GZGApplicationTool screenHeight] - self.tabBarController.tabBar.frame.size.height - [GZGApplicationTool control_height:100] Height:100];
     self.settlementView.backgroundColor = [UIColor whiteColor];
+    self.isFutureGenerations = YES;
     __weak GZGTheShoppingCartViewController * weak = self;
     [self.settlementView setButtonClick:^(UIButton * btn) {
         switch (btn.tag) {
             case 0: {
                 btn.selected = !btn.isSelected;
-//                for (GZGShoppingCartCell * cell in [weak tableViewCells]) {
-//                    cell.cartRedio.selected = btn.isSelected;
-//                }
                 weak.isFutureGenerations = btn.isSelected;
                 if (btn.isSelected) {
                     weak.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[weak calculateTotalPrice]];
@@ -152,7 +150,7 @@
     if (userID != nil) {
         NSDictionary * dict = @{@"memberId":userID};
         [[GZGYAPIHelper shareAPIHelper] cartListURL:@"appCart/list" dict:dict finished:^(NSArray *goods) {
-            NSLog(@"购物车列表:%@",goods);
+            GZGLog(@"购物车列表:%@",goods);
             
             if (goods.count > 0) {
                 _tableView.alpha = 1.0;
@@ -167,9 +165,12 @@
                 GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dic];
                 [_mutables addObject:model];
             }
+            self.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",[self calculateTotalPrice]];
             [_tableView reloadData];
         } failed:^(NSError *error) {
-            NSLog(@"购物车列表失败:%@",error);
+            GZGLog(@"购物车列表失败:%@",error);
+            _tableView.alpha = 0.0;
+            self.settlementView.hidden = YES;
         }];
     } else {
         if ([blockId isEqualToString:@"1"]) {
@@ -195,7 +196,7 @@
         // 添加成功 刷新购物车列表
         [self requestData];
     } failed:^(NSError *error) {
-        NSLog(@"添加失败");
+        GZGLog(@"添加失败");
     }];
 }
 // 删除购物车
@@ -205,9 +206,27 @@
     NSDictionary * dict = @{@"id":shopID};
     [[GZGYAPIHelper shareAPIHelper] deleteToCartURL:@"appCart/delete" Dict:dict Finished:^(NSArray *carts) {
         // 删除成功 刷新购物车列表
+        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
         [self requestData];
     } failed:^(NSError *error) {
         GZGLog(@"删除失败");
+        [SVProgressHUD showErrorWithStatus:@"删除失败"];
+    }];
+}
+// 添加收藏
+- (void)requestDataWithAddCollectionCartID:(NSString *)shopID {
+    
+    NSDictionary * dict = @{@"id":shopID};
+    [[GZGYAPIHelper shareAPIHelper] addCollectionDict:dict Finsh:^(id responseObject) {
+        GZGLog(@"添加收藏成功:%@",responseObject);
+        if ([responseObject[@"type"] isEqualToString:@"success"]) {
+            [SVProgressHUD showSuccessWithStatus:@"收藏成功"];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"收藏失败"];
+        }
+    } failed:^(NSError *error) {
+        GZGLog(@"添加收藏失败:%@",error);
+        [SVProgressHUD showErrorWithStatus:@"收藏失败"];
     }];
 }
 #pragma mark - 自己的方法
@@ -330,15 +349,15 @@
     };
     
     cell.cartTitle.text = NSLocalizedString(model.name, nil);
-    if (self.isFutureGenerations) {
-        // 全选状态
-        cell.cartRedio.selected = self.isFutureGenerations;
-    } else {
-        // 不是全选状态
-        if (weakSelf.settlementView.combinedPriceTitle.text.floatValue == 0) {
-            cell.cartRedio.selected = self.isFutureGenerations;
-        }
-    }
+//    if (self.isFutureGenerations) {
+//        // 全选状态
+//        cell.cartRedio.selected = self.isFutureGenerations;
+//    } else {
+//        // 不是全选状态
+//        if (weakSelf.settlementView.combinedPriceTitle.text.floatValue == 0) {
+//            cell.cartRedio.selected = self.isFutureGenerations;
+//        }
+//    }
     [cell.cartImage sd_setImageWithURL:[NSURL URLWithString:model.image]];
     cell.cartNumber.text = [NSString stringWithFormat:@"%ld",model.quantity];
     cell.cartPrice.text = [NSString stringWithFormat:@"￥%.2f",model.price];
@@ -411,8 +430,9 @@
     }];
     //
     UITableViewRowAction * collectRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"收藏" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"收藏" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
+//        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"收藏" message:@"收藏成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//        [alertView show];
+        [self requestDataWithAddCollectionCartID:model.ID];
     }];
     collectRowAction.backgroundColor = [GZGColorClass subjectShoppingCartCollectionBackgroundColor];
     return @[deleteRow, collectRowAction];

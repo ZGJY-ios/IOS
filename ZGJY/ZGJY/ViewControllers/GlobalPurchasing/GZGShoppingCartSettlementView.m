@@ -25,8 +25,10 @@
         _futureGenerationsItem = ({
             UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
             btn.frame = CGRectMake([GZGApplicationTool control_wide:105], [GZGApplicationTool control_height:30], [GZGApplicationTool control_height:40], [GZGApplicationTool control_height:40]);
+            [btn setImage:[UIImage imageNamed:@"TheShoppingCartSelectHook"] forState:UIControlStateDisabled];
             [btn setImage:[UIImage imageNamed:@"TheShoppingCartNoHook"] forState:UIControlStateNormal];
             [btn setImage:[UIImage imageNamed:@"TheShoppingCartSelectHook"] forState:UIControlStateSelected];
+            btn.enabled = NO;
             [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag = 0;
             btn;
