@@ -88,4 +88,6 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)addCollectionDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
 // 收藏列表
 - (void)collectionListDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
+#pragma mark - 健康保健   居家日用 护肤美妆 母婴专区
+- (void)homeCategoryIconData:(NSString *)cateS result:(void (^)(NSDictionary *dict))result;
 @end

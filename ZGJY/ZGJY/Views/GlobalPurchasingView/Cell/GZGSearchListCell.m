@@ -7,7 +7,7 @@
 //
 
 #import "GZGSearchListCell.h"
-
+#import "UIImageView+WebCache.h"
 @implementation GZGSearchListCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -36,7 +36,7 @@
     self.commodityNameLabel = ({
         UILabel * label = [[UILabel alloc] init];
         label.frame = CGRectMake(self.commodityImageView.frame.origin.x + self.commodityImageView.frame.size.width + [GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:48], [GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:336], [GZGApplicationTool control_height:30]);
-        label.backgroundColor = self.backgroundColor;
+//        label.backgroundColor = self.backgroundColor;
         label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         label.textAlignment = NSTextAlignmentLeft;
         label.text = NSLocalizedString(@"澳洲进口 体内平衡益生菌", nil);
@@ -47,7 +47,7 @@
     self.commodityIntroductionLabel = ({
         UILabel * label = [[UILabel alloc] init];
         label.frame = CGRectMake(self.commodityNameLabel.frame.origin.x, [GZGApplicationTool control_height:15] + self.commodityNameLabel.frame.origin.y + self.commodityNameLabel.frame.size.height, [GZGApplicationTool screenWide] - [GZGApplicationTool control_wide:336], [GZGApplicationTool control_height:46]);
-        label.backgroundColor = self.backgroundColor;
+//        label.backgroundColor = self.backgroundColor;
         label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:19]];
         label.textAlignment = NSTextAlignmentLeft;
         label.numberOfLines = 0;
@@ -85,12 +85,53 @@
     [self addSubview:self.commodityPriceLabel];
     [self addSubview:self.commodityReferencePriceLabel];
 }
-- (void)setModel:(NSArray *)array {
-    self.commodityImageView.image = [UIImage imageNamed:@"searchList-icon2"];
-    self.commodityNameLabel.text = NSLocalizedString(@"澳洲进口 体内平衡益生菌", nil);
-    self.commodityIntroductionLabel.text = NSLocalizedString(@"富含最佳女性抗衰老成分OPC， 女性必吃天然西芹籽精华", nil);
-    self.commodityPriceLabel.text = NSLocalizedString(@"￥70.00", nil);
-    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:NSLocalizedString(@"国内参考价：￥146.00", nil)];
+- (void)setModel:(GZGSpecialPerformanceModel *)model {
+    
+    
+    
+//    "allocated_stock" = 0;
+//    "create_by" = "\U7ba1\U7406\U5458";
+//    "creation_date" = "2016-11-22 15:49:25";
+//    "delete_flag" = 0;
+//    "full_name" = "\U5566\U5566\U5566\U5566\U5566";
+//    "goods_id" = 137;
+//    hits = 0;
+//    id = 69;
+//    image = "http://localhost:8080/upload/image/201611/4398aebd-d667-4c5c-ae56-001dfa2b4a86-thumbnail.jpg";
+//    "is_gift" = 0;
+//    "is_list" = 1;
+//    "is_marketable" = 1;
+//    "is_top" = 0;
+//    "last_updated_by" = "\U7ba1\U7406\U5458";
+//    "last_updated_date" = "2016-12-16 09:40:39";
+//    "market_price" = "14.4";
+//    "month_hits" = 0;
+//    "month_hits_date" = "2016-11-22 15:49:24";
+//    "month_sales" = 0;
+//    "month_sales_date" = "2016-11-22 15:49:24";
+//    name = "\U5566\U5566\U5566\U5566\U5566";
+//    point = 12;
+//    price = 12;
+//    "product_category_id" = 284;
+//    sales = 0;
+//    score = 0;
+//    "score_count" = 0;
+//    sn = 201611225454;
+//    "total_score" = 0;
+//    "week_hits" = 0;
+//    "week_hits_date" = "2016-11-22 15:49:24";
+//    "week_sales" = 0;
+//    "week_sales_date" = "2016-11-22 15:49:24";
+    
+    
+    
+    
+    
+    [self.commodityImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
+    self.commodityNameLabel.text = model.name;
+    self.commodityIntroductionLabel.text = model.full_name;
+    self.commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",model.price];
+    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",model.market_price]];
     
     self.commodityLabels = [NSMutableArray arrayWithArray:@[@"上新",@"热卖",@"促销"]];
     for (NSInteger i = 0; i < _commodityLabels.count; i ++) {

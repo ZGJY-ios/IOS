@@ -17,7 +17,9 @@ static NSInteger const _timeDelay                   = 30;
 + (NSString *)mobileAPIBaseURL{
     NSString *baseURL = @"";//上线接口
 #if DEBUG
-    baseURL = @"http://192.168.0.110:8080/";//测试接口
+//    baseURL = @"http://www.maizanmao.com/";//测试接口
+//
+    baseURL = @"http://192.168.0.110:8080/";
 #endif
     return baseURL;
 }

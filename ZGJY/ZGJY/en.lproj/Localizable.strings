@@ -19,10 +19,9 @@
 "GZG_TabBarTitle_FL" = "分类";
 "GZG_TabBarTitle_GRZX" = "个人中心";
 //GZGGlobalPurchasingViewController
-"GZG_GlobalPurchasingTitleStr" = "港中港";
-"GZG_GlobalPurchasingTitleStr" = "港中港";
+"GZG_GlobalPurchasingTitleStr" = "麦赞猫";
 "GZGGPClassifiCationCell_QQJX" = "限时特卖";
-"GZGGPClassifiCationCell_XSTM" = "火力拼团";
+"GZGGPClassifiCationCell_XSTM" = "伙力拼团";
 "GZGGPClassifiCationCell_HLPT" = "母婴用品";
 "GZGGPClassifiCationCell_KJZY" = "洗护用品";
 "GZGGPClassifiCationCell_HGG" = "韩国馆";

@@ -11,21 +11,20 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="oiF-42-Kkk"/>
+                        <viewControllerLayoutGuide type="bottom" id="tql-xl-Hvf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="AtM-IG-Bdl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gzg.png" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-Ul-Ine"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mzm.png" translatesAutoresizingMaskIntoConstraints="NO" id="m36-la-UYD"/>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eg2-Ul-Ine" secondAttribute="trailing" id="B6P-P1-iEV"/>
-                            <constraint firstItem="eg2-Ul-Ine" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JO5-8Y-Uei"/>
-                            <constraint firstItem="eg2-Ul-Ine" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Y09-BP-LKV"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="eg2-Ul-Ine" secondAttribute="bottom" id="Yzg-dq-7X3"/>
+                            <constraint firstAttribute="trailing" secondItem="m36-la-UYD" secondAttribute="trailing" id="2iN-m7-sp0"/>
+                            <constraint firstItem="m36-la-UYD" firstAttribute="top" secondItem="AtM-IG-Bdl" secondAttribute="top" id="Lti-YC-j1p"/>
+                            <constraint firstItem="tql-xl-Hvf" firstAttribute="top" secondItem="m36-la-UYD" secondAttribute="bottom" id="ZX8-JO-Guo"/>
+                            <constraint firstItem="m36-la-UYD" firstAttribute="leading" secondItem="AtM-IG-Bdl" secondAttribute="leading" id="rgI-sP-g2F"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -35,7 +34,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gzg.png" width="320" height="568"/>
+        <image name="Mzm.png" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
