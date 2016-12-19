@@ -113,8 +113,19 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GZGNewPavilonCellCollecationCelll *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CountriesHeadFaceCollectionCell forIndexPath:indexPath];
     
+    
+//    NSLog(@"%@",[_dataArray[indexPath.row] objectForKey:@"price"]);
+//    NSLog(@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]);
+    cell.cellMark_Prict.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"market_price"]]];
+    cell.cellPrict.text = [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"price"]];
+    cell.cellName.text =  [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]];
     [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:[_dataArray[indexPath.row] objectForKey:@"image"]] placeholderImage:nil];
-    cell.cellName.text = [_dataArray[indexPath.row] objectForKey:@"name"];
+
+    
+
+    
+    
+    
     
     
 //    GZGSpecialPerformanceModel * model = self.dataArr[indexPath.row];
@@ -149,6 +160,15 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
     [_dataArray removeAllObjects];
     [_dataArray addObjectsFromArray:arr];
     [self.collection reloadData];
+}
+
+/**
+ *  给字符串添加横线
+ */
+- (NSMutableAttributedString *)attributedStringHorzontalLineWithString:(NSString *)string {
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+    [attributedString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, attributedString.length)];
+    return attributedString;
 }
 
 

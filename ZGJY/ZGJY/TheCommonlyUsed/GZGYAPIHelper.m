@@ -369,12 +369,31 @@
         [SVProgressHUD dismiss];
     }];
 }
+
 #pragma mark - 健康保健   居家日用 护肤美妆 母婴专区
 - (void)homeCategoryIconData:(NSString *)cateS result:(void (^)(NSDictionary *dict))result{
     NSString *url = [NSString stringWithFormat:@"app/%@",cateS];
     [ZGNetWork GETRequestMethodUrl:url parameters:nil success:^(id responseObject, NSInteger task) {
         result(responseObject);
     } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"%@",failure);
+    }];
+}
+
+
+
+#pragma mark --- 删除收藏
+- (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result
+{
+    NSString * url = @"member/appFavorite/delete";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+//        [SVProgressHUD setStatus:@"删除成功"];
+        NSLog(@"删除收藏%@",responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         GZGLog(@"%@",failure);
     }];
 }

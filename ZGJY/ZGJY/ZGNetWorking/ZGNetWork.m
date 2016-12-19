@@ -21,6 +21,7 @@ static NSInteger const _timeDelay                   = 30;
 //
     baseURL = @"http://192.168.0.110:8080/";
 #endif
+    baseURL = @"http://www.maizanmao.com/";//测试接口
     return baseURL;
 }
 

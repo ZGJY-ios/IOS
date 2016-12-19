@@ -11,4 +11,6 @@
 @interface GZGNewPavilonCellCollecationCelll : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *cellImageView;
 @property (nonatomic, strong) UILabel *cellName;
+@property (nonatomic, strong) UILabel *cellPrict;
+@property (nonatomic, strong) UILabel *cellMark_Prict;
 @end
