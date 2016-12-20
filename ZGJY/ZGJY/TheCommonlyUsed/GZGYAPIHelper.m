@@ -370,6 +370,18 @@
     }];
 }
 
+#pragma mark - 健康保健   居家日用 护肤美妆 母婴专区
+- (void)homeCategoryIconData:(NSString *)cateS result:(void (^)(NSDictionary *dict))result{
+    NSString *url = [NSString stringWithFormat:@"app/%@",cateS];
+    [ZGNetWork GETRequestMethodUrl:url parameters:nil success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        GZGLog(@"%@",failure);
+    }];
+}
+
+
+
 #pragma mark --- 删除收藏
 - (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result
 {
@@ -385,6 +397,8 @@
         GZGLog(@"%@",failure);
     }];
 }
+
+
 #pragma mark --- 一级分类
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
 {

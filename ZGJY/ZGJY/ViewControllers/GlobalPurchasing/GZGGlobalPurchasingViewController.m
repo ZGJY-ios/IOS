@@ -26,6 +26,7 @@
 #import "GZGYSpellTableViewCell.h"
 #import "GZGYRootSpellModel.h"
 #import "GZGTempMaternalInfantController.h"
+#import "GZGNewPavilion.h"
 #define CellBlcnkHeadHeight [GZGApplicationTool control_height:20]
 
 @interface GZGGlobalPurchasingViewController ()<
@@ -46,6 +47,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 @property (nonatomic, strong)NSMutableArray * limitArray;
 @property (nonatomic, strong)NSMutableArray * nameArray;
 @property (nonatomic, strong)NSMutableArray * ImgArray;
+@property (nonatomic, strong)NSMutableArray * maternalAndInfantArray;
+@property (nonatomic, strong)NSMutableArray * otherSkinCareArray;
+@property (nonatomic, strong)NSMutableArray * healthArray;
+@property (nonatomic, strong)NSMutableArray * thatOccupyTheHomeArray;
 @end
 
 
@@ -72,6 +77,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)arrayInitialize{
     _iconArray = [NSMutableArray array];
     _bannerArray = [NSMutableArray array];
+    _maternalAndInfantArray = [NSMutableArray array];
+    _otherSkinCareArray = [NSMutableArray array];
+    _healthArray = [NSMutableArray array];
+    _thatOccupyTheHomeArray = [NSMutableArray array];
+    
 }
 - (void)buildUI{
     [self navTitleUI];
@@ -79,6 +89,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     [self loadIconData];
     [self SpellData];
     [self bannerLoad];
+    [self otherMaternalAndInfantLoadData];
+    [self otherSkinCareLoadData];
+    [self otherHealthLoadData];
+    [self otherThatOccupyTheHomeLoadData];
 }
 
 - (void)navTitleUI{
@@ -88,7 +102,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     
     NSString *navTitleStr = NSLocalizedString(@"GZG_GlobalPurchasingTitleStr", nil);
     CGSize navTitleSize = [GZGApplicationTool textSize:navTitleStr font:[UIFont systemFontOfSize:[GZGApplicationTool control_wide:38]] size:SCREENWIDTH];
-    UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH - (navTitleSize.width + [GZGApplicationTool control_wide:559/3]))/2,
+    
+    
+    UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH - navTitleSize.width)/2,
                                                                   ([GZGApplicationTool navBarAndStatusBarSize] - navTitleSize.height)/2+ [GZGApplicationTool control_height:10],
                                                                   navTitleSize.width,
                                                                   navTitleSize.height)];
@@ -96,13 +112,27 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     navTitle.textColor = [UIColor whiteColor];
     navTitle.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:38]];
     [self.view addSubview:navTitle];
+
     
-    UIImageView *iamgeViews = [[UIImageView alloc] initWithFrame:CGRectMake(navTitle.edgnSideOffset + [GZGApplicationTool control_wide:10],
-                                                                            ([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:76/3])/2+ [GZGApplicationTool control_height:10],
-                                                                            [GZGApplicationTool control_wide:559/3],
-                                                                            [GZGApplicationTool control_height:76/3])];
-    iamgeViews.image = [UIImage imageNamed:@"QQG_NavTitleText"];
-    [self.view addSubview:iamgeViews];
+    
+    
+    
+    //以后用
+//    UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH - (navTitleSize.width + [GZGApplicationTool control_wide:559/3]))/2,
+//                                                                  ([GZGApplicationTool navBarAndStatusBarSize] - navTitleSize.height)/2+ [GZGApplicationTool control_height:10],
+//                                                                  navTitleSize.width,
+//                                                                  navTitleSize.height)];
+//    navTitle.text = navTitleStr;
+//    navTitle.textColor = [UIColor whiteColor];
+//    navTitle.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:38]];
+//    [self.view addSubview:navTitle];
+//
+//    UIImageView *iamgeViews = [[UIImageView alloc] initWithFrame:CGRectMake(navTitle.edgnSideOffset + [GZGApplicationTool control_wide:10],
+//                                                                            ([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:76/3])/2+ [GZGApplicationTool control_height:10],
+//                                                                            [GZGApplicationTool control_wide:559/3],
+//                                                                            [GZGApplicationTool control_height:76/3])];
+//    iamgeViews.image = [UIImage imageNamed:@"QQG_NavTitleText"];
+//    [self.view addSubview:iamgeViews];
 }
 
 
@@ -140,7 +170,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 #pragma mark 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 7;
+    return 9;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -155,8 +185,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         return 1;
     }else if (section == 5){
         return 0;                    //将不在使用！！但是没有删掉！！目前留下！！！
-    }else if (section == 6){
-        return 4;
+    }else if (section == 6 || section == 7 ||section == 8){
+        return 1;
     }
     return 0;
 }
@@ -173,8 +203,9 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         return [GZGApplicationTool control_height:643.0f];
     }else if (indexPath.section == 5){
         return [GZGApplicationTool control_height:530.0f];
-    }else if (indexPath.section == 6){
-        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
+    }else if (indexPath.section == 6 || indexPath.section == 7 ||indexPath.section == 8){
+        return [GZGApplicationTool control_height:643.0f];
+//        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
     }
     return 50;
 }
@@ -189,8 +220,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         return [GZGApplicationTool control_height:0.00001f];
     } else if (section == 4){
         return  [GZGApplicationTool control_height:380.0f];
-    }else if (section == 6){
-       return [GZGApplicationTool control_height:0.00001f];
+    }else if (section == 6 || section == 7 ||section == 8){
+       return [GZGApplicationTool control_height:380.00f];
     }
     return [GZGApplicationTool control_height:20.0f];
 }
@@ -208,9 +239,15 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (section == 3){
 //        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_qqjx.jpg"] index:section];                    //将不在使用！！但是没有删掉！！目前留下！！！
     }else if (section == 4){
-        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"sy_myzq.jpg"] index:section];
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"MYZX"] index:section];
     }else if (section == 5){
 //        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"nav_kjzy.jpg"] index:section];                    //将不在使用！！但是没有删掉！！目前留下！！！
+    }else if (section == 6 ){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"HFMZ"] index:section];
+    }else if (section == 7 ){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"JKBJ"] index:section];
+    }else if (section == 8 ){
+        return [self limitedTimeSaleBtnViewImage:[UIImage imageNamed:@"JJRY"] index:section];
     }
     return nil;
 }
@@ -224,10 +261,6 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGGPClassifiCationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
             
         }
-        
-        
-        
-        
         cell.delegate = self;
 //        NSLog(@"%@",_iconArray);
         [cell loadData:_iconArray];cell.delegate = self;
@@ -272,6 +305,8 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
         }
         cell.delegate = self;
+        [cell loadData:_maternalAndInfantArray];
+        cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -285,26 +320,70 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 6){
-        static NSString *countriesPavilionCellStr = @"countriesPavilionCellStr";
-        GZGCountriesPavilionCell *cell = [tableView dequeueReusableCellWithIdentifier:countriesPavilionCellStr];
+        
+        static NSString *maternallnfantCellStr = @"maternallnfantCellStr1";
+        GZGGPMaternalInfantCell *cell = [tableView dequeueReusableCellWithIdentifier:maternallnfantCellStr];
         if (!cell) {
-            cell = [[GZGCountriesPavilionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:countriesPavilionCellStr];
+            cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
         }
-        
-        NSArray *indexImageArr = @[@"index-Korea.jpg",@"index-Japan.jpg",@"index-Europe.jpg",@"index-Aussie.jpg"];
-        NSArray *syImageArr = @[@"sy_hgpic1",@"sy_hlpic2",@"sy_hlpic3",@"sy_hlpic4"];
 
-        [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:indexImageArr[indexPath.row]]];
-        cell.cellGoodsImage = [UIImage imageNamed:syImageArr[indexPath.row]];
-        cell.cellGoodsName = @"LYD是个大帅哥哦~~~~~~~~~";
-        cell.cellGoodsprice = @"9999";
-        cell.cellAddshopping = [UIImage imageNamed:@"QQG_ADD_GWC"];
         
         
+        cell.delegate = self;
+        [cell loadData:_otherSkinCareArray];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
+        
+        
+        
+        
+//        static NSString *countriesPavilionCellStr = @"countriesPavilionCellStr";
+//        GZGCountriesPavilionCell *cell = [tableView dequeueReusableCellWithIdentifier:countriesPavilionCellStr];
+//        if (!cell) {
+//            cell = [[GZGCountriesPavilionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:countriesPavilionCellStr];
+//        }
+//        
+//        NSArray *indexImageArr = @[@"index-Korea.jpg",@"index-Japan.jpg",@"index-Europe.jpg",@"index-Aussie.jpg"];
+//        NSArray *syImageArr = @[@"sy_hgpic1",@"sy_hlpic2",@"sy_hlpic3",@"sy_hlpic4"];
+//
+//        [cell.cellCountriesImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:indexImageArr[indexPath.row]]];
+//        cell.cellGoodsImage = [UIImage imageNamed:syImageArr[indexPath.row]];
+//        cell.cellGoodsName = @"LYD是个大帅哥哦~~~~~~~~~";
+//        cell.cellGoodsprice = @"9999";
+//        cell.cellAddshopping = [UIImage imageNamed:@"QQG_ADD_GWC"];
+//        
+//        
+//        cell.backgroundColor = [UIColor clearColor];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if (indexPath.section == 7){
+        
+        static NSString *maternallnfantCellStr = @"maternallnfantCellStr1";
+        GZGGPMaternalInfantCell *cell = [tableView dequeueReusableCellWithIdentifier:maternallnfantCellStr];
+        if (!cell) {
+            cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
+        }
+        cell.delegate = self;
+        [cell loadData:_healthArray];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if (indexPath.section == 8){
+        
+        static NSString *maternallnfantCellStr = @"maternallnfantCellStr1";
+        GZGGPMaternalInfantCell *cell = [tableView dequeueReusableCellWithIdentifier:maternallnfantCellStr];
+        if (!cell) {
+            cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
+        }
+        cell.delegate = self;
+        [cell loadData:_thatOccupyTheHomeArray];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
+    
     
     static NSString *vvv = @"xxxxx";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:vvv];
@@ -349,7 +428,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     UIButton *limitedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     limitedBtn.backgroundColor = [UIColor    greenColor];
     limitedBtn.frame = CGRectMake(0, CellBlcnkHeadHeight, SCREENWIDTH, [GZGApplicationTool control_height:133.0f]);
-    if(index == 4){
+    if(index == 4 || index == 6 || index == 7 || index == 8){
         limitedBtn.frame = CGRectMake(0, CellBlcnkHeadHeight, SCREENWIDTH, [GZGApplicationTool control_height:360]);
         limitedBtn.backgroundColor = [UIColor    orangeColor];
     }
@@ -368,80 +447,172 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 - (void)classifiCationBtnIndex:(NSInteger)index{
  
     GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
+    
+    
     switch (index) {
-        case HomeItem_GlobalSelect:{
+        case HomeItem_type0: {
+            
             GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
             [vc setHidesBottomBarWhenPushed:YES];
-            vc.taglids = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"id"];
+            vc.countriesTitle = [_iconArray[HomeItem_type0] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type0] objectForKey:@"id"];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case HomeItem_LimitedTimeSale:{
-            
+        case HomeItem_type1: {
+            GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+            vc.countriesTitle = [_iconArray[HomeItem_type1] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type0] objectForKey:@"id"];
+            [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case HomeItem_FireAlsoGroup: {
-//            // 母婴
-//            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-//            specialPerformanceVC.titles.text = [_iconArray[HomeItem_FireAlsoGroup] objectForKey:@"name"];
-//            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
-            
+        case HomeItem_type2: {
+            GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+           vc.countriesTitle = [_iconArray[HomeItem_type2] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type0] objectForKey:@"id"];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_type3: {
+            GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+            vc.countriesTitle = [_iconArray[HomeItem_type3] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type0] objectForKey:@"id"];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_type4: {
             GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
             limit.hidesBottomBarWhenPushed = YES;
-            limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
+            limit.titleName = [_iconArray[HomeItem_type4] objectForKey:@"name"];
             [self.navigationController pushViewController:limit animated:YES];
-        }
+
             break;
-        case HomeItem_CrossBorderDirectMail: {
-            // 洗护
-//            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
-//            specialPerformanceVC.titles.text = [_iconArray[HomeItem_CrossBorderDirectMail] objectForKey:@"name"];
-//            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
-            
+        }
+        case HomeItem_type5: {
             GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
             spell.hidesBottomBarWhenPushed = YES;
-            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
-            [self.navigationController pushViewController:spell animated:YES];
-        }
-            break;
-        case HomeItem_SouthKorea:{
-            GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
-            limit.hidesBottomBarWhenPushed = YES;
-            limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
-            [self.navigationController pushViewController:limit animated:YES];
-            break;
-        }
-        case HomeItem_Japan:{
-            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
-            spell.hidesBottomBarWhenPushed = YES;
-            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
+            spell.titleName = [_iconArray[HomeItem_type5] objectForKey:@"name"];
             [self.navigationController pushViewController:spell animated:YES];
             break;
         }
-        case HomeItem_Australia:{
-            vc.countriesTitle = [_iconArray[HomeItem_SouthKorea] objectForKey:@"name"];
-            vc.taglids = [_iconArray[HomeItem_SouthKorea] objectForKey:@"id"];
-            vc.countriesIndex = CountriesEnterThe_SouthKorea;
-            vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
-            vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
+        case HomeItem_type6: {
+            GZGNewPavilion *vc = [[GZGNewPavilion alloc] init];
+            vc.countriesTitle = [_iconArray[HomeItem_type6] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type6] objectForKey:@"id"];
+            vc.countriesIndex = CountriesEnterThe_TheEuropean;
+            //            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case HomeItem_TheEuropean:{
-            vc.countriesTitle = [_iconArray[HomeItem_Japan] objectForKey:@"name"];
-            vc.taglids = [_iconArray[HomeItem_Japan] objectForKey:@"id"];
-            vc.countriesIndex = CountriesEnterThe_Japan;
-            vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
+        case HomeItem_type7: {
+//            vc.countriesTitle = [_iconArray[HomeItem_type7] objectForKey:@"name"];
+//            vc.taglids = [_iconArray[HomeItem_type7] objectForKey:@"id"];
+//            vc.countriesIndex = CountriesEnterThe_TheEuropean;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
+//            [vc setHidesBottomBarWhenPushed:YES];
+            
+            GZGNewPavilion *vc = [[GZGNewPavilion alloc] init];
+            vc.countriesTitle = [_iconArray[HomeItem_type7] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_type7] objectForKey:@"id"];
+            vc.countriesIndex = CountriesEnterThe_TheEuropean;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
+            
+            
             [self.navigationController pushViewController:vc animated:YES];
+
             break;
         }
         default:
             break;
     }
+    
+    
+    
+    
+    
+//    switch (index) {
+//        case HomeItem_GlobalSelect:{
+//            GZGTempMaternalInfantController *vc = [[GZGTempMaternalInfantController  alloc] init];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            vc.taglids = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"id"];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case HomeItem_LimitedTimeSale:{
+//            
+//            break;
+//        }
+//        case HomeItem_FireAlsoGroup: {
+////            // 母婴
+////            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+////            specialPerformanceVC.titles.text = [_iconArray[HomeItem_FireAlsoGroup] objectForKey:@"name"];
+////            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+////            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+//            
+//            GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
+//            limit.hidesBottomBarWhenPushed = YES;
+//            limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
+//            [self.navigationController pushViewController:limit animated:YES];
+//        }
+//            break;
+//        case HomeItem_CrossBorderDirectMail: {
+//            // 洗护
+////            GZGSpecialPerformanceViewController * specialPerformanceVC = [[GZGSpecialPerformanceViewController alloc] init];
+////            specialPerformanceVC.titles.text = [_iconArray[HomeItem_CrossBorderDirectMail] objectForKey:@"name"];
+////            specialPerformanceVC.hidesBottomBarWhenPushed = YES;
+////            [self.navigationController pushViewController:specialPerformanceVC animated:YES];
+//            
+//            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
+//            spell.hidesBottomBarWhenPushed = YES;
+//            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
+//            [self.navigationController pushViewController:spell animated:YES];
+//        }
+//            break;
+//        case HomeItem_SouthKorea:{
+//            vc.countriesTitle = [_iconArray[HomeItem_SouthKorea] objectForKey:@"name"];
+//            vc.taglids = [_iconArray[HomeItem_SouthKorea] objectForKey:@"id"];
+//            vc.countriesIndex = CountriesEnterThe_SouthKorea;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionSouthKoreaBackColor];
+//            vc.navColor = [GZGColorClass subjectCountriespacilionSouthKoreaNavColor];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case HomeItem_Japan:{
+//            vc.countriesTitle = [_iconArray[HomeItem_Japan] objectForKey:@"name"];
+//            vc.taglids = [_iconArray[HomeItem_Japan] objectForKey:@"id"];
+//            vc.countriesIndex = CountriesEnterThe_Japan;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case HomeItem_Australia:{
+//            vc.countriesTitle = [_iconArray[HomeItem_Australia] objectForKey:@"name"];
+//            vc.taglids = [_iconArray[HomeItem_Australia] objectForKey:@"id"];
+//            vc.countriesIndex = CountriesEnterThe_Australia;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        case HomeItem_TheEuropean:{
+//            vc.countriesTitle = [_iconArray[HomeItem_TheEuropean] objectForKey:@"name"];
+//            vc.taglids = [_iconArray[HomeItem_TheEuropean] objectForKey:@"id"];
+//            vc.countriesIndex = CountriesEnterThe_TheEuropean;
+//            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
+//            [vc setHidesBottomBarWhenPushed:YES];
+//            [self.navigationController pushViewController:vc animated:YES];
+//            break;
+//        }
+//        default:
+//            break;
+//    }
     
 }
 - (void)gpGpobalSelectCellIndex:(NSInteger)index{
@@ -578,6 +749,35 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         [self reloadSectionData:0];
 //        [_mainTableView reloadData];
 
+    }];
+}
+#pragma mark 四个大分类的接口
+- (void)otherMaternalAndInfantLoadData{
+    [[GZGYAPIHelper shareAPIHelper] homeCategoryIconData:@"BabyIndex" result:^(NSDictionary *dict) {
+        [_maternalAndInfantArray removeAllObjects];
+        [_maternalAndInfantArray addObjectsFromArray:[dict objectForKey:@"list"]];
+        [self reloadSectionData:4];
+    }];
+}
+- (void)otherSkinCareLoadData{
+    [[GZGYAPIHelper shareAPIHelper] homeCategoryIconData:@"ToiletriesIndex" result:^(NSDictionary *dict) {
+        [_otherSkinCareArray removeAllObjects];
+        [_otherSkinCareArray addObjectsFromArray:[dict objectForKey:@"list"]];
+        [self reloadSectionData:6];
+    }];
+}
+- (void)otherHealthLoadData{
+    [[GZGYAPIHelper shareAPIHelper] homeCategoryIconData:@"HomeDay" result:^(NSDictionary *dict) {
+        [_healthArray removeAllObjects];
+        [_healthArray addObjectsFromArray:[dict objectForKey:@"list"]];
+        [self reloadSectionData:7];
+    }];
+}
+- (void)otherThatOccupyTheHomeLoadData{
+    [[GZGYAPIHelper shareAPIHelper] homeCategoryIconData:@"HealthyHome" result:^(NSDictionary *dict) {
+        [_thatOccupyTheHomeArray removeAllObjects];
+        [_thatOccupyTheHomeArray addObjectsFromArray:[dict objectForKey:@"list"]];
+        [self reloadSectionData:8];
     }];
 }
 
