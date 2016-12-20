@@ -165,7 +165,7 @@
 -(void)secondClassification:(NSInteger)sender
 {
     _oneModel = self.model[sender];
-    NSDictionary * dict = @{@"productCategoryId":self.oneModel.ID};
+    NSDictionary * dict = @{@"productCategoryId":@"99"};
     [[GZGYAPIHelper shareAPIHelper]secondClassificationDict:dict Finsh:^(NSArray *listArray) {
         self.twoModel = [GZGYoneClassification mj_objectArrayWithKeyValuesArray:listArray];    [_CollectionView reloadData];
     }];
@@ -192,6 +192,7 @@
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
     _oneModel = self.model[indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@",_oneModel.name];
+    NSLog(@"%@,%@,%@",_oneModel.ID,_oneModel.name,_oneModel.grade);
     cell.textLabel.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
     return cell;
 }
@@ -201,7 +202,7 @@
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     [_CollectionView scrollRectToVisible:CGRectMake(0, -5, self.CollectionView.frame.size.width, self.CollectionView.frame.size.height) animated:YES];
     if (self.model.count>0) {
-//        [self secondClassification:indexPath.row];
+        [self secondClassification:indexPath.row];
     }
     [_CollectionView reloadData];
 }

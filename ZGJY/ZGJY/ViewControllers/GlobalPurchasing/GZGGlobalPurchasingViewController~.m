@@ -407,20 +407,6 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         }
             break;
         case HomeItem_SouthKorea:{
-            GZGYLimitViewController * limit = [[GZGYLimitViewController alloc]init];
-            limit.hidesBottomBarWhenPushed = YES;
-            limit.titleName = [_iconArray[HomeItem_GlobalSelect] objectForKey:@"name"];
-            [self.navigationController pushViewController:limit animated:YES];
-            break;
-        }
-        case HomeItem_Japan:{
-            GZGYSpellgroupViewController * spell = [[GZGYSpellgroupViewController alloc]init];
-            spell.hidesBottomBarWhenPushed = YES;
-            spell.titleName = [_iconArray[HomeItem_LimitedTimeSale] objectForKey:@"name"];
-            [self.navigationController pushViewController:spell animated:YES];
-            break;
-        }
-        case HomeItem_Australia:{
             vc.countriesTitle = [_iconArray[HomeItem_SouthKorea] objectForKey:@"name"];
             vc.taglids = [_iconArray[HomeItem_SouthKorea] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_SouthKorea;
@@ -430,11 +416,29 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             [self.navigationController pushViewController:vc animated:YES];
             break;
         }
-        case HomeItem_TheEuropean:{
+        case HomeItem_Japan:{
             vc.countriesTitle = [_iconArray[HomeItem_Japan] objectForKey:@"name"];
             vc.taglids = [_iconArray[HomeItem_Japan] objectForKey:@"id"];
             vc.countriesIndex = CountriesEnterThe_Japan;
             vc.backViewColor = [GZGColorClass subjectCountriespacilionJapanBackColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_Australia:{
+            vc.countriesTitle = [_iconArray[HomeItem_Australia] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_Australia] objectForKey:@"id"];
+            vc.countriesIndex = CountriesEnterThe_Australia;
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionAustraliaBackColor];
+            [vc setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+            break;
+        }
+        case HomeItem_TheEuropean:{
+            vc.countriesTitle = [_iconArray[HomeItem_TheEuropean] objectForKey:@"name"];
+            vc.taglids = [_iconArray[HomeItem_TheEuropean] objectForKey:@"id"];
+            vc.countriesIndex = CountriesEnterThe_TheEuropean;
+            vc.backViewColor = [GZGColorClass subjectCountriespacilionTheEuropeanBackColor];
             [vc setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:vc animated:YES];
             break;
