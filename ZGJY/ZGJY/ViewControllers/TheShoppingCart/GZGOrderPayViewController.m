@@ -9,6 +9,7 @@
 #import "GZGOrderPayViewController.h"
 #import "GZGPayCOmpleteViewController.h"
 #import "GZGOrderPayCell.h"
+#import "WXApi.h"
 
 @interface GZGOrderPayViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -57,6 +58,26 @@
             NSLog(@"微信支付");
             GZGPayCOmpleteViewController * payCompleteVC = [[GZGPayCOmpleteViewController alloc] init];
             [self.navigationController pushViewController:payCompleteVC animated:YES];
+            NSDictionary * dict = @{@"partnerid":@"1",
+                                    @"prepayid":@"1",
+                                    @"noncestr":@"1",
+                                    @"package":@"1",
+                                    @"sign":@"1"};
+            // 调起微信支付
+            PayReq * req = [[PayReq alloc] init];
+            // 商家向财付通申请的商家id
+            req.partnerId = [dict objectForKey:@"partnerid"];
+            // 预支付订单
+            req.prepayId =  [dict objectForKey:@"prepayid"];
+            // 随机串，防重发
+            req.nonceStr =  [dict objectForKey:@"noncestr"];
+            // 时间戳，防重发
+            req.timeStamp = 1111;
+            // 商家根据财付通文档填写的数据和签名
+            req.package =   [dict objectForKey:@"package"];
+            // 商家根据微信开放平台文档对数据做的签名
+            req.sign = [dict objectForKey:@"sign"];
+            [WXApi sendReq:req];
         }
             break;
         case 3: {
@@ -76,6 +97,12 @@
         }
             break;
     }
+}
+/**
+ *  微信支付相关方法
+ */
+- (void)weChatChooseAct {
+    NSString *appid,*mch_id,*nonce_str,*sign,*body,*out_trade_no,*total_fee,*spbill_create_ip,*notify_url,*trade_type,*partner;
 }
 #pragma mark - 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
