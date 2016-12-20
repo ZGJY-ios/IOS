@@ -438,9 +438,9 @@
     return @[deleteRow, collectRowAction];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
-    detailsVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailsVC animated:YES];
+//    GZGYDetailsViewController * detailsVC = [[GZGYDetailsViewController alloc] init];
+//    detailsVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:detailsVC animated:YES];
 }
 
 ////////======

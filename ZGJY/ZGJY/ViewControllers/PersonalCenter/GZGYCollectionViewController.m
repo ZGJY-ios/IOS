@@ -117,6 +117,8 @@
     NSDictionary * dict = @{@"id":model.ID};
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [[GZGYAPIHelper shareAPIHelper]delegateCollectionListDict:dict Finsh:^(NSString *dataString) {
+            [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+            //    [SVProgressHUD showImage:[UIImage imageNamed:@"gzg_gg1"] status:@"我了个擦"];
             [self requestData];
         }];
     }

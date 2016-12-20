@@ -164,6 +164,7 @@
     
     NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
     [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
+        [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
         GZGLog(@"添加成功");
     } failed:^(NSError *error) {
         GZGLog(@"添加失败");
@@ -176,7 +177,7 @@
     [[GZGYAPIHelper shareAPIHelper] addCollectionDict:dict Finsh:^(id responseObject) {
         GZGLog(@"添加收藏成功:%@",responseObject);
         if ([responseObject[@"type"] isEqualToString:@"success"]) {
-            
+            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
         }
     } failed:^(NSError *error) {
         GZGLog(@"添加收藏失败:%@",error);
@@ -329,7 +330,6 @@
         }else{
             [self.twoScroll addSubview:imgView];
         }
-        
         switch (sender) {
             case 100:
                 if ([GZGApplicationTool control_height:heightNum] * imgArray.count >SCREENHEIGHT-[GZGApplicationTool navBarAndStatusBarSize]-[GZGApplicationTool tabBarSize]) {
