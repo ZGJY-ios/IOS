@@ -90,6 +90,7 @@
     nameArray = @[@"商品",@"详情",@"评价"];
     [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
     [self ScrollViewInterface];
+    [self ClasstionData];
     [self webViewInterface];
     //nav
     [self NavViewInterface];
@@ -98,7 +99,6 @@
     //choiceView
     //    [self ChoiceViewInterface];
     //数据
-    [self ClasstionData];
     // Do any additional setup after loading the view.
 }
 #pragma mark --- 数据
@@ -136,15 +136,15 @@
         {
             dict = @{@"taglds":@"5",@"id":self.shopID};
             break;
-        }
+        }//限时抢购
         case GoodsDetailsLimited:
         {
             dict = @{@"tagIds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
             break;
-        }
+        }//火力拼团
         case GoodsDetailsFireAlsoGroup:
         {
-            dict = @{@"tagIds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
+            dict = @{@"tagIds":@"6",@"productCategoryId":@"0",@"id":self.shopID};
             break;
         }
         default:
@@ -153,8 +153,15 @@
     [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleCountries:self.gDetails Dict:dict Finsh:^(NSArray * dataArray){
         NSLog(@"你猜%@",dataArray);
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
-        NSDictionary * dictionary = dataArray[0];
+        NSDictionary * dictionary;
+        if (dataArray.count == 0) {
+            dictionary = @{};
+        }else{
+            dictionary = dataArray[0];
+        }
+        NSLog(@"%@",dictionary);
         introduction = dictionary[@"introduction"];
+        NSLog(@"%@",introduction);
         [_detailsView reloadData];
         [self ChoiceViewInterface];
     }];
@@ -269,6 +276,7 @@
     for (int i = 0; i<ImageArr.count; i++) {
         NSRange startRange = [contentString rangeOfString:@"upload"];
         NSRange endRange = [contentString rangeOfString:@".jpg"];
+        //第三个图崩溃是因为图文详情的内容图片为jpg格式
         NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
         NSString *result = [contentString substringWithRange:range];
         NSString * imgString = [NSString stringWithFormat:@"upload%@.jpg",result];
@@ -309,12 +317,12 @@
             }
             case GoodsDetailsLimited:
             {
-                heightNum = 160;
+                heightNum = 800;
                 break;
             }
             case GoodsDetailsFireAlsoGroup:
             {
-                heightNum = 1100;
+                heightNum = 800;
                 break;
             }
             default:
@@ -322,7 +330,7 @@
         }   
         UIImageView * imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:heightNum]*i, SCREENWIDTH, [GZGApplicationTool control_height:heightNum])];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString * urlString = [NSString stringWithFormat:@"http://192.168.0.110:8080/%@",imgArray[i]];
+            NSString * urlString = [NSString stringWithFormat:@"http://www.maizanmao.com/%@",imgArray[i]];
             [imgView setHeader:urlString];
         });
         if (sender == 100) {

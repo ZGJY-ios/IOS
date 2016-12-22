@@ -201,7 +201,7 @@
     [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     [_CollectionView scrollRectToVisible:CGRectMake(0, -5, self.CollectionView.frame.size.width, self.CollectionView.frame.size.height) animated:YES];
     if (self.model.count>0) {
-//        [self secondClassification:indexPath.row];
+        [self secondClassification:indexPath.row];
     }
     [_CollectionView reloadData];
 }
