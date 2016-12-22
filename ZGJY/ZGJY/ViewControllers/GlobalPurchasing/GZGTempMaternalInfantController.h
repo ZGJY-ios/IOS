@@ -10,4 +10,5 @@
 
 @interface GZGTempMaternalInfantController : GZGSubViewController
 @property(nonatomic, strong) NSString *taglids;
+@property(nonatomic, strong) NSString *countriesTitle;
 @end

@@ -14,7 +14,7 @@
 #import "GZGMainNavgationController.h"
 #import "WXApi.h"
 
-@interface AppDelegate () <WXApiDelegate>
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -23,14 +23,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    // 向微信注册
-//    [WXApi registerApp:@"WX" withDescription:@"demo 2.0"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
     [self setTabBarViewControllerType:0];
     //自动登录
     [self AutomaticLogin];
+    
+    
+    // 向微信注册
+    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"demo 2.0"];
+    
     return YES;
 }
 - (void)setTabBarViewControllerType:(NSInteger)type{

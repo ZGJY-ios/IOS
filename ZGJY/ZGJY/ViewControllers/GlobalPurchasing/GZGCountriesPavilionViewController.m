@@ -100,33 +100,8 @@ GZGCountriesHeadFaceCellDelegate
     NSDictionary * dict;
     NSString *productCategoryIdStr = [NSString stringWithFormat:@"%ld",productCategoryId];
     
-    dict  = @{@"tagIds":self.taglids,@"productCategoryId":productCategoryIdStr};
-    
-//    switch (countriesIndex) {
-//        case CountriesEnterThe_SouthKorea: {
-//            // 韩国
-//            dict = @{@"tagIds":@"8",@"productCategoryId":productCategoryIdStr}; // 母婴
-//        }
-//            break;
-//        case CountriesEnterThe_Japan: {
-//            // 日本
-//            dict = @{@"tagIds":@"7",@"productCategoryId":productCategoryIdStr}; // 母婴
-//        }
-//            break;
-//        case CountriesEnterThe_Australia: {
-//            // 澳大利亚
-//            dict = @{@"tagIds":@"12",@"productCategoryId":productCategoryIdStr}; // 母婴
-//        }
-//            break;
-//        case CountriesEnterThe_TheEuropean: {
-//            // 欧洲
-//            dict = @{@"tagIds":@"11",@"productCategoryId":productCategoryIdStr}; // 母婴
-//        }
-//            break;
-//        default:
-//            break;
-//    }
-    
+    dict  = @{@"tagIds":self.taglids};
+
 
     [[GZGYAPIHelper shareAPIHelper] pavilionCountries:countriesIndex dict:dict finish:^(NSArray *goods) {
         [_mutableDatas removeAllObjects];
@@ -340,3 +315,4 @@ GZGCountriesHeadFaceCellDelegate
 */
 
 @end
+

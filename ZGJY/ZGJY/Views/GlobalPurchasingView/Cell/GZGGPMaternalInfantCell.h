@@ -20,4 +20,6 @@ typedef NS_ENUM(NSUInteger,GZGGPMaternalInfantCellIndex) {
 
 @interface GZGGPMaternalInfantCell : UITableViewCell
 @property (nonatomic, assign)id <GZGGPMaternalInfantCellDelegate>delegate;
+@property(nonatomic,strong) UICollectionView *collection;
+- (void)loadData:(NSArray *)arr;
 @end

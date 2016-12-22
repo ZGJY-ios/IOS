@@ -8,9 +8,10 @@
 
 #import "GZGTempMaternalInfantController.h"
 #import "GZGSearchListCell.h"
-
+#import "GZGSpecialPerformanceModel.h"
 @interface GZGTempMaternalInfantController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic , strong) NSMutableArray *dataArray;
+@property(nonatomic, strong) UITableView *mainTableView;
 
 @end
 
@@ -22,17 +23,22 @@
     _dataArray = [NSMutableArray array];
     
     // Do any additional setup after loading the view.
+    
+    
+    self.titles.text = self.countriesTitle;
+    
+    
     UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
     [self.leftBtn setImage:image forState:UIControlStateNormal];
     
-    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.backgroundColor = [UIColor clearColor];
-    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    tableView.showsVerticalScrollIndicator = NO;
-    tableView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:tableView];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
+    _mainTableView.delegate = self;
+    _mainTableView.dataSource = self;
+    _mainTableView.backgroundColor = [UIColor whiteColor];
+    _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _mainTableView.showsVerticalScrollIndicator = NO;
+    _mainTableView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:_mainTableView];
     
     
     [self loadData];
@@ -49,7 +55,7 @@
     return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return _dataArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GZGSearchListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -57,7 +63,11 @@
         cell = [[GZGSearchListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TempCell"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    [cell setModel:nil];
+    
+    GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
+    
+    
+    [cell setModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,7 +82,7 @@
     NSDictionary * dict;
     
     
-    dict  = @{@"tagIds":self.taglids,@"productCategoryId":@"0"};
+    dict  = @{@"tagIds":self.taglids};
     
 
     
@@ -81,6 +91,15 @@
         
         
         
+        NSLog(@"%@",goods);
+        
+        for (int i = 0; i < goods.count; i ++) {
+            NSDictionary * dict1 = goods[i];
+            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dict1];
+            [_dataArray addObject:model];
+        }
+        
+        [_mainTableView reloadData];
     } failed:^(NSError *error) {
         NSLog(@"错误信息:%@",error);
     }];
