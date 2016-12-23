@@ -9,6 +9,7 @@
 #import "GZGOrderPayViewController.h"
 #import "GZGPayCOmpleteViewController.h"
 #import "GZGOrderPayCell.h"
+#import "WXApi.h"
 #import "Order.h"
 #import "APAuthV2Info.h"
 #import "DataSigner.h"
@@ -117,9 +118,29 @@
         }
             break;
         case 2: {
-            NSLog(@"微信支付");
-            GZGPayCOmpleteViewController * payCompleteVC = [[GZGPayCOmpleteViewController alloc] init];
-            [self.navigationController pushViewController:payCompleteVC animated:YES];
+            GZGLog(@"微信支付");
+            NSDictionary * dict = @{@"partnerid":@"1",
+                                    @"prepayid":@"1",
+                                    @"noncestr":@"1",
+                                    @"package":@"1",
+                                    @"sign":@"1"};
+            // 创建微信支付对象
+            PayReq * req = [[PayReq alloc] init];
+            // 由用户微信号和AppID组成的位移标识，用于效验微信用户
+            req.openID = @"";
+            // 商家向财付通申请的商家id
+            req.partnerId = [dict objectForKey:@"partnerid"];
+            // 预支付订单
+            req.prepayId =  [dict objectForKey:@"prepayid"];
+            // 随机串，防重发
+            req.nonceStr =  [dict objectForKey:@"noncestr"];
+            // 时间戳，防重发
+            req.timeStamp = 1111;
+            // 商家根据财付通文档填写的数据和签名
+            req.package =   [dict objectForKey:@"package"];
+            // 商家根据微信开放平台文档对数据做的签名
+            req.sign = [dict objectForKey:@"sign"];
+            [WXApi sendReq:req];
         }
             break;
         case 3: {

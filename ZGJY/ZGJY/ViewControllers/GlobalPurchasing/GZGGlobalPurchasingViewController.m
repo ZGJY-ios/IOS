@@ -511,7 +511,6 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             spell.hidesBottomBarWhenPushed = YES;
             spell.titleName = [_iconArray[HomeItem_type5] objectForKey:@"name"];
             [self.navigationController pushViewController:spell animated:YES];
-
             break;
         }
         case HomeItem_type6: {

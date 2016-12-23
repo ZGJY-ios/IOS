@@ -12,8 +12,9 @@
 #import "GZGClassifiCationViewController.h"
 #import "GZGPersonalCenterViewController.h"
 #import "GZGMainNavgationController.h"
+#import "WXApi.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -22,12 +23,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     self.window.backgroundColor = [UIColor whiteColor];
     [self setTabBarViewControllerType:0];
     //自动登录
     [self AutomaticLogin];
+    
+    
+    // 向微信注册
+    [WXApi registerApp:@"wxd930ea5d5a258f4f" withDescription:@"demo 2.0"];
+    
     return YES;
 }
 - (void)setTabBarViewControllerType:(NSInteger)type{
@@ -119,6 +126,47 @@
                 [[NSUserDefaults standardUserDefaults]setObject:password forKey:@"PASSWORD"];
             }
         }];
+    }
+}
+#pragma mark - WXAPI 接入
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [WXApi handleOpenURL:url delegate:self];
+}
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    return [WXApi handleOpenURL:url delegate:self];
+}
+// 微信支付成功或者失败回调
+- (void) onResp:(BaseResp *)resp {
+    
+    NSString * strMsg = [NSString stringWithFormat:@"errcode:%d",resp.errCode];
+    NSString * strTitle;
+    
+    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    if ([resp isKindOfClass:[PayResp class]]) {
+        // 支付返回结果，实际支付结果需要去微信服务器端查询
+        strTitle = [NSString stringWithFormat:@"支付结果"];
+        
+        switch (resp.errCode) {
+            case WXSuccess: {
+                strMsg = @"支付结果：成功！";
+                NSLog(@"支付成功-PaySuccess,retcode = %d",resp.errCode);
+            }
+                break;
+            case WXErrCodeUserCancel:
+                strMsg = @"用户已经退出支付！";
+                NSLog(@"用户已经退出支付-PayCancel, retcode = %d",resp.errCode);
+            default: {
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, restr = %@",resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d，retstr = %@",resp.errCode,resp.errStr);
+            }
+                break;
+        }
     }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
