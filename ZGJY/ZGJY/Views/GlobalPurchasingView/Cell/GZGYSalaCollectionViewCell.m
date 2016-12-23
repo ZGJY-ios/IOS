@@ -51,7 +51,7 @@
 {
     if (_originalLabel == nil) {
         _originalLabel = [[GZGYStrikeThroughLabel alloc] initWithFrame:CGRectZero];
-        _originalLabel.frame = CGRectMake([GZGApplicationTool control_wide:92],[GZGApplicationTool control_height:270], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:20]);
+        _originalLabel.frame = CGRectMake([GZGApplicationTool control_wide:105],[GZGApplicationTool control_height:270], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:20]);
         _originalLabel.strikeThroughEnabled = YES;
         _originalLabel.font = [UIFont systemFontOfSize:8];
         _originalLabel.text = @"¥150";

@@ -148,12 +148,12 @@
 #pragma mark --- 商品详情接口
 - (void)DetailssTimeSaleCountries:(NSInteger)countries Dict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result
 {
-    NSString *url = [NSString stringWithFormat:@"%@",DetailsTopic];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppFindProduct"];
     [SVProgressHUD show];
-    [ZGNetWork POSTRequestMethodUrl:@"appTopic/App" parameters:dict success:^(id responseObject, NSInteger task) {
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"商品详情%@",responseObject);
-        NSArray * limitArray = responseObject[@"page"][@"list"];
+        NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
@@ -167,6 +167,7 @@
         GZGLog(@"添加到购物车：%@",responseObject);
         result(nil);
     } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
         GZGLog(@"添加购物车失败:%@",failure);
     }];
 }
@@ -235,8 +236,7 @@
     NSString *url = @"appLogin/submit";
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
-        [SVProgressHUD dismiss];
-        GZGLog(@"登录%@",responseObject);
+        NSLog(@"登录%@",responseObject);
         NSString * idString = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
         NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
         NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
@@ -403,7 +403,7 @@
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
 {
     [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProductCategory"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProductCategory2"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"一级分类%@",responseObject);
@@ -418,7 +418,7 @@
 -(void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
 {
     [SVProgressHUD show];
-    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProduct"];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProductCategory3"];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         [SVProgressHUD dismiss];
         GZGLog(@"二级分类%@",responseObject);
@@ -428,5 +428,42 @@
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         NSLog(@"%@",failure);
     }];
+}
+#pragma mark --- 品牌
+- (void)brandListDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
+{
+    [SVProgressHUD show];
+    NSString *url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppfindBrand"];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+//        GZGLog(@"品牌%@",responseObject);
+        NSLog(@"品牌%@",responseObject);
+        NSArray * limitArray = responseObject[@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
+#pragma mark --- 商品列表
+- (void)shopListDict:(NSDictionary *)dict ClassOrBrand:(NSString *)stateString Finsh:(void (^)(NSArray * listArray))result
+{
+    [SVProgressHUD show];
+    NSString *url;
+    if ([stateString isEqualToString:@"分类"]) {
+        url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppProduct"];
+    }else{
+        url = [NSString stringWithFormat:@"%@%@",CountriesTopic,@"AppfindBrandProduct"];
+    }
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"列表%@",responseObject);
+        NSArray * limitArray = responseObject[@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+
 }
 @end

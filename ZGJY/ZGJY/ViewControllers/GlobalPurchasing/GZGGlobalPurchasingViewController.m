@@ -284,7 +284,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGYSpellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:gZGSpellGroupCellstr];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor colorWithRed:250/255.0 green:239/255.0 blue:208/255.0 alpha:1.0];
+        cell.backgroundColor = [UIColor whiteColor];
         cell.model = self.spellModel[indexPath.row];
         cell.replenishBtn.tag = indexPath.row;
         [cell.replenishBtn addTarget:self action:@selector(SpellBtn:) forControlEvents:UIControlEventTouchUpInside];

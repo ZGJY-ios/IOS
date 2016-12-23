@@ -44,18 +44,9 @@
     }
     return self;
 }
--(void)SegBtn:(UIButton *)SegBtn
+-(void)SegBtn:(UIButton *)sender
 {
-    for (int i = 0 ; i<self.nameArray.count; i++) {
-        UIButton * btn = self.nameArray[i];
-        NSLog(@"%ld,%d",SegBtn.tag,i);
-        if (i == SegBtn.tag) {
-            [btn setTitleColor:[UIColor colorWithRed:217/255.0 green:43/255.0 blue:44/255.0 alpha:1.0] forState:UIControlStateNormal];
-        }else{
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        }
-    }
-    [self.delegate SegBtnDelegate:SegBtn.tag];
+    [self.delegate SegBtnDelegate:sender.tag];
 }
 -(NSMutableArray *)nameArray
 {

@@ -141,6 +141,9 @@
 		532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00111DBDEBE0002D2E61 /* GZGYOrderViewController.m */; };
 		532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */; };
 		5330873A1E094DCA0073AF61 /* GZGNewPavilion.m in Sources */ = {isa = PBXBuildFile; fileRef = 533087391E094DCA0073AF61 /* GZGNewPavilion.m */; };
+		53384CB71E0A571B007B9B42 /* hxiocn_2x111.png in Resources */ = {isa = PBXBuildFile; fileRef = 53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */; };
+		53384CBA1E0A5DC2007B9B42 /* GZGYBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */; };
+		53384CBD1E0A7221007B9B42 /* GZGYListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CBC1E0A7221007B9B42 /* GZGYListModel.m */; };
 		5340A2371DBE059F00AF2FEA /* GZGYSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */; };
 		5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2391DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m */; };
 		5340A23D1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A23C1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m */; };
@@ -154,8 +157,6 @@
 		53603F931DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53603F921DC08FF7001CB7AF /* GZGYAftersalesTableViewCell.m */; };
 		536400A61E094FE300FC07C3 /* GZGNewPavilionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536400A31E094FE300FC07C3 /* GZGNewPavilionCell.m */; };
 		536400A71E094FE300FC07C3 /* GZGNewPavilonCellCollecationCelll.m in Sources */ = {isa = PBXBuildFile; fileRef = 536400A51E094FE300FC07C3 /* GZGNewPavilonCellCollecationCelll.m */; };
-		536400AA1E09508000FC07C3 /* 04-1APP 限时特卖banner750.psd in Resources */ = {isa = PBXBuildFile; fileRef = 536400A81E09508000FC07C3 /* 04-1APP 限时特卖banner750.psd */; };
-		536400AB1E09508000FC07C3 /* 05-1APP 火力拼团banner750.psd in Resources */ = {isa = PBXBuildFile; fileRef = 536400A91E09508000FC07C3 /* 05-1APP 火力拼团banner750.psd */; };
 		536400AD1E09523E00FC07C3 /* HFMZ.png in Resources */ = {isa = PBXBuildFile; fileRef = 536400AC1E09523E00FC07C3 /* HFMZ.png */; };
 		536400B11E09525400FC07C3 /* JJRY.png in Resources */ = {isa = PBXBuildFile; fileRef = 536400AE1E09525400FC07C3 /* JJRY.png */; };
 		536400B21E09525400FC07C3 /* JKBJ.png in Resources */ = {isa = PBXBuildFile; fileRef = 536400AF1E09525400FC07C3 /* JKBJ.png */; };
@@ -192,6 +193,9 @@
 		53860F801DD9650C0047A734 /* GZGYSpellSegView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F7B1DD9650C0047A734 /* GZGYSpellSegView.m */; };
 		53860F811DD9650C0047A734 /* GZGYSpellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F7D1DD9650C0047A734 /* GZGYSpellView.m */; };
 		53860F861DD9AB880047A734 /* GZGYTheOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F851DD9AB880047A734 /* GZGYTheOrderViewController.m */; };
+		538CD0E61E0CC96D001348A4 /* 111.png in Resources */ = {isa = PBXBuildFile; fileRef = 538CD0E51E0CC96D001348A4 /* 111.png */; };
+		538CD0E81E0CC97C001348A4 /* 未标题-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 538CD0E71E0CC97C001348A4 /* 未标题-1.png */; };
+		538CD0EB1E0CEABA001348A4 /* GZGYShopListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 538CD0EA1E0CEABA001348A4 /* GZGYShopListViewController.m */; };
 		53904BBA1DC19A7700ED0922 /* GZGYAftersalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53904BB91DC19A7700ED0922 /* GZGYAftersalesViewController.m */; };
 		539284CF1E07C841004404DB /* GZGYoneClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 539284CE1E07C841004404DB /* GZGYoneClassification.m */; };
 		539284D21E07D04C004404DB /* GZGYsecondClassification.m in Sources */ = {isa = PBXBuildFile; fileRef = 539284D11E07D04C004404DB /* GZGYsecondClassification.m */; };
@@ -584,6 +588,11 @@
 		532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYPaymentTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYPaymentTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		533087381E094DCA0073AF61 /* GZGNewPavilion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilion.h; sourceTree = "<group>"; };
 		533087391E094DCA0073AF61 /* GZGNewPavilion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilion.m; sourceTree = "<group>"; };
+		53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hxiocn_2x111.png; sourceTree = "<group>"; };
+		53384CB81E0A5DC2007B9B42 /* GZGYBrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYBrandModel.h; sourceTree = "<group>"; };
+		53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYBrandModel.m; sourceTree = "<group>"; };
+		53384CBB1E0A7221007B9B42 /* GZGYListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYListModel.h; sourceTree = "<group>"; };
+		53384CBC1E0A7221007B9B42 /* GZGYListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYListModel.m; sourceTree = "<group>"; };
 		5340A2351DBE059F00AF2FEA /* GZGYSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYSingleTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYSingleTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		5340A2381DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYDeliveryTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYDeliveryTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -607,8 +616,6 @@
 		536400A31E094FE300FC07C3 /* GZGNewPavilionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilionCell.m; sourceTree = "<group>"; };
 		536400A41E094FE300FC07C3 /* GZGNewPavilonCellCollecationCelll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilonCellCollecationCelll.h; sourceTree = "<group>"; };
 		536400A51E094FE300FC07C3 /* GZGNewPavilonCellCollecationCelll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilonCellCollecationCelll.m; sourceTree = "<group>"; };
-		536400A81E09508000FC07C3 /* 04-1APP 限时特卖banner750.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "04-1APP 限时特卖banner750.psd"; sourceTree = "<group>"; };
-		536400A91E09508000FC07C3 /* 05-1APP 火力拼团banner750.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "05-1APP 火力拼团banner750.psd"; sourceTree = "<group>"; };
 		536400AC1E09523E00FC07C3 /* HFMZ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HFMZ.png; sourceTree = "<group>"; };
 		536400AE1E09525400FC07C3 /* JJRY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JJRY.png; sourceTree = "<group>"; };
 		536400AF1E09525400FC07C3 /* JKBJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JKBJ.png; sourceTree = "<group>"; };
@@ -677,6 +684,10 @@
 		53860F7D1DD9650C0047A734 /* GZGYSpellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYSpellView.m; sourceTree = "<group>"; };
 		53860F841DD9AB880047A734 /* GZGYTheOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYTheOrderViewController.h; sourceTree = "<group>"; };
 		53860F851DD9AB880047A734 /* GZGYTheOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYTheOrderViewController.m; sourceTree = "<group>"; };
+		538CD0E51E0CC96D001348A4 /* 111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 111.png; sourceTree = "<group>"; };
+		538CD0E71E0CC97C001348A4 /* 未标题-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未标题-1.png"; sourceTree = "<group>"; };
+		538CD0E91E0CEABA001348A4 /* GZGYShopListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYShopListViewController.h; sourceTree = "<group>"; };
+		538CD0EA1E0CEABA001348A4 /* GZGYShopListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYShopListViewController.m; sourceTree = "<group>"; };
 		53904BB81DC19A7700ED0922 /* GZGYAftersalesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYAftersalesViewController.h; sourceTree = "<group>"; };
 		53904BB91DC19A7700ED0922 /* GZGYAftersalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYAftersalesViewController.m; sourceTree = "<group>"; };
 		539284CD1E07C841004404DB /* GZGYoneClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYoneClassification.h; sourceTree = "<group>"; };
@@ -1087,13 +1098,14 @@
 		04104EAB1D9CACEF00A940F1 /* product */ = {
 			isa = PBXGroup;
 			children = (
+				538CD0E51E0CC96D001348A4 /* 111.png */,
+				538CD0E71E0CC97C001348A4 /* 未标题-1.png */,
+				53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */,
 				536400AE1E09525400FC07C3 /* JJRY.png */,
 				536400AF1E09525400FC07C3 /* JKBJ.png */,
 				536400B01E09525400FC07C3 /* MYZX.png */,
 				536400AC1E09523E00FC07C3 /* HFMZ.png */,
 				E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */,
-				536400A81E09508000FC07C3 /* 04-1APP 限时特卖banner750.psd */,
-				536400A91E09508000FC07C3 /* 05-1APP 火力拼团banner750.psd */,
 				E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */,
 				E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */,
 				04A4A4BB1DBF3E6100897F5A /* gzg_gg1.png */,
@@ -1516,6 +1528,8 @@
 				04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */,
 				E55EE52E1DB63F29003F12C4 /* GZGSearchListController.h */,
 				E55EE52F1DB63F29003F12C4 /* GZGSearchListController.m */,
+				538CD0E91E0CEABA001348A4 /* GZGYShopListViewController.h */,
+				538CD0EA1E0CEABA001348A4 /* GZGYShopListViewController.m */,
 				04A753D51DB74EF600D01BAE /* GZGSearchViewController.h */,
 				04A753D61DB74EF600D01BAE /* GZGSearchViewController.m */,
 				04A2D04F1DB9ACCF003966DA /* GZGCountriesPavilionViewController.h */,
@@ -1997,6 +2011,8 @@
 				539284CE1E07C841004404DB /* GZGYoneClassification.m */,
 				539284D01E07D04C004404DB /* GZGYsecondClassification.h */,
 				539284D11E07D04C004404DB /* GZGYsecondClassification.m */,
+				53384CB81E0A5DC2007B9B42 /* GZGYBrandModel.h */,
+				53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */,
 			);
 			path = ClassifiCation;
 			sourceTree = "<group>";
@@ -2012,6 +2028,8 @@
 				E51566861DE2CF1E00B3DF3E /* GZGYRootSpellModel.m */,
 				E51566871DE2CF1E00B3DF3E /* GZGYSpellModel.h */,
 				E51566881DE2CF1E00B3DF3E /* GZGYSpellModel.m */,
+				53384CBB1E0A7221007B9B42 /* GZGYListModel.h */,
+				53384CBC1E0A7221007B9B42 /* GZGYListModel.m */,
 			);
 			path = GlobalPurchasing;
 			sourceTree = "<group>";
@@ -2300,7 +2318,6 @@
 				53975D601DB9DF9800478004 /* share@2x.png in Resources */,
 				04104EDC1D9CACEF00A940F1 /* sy_xspic6.jpg in Resources */,
 				534FCD841DB8971D00313BE2 /* -magnify-glass@2x.png in Resources */,
-				536400AB1E09508000FC07C3 /* 05-1APP 火力拼团banner750.psd in Resources */,
 				53975D671DB9F59C00478004 /* Oayep-tag@2x.png in Resources */,
 				040CD2871DBE10F700A12DC3 /* sy_hlpic2.png in Resources */,
 				04A4A4B71DBF394500897F5A /* sy_myzq.jpg in Resources */,
@@ -2314,6 +2331,7 @@
 				04104EDB1D9CACEF00A940F1 /* sy_xspic5.jpg in Resources */,
 				04104ED91D9CACEF00A940F1 /* sy_xspic3.jpg in Resources */,
 				E5AD874F1DD55CB100EDB8B3 /* city.json in Resources */,
+				53384CB71E0A571B007B9B42 /* hxiocn_2x111.png in Resources */,
 				040CD2891DBE10F700A12DC3 /* sy_hlpic4.png in Resources */,
 				E574BDBC1DB9D4A1004971C2 /* searchList-icon1.png in Resources */,
 				049DC6551DB9FEF9001DC372 /* koho-1.jpg in Resources */,
@@ -2332,7 +2350,6 @@
 				047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */,
 				04104ECB1D9CACEF00A940F1 /* sy_kjpic1.jpg in Resources */,
 				04104ED61D9CACEF00A940F1 /* sy_qqpic3.jpg in Resources */,
-				536400AA1E09508000FC07C3 /* 04-1APP 限时特卖banner750.psd in Resources */,
 				04A4A4C51DBF3E6100897F5A /* gzg_gg5.png in Resources */,
 				04104EDA1D9CACEF00A940F1 /* sy_xspic4.jpg in Resources */,
 				E51566E31DE2CF3A00B3DF3E /* MJRefresh.bundle in Resources */,
@@ -2342,6 +2359,7 @@
 				04104ED81D9CACEF00A940F1 /* sy_xspic2.jpg in Resources */,
 				047467D21DAB859B009E4EAA /* nav_xstm.jpg in Resources */,
 				04A4A4C31DBF3E6100897F5A /* gzg_gg3.png in Resources */,
+				538CD0E61E0CC96D001348A4 /* 111.png in Resources */,
 				040CD2861DBE10F700A12DC3 /* sy_hgpic1.png in Resources */,
 				047467D41DAB859B009E4EAA /* sy_hgban.jpg in Resources */,
 				04A4A4C11DBF3E6100897F5A /* gzg_gg1.png in Resources */,
@@ -2375,6 +2393,7 @@
 				04104ED41D9CACEF00A940F1 /* sy_qqpic1.jpg in Resources */,
 				E5648D2E1DBC82280077A165 /* PersonalCenterBackgroundImage.jpg in Resources */,
 				047467CE1DAB859B009E4EAA /* nav_kjzy.jpg in Resources */,
+				538CD0E81E0CC97C001348A4 /* 未标题-1.png in Resources */,
 				04A2D0561DB9B51C003966DA /* index-Aussie.jpg in Resources */,
 				BDDDF8161D51B992002723AB /* Main.storyboard in Resources */,
 			);
@@ -2462,6 +2481,7 @@
 				E51566F21DE2CF3A00B3DF3E /* MJRefreshStateHeader.m in Sources */,
 				E51566F01DE2CF3A00B3DF3E /* MJRefreshHeader.m in Sources */,
 				E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */,
+				538CD0EB1E0CEABA001348A4 /* GZGYShopListViewController.m in Sources */,
 				E51566EE1DE2CF3A00B3DF3E /* MJRefreshFooter.m in Sources */,
 				044DA3D81D5C467100DD06EC /* SDWebImageDecoder.m in Sources */,
 				E51566EC1DE2CF3A00B3DF3E /* MJRefreshComponent.m in Sources */,
@@ -2491,6 +2511,7 @@
 				044DA3DB1D5C467100DD06EC /* SDWebImageManager.m in Sources */,
 				E51566E11DE2CF3A00B3DF3E /* UIImage+XMGExtension.m in Sources */,
 				04FBA27E1D98C98200AD147A /* AppDelegate.m in Sources */,
+				53384CBA1E0A5DC2007B9B42 /* GZGYBrandModel.m in Sources */,
 				5393D4861E022C7C00CE2EC7 /* RSADataSigner.m in Sources */,
 				E5941BB51DDBF9A70069B757 /* JSONHTTPClient.m in Sources */,
 				043CDFF01DA88E1D0095B3F5 /* GZGCrossBorderDirectMailCell.m in Sources */,
@@ -2525,6 +2546,7 @@
 				048B783A1D98CF93009F7C37 /* GZGMainNavgationController.m in Sources */,
 				5393D47F1E022C7C00CE2EC7 /* Order.m in Sources */,
 				044DA3981D5C458E00DD06EC /* FMResultSet.m in Sources */,
+				53384CBD1E0A7221007B9B42 /* GZGYListModel.m in Sources */,
 				044DA3FD1D5C60B200DD06EC /* AFAutoPurgingImageCache.m in Sources */,
 				E51566ED1DE2CF3A00B3DF3E /* MJRefreshConst.m in Sources */,
 				53860F541DD962F90047A734 /* GZGYRegisteredViewController.m in Sources */,

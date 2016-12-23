@@ -9,5 +9,9 @@
 #import "GZGYsecondClassification.h"
 
 @implementation GZGYsecondClassification
-
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    if ([key isEqualToString:@"id"]) {
+        self.classID = value;
+    }
+}
 @end

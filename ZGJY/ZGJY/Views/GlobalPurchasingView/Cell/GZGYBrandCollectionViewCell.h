@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GZGYBrandModel.h"
+#import "ZGNetWork.h"
 @interface GZGYBrandCollectionViewCell : UICollectionViewCell
-@property(nonatomic,strong)UIImageView*imgView;
+
+@property(nonatomic, strong)UILabel * nameLabel;
+
+@property(nonatomic,strong)UIImageView * imgView;
+
+@property(nonatomic, strong)GZGYBrandModel * model;
 @end
