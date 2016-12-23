@@ -90,11 +90,11 @@
     _model = model;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString * urlString;
-        if (_model.image.length == 0&&_model.logo.length!=0) {
-            urlString = _model.logo;
-        }else if (_model.logo.length == 0&&_model.image.length!=0){
+//        if (_model.image.length == 0&&_model.logo.length!=0) {
+//            urlString = _model.logo;
+//        }else if (_model.logo.length == 0&&_model.image.length!=0){
             urlString = _model.image;
-        }
+//        }
         [_commodityImageView setHeader:urlString];
     });
 

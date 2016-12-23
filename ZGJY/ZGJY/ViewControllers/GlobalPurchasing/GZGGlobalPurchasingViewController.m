@@ -96,8 +96,14 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 
 - (void)navTitleUI{
-    [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
-    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
+    
+    //暂时隐藏
+    
+    self.leftBtn.hidden = YES;
+    self.rightBtn.hidden = YES;
+    
+//    [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
+//    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
     self.titles.hidden = YES;
     
     NSString *navTitleStr = NSLocalizedString(@"GZG_GlobalPurchasingTitleStr", nil);
