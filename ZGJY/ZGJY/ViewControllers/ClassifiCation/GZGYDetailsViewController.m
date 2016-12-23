@@ -85,6 +85,12 @@
      @{NSFontAttributeName:[UIFont systemFontOfSize:19],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     nameArray = @[@"商品",@"详情",@"评价"];
@@ -109,7 +115,7 @@
     switch (self.gDetails) {
         case GoodsDetailsMaternalAndInfant:
         {
-            dict = @{@"productCategoryId":self.productCategoryId,@"id":self.shopID};
+            dict = @{@"taglds":self.productCategoryId,@"id":self.shopID};
             break;
         }
         case GoodsDetailsKorea:
@@ -150,6 +156,9 @@
         default:
             break;
     }
+    
+    NSLog(@"%ld",self.gDetails);
+    
     [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleCountries:self.gDetails Dict:dict Finsh:^(NSArray * dataArray){
         NSLog(@"你猜%@",dataArray);
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
@@ -719,10 +728,7 @@
     GZGLog(@"加入进货单");
     [self requestDataWithAddCart];
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-    self.navBarView.hidden = NO;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

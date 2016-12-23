@@ -22,8 +22,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
     GoodsDetailsFireAlsoGroup, // 火力拼团
     GoodsDetailsKorea, // 韩国馆
     GoodsDetailsJapan, // 日本馆
-    GoodsDetailsEurope, // 欧洲馆
-    GoodsDetailsAussie, // 澳洲馆
+    GoodsDetailsEurope, // 健康保健
+    GoodsDetailsAussie, // 居家日用
 };
 
 
@@ -94,12 +94,9 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 
 // 删除收藏
 - (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result;
-<<<<<<< HEAD
 
-=======
 // 一级分类
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
 // 二级分类
 -(void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 @end

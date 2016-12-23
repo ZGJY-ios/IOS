@@ -99,11 +99,7 @@
 		0479A3BF1E03EBE6008B1F14 /* GZGNewPavilion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0479A3BE1E03EBE6008B1F14 /* GZGNewPavilion.m */; };
 		0479A3C21E03EE84008B1F14 /* GZGNewPavilionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0479A3C11E03EE84008B1F14 /* GZGNewPavilionCell.m */; };
 		047B690F1D5D7B080057CE61 /* ZGNetDealImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */; };
-<<<<<<< HEAD
-		047B69131D5DA0630057CE61 /* 123456.png in Resources */ = {isa = PBXBuildFile; fileRef = 047B69121D5DA0630057CE61 /* 123456.png */; };
 		0484BAFD1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.m in Sources */ = {isa = PBXBuildFile; fileRef = 0484BAFC1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.m */; };
-=======
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 		048B783A1D98CF93009F7C37 /* GZGMainNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */; };
 		048B783D1D98D702009F7C37 /* GZGColorClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B783C1D98D701009F7C37 /* GZGColorClass.m */; };
 		048B78401D98E6E2009F7C37 /* GZGCommonlySet.m in Sources */ = {isa = PBXBuildFile; fileRef = 048B783F1D98E6E2009F7C37 /* GZGCommonlySet.m */; };
@@ -512,12 +508,9 @@
 		0479A3C11E03EE84008B1F14 /* GZGNewPavilionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilionCell.m; sourceTree = "<group>"; };
 		047B690D1D5D7B080057CE61 /* ZGNetDealImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGNetDealImage.h; sourceTree = "<group>"; };
 		047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGNetDealImage.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		047B69121D5DA0630057CE61 /* 123456.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123456.png; sourceTree = "<group>"; };
 		0484BAFB1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilonCellCollecationCelll.h; sourceTree = "<group>"; };
 		0484BAFC1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilonCellCollecationCelll.m; sourceTree = "<group>"; };
-=======
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 		048B78381D98CF93009F7C37 /* GZGMainNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGMainNavgationController.h; sourceTree = "<group>"; };
 		048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGMainNavgationController.m; sourceTree = "<group>"; };
 		048B783B1D98D701009F7C37 /* GZGColorClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGColorClass.h; sourceTree = "<group>"; };
@@ -2333,11 +2326,8 @@
 				049DC6551DB9FEF9001DC372 /* koho-1.jpg in Resources */,
 				04104ED51D9CACEF00A940F1 /* sy_qqpic2.jpg in Resources */,
 				04A4A4C61DBF3E6100897F5A /* gzg_gg6.png in Resources */,
-<<<<<<< HEAD
 				0479A3BC1E03C7E9008B1F14 /* HFMZ.png in Resources */,
 				047B69131D5DA0630057CE61 /* 123456.png in Resources */,
-=======
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 				047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */,
 				53975D5F1DB9DF9800478004 /* etc@2x.png in Resources */,
 				E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */,
@@ -2818,10 +2808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-<<<<<<< HEAD
-=======
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 				CODE_SIGN_IDENTITY = "iPhone Developer: ji shaokun (7K99FWYYSD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ji shaokun (7K99FWYYSD)";
 				DEVELOPMENT_TEAM = 5CXBN7534D;
@@ -2834,21 +2821,14 @@
 				INFOPLIST_FILE = ZGJY/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-<<<<<<< HEAD
-				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f43515d6-96a4-46f5-9517-735791de7ac2";
-				PROVISIONING_PROFILE_SPECIFIER = MZM_CSZS;
-=======
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc7a636f-30f9-4227-9ffc-c6f6c9d09e62";
-				PROVISIONING_PROFILE_SPECIFIER = gzg;
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
+				PROVISIONING_PROFILE = "f43515d6-96a4-46f5-9517-735791de7ac2";
+				PROVISIONING_PROFILE_SPECIFIER = MZM_CSZS;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2857,14 +2837,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-<<<<<<< HEAD
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
-=======
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer: ji shaokun (7K99FWYYSD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ji shaokun (7K99FWYYSD)";
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
 				DEVELOPMENT_TEAM = 5CXBN7534D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2875,21 +2850,14 @@
 				INFOPLIST_FILE = ZGJY/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-<<<<<<< HEAD
-				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4da221a9-a8c7-4950-bc1a-813b087b56a7";
-				PROVISIONING_PROFILE_SPECIFIER = MZM_KFZS;
-=======
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bc7a636f-30f9-4227-9ffc-c6f6c9d09e62";
-				PROVISIONING_PROFILE_SPECIFIER = gzg;
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
+				PROVISIONING_PROFILE = "4da221a9-a8c7-4950-bc1a-813b087b56a7";
+				PROVISIONING_PROFILE_SPECIFIER = MZM_KFZS;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

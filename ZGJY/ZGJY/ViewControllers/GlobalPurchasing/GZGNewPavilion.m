@@ -10,6 +10,7 @@
 #import "GZGNewPavilionCell.h"
 #import "GZGCountriesHeadFaceCell.h"
 #import "GZGCountriesHeadFaceCollectionCell.h"
+
 static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollectionCell";
 @interface GZGNewPavilion ()<UICollectionViewDelegate,UICollectionViewDataSource,GZGCountriesHeadFaceCellDelegate>
 @property(nonatomic ,strong)UITableView *mainTableView;
@@ -111,7 +112,10 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%ld",indexPath.row);
+    
+    
+    
+    
     
 }
 

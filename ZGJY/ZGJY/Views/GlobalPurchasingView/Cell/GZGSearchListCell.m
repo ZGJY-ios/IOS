@@ -78,7 +78,7 @@
     });
     
     
-    [self.commodityImageView addSubview:self.commodityHotImageView];
+//    [self.commodityImageView addSubview:self.commodityHotImageView];
     [self addSubview:self.commodityImageView];
     [self addSubview:self.commodityNameLabel];
     [self addSubview:self.commodityIntroductionLabel];

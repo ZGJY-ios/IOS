@@ -397,10 +397,7 @@
         GZGLog(@"%@",failure);
     }];
 }
-<<<<<<< HEAD
 
-
-=======
 #pragma mark --- 一级分类
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result
 {
@@ -431,5 +428,5 @@
         NSLog(@"%@",failure);
     }];
 }
->>>>>>> dd6b808a40e1af6993668b6ba577c3f593e49c36
+
 @end
