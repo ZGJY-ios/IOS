@@ -83,7 +83,7 @@
 {
     self.view.backgroundColor = [UIColor colorWithRed:222/255.0 green:76/255.0 blue:70/255.0 alpha:1.0];
     imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:295])];
-    imgView.image = [UIImage imageNamed:@"04-1APP 限时特卖banner750.psd"];
+    imgView.image = [UIImage imageNamed:@"111.png"];
     ytableView = [[UITableView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize] , SCREENWIDTH, SCREENHEIGHT-[GZGApplicationTool navBarAndStatusBarSize])];
     ytableView.delegate = self;
     ytableView.dataSource = self;

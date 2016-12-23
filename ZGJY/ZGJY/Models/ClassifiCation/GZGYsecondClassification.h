@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface GZGYsecondClassification : NSObject
-
+@property(nonatomic, strong)NSString * classID;
+@property(nonatomic, strong)NSString * name;
 @end

@@ -10,5 +10,5 @@
 
 @interface GZGSearchListController : GZGSubViewController
 @property (nonatomic, copy) NSString * string;
-
+@property (nonatomic, copy) NSString * stateString;
 @end

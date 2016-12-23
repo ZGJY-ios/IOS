@@ -68,6 +68,7 @@
             if ([typeString isEqualToString:@"error"]) {
                 [SVProgressHUD showErrorWithStatus:content];
             }else{
+                [SVProgressHUD dismiss];
                 [[NSUserDefaults standardUserDefaults]setObject:string forKey:@"USERID"];
                 [[NSUserDefaults standardUserDefaults]setObject:username forKey:@"USERNAME"];
                 [[NSUserDefaults standardUserDefaults]setObject:password forKey:@"PASSWORD"];

@@ -107,5 +107,9 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 // 一级分类
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
 // 二级分类
--(void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
+- (void)secondClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
+// 品牌
+- (void)brandListDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
+//商品列表
+- (void)shopListDict:(NSDictionary *)dict ClassOrBrand:(NSString *)stateString Finsh:(void (^)(NSArray * listArray))result;
 @end

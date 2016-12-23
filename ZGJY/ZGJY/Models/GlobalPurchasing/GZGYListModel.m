@@ -1,17 +1,17 @@
 //
-//  GZGYsecondClassification.m
+//  GZGYListModel.m
 //  ZGJY
 //
-//  Created by YYS on 2016/12/19.
+//  Created by YYS on 2016/12/21.
 //  Copyright © 2016年 LiuYaDong. All rights reserved.
 //
 
-#import "GZGYsecondClassification.h"
+#import "GZGYListModel.h"
 
-@implementation GZGYsecondClassification
+@implementation GZGYListModel
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"id"]) {
-        self.classID = value;
+        self.ID = value;
     }
 }
 @end

@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger,ZGSerVerState) {
 
 
 @interface ZGNetWork : NSObject
++ (NSString *)mobileAPIBaseURL;
 + (AFHTTPSessionManager *)setRequestManger;
 
 /**

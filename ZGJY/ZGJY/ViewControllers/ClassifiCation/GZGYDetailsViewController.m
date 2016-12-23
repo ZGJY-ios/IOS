@@ -19,6 +19,7 @@
 #import "GZGYImgScrollView.h"
 #import "GZGYDetailsTableViewCell.h"
 #import "GZGYSelectedTableViewCell.h"
+#import "GZGTheShoppingCartViewController.h"
 @interface GZGYDetailsViewController ()<NavDelegeteClickProtocol,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate,ChoiceDelegeteClickProtocol,ImgDelegeteClickProtocol>
 {
     NSInteger heightNum;
@@ -84,6 +85,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:19],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -94,7 +96,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     nameArray = @[@"商品",@"详情",@"评价"];
-    [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
     [self ScrollViewInterface];
     [self ClasstionData];
     [self webViewInterface];
@@ -110,7 +111,9 @@
 #pragma mark --- 数据
 -(void)ClasstionData
 {
-    NSDictionary * dict;
+    
+    
+    NSDictionary *dict = @{@"id":self.shopID};
 
     switch (self.gDetails) {
         case GoodsDetailsMaternalAndInfant:
@@ -159,6 +162,7 @@
     
     NSLog(@"%ld",self.gDetails);
     
+    
     [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleCountries:self.gDetails Dict:dict Finsh:^(NSArray * dataArray){
         NSLog(@"你猜%@",dataArray);
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
@@ -183,19 +187,19 @@
         [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
         GZGLog(@"添加成功");
     } failed:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器异常"];
         GZGLog(@"添加失败");
     }];
 }
 // 添加收藏
 - (void)requestDataWithAddCollection {
-    
+    NSLog(@"%@",self.shopID);
     NSDictionary * dict = @{@"id":self.shopID};
     [[GZGYAPIHelper shareAPIHelper] addCollectionDict:dict Finsh:^(id responseObject) {
         GZGLog(@"添加收藏成功:%@",responseObject);
-        if ([responseObject[@"type"] isEqualToString:@"success"]) {
-            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
-        }
+        [SVProgressHUD showSuccessWithStatus:responseObject[@"content"]];
     } failed:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器异常"];
         GZGLog(@"添加收藏失败:%@",error);
     }];
 }
@@ -223,6 +227,7 @@
     UIBarButtonItem *anotherButton1 = [[UIBarButtonItem alloc]initWithCustomView:rightbutton];
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: anotherButton,anotherButton1,nil]];
 }
+
 #pragma mark --- scrollview
 -(void)ScrollViewInterface
 {
@@ -293,50 +298,7 @@
         contentString = [contentString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"upload%@.jpg",result] withString:@""];
     }
     for (int i = 0; i<imgArray.count; i++) {
-        switch (self.gDetails) {
-            case GoodsDetailsMaternalAndInfant:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsKorea:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsJapan:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsEurope:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsAussie:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsWashProtect:
-            {
-                heightNum = 160;
-                break;
-            }
-            case GoodsDetailsLimited:
-            {
-                heightNum = 800;
-                break;
-            }
-            case GoodsDetailsFireAlsoGroup:
-            {
-                heightNum = 800;
-                break;
-            }
-            default:
-                break;
-        }   
+        heightNum = 800;
         UIImageView * imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:heightNum]*i, SCREENWIDTH, [GZGApplicationTool control_height:heightNum])];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSString * urlString = [NSString stringWithFormat:@"http://www.maizanmao.com/%@",imgArray[i]];
@@ -613,17 +575,19 @@
 #pragma mark --- 右侧消息监听
 -(void)rightbuttonAction
 {
+    [SVProgressHUD showErrorWithStatus:@"正在开发中"];
     NSLog(@"点你妹呀");
 }
 #pragma mark --- 右侧分享监听
 -(void)sharebutttonAction
 {
+    [SVProgressHUD showErrorWithStatus:@"正在开发中"];
     NSLog(@"点你大爷");
 }
 #pragma mark --- 规格事件监听
 -(void)specifications
 {
-    [self open];
+//    [self open];//暂时隐藏
 }
 #pragma mark --- 叉号按钮事件
 -(void)ChoiceBtnDelegate:(NSInteger)sender
@@ -666,7 +630,7 @@
     number = [choiceView.countField.text integerValue];
     number--;
     if (number>1) {
-        choiceView.countField.text = [NSString stringWithFormat:@"%ld",number];
+        choiceView.countField.text = [NSString stringWithFormat:@"%ld",(long)number];
     }else{
         choiceView.countField.text = @"1";
     }
@@ -676,7 +640,7 @@
 {
     number = [choiceView.countField.text integerValue];
     number++;
-    choiceView.countField.text = [NSString stringWithFormat:@"%ld",number];
+    choiceView.countField.text = [NSString stringWithFormat:@"%ld",(long)number];
 }
 #pragma mark --- Choice加入收藏
 -(void)CollectionBtnDelegate:(NSInteger)sender
@@ -717,6 +681,7 @@
 #pragma mark --- 客服事件监听
 -(void)Service:(UIButton *)sender
 {
+    [SVProgressHUD showErrorWithStatus:@"正在开发中"];
     GZGLog(@"客服");
 }
 #pragma mark --- 关注事件监听
@@ -729,6 +694,10 @@
 -(void)Cart:(UIButton *)sender
 {
     GZGLog(@"购物车");
+    GZGTheShoppingCartViewController * theshopping = [[GZGTheShoppingCartViewController alloc]init];
+    theshopping.stateID = @"详情页面";
+    theshopping.view.frame = CGRectMake(theshopping.view.frame.origin.x, theshopping.view.frame.origin.y, theshopping.view.frame.size.width, theshopping.view.frame.size.height + 44);
+    [self.navigationController pushViewController:theshopping animated:YES];
 }
 #pragma mark --- 加入进货单事件监听
 -(void)Receipt:(UIButton *)sender

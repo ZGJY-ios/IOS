@@ -16,7 +16,7 @@
     if (self) {
         
         imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
-        imgView.image = [UIImage imageNamed:@"05-1APP 火力拼团banner750.psd"];
+        imgView.image = [UIImage imageNamed:@"未标题-1.png"];
         [self addSubview:imgView];
         NSArray * imgArray = @[@"quanqiu",@"shengxin",@"yuetuan",@"jisu"];
         NSArray * nameArray = @[@"全球正品",@"省心优惠",@"越团越惠",@"极速发货"];

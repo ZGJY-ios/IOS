@@ -66,6 +66,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
+    if ([_stateID isEqualToString:@"详情页面"]) {
+        self.navigationController.navigationBar.hidden = YES;
+        self.navBarView.hidden = NO;
+    }else{
+        [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    }
     [self requestData];
 }
 
@@ -74,7 +80,7 @@
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"购物车", nil);
     self.isFutureGenerations = NO;
-    [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+//    [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.rightBtn setImage:[[UIImage imageNamed:@"TheShoppingCartPushMessage"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     _editorBtn = ({
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];

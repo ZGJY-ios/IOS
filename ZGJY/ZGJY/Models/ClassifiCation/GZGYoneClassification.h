@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface GZGYoneClassification : NSObject
-@property(nonatomic, strong)NSString * ID;
+@property(nonatomic, strong)NSString * classID;
 @property(nonatomic, strong)NSString * name;
 @property(nonatomic, strong)NSString * grade;
 @end

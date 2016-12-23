@@ -18,5 +18,8 @@
 // 方法输出
 #define XMGLogFunc GZGLog(@"%s", __func__);
 
+#define kAPPDELEGATE ((AppDelegate*)[UIApplication sharedApplication].delegate)
+
+#define kDEFAULTNOTIFICATION   [NSNotificationCenter defaultCenter]
 
 #endif /* GZGLogText_h */

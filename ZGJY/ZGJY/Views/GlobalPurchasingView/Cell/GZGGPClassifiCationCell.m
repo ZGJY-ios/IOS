@@ -19,7 +19,6 @@ static const NSInteger classifiCationBtnTag = 1000;
     }
     return self;
 }
-
 - (void)buildUI:(NSArray *)array{
 //    NSArray *btnTitle = @[NSLocalizedString(@"GZGGPClassifiCationCell_QQJX", nil),
 //                          NSLocalizedString(@"GZGGPClassifiCationCell_XSTM", nil),

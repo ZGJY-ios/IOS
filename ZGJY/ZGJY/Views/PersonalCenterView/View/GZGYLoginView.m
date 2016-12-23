@@ -42,7 +42,7 @@
         phoneImg.image = [UIImage imageNamed:@"user-name"];
         [backView addSubview:phoneImg];
         phoneField = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:105], [GZGApplicationTool control_height:0], [GZGApplicationTool control_wide:445], [GZGApplicationTool control_height:85])];
-        phoneField.placeholder = @"邮箱/用户名/手机号";
+        phoneField.placeholder = @"请输入邮箱";
         phoneField.backgroundColor = [UIColor whiteColor];
         [backView addSubview:phoneField];
         
@@ -69,7 +69,7 @@
         regBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         regBtn.frame = CGRectMake([GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:475], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:35]);
         [regBtn setTitleColor:[UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [regBtn setTitle:@"手机快速注册" forState:UIControlStateNormal];
+        [regBtn setTitle:@"邮箱快速注册" forState:UIControlStateNormal];
         regBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         regBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [regBtn addTarget:self action:@selector(Registered:) forControlEvents:UIControlEventTouchUpInside];
@@ -81,7 +81,7 @@
         forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         forgetBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [forgetBtn addTarget:self action:@selector(Forget:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:forgetBtn];
+//        [self addSubview:forgetBtn];
         loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         loginBtn.frame = CGRectMake([GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:535], [GZGApplicationTool control_wide:550], [GZGApplicationTool control_height:85]);
         [loginBtn setTitle:@"登录" forState:UIControlStateNormal];

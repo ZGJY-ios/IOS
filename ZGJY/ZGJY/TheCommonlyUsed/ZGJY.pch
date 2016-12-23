@@ -16,6 +16,7 @@
 
 #ifndef ZGJY_pch
 #define ZGJY_pch
+#import "AppDelegate.h"
 #import "GZGApplicationTool.h"
 #import "GZGColorClass.h"
 #import "GZGCommonlySet.h"
