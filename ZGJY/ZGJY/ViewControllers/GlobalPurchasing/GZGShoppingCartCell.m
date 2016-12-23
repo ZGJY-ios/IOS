@@ -68,7 +68,7 @@
     });
     self.cartPrice = ({
         UILabel * label = [[UILabel alloc] init];
-        label.frame = CGRectMake([GZGApplicationTool control_wide:290], [GZGApplicationTool control_height:170], [GZGApplicationTool control_wide:120], [GZGApplicationTool control_height:33]);
+        label.frame = CGRectMake([GZGApplicationTool control_wide:290], [GZGApplicationTool control_height:170], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:33]);
         label.text = NSLocalizedString(@"￥188.00", nil);
         label.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         label.textColor = [GZGColorClass subjectShoppingCartPriceColor];

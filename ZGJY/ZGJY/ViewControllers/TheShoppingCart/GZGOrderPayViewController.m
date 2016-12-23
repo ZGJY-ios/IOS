@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"订单支付", nil);
-    [self.rightBtn setTitle:NSLocalizedString(@"保存", nil) forState:UIControlStateNormal];
+//    [self.rightBtn setTitle:NSLocalizedString(@"保存", nil) forState:UIControlStateNormal];
     
     // UITableView
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - [GZGApplicationTool navBarAndStatusBarSize]) style:UITableViewStyleGrouped];

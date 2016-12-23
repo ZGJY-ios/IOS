@@ -311,6 +311,7 @@
 		E580051B1DBF25E200421727 /* GZGConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */; };
 		E581D8F61DC9CAE8000A3484 /* shentong-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */; };
 		E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */; };
+		E58D44EC1E0D04340066E618 /* OLGhostAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E58D44EB1E0D04340066E618 /* OLGhostAlertView.m */; };
 		E58EBA781E0A16F70007D36A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E58EBA741E0A16F70007D36A /* libWeChatSDK.a */; };
 		E5941B9A1DDBF8E50069B757 /* GZGSpecialPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941B991DDBF8E50069B757 /* GZGSpecialPerformanceModel.m */; };
 		E5941BB11DDBF9A70069B757 /* JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941B9E1DDBF9A70069B757 /* JSONModel.m */; };
@@ -969,6 +970,8 @@
 		E580051A1DBF25E200421727 /* GZGConfirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGConfirmOrderViewController.m; sourceTree = "<group>"; };
 		E581D8F41DC9CAE8000A3484 /* shentong-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@2x.png"; sourceTree = "<group>"; };
 		E581D8F51DC9CAE8000A3484 /* shentong-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shentong-logo@3x.png"; sourceTree = "<group>"; };
+		E58D44EB1E0D04340066E618 /* OLGhostAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLGhostAlertView.m; sourceTree = "<group>"; };
+		E58D44ED1E0D04390066E618 /* OLGhostAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OLGhostAlertView.h; sourceTree = "<group>"; };
 		E58EBA741E0A16F70007D36A /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		E58EBA751E0A16F70007D36A /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		E58EBA761E0A16F70007D36A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -1163,6 +1166,7 @@
 		044D9F481D5C439200DD06EC /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				E58D44EA1E0D042C0066E618 /* OLGhosAlertView */,
 				E515668E1DE2CF3A00B3DF3E /* MJExtension */,
 				E51566AD1DE2CF3A00B3DF3E /* MJRefresh */,
 				E5941B9B1DDBF9A70069B757 /* JSONModel */,
@@ -2112,6 +2116,15 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		E58D44EA1E0D042C0066E618 /* OLGhosAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				E58D44ED1E0D04390066E618 /* OLGhostAlertView.h */,
+				E58D44EB1E0D04340066E618 /* OLGhostAlertView.m */,
+			);
+			path = OLGhosAlertView;
+			sourceTree = "<group>";
+		};
 		E58EBA731E0A16EE0007D36A /* WeChatSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -2619,6 +2632,7 @@
 				53860F7F1DD9650C0047A734 /* GZGYSettimeView.m in Sources */,
 				E51566D41DE2CF3A00B3DF3E /* MJDictionaryCache.m in Sources */,
 				E51566F81DE2CFAD00B3DF3E /* GZGYSpellTableViewCell.m in Sources */,
+				E58D44EC1E0D04340066E618 /* OLGhostAlertView.m in Sources */,
 				E54312471DD4378D0007C12D /* GZGAuthenticateViewController.m in Sources */,
 				5372CA551DB712CB009C6CA1 /* GZGYSalaTableViewCell.m in Sources */,
 				04FBA27F1D98C98200AD147A /* GZGApplicationTool.m in Sources */,
