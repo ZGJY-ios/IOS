@@ -104,7 +104,12 @@
     tabBar.selectedIndex = 0;
     self.window.rootViewController = tabBar;
 }
-
+-(void)AutoDisplayAlertView:(NSString*) title :(NSString*)msg
+{
+    OLGhostAlertView *_ghostAlertView = [[OLGhostAlertView alloc] initWithTitle:title message:msg timeout:2.0 dismissible:YES];
+    _ghostAlertView.position = OLGhostAlertViewPositionBottom;
+    [_ghostAlertView show];
+}
 #pragma mark --- 自动登录
 -(void)AutomaticLogin
 {

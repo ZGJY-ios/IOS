@@ -101,6 +101,7 @@
         }
     } failed:^(NSError *error) {
         NSLog(@"订单信息错误:%@",error);
+        [SVProgressHUD showErrorWithStatus:@"获取订单失败！"];
     }];
 }
 - (void)requestDataWithSubmitOrder:(NSString *)amount {
@@ -120,6 +121,7 @@
         }
     } failed:^(NSError *error) {
         NSLog(@"提交订单失败:%@",error);
+        [SVProgressHUD showErrorWithStatus:@"订单提交失败"];
     }];
 }
 - (void)didReceiveMemoryWarning {
@@ -129,7 +131,7 @@
 
 #pragma mark - 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
@@ -167,9 +169,10 @@
         return [GZGApplicationTool control_height:207];
     } else if (indexPath.section == 1) {
         return [GZGApplicationTool control_height:212];
-    } else if (indexPath.section == 2 || indexPath.section == 3) {
-        return [GZGApplicationTool control_height:100];
     }
+//    else if (indexPath.section == 2 || indexPath.section == 3) {
+//        return [GZGApplicationTool control_height:100];
+//    }
     return [GZGApplicationTool control_height:423];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -188,10 +191,10 @@
         
         
         cell.cellUserName.text = model.consignee;
-        cell.cellCertifiCation.text = @"已认证";
+//        cell.cellCertifiCation.text = @"已认证";
         cell.cellTelNumber.text = model.phone;
         cell.cellAddress.text = model.address;
-        cell.cellIDCar.text = @"321542525115152365";
+//        cell.cellIDCar.text = @"321542525115152365";
         return cell;
     } else if (indexPath.section == 1) {
         static NSString * cellIdentifier = @"DeliveryOrderCell";
@@ -208,31 +211,32 @@
         cell.commodityNumberLabel.text = [NSString stringWithFormat:@"%ld",model.quantity];
         [cell setModel];
         return cell;
-    } else if (indexPath.section == 2) {
-        static NSString * cellIdentifier = @"Cell";
-        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        }
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"发票", nil);
-        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-        cell.detailTextLabel.text = NSLocalizedString(@"不需要发票", nil);
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-        return cell;
-    } else if (indexPath.section == 3) {
-        static NSString * cellIdentifier = @"Cell";
-        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        }
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"优惠券", nil);
-        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-        cell.detailTextLabel.text = NSLocalizedString(@"使用优惠券", nil);
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-        return cell;
     }
+//    else if (indexPath.section == 2) {
+//        static NSString * cellIdentifier = @"Cell";
+//        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//        if (!cell) {
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+//        }
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.textLabel.text = NSLocalizedString(@"发票", nil);
+//        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+//        cell.detailTextLabel.text = NSLocalizedString(@"不需要发票", nil);
+//        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+//        return cell;
+//    } else if (indexPath.section == 3) {
+//        static NSString * cellIdentifier = @"Cell";
+//        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//        if (!cell) {
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+//        }
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.textLabel.text = NSLocalizedString(@"优惠券", nil);
+//        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+//        cell.detailTextLabel.text = NSLocalizedString(@"使用优惠券", nil);
+//        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+//        return cell;
+//    }
 //    else if (indexPath.section == 4) {
 //        static NSString * cellIdentifier = @"Cell";
 //        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -259,7 +263,8 @@
     cell.totalPriceNumber.text = [NSString stringWithFormat:@"￥%.2f",self.totalPrice + model.freight];
     
     [cell setSubmitOrderBlock:^(NSString * amount) {
-        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
+//        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
+        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
     }];
     return cell;
 }

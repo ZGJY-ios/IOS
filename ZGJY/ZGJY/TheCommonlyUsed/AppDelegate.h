@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OLGhostAlertView.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+-(void)AutoDisplayAlertView:(NSString*) title :(NSString*)msg;
 
 @end
 

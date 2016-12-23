@@ -145,6 +145,7 @@
 		53384CBA1E0A5DC2007B9B42 /* GZGYBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */; };
 		53384CBD1E0A7221007B9B42 /* GZGYListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CBC1E0A7221007B9B42 /* GZGYListModel.m */; };
 		5338B0D71E0D071800476804 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5338B0D31E0D071800476804 /* libWeChatSDK.a */; };
+		5338B0DB1E0D0A1700476804 /* OLGhostAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5338B0DA1E0D0A1700476804 /* OLGhostAlertView.m */; };
 		5340A2371DBE059F00AF2FEA /* GZGYSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */; };
 		5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2391DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m */; };
 		5340A23D1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A23C1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m */; };
@@ -598,6 +599,8 @@
 		5338B0D41E0D071800476804 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		5338B0D51E0D071800476804 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		5338B0D61E0D071800476804 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		5338B0D91E0D0A1700476804 /* OLGhostAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLGhostAlertView.h; sourceTree = "<group>"; };
+		5338B0DA1E0D0A1700476804 /* OLGhostAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLGhostAlertView.m; sourceTree = "<group>"; };
 		5340A2351DBE059F00AF2FEA /* GZGYSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYSingleTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYSingleTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		5340A2381DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYDeliveryTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYDeliveryTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1172,6 +1175,7 @@
 		044D9F481D5C439200DD06EC /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				5338B0D81E0D0A1700476804 /* OLGhosAlertView */,
 				E515668E1DE2CF3A00B3DF3E /* MJExtension */,
 				E51566AD1DE2CF3A00B3DF3E /* MJRefresh */,
 				E5941B9B1DDBF9A70069B757 /* JSONModel */,
@@ -1682,6 +1686,15 @@
 				5338B0D61E0D071800476804 /* WXApiObject.h */,
 			);
 			path = WeChatSDK;
+			sourceTree = "<group>";
+		};
+		5338B0D81E0D0A1700476804 /* OLGhosAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				5338B0D91E0D0A1700476804 /* OLGhostAlertView.h */,
+				5338B0DA1E0D0A1700476804 /* OLGhostAlertView.m */,
+			);
+			path = OLGhosAlertView;
 			sourceTree = "<group>";
 		};
 		536BA2BB1DF7A147003EE2E9 /* ClsaaifiCationView */ = {
@@ -2613,6 +2626,7 @@
 				E515668D1DE2CF1E00B3DF3E /* GZGYSpellModel.m in Sources */,
 				53860F5A1DD9631B0047A734 /* GZGYRegisteredView.m in Sources */,
 				53904BBA1DC19A7700ED0922 /* GZGYAftersalesViewController.m in Sources */,
+				5338B0DB1E0D0A1700476804 /* OLGhostAlertView.m in Sources */,
 				04A753D71DB74EF600D01BAE /* GZGSearchViewController.m in Sources */,
 				04A2D0511DB9ACCF003966DA /* GZGCountriesPavilionViewController.m in Sources */,
 				E56C40EC1DC1AC5C00AF74A0 /* GZGConfirmOrderCell.m in Sources */,
