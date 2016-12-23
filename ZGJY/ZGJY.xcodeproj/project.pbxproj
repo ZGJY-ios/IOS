@@ -144,6 +144,7 @@
 		53384CB71E0A571B007B9B42 /* hxiocn_2x111.png in Resources */ = {isa = PBXBuildFile; fileRef = 53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */; };
 		53384CBA1E0A5DC2007B9B42 /* GZGYBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */; };
 		53384CBD1E0A7221007B9B42 /* GZGYListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CBC1E0A7221007B9B42 /* GZGYListModel.m */; };
+		5338B0D71E0D071800476804 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5338B0D31E0D071800476804 /* libWeChatSDK.a */; };
 		5340A2371DBE059F00AF2FEA /* GZGYSingleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */; };
 		5340A23A1DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A2391DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.m */; };
 		5340A23D1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5340A23C1DBE080800AF2FEA /* GZGYDorgoodsTableViewCell.m */; };
@@ -593,6 +594,10 @@
 		53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYBrandModel.m; sourceTree = "<group>"; };
 		53384CBB1E0A7221007B9B42 /* GZGYListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYListModel.h; sourceTree = "<group>"; };
 		53384CBC1E0A7221007B9B42 /* GZGYListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYListModel.m; sourceTree = "<group>"; };
+		5338B0D31E0D071800476804 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		5338B0D41E0D071800476804 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		5338B0D51E0D071800476804 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		5338B0D61E0D071800476804 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		5340A2351DBE059F00AF2FEA /* GZGYSingleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYSingleTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		5340A2361DBE059F00AF2FEA /* GZGYSingleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYSingleTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYSingleTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		5340A2381DBE06CC00AF2FEA /* GZGYDeliveryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYDeliveryTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYDeliveryTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -1040,6 +1045,7 @@
 			files = (
 				5393D49E1E022D3000CE2EC7 /* libz.tbd in Frameworks */,
 				5393D49C1E022D2900CE2EC7 /* libc++.tbd in Frameworks */,
+				5338B0D71E0D071800476804 /* libWeChatSDK.a in Frameworks */,
 				5393D49A1E022D1F00CE2EC7 /* CoreMotion.framework in Frameworks */,
 				5393D4981E022D1400CE2EC7 /* CFNetwork.framework in Frameworks */,
 				5393D4961E022D0C00CE2EC7 /* SystemConfiguration.framework in Frameworks */,
@@ -1667,6 +1673,17 @@
 			name = YYS;
 			sourceTree = "<group>";
 		};
+		5338B0D21E0D071800476804 /* WeChatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5338B0D31E0D071800476804 /* libWeChatSDK.a */,
+				5338B0D41E0D071800476804 /* WechatAuthSDK.h */,
+				5338B0D51E0D071800476804 /* WXApi.h */,
+				5338B0D61E0D071800476804 /* WXApiObject.h */,
+			);
+			path = WeChatSDK;
+			sourceTree = "<group>";
+		};
 		536BA2BB1DF7A147003EE2E9 /* ClsaaifiCationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1914,6 +1931,7 @@
 		5393D4881E022CCF00CE2EC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5338B0D21E0D071800476804 /* WeChatSDK */,
 				5393D49F1E022D7900CE2EC7 /* AlipaySDK.bundle */,
 				5393D4A01E022D7900CE2EC7 /* AlipaySDK.framework */,
 				5393D4A11E022D7900CE2EC7 /* libcrypto.a */,
@@ -2836,6 +2854,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2865,6 +2888,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/WeChatSDK",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.szqh.gzg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
