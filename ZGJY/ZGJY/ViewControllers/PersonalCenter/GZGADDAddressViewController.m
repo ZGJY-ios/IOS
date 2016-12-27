@@ -37,6 +37,8 @@ static const NSInteger TEXTFILEDTAG = 1000;
 }
 #pragma mark 方法
 - (void)buildUI{
+    
+    
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
                                                                    [GZGApplicationTool navBarAndStatusBarSize],
                                                                    SCREENWIDTH,
@@ -201,6 +203,10 @@ static const NSInteger TEXTFILEDTAG = 1000;
                 NSLog(@"添加数据失败:%@",error);
             }];
         } else if (self.type == AddressTypeEditor) {
+            
+            
+            NSLog(@"%@",self.model.ids);
+            
             NSDictionary * dict = @{@"id":self.model.ids,@"address":[NSString stringWithFormat:@"%@ %@",cell4.cellAfterText.text,cell5.cellTextFiled.text],@"consignee":cell1.cellTextFiled.text,@"zipCode":cell3.cellTextFiled.text,@"phone":cell2.cellTextFiled.text,@"isDefault":cell6.cellSWitch.on ? @"0" : @"1"};
             [[GZGYAPIHelper shareAPIHelper] updateAddressDict:dict Finsh:^(NSArray *array) {
                 [self.navigationController popViewControllerAnimated:YES];
@@ -211,6 +217,10 @@ static const NSInteger TEXTFILEDTAG = 1000;
     } else {
         NSLog(@"填写完整");
     }
+}
+- (void)returnBtnDown{
+    [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"gwc"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,7 +13,7 @@
 #import "GZGShoppingCartModel.h"
 #import "GZGAddressModel.h"
 #import "GZGAddressManageViewController.h"
-
+#import "GZGADDAddressViewController.h"
 @interface GZGConfirmOrderViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * addressArrays;    // 地址
@@ -21,22 +21,37 @@
 @property (nonatomic, strong) NSMutableArray * orderArrays;          // 订单
 @property (nonatomic, strong) NSMutableArray * courierArrays;    // 配送方式
 @property (nonatomic, strong) NSMutableArray * paymentArrays;    // 支付方式
+//@property (nonatomic, assign)NSInteger counts;
 @end
 
 @implementation GZGConfirmOrderViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [self requestData];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"确认订单", nil);
     
     [self buildUI];
-    [self requestData];
+   
 }
+#warning 测试 测试
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //测试使用 后期修改
+    NSString * gwc = [[NSUserDefaults standardUserDefaults]objectForKey:@"gwc"];
+    
+    NSLog(@"%@",gwc);
+    
+    if ([gwc isEqualToString: @"1"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"gwc"];
+    }else{
+        [self requestData];
+    }
+    
+}
+
 #pragma mark - 自己的方法
 - (void)buildUI {
     // UITableView
@@ -66,7 +81,6 @@
     NSString * memberID = [[NSUserDefaults standardUserDefaults] objectForKey:@"USERID"];
     NSDictionary * dict = @{@"memberId":memberID};
     [[GZGYAPIHelper shareAPIHelper] makeSureOrderDict:dict Finsh:^(id responseObject) {
-        
         NSDictionary * order = responseObject[@"order"];
         GZGOrderModel * orderModel = [GZGOrderModel orderWithDict:order];
         [_orderArrays addObject:orderModel];
@@ -74,6 +88,16 @@
         NSArray * couriers = responseObject[@"shippingMethods"];
         NSArray * payments = responseObject[@"paymentMethods"];
         NSArray * carts = responseObject[@"cart"];
+        
+    #warning 测试
+        
+        if (address.count==0){
+            GZGADDAddressViewController *vc  = [[GZGADDAddressViewController alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+            vc.type = AddressTypeAdd;
+            [self.navigationController pushViewController:vc animated:YES];
+            return ;
+        }
         for (int i = 0; i < address.count; i++) {
             NSDictionary * dict = address[i];
             GZGAddressModel * model = [GZGAddressModel specialPerformanceWithDict:dict];

@@ -88,11 +88,12 @@
     [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+-  (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = YES;
     self.navBarView.hidden = NO;
+     self.navigationController.navigationBar.hidden = YES;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     nameArray = @[@"商品",@"详情",@"评价"];
@@ -111,58 +112,7 @@
 #pragma mark --- 数据
 -(void)ClasstionData
 {
-    
-    
     NSDictionary *dict = @{@"id":self.shopID};
-
-    switch (self.gDetails) {
-        case GoodsDetailsMaternalAndInfant:
-        {
-            dict = @{@"taglds":self.productCategoryId,@"id":self.shopID};
-            break;
-        }
-        case GoodsDetailsKorea:
-        {
-            dict = @{@"taglds":@"8",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-            break;
-        }
-        case GoodsDetailsJapan:
-        {
-            dict = @{@"taglds":@"7",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-            break;
-        }
-        case GoodsDetailsEurope:
-        {
-            dict = @{@"taglds":@"11",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-            break;
-        }
-        case GoodsDetailsAussie:
-        {
-            dict = @{@"taglds":@"12",@"productCategoryId":self.productCategoryId,@"id":self.shopID};
-            break;
-        }
-        case GoodsDetailsWashProtect:
-        {
-            dict = @{@"taglds":@"5",@"id":self.shopID};
-            break;
-        }//限时抢购
-        case GoodsDetailsLimited:
-        {
-            dict = @{@"tagIds":@"5",@"productCategoryId":@"0",@"id":self.shopID};
-            break;
-        }//火力拼团
-        case GoodsDetailsFireAlsoGroup:
-        {
-            dict = @{@"tagIds":@"6",@"productCategoryId":@"0",@"id":self.shopID};
-            break;
-        }
-        default:
-            break;
-    }
-    
-    NSLog(@"%ld",self.gDetails);
-    
-    
     [[GZGYAPIHelper shareAPIHelper]DetailssTimeSaleCountries:self.gDetails Dict:dict Finsh:^(NSArray * dataArray){
         NSLog(@"你猜%@",dataArray);
         self.model = [GZGYDetailsModel mj_objectArrayWithKeyValuesArray:dataArray];
@@ -181,15 +131,19 @@
 }
 // 添加购物车
 - (void)requestDataWithAddCart {
-    
-    NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
-    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
-        [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
-        GZGLog(@"添加成功");
-    } failed:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"服务器异常"];
-        GZGLog(@"添加失败");
-    }];
+    NSUserDefaults * userID = [[NSUserDefaults standardUserDefaults] objectForKey:@"USERID"];
+    if (userID) {
+        NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
+        [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
+            [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
+            GZGLog(@"添加成功");
+        } failed:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"服务器异常"];
+            GZGLog(@"添加失败");
+        }];
+    } else {
+        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"没有登录！！"];
+    }
 }
 // 添加收藏
 - (void)requestDataWithAddCollection {

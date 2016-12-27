@@ -80,6 +80,10 @@
 		044DA4031D5C60B200DD06EC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3F81D5C60B200DD06EC /* UIProgressView+AFNetworking.m */; };
 		044DA4041D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3FA1D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m */; };
 		044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3FC1D5C60B200DD06EC /* UIWebView+AFNetworking.m */; };
+		046B147B1E0D314F008527E4 /* gzgqdt-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */; };
+		046B147C1E0D314F008527E4 /* gzgqdt.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14781E0D314F008527E4 /* gzgqdt.png */; };
+		046B147D1E0D314F008527E4 /* gzgqdt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14791E0D314F008527E4 /* gzgqdt@2x.png */; };
+		046B147E1E0D314F008527E4 /* gzgqdt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B147A1E0D314F008527E4 /* gzgqdt@3x.png */; };
 		047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467BF1DAB859B009E4EAA /* nav_adly.jpg */; };
 		047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C01DAB859B009E4EAA /* nav_hgg.jpg */; };
 		047467CD1DAB859B009E4EAA /* nav_hlpt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C11DAB859B009E4EAA /* nav_hlpt.jpg */; };
@@ -490,6 +494,10 @@
 		044DA3FA1D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		044DA3FB1D5C60B200DD06EC /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		044DA3FC1D5C60B200DD06EC /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt-568h@2x.png"; sourceTree = "<group>"; };
+		046B14781E0D314F008527E4 /* gzgqdt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gzgqdt.png; sourceTree = "<group>"; };
+		046B14791E0D314F008527E4 /* gzgqdt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@2x.png"; sourceTree = "<group>"; };
+		046B147A1E0D314F008527E4 /* gzgqdt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@3x.png"; sourceTree = "<group>"; };
 		047467BF1DAB859B009E4EAA /* nav_adly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_adly.jpg; sourceTree = "<group>"; };
 		047467C01DAB859B009E4EAA /* nav_hgg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hgg.jpg; sourceTree = "<group>"; };
 		047467C11DAB859B009E4EAA /* nav_hlpt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hlpt.jpg; sourceTree = "<group>"; };
@@ -504,9 +512,6 @@
 		047467CA1DAB859B009E4EAA /* sy_rbban.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sy_rbban.jpg; sourceTree = "<group>"; };
 		047B690D1D5D7B080057CE61 /* ZGNetDealImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGNetDealImage.h; sourceTree = "<group>"; };
 		047B690E1D5D7B080057CE61 /* ZGNetDealImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGNetDealImage.m; sourceTree = "<group>"; };
-		047B69121D5DA0630057CE61 /* 123456.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123456.png; sourceTree = "<group>"; };
-		0484BAFB1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilonCellCollecationCelll.h; sourceTree = "<group>"; };
-		0484BAFC1E0787E000E33954 /* GZGNewPavilonCellCollecationCelll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilonCellCollecationCelll.m; sourceTree = "<group>"; };
 		048B78381D98CF93009F7C37 /* GZGMainNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGMainNavgationController.h; sourceTree = "<group>"; };
 		048B78391D98CF93009F7C37 /* GZGMainNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGMainNavgationController.m; sourceTree = "<group>"; };
 		048B783B1D98D701009F7C37 /* GZGColorClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGColorClass.h; sourceTree = "<group>"; };
@@ -1639,6 +1644,10 @@
 				538047641DDAE3C300C75869 /* GZGYAPIHelper.m */,
 				533087381E094DCA0073AF61 /* GZGNewPavilion.h */,
 				533087391E094DCA0073AF61 /* GZGNewPavilion.m */,
+				046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */,
+				046B14781E0D314F008527E4 /* gzgqdt.png */,
+				046B14791E0D314F008527E4 /* gzgqdt@2x.png */,
+				046B147A1E0D314F008527E4 /* gzgqdt@3x.png */,
 			);
 			path = TheCommonlyUsed;
 			sourceTree = "<group>";
@@ -2379,6 +2388,7 @@
 				5393D4A31E022D7900CE2EC7 /* AlipaySDK.bundle in Resources */,
 				047467CF1DAB859B009E4EAA /* nav_ozg.jpg in Resources */,
 				E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */,
+				046B147B1E0D314F008527E4 /* gzgqdt-568h@2x.png in Resources */,
 				E5648D301DBC83540077A165 /* PersonalHead@2x.png in Resources */,
 				04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */,
 				047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */,
@@ -2396,6 +2406,7 @@
 				538CD0E61E0CC96D001348A4 /* 111.png in Resources */,
 				040CD2861DBE10F700A12DC3 /* sy_hgpic1.png in Resources */,
 				047467D41DAB859B009E4EAA /* sy_hgban.jpg in Resources */,
+				046B147D1E0D314F008527E4 /* gzgqdt@2x.png in Resources */,
 				04A4A4C11DBF3E6100897F5A /* gzg_gg1.png in Resources */,
 				040CD2881DBE10F700A12DC3 /* sy_hlpic3.png in Resources */,
 				04D60F481D87D6A400A42583 /* Localizable.strings in Resources */,
@@ -2418,6 +2429,7 @@
 				04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */,
 				E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */,
 				536400AD1E09523E00FC07C3 /* HFMZ.png in Resources */,
+				046B147E1E0D314F008527E4 /* gzgqdt@3x.png in Resources */,
 				BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */,
 				BDDDF8181D51B992002723AB /* Assets.xcassets in Resources */,
 				538047731DDAEE0B00C75869 /* SVProgressHUD.bundle in Resources */,
@@ -2425,6 +2437,7 @@
 				04104ECC1D9CACEF00A940F1 /* sy_kjpic2.jpg in Resources */,
 				047467D31DAB859B009E4EAA /* sy_adban.jpg in Resources */,
 				04104ED41D9CACEF00A940F1 /* sy_qqpic1.jpg in Resources */,
+				046B147C1E0D314F008527E4 /* gzgqdt.png in Resources */,
 				E5648D2E1DBC82280077A165 /* PersonalCenterBackgroundImage.jpg in Resources */,
 				047467CE1DAB859B009E4EAA /* nav_kjzy.jpg in Resources */,
 				538CD0E81E0CC97C001348A4 /* 未标题-1.png in Resources */,
@@ -2881,8 +2894,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f43515d6-96a4-46f5-9517-735791de7ac2";
 				PROVISIONING_PROFILE_SPECIFIER = MZM_CSZS;
-				PROVISIONING_PROFILE = "bc7a636f-30f9-4227-9ffc-c6f6c9d09e62";
-				PROVISIONING_PROFILE_SPECIFIER = gzg;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2892,8 +2903,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: ji shaokun (7K99FWYYSD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ji shaokun (7K99FWYYSD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
 				DEVELOPMENT_TEAM = 5CXBN7534D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2917,8 +2928,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4da221a9-a8c7-4950-bc1a-813b087b56a7";
 				PROVISIONING_PROFILE_SPECIFIER = MZM_KFZS;
-				PROVISIONING_PROFILE = "bc7a636f-30f9-4227-9ffc-c6f6c9d09e62";
-				PROVISIONING_PROFILE_SPECIFIER = gzg;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -82,6 +82,10 @@
     self.isFutureGenerations = NO;
 //    [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.rightBtn setImage:[[UIImage imageNamed:@"TheShoppingCartPushMessage"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    self.rightBtn.hidden = YES;// 以后干掉
+    
+    
+    
     _editorBtn = ({
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(self.rightBtn.frame.origin.x - [GZGApplicationTool control_wide:110], self.rightBtn.frame.origin.y, [GZGApplicationTool control_wide:90], self.rightBtn.frame.size.height);

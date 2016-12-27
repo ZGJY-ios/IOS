@@ -236,7 +236,7 @@
     NSString *url = @"appLogin/submit";
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
-        NSLog(@"登录%@",responseObject);
+        GZGLog(@"登录%@",responseObject);
         NSString * idString = [NSString stringWithFormat:@"%@",responseObject[@"id"]];
         NSString * TypeString = [NSString stringWithFormat:@"%@",responseObject[@"type"]];
         NSString * contentString = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
