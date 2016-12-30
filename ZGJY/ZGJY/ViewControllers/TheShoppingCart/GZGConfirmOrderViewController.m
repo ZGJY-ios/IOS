@@ -263,8 +263,7 @@
     cell.totalPriceNumber.text = [NSString stringWithFormat:@"￥%.2f",self.totalPrice + model.freight];
     
     [cell setSubmitOrderBlock:^(NSString * amount) {
-//        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
-        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
+        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
     }];
     return cell;
 }

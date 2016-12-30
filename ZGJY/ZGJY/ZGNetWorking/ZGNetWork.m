@@ -16,11 +16,11 @@ static NSInteger const _timeDelay                   = 30;
 @implementation ZGNetWork
 + (NSString *)mobileAPIBaseURL{
     NSString * baseURL= nil;
-#if DEBUG
-//
+#ifdef DEBUG
     baseURL = @"http://192.168.0.110:8080/";
-#endif
+#else
     baseURL = @"http://www.maizanmao.com/";//上线接口
+#endif
     return baseURL;
 }
 
