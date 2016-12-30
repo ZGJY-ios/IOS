@@ -154,8 +154,11 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            GZGPushViewController * pushVC = [[GZGPushViewController alloc] init];
-            [self.navigationController pushViewController:pushVC animated:YES];
+//            GZGPushViewController * pushVC = [[GZGPushViewController alloc] init];
+//            [self.navigationController pushViewController:pushVC animated:YES];
+            
+            [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启此功能！"];
+            
         } else if (indexPath.row == 1) {
             
             UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"" message:@"确定清除本地缓存？" preferredStyle:UIAlertControllerStyleAlert];

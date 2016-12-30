@@ -9,5 +9,5 @@
 #import "GZGSubViewController.h"
 
 @interface GZGTheShoppingCartViewController : GZGSubViewController
-
+@property(nonatomic, strong)NSString * stateID;
 @end

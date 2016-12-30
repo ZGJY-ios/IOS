@@ -7,7 +7,6 @@
 //
 
 #import "GZGYRightCollectionViewCell.h"
-#import "GZGYClassModel.h"
 #define KScreenWigth     [[UIScreen mainScreen] bounds].size.width
 #define KScreenHeight  [[UIScreen mainScreen] bounds].size.height
 @implementation GZGYRightCollectionViewCell
@@ -15,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.ImgView];
+//        [self addSubview:self.ImgView];
         [self addSubview:self.NameLabel];
     }
     return self;
@@ -31,19 +30,18 @@
 -(UILabel *)NameLabel
 {
     if (_NameLabel == nil) {
-        _NameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, KScreenWigth/9*2-10, KScreenWigth/9*2-10, 15)];
+        _NameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:20], self.frame.size.width, [GZGApplicationTool control_height:30])];
+//        _NameLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         _NameLabel.textAlignment = NSTextAlignmentCenter;
-        _NameLabel.font = [UIFont systemFontOfSize:13];
+        _NameLabel.font = [UIFont systemFontOfSize:15];
         _NameLabel.text = @"你猜";
     }
     return _NameLabel;
 }
--(void)setModel:(GZGYClassModel *)model
+-(void)setModel:(GZGYsecondClassification *)model
 {
     _model = model;
-    NSLog(@"%@",model);
-    NSDictionary*dic = model;
-    self.NameLabel.text = dic[@"NameStr"];
+    _NameLabel.text = [NSString stringWithFormat:@"%@",self.model.name];
 }
 
 @end

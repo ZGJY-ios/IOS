@@ -15,6 +15,7 @@ static NSInteger const _timeDelay                   = 30;
 
 @implementation ZGNetWork
 + (NSString *)mobileAPIBaseURL{
+
     NSString * baseURL= nil;
 #ifdef DEBUG
     baseURL = @"http://192.168.0.110:8080/";
@@ -181,6 +182,8 @@ static NSInteger const _timeDelay                   = 30;
                      failure:(void(^)(NSError *failure,NSInteger  task))errors{
     
     NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
+//    NSString *gzgUrl = [NSString stringWithFormat:@"http://192.168.0.110:8080/%@",url];
+
     AFHTTPSessionManager *manger = [self setRequestManger];
     [manger POST:gzgUrl parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

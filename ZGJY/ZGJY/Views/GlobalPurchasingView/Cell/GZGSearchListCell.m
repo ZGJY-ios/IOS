@@ -78,60 +78,59 @@
     });
     
     
-    [self.commodityImageView addSubview:self.commodityHotImageView];
+//    [self.commodityImageView addSubview:self.commodityHotImageView];
     [self addSubview:self.commodityImageView];
     [self addSubview:self.commodityNameLabel];
     [self addSubview:self.commodityIntroductionLabel];
     [self addSubview:self.commodityPriceLabel];
     [self addSubview:self.commodityReferencePriceLabel];
 }
-- (void)setModel:(GZGSpecialPerformanceModel *)model {
+-(void)setModel:(GZGYListModel *)model
+{
+    _model = model;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * urlString;
+//        if (_model.image.length == 0&&_model.logo.length!=0) {
+//            urlString = _model.logo;
+//        }else if (_model.logo.length == 0&&_model.image.length!=0){
+            urlString = _model.image;
+//        }
+        [_commodityImageView setHeader:urlString];
+    });
+
+    _commodityNameLabel.text = _model.name;
+    _commodityIntroductionLabel.text = _model.full_name;
+    _commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",_model.price];
+    _commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",_model.market_price]];
     
+    _commodityLabels = [NSMutableArray arrayWithArray:@[@"上新",@"热卖",@"促销"]];
+    for (NSInteger i = 0; i < _commodityLabels.count; i ++) {
+        UILabel * commodityLabel = [[UILabel alloc] init];
+        commodityLabel.frame = CGRectMake(_commodityPriceLabel.frame.origin.x + _commodityPriceLabel.frame.size.width + [GZGApplicationTool control_wide:10] + [GZGApplicationTool control_wide:70] * i, _commodityIntroductionLabel.frame.origin.y + _commodityIntroductionLabel.frame.size.height + [GZGApplicationTool control_height:42], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:20]);
+        commodityLabel.text = NSLocalizedString(_commodityLabels[i], nil);
+        commodityLabel.textColor = [UIColor whiteColor];
+        commodityLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:12]];
+        commodityLabel.textAlignment = NSTextAlignmentCenter;
+        // 颜色
+        if ([_commodityLabels[i] isEqualToString:@"上新"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"blue-back"] mostColor];
+        } else if ([_commodityLabels[i] isEqualToString:@"热卖"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"orange-back"] mostColor];
+        } else if ([_commodityLabels[i] isEqualToString:@"促销"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"green-back"] mostColor];
+        }
+        [self addSubview:commodityLabel];
+    }
+}
+- (void)setSModel:(GZGSpecialPerformanceModel *)sModel {
     
+    _sModel = sModel;
     
-//    "allocated_stock" = 0;
-//    "create_by" = "\U7ba1\U7406\U5458";
-//    "creation_date" = "2016-11-22 15:49:25";
-//    "delete_flag" = 0;
-//    "full_name" = "\U5566\U5566\U5566\U5566\U5566";
-//    "goods_id" = 137;
-//    hits = 0;
-//    id = 69;
-//    image = "http://localhost:8080/upload/image/201611/4398aebd-d667-4c5c-ae56-001dfa2b4a86-thumbnail.jpg";
-//    "is_gift" = 0;
-//    "is_list" = 1;
-//    "is_marketable" = 1;
-//    "is_top" = 0;
-//    "last_updated_by" = "\U7ba1\U7406\U5458";
-//    "last_updated_date" = "2016-12-16 09:40:39";
-//    "market_price" = "14.4";
-//    "month_hits" = 0;
-//    "month_hits_date" = "2016-11-22 15:49:24";
-//    "month_sales" = 0;
-//    "month_sales_date" = "2016-11-22 15:49:24";
-//    name = "\U5566\U5566\U5566\U5566\U5566";
-//    point = 12;
-//    price = 12;
-//    "product_category_id" = 284;
-//    sales = 0;
-//    score = 0;
-//    "score_count" = 0;
-//    sn = 201611225454;
-//    "total_score" = 0;
-//    "week_hits" = 0;
-//    "week_hits_date" = "2016-11-22 15:49:24";
-//    "week_sales" = 0;
-//    "week_sales_date" = "2016-11-22 15:49:24";
-    
-    
-    
-    
-    
-    [self.commodityImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
-    self.commodityNameLabel.text = model.name;
-    self.commodityIntroductionLabel.text = model.full_name;
-    self.commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",model.price];
-    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",model.market_price]];
+    [self.commodityImageView sd_setImageWithURL:[NSURL URLWithString:_sModel.image] placeholderImage:nil];
+    self.commodityNameLabel.text = _sModel.name;
+    self.commodityIntroductionLabel.text = _sModel.full_name;
+    self.commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",_sModel.price];
+    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",_sModel.market_price]];
     
     self.commodityLabels = [NSMutableArray arrayWithArray:@[@"上新",@"热卖",@"促销"]];
     for (NSInteger i = 0; i < _commodityLabels.count; i ++) {
@@ -151,6 +150,7 @@
         }
         [self addSubview:commodityLabel];
     }
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

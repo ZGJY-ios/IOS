@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class GZGYClassModel;
+#import "GZGYsecondClassification.h"
 
 @interface GZGYRightCollectionViewCell : UICollectionViewCell
 
-@property(nonatomic,strong)GZGYClassModel*model;
+@property(nonatomic,strong)GZGYsecondClassification*model;
 
 @property(nonatomic,strong)UIImageView*ImgView;
 

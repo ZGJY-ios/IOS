@@ -96,8 +96,14 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 
 - (void)navTitleUI{
+    
+    //暂时隐藏
+    
+//    self.leftBtn.hidden = YES;
+    self.rightBtn.hidden = YES;
+    
     [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
-    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
+//    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
     self.titles.hidden = YES;
     
     NSString *navTitleStr = NSLocalizedString(@"GZG_GlobalPurchasingTitleStr", nil);
@@ -200,13 +206,38 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (indexPath.section == 3){
         return [GZGApplicationTool control_height:387.0f];
     }else if (indexPath.section == 4){
+        if (_maternalAndInfantArray.count<=3) {
+             return [GZGApplicationTool control_height:643.0f/2];
+        }
         return [GZGApplicationTool control_height:643.0f];
     }else if (indexPath.section == 5){
         return [GZGApplicationTool control_height:530.0f];
-    }else if (indexPath.section == 6 || indexPath.section == 7 ||indexPath.section == 8){
+    }else if (indexPath.section == 6){
+        if (_otherSkinCareArray.count<=3) {
+            return [GZGApplicationTool control_height:643.0f/2];
+        }
         return [GZGApplicationTool control_height:643.0f];
-//        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
+    }else if (indexPath.section == 7){
+        if (_healthArray.count<=3) {
+            return [GZGApplicationTool control_height:643.0f/2];
+        }
+        return [GZGApplicationTool control_height:643.0f];
+    }else if (indexPath.section == 8){
+        if (_thatOccupyTheHomeArray.count<=3) {
+            return [GZGApplicationTool control_height:643.0f/2];
+        }
+        return [GZGApplicationTool control_height:643.0f];
     }
+    
+//    else if (indexPath.section == 6 || indexPath.section == 7 ||indexPath.section == 8){
+//        return [GZGApplicationTool control_height:643.0f];
+////        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
+//    }
+    
+    
+    
+    
+    
     return 50;
 }
 
@@ -267,6 +298,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         NSLog(@"%@",_iconArray);
         [cell loadData:_iconArray];
         
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
@@ -284,7 +316,7 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
             cell = [[GZGYSpellTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:gZGSpellGroupCellstr];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor colorWithRed:250/255.0 green:239/255.0 blue:208/255.0 alpha:1.0];
+        cell.backgroundColor = [UIColor whiteColor];
         cell.model = self.spellModel[indexPath.row];
         cell.replenishBtn.tag = indexPath.row;
         [cell.replenishBtn addTarget:self action:@selector(SpellBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -326,17 +358,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
         if (!cell) {
             cell = [[GZGGPMaternalInfantCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:maternallnfantCellStr];
         }
-
-        
-        
         cell.delegate = self;
         [cell loadData:_otherSkinCareArray];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
-        
-        
         
         
 //        static NSString *countriesPavilionCellStr = @"countriesPavilionCellStr";
@@ -445,10 +470,6 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     NSLog(@"点%ld张",index);
 }
 - (void)classifiCationBtnIndex:(NSInteger)index{
- 
-    GZGCountriesPavilionViewController *vc = [[GZGCountriesPavilionViewController alloc] init];
-    
-    
     switch (index) {
         case HomeItem_type0: {
             
@@ -675,6 +696,11 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 #pragma mark --- CollectionView点击事件
 -(void)CollectionViewDelegeteClick:(NSArray *)sender
 {
+    
+    NSLog(@"%@",sender);
+    
+    
+    
     GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
     details.shopID = sender[0];
     details.shopName = sender[1];

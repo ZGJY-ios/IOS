@@ -11,10 +11,13 @@
 #import "GZGSegmentControl.h"
 #import "GZGDropDownMenu.h"
 #import "GZGSpecialPerformanceModel.h"
-
+#import "GZGYListModel.h"
+#import "GZGYDetailsViewController.h"
 
 @interface GZGSearchListController () <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,GZGDropDownMenuDelegate,GZGDropDownMenuDataSource,GZGSegmentControlDelegate,GZGSegmentControlDataSource>
-
+@property (nonatomic, strong) NSArray<GZGYListModel *> *model;
+@property (nonatomic, strong) NSMutableArray * shopIDArray;
+@property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) GZGSegmentControl * segmentControl;
 @property (nonatomic, strong) NSMutableArray * segmentData1;
 @property (nonatomic, strong) NSMutableArray * segmentData2;
@@ -33,17 +36,30 @@
 @property (nonatomic, assign) NSInteger currentData1SelectedIndex;
 @property (nonatomic, strong) UITextField * textField;
 @property (nonatomic, strong) NSMutableArray * commonditys;
-@property (nonatomic, strong) UITableView * tableView;
+//@property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) UIView * NilView;
 @end
 
 @implementation GZGSearchListController
-
+-(NSMutableArray *)shopIDArray
+{
+    if (_shopIDArray == nil) {
+        _shopIDArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _shopIDArray;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    self.navBarView.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+//    UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
+//    [self.leftBtn setImage:image forState:UIControlStateNormal];
     
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(self.leftBtn.frame.origin.x + self.leftBtn.frame.size.width + [GZGApplicationTool control_wide:30],
                                                                [GZGApplicationTool control_height:8] + [UIApplication sharedApplication].statusBarFrame.size.height,
@@ -59,6 +75,7 @@
     _textField.leftView = imageTextFiled;
     _textField.leftViewMode = UITextFieldViewModeAlways;
     _textField.backgroundColor = [GZGColorClass gzgBackClolor];
+    NSLog(@"%@",_string);
     _textField.text = _string;
     [self.view addSubview:_textField];
     
@@ -161,16 +178,27 @@
         cell = [[GZGSearchListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    
     GZGSpecialPerformanceModel * model = _commonditys[indexPath.row];
-    [cell setModel:model];
+    [cell setSModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [GZGApplicationTool control_height:274];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    GZGYListModel * listModel = [[GZGYListModel alloc]init];
+    listModel = self.model[indexPath.row];
+    details.shopID = self.shopIDArray[indexPath.row];
+    details.shopName = listModel.name;
+    NSString * urlString;
+    if (listModel.image.length == 0&&listModel.logo.length!=0) {
+        urlString = listModel.logo;
+    }else if (listModel.logo.length == 0&&listModel.image.length!=0){
+        urlString = listModel.image;
+    }
+    details.shopImg = urlString;
+    [self.navigationController pushViewController:details animated:YES];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     return NO;

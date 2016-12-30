@@ -7,6 +7,7 @@
 //  搜索列表 Cell
 
 #import <UIKit/UIKit.h>
+#import "GZGYListModel.h"
 #import "GZGSpecialPerformanceModel.h"
 @interface UIImage (Tint)
 
@@ -26,8 +27,8 @@
 @property (nonatomic, strong) UILabel * commodityPreferentialLabel; // 商品优惠
 @property (nonatomic, strong) NSMutableArray * commodityLabels; // 商品标签
 @property (nonatomic, strong) UILabel * commodityReferencePriceLabel; // 商品参考价
-@property (nonatomic, strong) GZGSpecialPerformanceModel *models;
+@property (nonatomic, strong) GZGYListModel *model;
+@property (nonatomic, strong) GZGSpecialPerformanceModel * sModel;
 
-- (void)setModel:(GZGSpecialPerformanceModel *)model;
 
 @end

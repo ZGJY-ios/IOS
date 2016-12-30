@@ -9,9 +9,10 @@
 #import "GZGYoneClassification.h"
 
 @implementation GZGYoneClassification
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"id"]) {
-        self.ID = value;
+        self.classID = value;
     }
 }
 @end
