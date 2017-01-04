@@ -18,6 +18,7 @@
 #import "GZGYEvaluationViewController.h"
 #import "GZGYTheOrderViewController.h"
 #import "GZGYLoginViewController.h"
+#import "GZGNewPassWordModifyViewController.h"
 @interface UIImage (PersonalCenter)
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
@@ -92,10 +93,10 @@
     NSArray * myInformationGroupImages = [NSArray arrayWithObjects:@"PersonalCenterForPayment",@"PersonalCenterForGoods",@"PersonalCenterToEvaluate",@"PersonalCenterHasCompleted", nil];
     NSArray * myInformationGroupTitles = [NSArray arrayWithObjects:@"待付款",@"待收货",@"待评价",@"已完成", nil];
     _myInformationGroupDic = [NSDictionary dictionaryWithObjectsAndKeys:myInformationGroupImages,@"image",myInformationGroupTitles,@"title", nil];
-//    NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterOrder",@"PersonalCenterAfterSales",@"PersonalCenterCollection",@"PersonalCenterCoupons",@"PersonalCenterAddress",@"PersonalCenterPassword",@"PersonalCenterEvaluation", nil];
-    NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterCollection",@"PersonalCenterAddress", nil];
-//    NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的订单",@"我的售后",@"我的收藏",@"我的优惠券",@"收货地址管理",@"密码管理",@"评价管理", nil];
-    NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的收藏",@"收货地址管理", nil];
+    NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterOrder",@"PersonalCenterAfterSales",@"PersonalCenterCollection",@"PersonalCenterCoupons",@"PersonalCenterAddress",@"PersonalCenterPassword",@"PersonalCenterEvaluation", nil];
+//    NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterCollection",@"PersonalCenterAddress", nil];
+    NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的订单",@"我的售后",@"我的收藏",@"我的优惠券",@"收货地址管理",@"密码管理",@"评价管理", nil];
+//    NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的收藏",@"收货地址管理", nil];
     NSDictionary * myInformationDict = [NSDictionary dictionaryWithObjectsAndKeys:myInformationImages,@"image",myInformationTitles,@"title", nil];
     
     NSArray * programFunctionImages = [NSArray arrayWithObjects:@"PersonalCenterHelp", nil];
@@ -103,8 +104,8 @@
     
     NSDictionary * programFunction = [NSDictionary dictionaryWithObjectsAndKeys:programFunctionImages,@"image",programFunctionTitles,@"title", nil];
     
-//    _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict,programFunction, nil];
-    _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict, nil];
+    _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict,programFunction, nil];
+//    _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict, nil];
     UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - self.navBarView.frame.origin.y - self.navBarView.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
     tableView.tableHeaderView = [self tableHeaderViewWithBackgroundImage:@"PersonalCenterBackgroundImage.jpg" headImage:@"PersonalHead" title:NSLocalizedString(@"中港会员123", nil)];
     tableView.dataSource = self;
@@ -217,84 +218,90 @@
         {
             
             
-            
-            switch (indexPath.row) {
-                case 0:
-                {
-                    GZGYCollectionViewController * collection= [[GZGYCollectionViewController alloc]init];
-                    collection.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:collection animated:YES];
-                    NSLog(@"我的收藏");
-
-                    break;
-                }
-                case 1:
-                {
-                    NSLog(@"收货地址管理");
-                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
-                    [addredssManger setHidesBottomBarWhenPushed:YES];
-                    [self.navigationController pushViewController:addredssManger animated:YES];
-
-                    break;
-                }
-                default:
-                    break;
-            }
-            
-            
-            
+//            
 //            switch (indexPath.row) {
-//                case 0: {
-//
-//                    NSLog(@"我的订单");
-//
-//                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
-//                    orders.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:orders animated:YES];
-//                }
-//                    break;
-//                case 1: {
-//                    GZGYAftersalesViewController * aftersales= [[GZGYAftersalesViewController alloc]init];
-//                    aftersales.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:aftersales animated:YES];
-//                }
-//                    break;
-//                case 2: {
+//                case 0:
+//                {
 //                    GZGYCollectionViewController * collection= [[GZGYCollectionViewController alloc]init];
 //                    collection.hidesBottomBarWhenPushed = YES;
 //                    [self.navigationController pushViewController:collection animated:YES];
 //                    NSLog(@"我的收藏");
-//                }
+//
 //                    break;
-//                case 3: {
-//                    NSLog(@"我的优惠券");
-//                    GZGCouponsViewController * couponsVC = [[GZGCouponsViewController alloc] init];
-//                    couponsVC.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:couponsVC animated:YES];
 //                }
-//                    break;
-//                case 4: {
+//                case 1:
+//                {
 //                    NSLog(@"收货地址管理");
 //                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
 //                    [addredssManger setHidesBottomBarWhenPushed:YES];
 //                    [self.navigationController pushViewController:addredssManger animated:YES];
-//                }
+//
 //                    break;
-//                case 5: {
-//                    NSLog(@"密码管理");
+//                }
+//                default:
+//                    break;
+//            }
+            
+            
+            
+            switch (indexPath.row) {
+                case 0: {
+
+                    NSLog(@"我的订单");
+
+                    GZGYOrderViewController * orders= [[GZGYOrderViewController alloc]init];
+                    orders.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:orders animated:YES];
+                }
+                    break;
+                case 1: {
+                    GZGYAftersalesViewController * aftersales= [[GZGYAftersalesViewController alloc]init];
+                    aftersales.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:aftersales animated:YES];
+                }
+                    break;
+                case 2: {
+                    GZGYCollectionViewController * collection= [[GZGYCollectionViewController alloc]init];
+                    collection.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:collection animated:YES];
+                    NSLog(@"我的收藏");
+                }
+                    break;
+                case 3: {
+                    NSLog(@"我的优惠券");
+                    GZGCouponsViewController * couponsVC = [[GZGCouponsViewController alloc] init];
+                    couponsVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:couponsVC animated:YES];
+                }
+                    break;
+                case 4: {
+                    NSLog(@"收货地址管理");
+                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+                    [addredssManger setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:addredssManger animated:YES];
+                }
+                    break;
+                case 5: {
+                    NSLog(@"密码管理");
 //                    GZGAuthenticateViewController * authenticateVC = [[GZGAuthenticateViewController alloc] init];
 //                    authenticateVC.hidesBottomBarWhenPushed = YES;
 //                    [self.navigationController pushViewController:authenticateVC animated:YES];
-//                }
-//                    break;
-//                case 6: {
-//                    GZGYEvaluationViewController * evaluation = [[GZGYEvaluationViewController alloc] init];
-//                    evaluation.hidesBottomBarWhenPushed = YES;
-//                    [self.navigationController pushViewController:evaluation animated:YES];
-//                    NSLog(@"评价管理");
-//                }
-//                    break;
-//            }
+                    
+                    GZGNewPassWordModifyViewController *newVC = [[GZGNewPassWordModifyViewController alloc] init];
+                    [newVC setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:newVC animated:YES];
+                    
+                    
+                }
+                    break;
+                case 6: {
+                    GZGYEvaluationViewController * evaluation = [[GZGYEvaluationViewController alloc] init];
+                    evaluation.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:evaluation animated:YES];
+                    NSLog(@"评价管理");
+                }
+                    break;
+            }
         }
             break;
             
@@ -315,15 +322,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return [GZGApplicationTool control_height:130];
-//    }
+    if (section == 0) {
+        return [GZGApplicationTool control_height:130];
+    }
     return [GZGApplicationTool control_height:30];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return [self firstGroupView];
-//    }
+    if (section == 0) {
+        return [self firstGroupView];
+    }
     return nil;
 }
 

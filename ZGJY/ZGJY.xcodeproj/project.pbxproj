@@ -117,6 +117,7 @@
 		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
 		04A2D0581DB9B51C003966DA /* index-Japan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0541DB9B51C003966DA /* index-Japan.jpg */; };
 		04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0551DB9B51C003966DA /* index-Korea.jpg */; };
+		04A437D51E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */; };
 		04A44BC61DC2F819007F87D5 /* GZGADDAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */; };
 		04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */; };
 		04A4A4B71DBF394500897F5A /* sy_myzq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A4A4B61DBF394500897F5A /* sy_myzq.jpg */; };
@@ -546,6 +547,9 @@
 		04A2D0531DB9B51C003966DA /* index-Europe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Europe.jpg"; sourceTree = "<group>"; };
 		04A2D0541DB9B51C003966DA /* index-Japan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Japan.jpg"; sourceTree = "<group>"; };
 		04A2D0551DB9B51C003966DA /* index-Korea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Korea.jpg"; sourceTree = "<group>"; };
+		04A437D31E14ABD400A244F5 /* GZGNewPassWordModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPassWordModifyViewController.h; sourceTree = "<group>"; };
+		04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPassWordModifyViewController.m; sourceTree = "<group>"; };
+		04A437D61E14B3EA00A244F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04A44BC41DC2F819007F87D5 /* GZGADDAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressViewController.h; sourceTree = "<group>"; };
 		04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewController.m; sourceTree = "<group>"; };
 		04A44BC71DC2F8E7007F87D5 /* GZGADDAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressCell.h; sourceTree = "<group>"; };
@@ -568,7 +572,6 @@
 		04D60F461D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		04D60F471D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		04D60F491D87D6A400A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		04D60F4B1D87D6BA00A42583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04E8D61D1D9917F200E0D85D /* GZGGlobalPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGGlobalPurchasingViewController.h; sourceTree = "<group>"; };
 		04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGGlobalPurchasingViewController.m; sourceTree = "<group>"; };
 		04FBA25F1D98C87000AD147A /* GZGClassifiCationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGClassifiCationViewController.h; sourceTree = "<group>"; };
@@ -1591,6 +1594,8 @@
 				E54312461DD4378D0007C12D /* GZGAuthenticateViewController.m */,
 				E5201B361DD450CE007EDFAB /* GZGChangePasswordViewController.h */,
 				E5201B371DD450CE007EDFAB /* GZGChangePasswordViewController.m */,
+				04A437D31E14ABD400A244F5 /* GZGNewPassWordModifyViewController.h */,
+				04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */,
 				53860F481DD962E80047A734 /* YYS */,
 			);
 			path = PersonalCenter;
@@ -2526,6 +2531,7 @@
 				E5201B411DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m in Sources */,
 				5393D4801E022C7C00CE2EC7 /* base64.m in Sources */,
 				E51566F21DE2CF3A00B3DF3E /* MJRefreshStateHeader.m in Sources */,
+				04A437D51E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m in Sources */,
 				E51566F01DE2CF3A00B3DF3E /* MJRefreshHeader.m in Sources */,
 				E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */,
 				538CD0EB1E0CEABA001348A4 /* GZGYShopListViewController.m in Sources */,
@@ -2743,7 +2749,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				04D60F491D87D6A400A42583 /* zh-Hans */,
-				04D60F4B1D87D6BA00A42583 /* en */,
+				04A437D61E14B3EA00A244F5 /* en */,
 			);
 			name = Localizable.strings;
 			path = ..;

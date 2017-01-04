@@ -465,4 +465,33 @@
     }];
 
 }
+#pragma mark  -- 检测当前密码
+
+- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSArray * listArray))result{
+    
+    NSString *url = @"member/appPassword/checkCurrentPassword";
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:passWord success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        
+                result(responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        NSLog(@"%@",failure);
+    }];
+}
+
+
+- (void)changePassWorldClassCurrentPassword:(NSDictionary *)currentPassword Finsh:(void (^)(NSArray * listArray))result{
+    [SVProgressHUD show];
+    NSString *url = @"member/appPassword/update";
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:currentPassword success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"列表%@",responseObject);
+//        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
 @end
