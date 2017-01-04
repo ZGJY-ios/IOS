@@ -23,7 +23,7 @@
     if (_nameLabel == nil) {
         _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:110], self.frame.size.width, [GZGApplicationTool control_height:30])];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.font = [UIFont systemFontOfSize:15];
+        _nameLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     }
     return _nameLabel;
 }

@@ -54,7 +54,7 @@
             UILabel *separateLabel = [[UILabel alloc] init];
             separateLabel.text = LabelArray[index];
             separateLabel.textAlignment = NSTextAlignmentRight;
-            separateLabel.font = [UIFont systemFontOfSize:15];
+            separateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
             [self addSubview:separateLabel];
             [self.separateLabelArrM addObject:separateLabel];
         }
@@ -153,7 +153,7 @@
     if (_remainLabel == nil) {
         _remainLabel = [[UILabel alloc] init];
         _remainLabel.textAlignment = NSTextAlignmentRight;
-        _remainLabel.font = [UIFont systemFontOfSize:15];
+        _remainLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         //        _dayLabel.backgroundColor = [UIColor grayColor];
     }
     return _remainLabel;
@@ -163,7 +163,7 @@
     if (_hourLabel == nil) {
         _hourLabel = [[UILabel alloc] init];
         _hourLabel.textAlignment = NSTextAlignmentRight;
-        _hourLabel.font = [UIFont systemFontOfSize:15];
+        _hourLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         _hourLabel.textColor = [UIColor redColor];
     }
     return _hourLabel;
@@ -173,7 +173,7 @@
     if (_minuesLabel == nil) {
         _minuesLabel = [[UILabel alloc] init];
         _minuesLabel.textAlignment = NSTextAlignmentRight;
-        _minuesLabel.font = [UIFont systemFontOfSize:15];
+        _minuesLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         _minuesLabel.textColor = [UIColor redColor];
     }
     return _minuesLabel;
@@ -183,7 +183,7 @@
     if (_secondsLabel == nil) {
         _secondsLabel = [[UILabel alloc] init];
         _secondsLabel.textAlignment = NSTextAlignmentRight;
-        _secondsLabel.font = [UIFont systemFontOfSize:15];
+        _secondsLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         _secondsLabel.textColor = [UIColor redColor];
     }
     return _secondsLabel;

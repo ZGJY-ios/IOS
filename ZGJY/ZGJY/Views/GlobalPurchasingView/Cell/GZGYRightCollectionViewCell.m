@@ -33,7 +33,7 @@
         _NameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:20], self.frame.size.width, [GZGApplicationTool control_height:30])];
 //        _NameLabel.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
         _NameLabel.textAlignment = NSTextAlignmentCenter;
-        _NameLabel.font = [UIFont systemFontOfSize:15];
+        _NameLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         _NameLabel.text = @"你猜";
     }
     return _NameLabel;

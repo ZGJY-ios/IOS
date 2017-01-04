@@ -28,17 +28,17 @@
             timeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:35])];
             if (i == 0) {
                 timeLabel.textColor = [UIColor colorWithRed:178/255.0 green:54/255.0 blue:51/255.0 alpha:1.0];
-                timeLabel.font = [UIFont systemFontOfSize:19];
+                timeLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:38]];
             }
             timeLabel.textAlignment = NSTextAlignmentCenter;
             timeLabel.text = NameArray[i];
             [self.timeArray addObject:timeLabel];
             [SegBtn addSubview:timeLabel];
             stateLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:25], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:30])];
-            stateLabel.font = [UIFont systemFontOfSize:14];
+            stateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
             if (i == 0) {
                 stateLabel.textColor = [UIColor colorWithRed:178/255.0 green:54/255.0 blue:51/255.0 alpha:1.0];
-                stateLabel.font = [UIFont systemFontOfSize:16];
+                stateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:32]];
             }
             stateLabel.textAlignment = NSTextAlignmentCenter;
             if (i == 0) {
@@ -59,14 +59,14 @@
         UILabel * stateL = self.stateArray[i];
         if (i == LimitBtn.tag) {
             time.textColor = [UIColor colorWithRed:178/255.0 green:54/255.0 blue:51/255.0 alpha:1.0];
-            time.font = [UIFont systemFontOfSize:19];
+            time.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:38]];
             stateL.textColor = [UIColor colorWithRed:178/255.0 green:54/255.0 blue:51/255.0 alpha:1.0];
-            stateL.font = [UIFont systemFontOfSize:16];
+            stateL.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:32]];
         }else{
             time.textColor = [UIColor blackColor];
-            time.font = [UIFont systemFontOfSize:15];
+            time.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
             stateL.textColor = [UIColor blackColor];
-            stateL.font = [UIFont systemFontOfSize:14];
+            stateL.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         }
     }
     [self.delegate LimitBtnDelegate:LimitBtn.tag];

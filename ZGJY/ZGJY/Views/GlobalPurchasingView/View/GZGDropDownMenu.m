@@ -107,7 +107,7 @@
         // Initialization code
         _cellTextLabel = [[UILabel alloc] init];
         _cellTextLabel.textAlignment = NSTextAlignmentCenter;
-        _cellTextLabel.font = [UIFont systemFontOfSize:20.0f];
+        _cellTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:40]];
         [self addSubview:_cellTextLabel];
     }
     return self;
@@ -834,7 +834,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.textColor = self.textNormalColor;
     titleLabel.tag = 1;
-    titleLabel.font = [UIFont systemFontOfSize:20.0];
+    titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:40]];
     
     [cell addSubview:titleLabel];
     

@@ -29,7 +29,7 @@
         _nameLabel.alpha = 0.5;
         _nameLabel.backgroundColor = [UIColor blackColor];
         _nameLabel.textColor = [UIColor whiteColor];
-        _nameLabel.font = [UIFont systemFontOfSize:10];
+        _nameLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:20]];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
         [_imgView addSubview:self.nameLabel];
     }
@@ -43,7 +43,7 @@
         _priceLabel.textAlignment = NSTextAlignmentLeft;
         _priceLabel.textColor = [UIColor redColor];
         _priceLabel.text = @"¥118";
-        _priceLabel.font = [UIFont systemFontOfSize:13];
+        _priceLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
     }
     return _priceLabel;
 }
@@ -53,7 +53,7 @@
         _originalLabel = [[GZGYStrikeThroughLabel alloc] initWithFrame:CGRectZero];
         _originalLabel.frame = CGRectMake([GZGApplicationTool control_wide:105],[GZGApplicationTool control_height:270], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:20]);
         _originalLabel.strikeThroughEnabled = YES;
-        _originalLabel.font = [UIFont systemFontOfSize:8];
+        _originalLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:16]];
         _originalLabel.text = @"¥150";
     }
     return _originalLabel;

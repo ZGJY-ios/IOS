@@ -46,7 +46,7 @@
 }
 
 -(UIFont*)textFont{
-    return _textFont?:[UIFont systemFontOfSize:16];
+    return _textFont?:[UIFont systemFontOfSize:[GZGApplicationTool control_height:32]];
 }
 
 

@@ -71,7 +71,7 @@
     if (_dateLabel == nil) {
         _dateLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:480], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
         _dateLabel.text = @"2016-9-08";
-        _dateLabel.font = [UIFont systemFontOfSize:14];
+        _dateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         _dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
     }
     return _dateLabel;
@@ -81,7 +81,7 @@
     if (_timeLabel == nil) {
         _timeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35], SCREENWIDTH-[GZGApplicationTool control_wide:650], [GZGApplicationTool control_height:35])];
         _timeLabel.text = @"12:35";
-        _timeLabel.font = [UIFont systemFontOfSize:14];
+        _timeLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         _timeLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
     }
     return _timeLabel;

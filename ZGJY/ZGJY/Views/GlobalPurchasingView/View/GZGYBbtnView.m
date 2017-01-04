@@ -43,7 +43,7 @@
         addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         addBtn.frame = CGRectMake([GZGApplicationTool control_wide:360], 0, SCREENWIDTH-[GZGApplicationTool control_wide:360], self.frame.size.height);
         [addBtn setTitle:@"加入进货单" forState:UIControlStateNormal];
-        addBtn.titleLabel.font = [UIFont systemFontOfSize:20];
+        addBtn.titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:40]];
         addBtn.backgroundColor = [UIColor colorWithRed:178/255.0 green:51/255.0 blue:54/255.0 alpha:1.0];
         [self addSubview:addBtn];
         

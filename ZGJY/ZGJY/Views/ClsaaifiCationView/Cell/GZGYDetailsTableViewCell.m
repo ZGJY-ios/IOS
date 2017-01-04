@@ -35,17 +35,17 @@
     _priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:30], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:40])];
     _priceLabel.text = @"¥2380";
     _priceLabel.textColor = [UIColor whiteColor];
-    _priceLabel.font = [UIFont systemFontOfSize:25];
+    _priceLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:50]];
     [_backView addSubview:_priceLabel];
     _marketPrice = [[GZGYStrikeThroughLabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:20], [GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:30])];
     _marketPrice.text = @"市场价¥3999";
     _marketPrice.textColor = [UIColor whiteColor];
-    _marketPrice.font = [UIFont systemFontOfSize:14];
+    _marketPrice.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     [_backView addSubview:_marketPrice];
     _soldLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:60], [GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:30])];
     _soldLabel.text = @"已售2345";
     _soldLabel.textColor = [UIColor whiteColor];
-    _soldLabel.font = [UIFont systemFontOfSize:14];
+    _soldLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     [_backView addSubview:_soldLabel];
     return _backView;
 }
@@ -64,7 +64,7 @@
 {
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:120], [GZGApplicationTool control_wide:710], [GZGApplicationTool control_height:80])];
     _nameLabel.text = @"啊实打实的发顺丰的暗室逢灯阿发发发发阿发阿发发水电费水电费是双方都是";
-    _nameLabel.font = [UIFont systemFontOfSize:15];
+    _nameLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     _nameLabel.numberOfLines = 0;
     return _nameLabel;
 }
@@ -79,7 +79,7 @@
     _inventoryLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:230], [GZGApplicationTool control_wide:210], [GZGApplicationTool control_height:30])];
     _inventoryLabel.text = @"库存 2345";
     _inventoryLabel.textColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
-    _inventoryLabel.font = [UIFont systemFontOfSize:14];
+    _inventoryLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     return _inventoryLabel;
 }
 -(UILabel *)monthLabel
@@ -88,7 +88,7 @@
     _monthLabel.text = @"月销量 1234";
     _monthLabel.textColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
     _monthLabel.textAlignment = NSTextAlignmentCenter;
-    _monthLabel.font = [UIFont systemFontOfSize:14];
+    _monthLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     return _monthLabel;
 }
 -(UILabel *)clickLabel
@@ -97,7 +97,7 @@
     _clickLabel.text = @"点击数 1234";
     _clickLabel.textColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
     _clickLabel.textAlignment = NSTextAlignmentRight;
-    _clickLabel.font = [UIFont systemFontOfSize:14];
+    _clickLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     return _clickLabel;
 }
 -(UILabel *)dividerLabel
@@ -110,14 +110,14 @@
 {
     _givingLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:290], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:30])];
     _givingLabel.text = @"赠积分";
-    _givingLabel.font = [UIFont systemFontOfSize:15];
+    _givingLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     return _givingLabel;
 }
 -(UILabel *)integralLabel
 {
     _integralLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:500], [GZGApplicationTool control_height:290], [GZGApplicationTool control_wide:230], [GZGApplicationTool control_height:30])];
     _integralLabel.text = @"1231积分";
-    _integralLabel.font = [UIFont systemFontOfSize:15];
+    _integralLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     _integralLabel.textAlignment = NSTextAlignmentRight;
     return _integralLabel;
 }

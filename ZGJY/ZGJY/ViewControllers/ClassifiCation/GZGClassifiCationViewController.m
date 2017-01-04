@@ -98,7 +98,7 @@
     [fieldView.layer setMasksToBounds:YES];
     [textview addSubview:fieldView];
     UITextField * textfiled = [[UITextField alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:60], 0, SCREENWIDTH-[GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:60])];
-    textfiled.font = [UIFont systemFontOfSize:14];
+    textfiled.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
     textfiled.placeholder = @"请输入品牌名称";
     textfiled.delegate = self;
     [fieldView addSubview:textfiled];
@@ -342,7 +342,7 @@
     [NilView addSubview:nilImage];
     UILabel * nilLbael = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:350], SCREENWIDTH/3*2, [GZGApplicationTool control_height:50])];
     nilLbael.text = @"此分类暂无商品";
-    nilLbael.font = [UIFont boldSystemFontOfSize:25];
+    nilLbael.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:50]];
     nilLbael.textAlignment = NSTextAlignmentCenter;
     [NilView addSubview:nilLbael];
     [self.CollectionView addSubview:NilView];

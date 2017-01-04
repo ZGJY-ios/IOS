@@ -70,7 +70,7 @@
     [btn setFrame:frame];
     [btn addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btn.titleLabel.font=[UIFont boldSystemFontOfSize:14];
+    btn.titleLabel.font=[UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:28]];
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.leftBarButtonItem = item;
     

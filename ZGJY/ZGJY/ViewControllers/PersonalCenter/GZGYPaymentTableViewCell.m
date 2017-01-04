@@ -22,7 +22,7 @@
         numberLabel.text = @"12323123123";
         [self addSubview:numberLabel];
         dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-[GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
-        dateLabel.font = [UIFont systemFontOfSize:13];
+        dateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
         dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
         dateLabel.text = @"2016-10-11";
         [self addSubview:dateLabel];
@@ -51,7 +51,7 @@
         stateLabel.text = @"未付款";
         [self addSubview:stateLabel];
         promptLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:290], [GZGApplicationTool control_height:225], [GZGApplicationTool control_wide:380], [GZGApplicationTool control_height:35])];
-        promptLabel.font = [UIFont systemFontOfSize:14];
+        promptLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         promptLabel.text = @"(订单将在60分钟内取消)";
         [self addSubview:promptLabel];
         dividerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:295], SCREENWIDTH, 1)];

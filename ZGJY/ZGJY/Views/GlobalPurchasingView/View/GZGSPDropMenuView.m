@@ -41,7 +41,7 @@
         self.customImageView = customImageView;
         
         UILabel *customTitleLabel = [[UILabel alloc] init];
-        customTitleLabel.font = [UIFont systemFontOfSize:15];
+        customTitleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         [self addSubview:customTitleLabel];
         self.customTitleLabel = customTitleLabel;
         

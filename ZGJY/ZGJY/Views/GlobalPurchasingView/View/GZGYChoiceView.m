@@ -37,7 +37,7 @@
         
         snLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:290], [GZGApplicationTool control_height:80], [GZGApplicationTool control_wide:400], [GZGApplicationTool control_height:30])];
         snLabel.text = @"编号: 234567";
-        snLabel.font = [UIFont systemFontOfSize:14];
+        snLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         [self addSubview:snLabel];
         
         lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:135], self.frame.size.width, 1)];
