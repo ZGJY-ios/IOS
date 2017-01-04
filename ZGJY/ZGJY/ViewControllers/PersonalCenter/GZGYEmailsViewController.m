@@ -18,6 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    
+    
     self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     emails = [[GZGYEmailsView alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:20], SCREENWIDTH, [GZGApplicationTool control_height:920])];
     emails.delegate = self;

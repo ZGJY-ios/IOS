@@ -118,6 +118,6 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)orderListDict:(NSDictionary *)dict Index:(NSInteger)index Finsh:(void (^)(NSArray * listArray))result;
 
 #pragma mark  -- 检测当前密码
-- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSArray * listArray))result;
+- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSDictionary * dic))result;
 - (void)changePassWorldClassCurrentPassword:(NSDictionary *)currentPassword Finsh:(void (^)(NSArray * listArray))result;
 @end

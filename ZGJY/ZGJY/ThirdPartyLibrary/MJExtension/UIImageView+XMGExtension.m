@@ -18,7 +18,7 @@
 
 - (void)setCircleHeader:(NSString *)url
 {
-    UIImage *placeholder = [UIImage circleImage:@"add"];
+    UIImage *placeholder = [UIImage circleImage:@"GZG_Placeholder_Square_IMG"];
     [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (image == nil) return;
         
@@ -28,7 +28,7 @@
 
 - (void)setRectHeader:(NSString *)url
 {
-    UIImage *placeholder = [UIImage imageNamed:@"add"];
+    UIImage *placeholder = [UIImage imageNamed:@"GZG_Placeholder_Square_IMG"];
     [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholder];
 }
 @end

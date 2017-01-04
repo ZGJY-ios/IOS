@@ -11,7 +11,7 @@
 @protocol GZGGPMaternalInfantCellDelegate <NSObject>
 
 - (void)maternalBtnIndex:(NSInteger)index;
-
+- (void)collectionIndex:(NSDictionary *)arr;
 @end
 
 typedef NS_ENUM(NSUInteger,GZGGPMaternalInfantCellIndex) {

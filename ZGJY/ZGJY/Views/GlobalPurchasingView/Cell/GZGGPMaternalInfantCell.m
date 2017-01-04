@@ -113,13 +113,17 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GZGNewPavilonCellCollecationCelll *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CountriesHeadFaceCollectionCell forIndexPath:indexPath];
     
-    
-//    NSLog(@"%@",[_dataArray[indexPath.row] objectForKey:@"price"]);
-//    NSLog(@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]);
-    cell.cellMark_Prict.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"market_price"]]];
-    cell.cellPrict.text = [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"price"]];
-    cell.cellName.text =  [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]];
-    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:[_dataArray[indexPath.row] objectForKey:@"image"]] placeholderImage:nil];
+    if (_dataArray.count==0) {
+        cell.cellMark_Prict.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"%@",@"0.0"]];
+        cell.cellPrict.text = [NSString stringWithFormat:@"%@",@"0.0"];
+        //                cell.cellName.text =  [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]];
+        [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"GZG_Placeholder_Square_IMG"]];
+    }else{
+        cell.cellMark_Prict.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"market_price"]]];
+        cell.cellPrict.text = [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"price"]];
+        cell.cellName.text =  [NSString stringWithFormat:@"%@",[_dataArray[indexPath.row] objectForKey:@"name"]];
+        [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:[_dataArray[indexPath.row] objectForKey:@"image"]] placeholderImage:[UIImage imageNamed:@"GZG_Placeholder_Square_IMG"]];
+    }
 
     
 
@@ -140,6 +144,13 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    [self.delegate collectionIndex:_dataArray[indexPath.row]];
+    
+    
+}
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     UIEdgeInsets set = UIEdgeInsetsMake([GZGApplicationTool control_height:24],[GZGApplicationTool control_wide:24],0,[GZGApplicationTool control_height:24]);
     return set;

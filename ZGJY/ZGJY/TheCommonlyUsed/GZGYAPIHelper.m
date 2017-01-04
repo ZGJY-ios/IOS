@@ -511,7 +511,7 @@
 }
 #pragma mark  -- 检测当前密码
 
-- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSArray * listArray))result{
+- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSDictionary * dic))result{
     
     NSString *url = @"member/appPassword/checkCurrentPassword";
     

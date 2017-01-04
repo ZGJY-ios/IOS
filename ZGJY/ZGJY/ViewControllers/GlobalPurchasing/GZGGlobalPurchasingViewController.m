@@ -206,37 +206,46 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     }else if (indexPath.section == 3){
         return [GZGApplicationTool control_height:387.0f];
     }else if (indexPath.section == 4){
-        if (_maternalAndInfantArray.count<=3) {
-             return [GZGApplicationTool control_height:643.0f/2];
+        if (_maternalAndInfantArray.count == 0) {
+            return [GZGApplicationTool control_height:643.0f];
+        }else{
+            if (_maternalAndInfantArray.count<=3) {
+                return [GZGApplicationTool control_height:643.0f/2];
+            }
+            return [GZGApplicationTool control_height:643.0f];
         }
-        return [GZGApplicationTool control_height:643.0f];
     }else if (indexPath.section == 5){
         return [GZGApplicationTool control_height:530.0f];
     }else if (indexPath.section == 6){
-        if (_otherSkinCareArray.count<=3) {
-            return [GZGApplicationTool control_height:643.0f/2];
+        if (_otherSkinCareArray.count == 0) {
+            return [GZGApplicationTool control_height:643.0f];
+        }else{
+            if (_otherSkinCareArray.count<=3) {
+                return [GZGApplicationTool control_height:643.0f/2];
+            }
+            return [GZGApplicationTool control_height:643.0f];
         }
-        return [GZGApplicationTool control_height:643.0f];
     }else if (indexPath.section == 7){
-        if (_healthArray.count<=3) {
-            return [GZGApplicationTool control_height:643.0f/2];
+        if (_healthArray.count == 0) {
+            return [GZGApplicationTool control_height:643.0f];
+        }else{
+            if (_healthArray.count<=3) {
+                return [GZGApplicationTool control_height:643.0f/2];
+            }
+            return [GZGApplicationTool control_height:643.0f];
         }
-        return [GZGApplicationTool control_height:643.0f];
+        
     }else if (indexPath.section == 8){
-        if (_thatOccupyTheHomeArray.count<=3) {
-            return [GZGApplicationTool control_height:643.0f/2];
+        
+        if (_thatOccupyTheHomeArray.count == 0) {
+            return [GZGApplicationTool control_height:643.0f];
+        }else{
+            if (_thatOccupyTheHomeArray.count<=3) {
+                return [GZGApplicationTool control_height:643.0f/2];
+            }
+            return [GZGApplicationTool control_height:643.0f];
         }
-        return [GZGApplicationTool control_height:643.0f];
     }
-    
-//    else if (indexPath.section == 6 || indexPath.section == 7 ||indexPath.section == 8){
-//        return [GZGApplicationTool control_height:643.0f];
-////        return [GZGApplicationTool control_height:393.0f] + [GZGApplicationTool control_height:382] + [GZGApplicationTool control_height:20];
-//    }
-    
-    
-    
-    
     
     return 50;
 }
@@ -435,13 +444,23 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 }
 #pragma mark 各个Cell的HeadView
 - (UIView *)tableViewHeadView{
+    NSMutableArray *arrUrl = [NSMutableArray array];
+    for (NSInteger i=0; i<4; i++) {
+        [arrUrl addObject:@"GZG_Placeholder_Rectangle_IMG"];
+    }
+    
     UIView *scrToFigureView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
     
     YDImageRoll *ydimage = [[YDImageRoll alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:300])];
-    ydimage.imageUrlArray = _bannerArray;
+    
+    if (_bannerArray.count==0) {
+        ydimage.imageUrlArray = arrUrl;
+    }else{
+        ydimage.imageUrlArray = _bannerArray;
+    }
     ydimage.time = 3;
     ydimage.delegate = self;
-    ydimage.defaultImage = @"33333";
+    ydimage.defaultImage = @"GZG_Placeholder_Rectangle_IMG";
     ydimage.pageCurrentColor = [GZGColorClass gzgNavBarBackColor];
     ydimage.pageTintColor = [UIColor whiteColor];
     [scrToFigureView addSubview:ydimage];
@@ -635,6 +654,23 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
 //            break;
 //    }
     
+}
+
+
+
+- (void)collectionIndex:(NSDictionary *)arr{
+    
+    
+    NSLog(@"%@",arr);
+    
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = [arr objectForKey:@"id"];
+    details.shopName = [arr objectForKey:@"name"];
+    details.shopImg = [arr objectForKey:@"image"];
+    details.productCategoryId = @"0";
+    details.gDetails = GoodsDetailsMaternalAndInfant;
+    details.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:details animated:YES];
 }
 - (void)gpGpobalSelectCellIndex:(NSInteger)index{
     if (index == 0) {

@@ -45,3 +45,4 @@
 "GZGNewPassWordModify_CurrentPassword" = "当前密码";
 "GZGNewPassWordModify_NewPassword" = "新密码";
 "GZGNewPassWordModify_ConfirmPassWord" = "确认密码";
+"GZGNewPassWordModify_passWrodLenther" = "密码长度不得少于6位";

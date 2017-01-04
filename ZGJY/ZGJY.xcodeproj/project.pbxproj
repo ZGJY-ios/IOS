@@ -84,6 +84,7 @@
 		046B147C1E0D314F008527E4 /* gzgqdt.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14781E0D314F008527E4 /* gzgqdt.png */; };
 		046B147D1E0D314F008527E4 /* gzgqdt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14791E0D314F008527E4 /* gzgqdt@2x.png */; };
 		046B147E1E0D314F008527E4 /* gzgqdt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B147A1E0D314F008527E4 /* gzgqdt@3x.png */; };
+		046BDAF11E1CE07D00DDFBC6 /* GZGNewPavilion.m in Sources */ = {isa = PBXBuildFile; fileRef = 046BDAF01E1CE07D00DDFBC6 /* GZGNewPavilion.m */; };
 		047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467BF1DAB859B009E4EAA /* nav_adly.jpg */; };
 		047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C01DAB859B009E4EAA /* nav_hgg.jpg */; };
 		047467CD1DAB859B009E4EAA /* nav_hlpt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C11DAB859B009E4EAA /* nav_hlpt.jpg */; };
@@ -145,7 +146,6 @@
 		532B000F1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B000E1DBDE3E5002D2E61 /* GZGYOrderTableViewCell.m */; };
 		532B00121DBDEBE0002D2E61 /* GZGYOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00111DBDEBE0002D2E61 /* GZGYOrderViewController.m */; };
 		532B00181DBE0088002D2E61 /* GZGYPaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */; };
-		5330873A1E094DCA0073AF61 /* GZGNewPavilion.m in Sources */ = {isa = PBXBuildFile; fileRef = 533087391E094DCA0073AF61 /* GZGNewPavilion.m */; };
 		53384CB71E0A571B007B9B42 /* hxiocn_2x111.png in Resources */ = {isa = PBXBuildFile; fileRef = 53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */; };
 		53384CBA1E0A5DC2007B9B42 /* GZGYBrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */; };
 		53384CBD1E0A7221007B9B42 /* GZGYListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53384CBC1E0A7221007B9B42 /* GZGYListModel.m */; };
@@ -500,6 +500,8 @@
 		046B14781E0D314F008527E4 /* gzgqdt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gzgqdt.png; sourceTree = "<group>"; };
 		046B14791E0D314F008527E4 /* gzgqdt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@2x.png"; sourceTree = "<group>"; };
 		046B147A1E0D314F008527E4 /* gzgqdt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@3x.png"; sourceTree = "<group>"; };
+		046BDAEF1E1CE07D00DDFBC6 /* GZGNewPavilion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilion.h; sourceTree = "<group>"; };
+		046BDAF01E1CE07D00DDFBC6 /* GZGNewPavilion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilion.m; sourceTree = "<group>"; };
 		047467BF1DAB859B009E4EAA /* nav_adly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_adly.jpg; sourceTree = "<group>"; };
 		047467C01DAB859B009E4EAA /* nav_hgg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hgg.jpg; sourceTree = "<group>"; };
 		047467C11DAB859B009E4EAA /* nav_hlpt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hlpt.jpg; sourceTree = "<group>"; };
@@ -600,8 +602,6 @@
 		532B00111DBDEBE0002D2E61 /* GZGYOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYOrderViewController.m; sourceTree = "<group>"; };
 		532B00161DBE0088002D2E61 /* GZGYPaymentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZGYPaymentTableViewCell.h; path = ZGJY/ViewControllers/PersonalCenter/GZGYPaymentTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		532B00171DBE0088002D2E61 /* GZGYPaymentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZGYPaymentTableViewCell.m; path = ZGJY/ViewControllers/PersonalCenter/GZGYPaymentTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		533087381E094DCA0073AF61 /* GZGNewPavilion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPavilion.h; sourceTree = "<group>"; };
-		533087391E094DCA0073AF61 /* GZGNewPavilion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPavilion.m; sourceTree = "<group>"; };
 		53384CB61E0A571B007B9B42 /* hxiocn_2x111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hxiocn_2x111.png; sourceTree = "<group>"; };
 		53384CB81E0A5DC2007B9B42 /* GZGYBrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYBrandModel.h; sourceTree = "<group>"; };
 		53384CB91E0A5DC2007B9B42 /* GZGYBrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYBrandModel.m; sourceTree = "<group>"; };
@@ -1566,6 +1566,8 @@
 				53860F6A1DD964D20047A734 /* GZGYSpellgroupViewController.m */,
 				E5A982F51DFFE6680081B8CD /* GZGTempMaternalInfantController.h */,
 				E5A982F61DFFE6680081B8CD /* GZGTempMaternalInfantController.m */,
+				046BDAEF1E1CE07D00DDFBC6 /* GZGNewPavilion.h */,
+				046BDAF01E1CE07D00DDFBC6 /* GZGNewPavilion.m */,
 			);
 			path = GlobalPurchasing;
 			sourceTree = "<group>";
@@ -1650,8 +1652,6 @@
 				04128D2F1DEBBCD10028BD25 /* GZGLogText.h */,
 				538047631DDAE3C300C75869 /* GZGYAPIHelper.h */,
 				538047641DDAE3C300C75869 /* GZGYAPIHelper.m */,
-				533087381E094DCA0073AF61 /* GZGNewPavilion.h */,
-				533087391E094DCA0073AF61 /* GZGNewPavilion.m */,
 				046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */,
 				046B14781E0D314F008527E4 /* gzgqdt.png */,
 				046B14791E0D314F008527E4 /* gzgqdt@2x.png */,
@@ -2700,6 +2700,7 @@
 				044DA3FE1D5C60B200DD06EC /* AFImageDownloader.m in Sources */,
 				044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */,
 				E5941BB21DDBF9A70069B757 /* JSONModelClassProperty.m in Sources */,
+				046BDAF11E1CE07D00DDFBC6 /* GZGNewPavilion.m in Sources */,
 				E51566DA1DE2CF3A00B3DF3E /* MJPropertyKey.m in Sources */,
 				044DA3AD1D5C466300DD06EC /* AFNetworkReachabilityManager.m in Sources */,
 				5372CA5E1DB71439009C6CA1 /* GZGYSalaCollectionViewCell.m in Sources */,
@@ -2713,7 +2714,6 @@
 				E56AA69A1DC2F8FD006AC1A9 /* GZGOrderPayViewController.m in Sources */,
 				044DA4041D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m in Sources */,
 				5340A2371DBE059F00AF2FEA /* GZGYSingleTableViewCell.m in Sources */,
-				5330873A1E094DCA0073AF61 /* GZGNewPavilion.m in Sources */,
 				E5AD87591DD55D5000EDB8B3 /* GZGADDAddressViewCell.m in Sources */,
 				E576614E1DB74C7C0078D96F /* GZGSearchListCell.m in Sources */,
 			);

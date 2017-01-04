@@ -10,7 +10,7 @@
 #import "GZGNewPavilionCell.h"
 #import "GZGCountriesHeadFaceCell.h"
 #import "GZGCountriesHeadFaceCollectionCell.h"
-
+#import "GZGYDetailsViewController.h"
 static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollectionCell";
 @interface GZGNewPavilion ()<UICollectionViewDelegate,UICollectionViewDataSource,GZGCountriesHeadFaceCellDelegate>
 @property(nonatomic ,strong)UITableView *mainTableView;
@@ -37,14 +37,14 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 }
 #pragma mark 方法
 - (void)buildUI{
-//    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
-//    _mainTableView.delegate = self;
-//    _mainTableView.dataSource = self;
-//    _mainTableView.backgroundColor = [UIColor redColor];
-//    _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    _mainTableView.showsVerticalScrollIndicator = NO;
-//    _mainTableView.showsHorizontalScrollIndicator = NO;
-//    [self.view addSubview:_mainTableView];
+    //    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [GZGApplicationTool navBarAndStatusBarSize], [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
+    //    _mainTableView.delegate = self;
+    //    _mainTableView.dataSource = self;
+    //    _mainTableView.backgroundColor = [UIColor redColor];
+    //    _mainTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //    _mainTableView.showsVerticalScrollIndicator = NO;
+    //    _mainTableView.showsHorizontalScrollIndicator = NO;
+    //    [self.view addSubview:_mainTableView];
     
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -89,19 +89,10 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GZGCountriesHeadFaceCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CountriesHeadFaceCollectionCell forIndexPath:indexPath];
-    
-    
-    
-    //    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:self.cellHeadImageUrl] placeholderImage:self.cellPlaceholderHeadImage];
-    //    cell.cellCountriesTitle.text = self.dataArr[indexPath.row][0];
-    //    cell.cellTitleName.text = self.dataArr[indexPath.row][1];
-    //    cell.cellTitleQuality.text = self.dataArr[indexPath.row][2];
-    //    cell.cellPriceLab.text = self.dataArr[indexPath.row][3];
-    //    [self priceLab:cell.cellPriceLab rang:NSMakeRange(0, 1) font:[UIFont systemFontOfSize:[GZGApplicationTool control_wide:16]]];
     [cell.cellShonpingBtn setImage:[UIImage imageNamed:@"QQG_ADD_GWC"] forState:UIControlStateNormal];
     
     GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
-    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
+    [cell.cellHeadImage sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"GZG_Placeholder_Square_IMG"]];
     cell.cellCountriesTitle.text = model.name;
     cell.cellTitleName.text = model.name;
     cell.cellTitleQuality.text = model.name;
@@ -113,8 +104,15 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
+    GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = model.ID;
+    details.shopName = model.name;
+    details.shopImg = model.image;
+    details.productCategoryId = @"0";
+    details.gDetails = GoodsDetailsMaternalAndInfant;
+    details.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:details animated:YES];
     
     
 }
@@ -137,13 +135,13 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

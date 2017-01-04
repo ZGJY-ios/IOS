@@ -29,8 +29,8 @@
     self.titles.text = self.countriesTitle;
     
     
-    UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
-    [self.leftBtn setImage:image forState:UIControlStateNormal];
+//    UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
+//    [self.leftBtn setImage:image forState:UIControlStateNormal];
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
     _mainTableView.delegate = self;
