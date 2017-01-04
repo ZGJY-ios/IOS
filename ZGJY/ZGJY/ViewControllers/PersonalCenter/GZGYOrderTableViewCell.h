@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GZGYOrderModel.h"
 @interface GZGYOrderTableViewCell : UITableViewCell
 @property(nonatomic, strong)UILabel * orderLabel;//订单号
 @property(nonatomic, strong)UILabel * numberLabel;//订单号
@@ -22,4 +22,5 @@
 @property(nonatomic, strong)UIButton * deleteBtn;//删除订单
 @property(nonatomic, strong)UIButton * additionalBtn;//追加评价
 @property(nonatomic, strong)UIButton * againBtn;//再次购买
+@property(nonatomic, strong)GZGYOrderModel * model;
 @end

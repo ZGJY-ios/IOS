@@ -135,6 +135,19 @@
     [_againBtn.layer setMasksToBounds:YES];
     return _againBtn;
 }
+-(void)setModel:(GZGYOrderModel *)model
+{
+    _model = model;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * urlString = [model.thumbnail stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        
+        [_orderImg setHeader:urlString];
+    });
+    _numberLabel.text = [NSString stringWithFormat:@"%@",_model.sn];
+    _dateLabel.text = [NSString stringWithFormat:@"%@",_model.creation_date];
+    _nameLabel.text = [NSString stringWithFormat:@"%@",_model.name];
+    _priceLabel.text = [NSString stringWithFormat:@"%@",_model.price];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

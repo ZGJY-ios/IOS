@@ -18,16 +18,21 @@
 #import "APAuthV2Info.h"
 #import "DataSigner.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "GZGYOrderModel.h"
 @interface GZGYOrderViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,OrdersDelegeteClickProtocol>
+{
+    NSInteger number;
+}
 @property(nonatomic, strong)NSMutableArray * tableArray;
 @property(nonatomic, strong)NSArray * nameArray;
 @property(nonatomic, strong)GZGYOrders * ordersView;
 @property(nonatomic, strong)UIScrollView * scrollView;
 @property(nonatomic, strong)UITableView * reloadTableView;
+@property(nonatomic, strong)NSArray<GZGYOrderModel *> * model;
 @end
 
 @implementation GZGYOrderViewController
--(NSMutableArray*)TableArray
+-(NSMutableArray*)tableArray
 {
     if (_tableArray == nil) {
         _tableArray = [NSMutableArray arrayWithCapacity:1];
@@ -38,13 +43,14 @@
     [super viewDidLoad];
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.titles.text = @"我的订单";
-    
+    number = 0;
     self.view.backgroundColor = [UIColor whiteColor];
     self.nameArray = @[@"全部",@"待付款",@"待发货",@"待收货",@"待评价"];
     //scrollview
     [self ScrollInterface];
     //ordersView
     [self OrdersInterface];
+    [self orderData];
     // Do any additional setup after loading the view.
 }
 #pragma mark --- ScrollInterface
@@ -64,21 +70,41 @@
     self.ordersView.delegate = self;
     [self.view addSubview:self.ordersView];
     [self addTableViewToScrollView:self.scrollView count:self.nameArray.count frame:CGRectZero];
-
 }
 - (void)addTableViewToScrollView:(UIScrollView *)scrollView count:(NSUInteger)pageCount frame:(CGRect)frame {
     for (int i = 0; i < pageCount; i++) {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, SCREENHEIGHT - self.ordersView.frame.size.height - 64)];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.tag = i;
-        [self.tableArray addObject:tableView];
-        [self.scrollView addSubview:tableView];
+        UITableView * YtableView = [[UITableView alloc]initWithFrame:CGRectMake(SCREENWIDTH * i, 0 , SCREENWIDTH, SCREENHEIGHT - self.ordersView.frame.size.height - 64)];
+        YtableView.delegate = self;
+        YtableView.dataSource = self;
+        YtableView.tag = i;
+        [self.tableArray addObject:YtableView];
+        [self.scrollView addSubview:YtableView];
     }
+}
+-(void)orderData
+{
+    NSDictionary * dict;
+    if (number == 0) {
+        dict = nil;
+    }else if (number == 1){
+        dict = @{@"orderStatus":@"0"};
+    }else if (number == 2){
+        dict = @{@"shippingStatus":@"0"};
+    }else if (number == 3){
+        dict = @{@"shippingStatus":@"2"};
+    }else{
+        dict = nil;
+    }
+    [[GZGYAPIHelper shareAPIHelper]orderListDict:dict Index:number Finsh:^(NSArray *listArray) {
+        self.model = [GZGYOrderModel mj_objectArrayWithKeyValuesArray:listArray];
+        self.reloadTableView = self.tableArray[number];
+        NSLog(@"%@",self.tableArray);
+        [self.reloadTableView reloadData];
+    }];
 }
 #pragma mark - UITableViewDataSource和UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return self.model.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -98,12 +124,14 @@
         if (cell==nil) {
             cell = [[GZGYOrderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
+        cell.model = self.model[indexPath.section];
         return cell;
     }else if (tableView.tag == 1){
         GZGYPaymentTableViewCell* cell = (GZGYPaymentTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell==nil) {
             cell = [[GZGYPaymentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
+        cell.model = self.model[indexPath.section];
         cell.paymentBtn.tag = indexPath.section;
         [cell.paymentBtn addTarget:self action:@selector(Payment:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
@@ -112,12 +140,14 @@
         if (cell==nil) {
             cell = [[GZGYDeliveryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
+        cell.model = self.model[indexPath.section];
         return cell;
     }else if (tableView.tag == 3){
         GZGYDorgoodsTableViewCell* cell = (GZGYDorgoodsTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
         if (cell==nil) {
             cell = [[GZGYDorgoodsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
+        cell.model = self.model[indexPath.section];
         return cell;
     }else{
         GZGYSingleTableViewCell* cell = (GZGYSingleTableViewCell*) [tableView dequeueReusableCellWithIdentifier:ID];
@@ -162,12 +192,12 @@
     }
 }
 - (void)refreshTableView:(int)index {
+    number = index;
     self.reloadTableView = _tableArray[index];
-    NSLog(@"%@,%@",_tableArray,_tableArray[index]);
     CGRect frame = self.reloadTableView.frame;
     frame.origin.x = SCREENWIDTH * index;
     [self.reloadTableView setFrame:frame];
-    [self.reloadTableView reloadData];
+    [self orderData];
 }
 -(void)OrdersBtnDelegate:(NSInteger)sender
 {

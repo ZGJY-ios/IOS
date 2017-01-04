@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GZGYOrderModel.h"
 @interface GZGYPaymentTableViewCell : UITableViewCell
 @property(nonatomic, strong)UILabel * orderLabel;//订单号
 @property(nonatomic, strong)UILabel * numberLabel;//订单号
@@ -22,4 +22,5 @@
 @property(nonatomic, strong)UILabel * dividerLabel;//分割线
 @property(nonatomic, strong)UIButton * cancleBtn;//取消订单
 @property(nonatomic, strong)UIButton * paymentBtn;//去付款
+@property(nonatomic, strong)GZGYOrderModel * model;
 @end

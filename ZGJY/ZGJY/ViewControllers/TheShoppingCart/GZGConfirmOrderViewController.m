@@ -261,14 +261,12 @@
     cell.commodityTotalPriceNumber.text = [NSString stringWithFormat:@"￥%.2f",self.totalPrice];
     cell.freightNumber.text = [NSString stringWithFormat:@"%.2f",model.freight];
     cell.totalPriceNumber.text = [NSString stringWithFormat:@"￥%.2f",self.totalPrice + model.freight];
-    
     [cell setSubmitOrderBlock:^(NSString * amount) {
-//        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
-        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
+    [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
+       // [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
     }];
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         

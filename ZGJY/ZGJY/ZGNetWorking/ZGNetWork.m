@@ -182,7 +182,7 @@ static NSInteger const _timeDelay                   = 30;
     
     NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
 //    NSString *gzgUrl = [NSString stringWithFormat:@"http://192.168.0.110:8080/%@",url];
-
+    
     AFHTTPSessionManager *manger = [self setRequestManger];
     [manger POST:gzgUrl parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

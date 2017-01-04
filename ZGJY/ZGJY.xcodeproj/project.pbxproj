@@ -176,6 +176,7 @@
 		538047721DDAEE0B00C75869 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476C1DDAEE0B00C75869 /* SVProgressHUD.m */; };
 		538047731DDAEE0B00C75869 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5380476D1DDAEE0B00C75869 /* SVProgressHUD.bundle */; };
 		538047751DDAEE0B00C75869 /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5380476F1DDAEE0B00C75869 /* SVProgressHUD-dummy.m */; };
+		538492F61E13954F00B6DF31 /* GZGYOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 538492F51E13954F00B6DF31 /* GZGYOrderModel.m */; };
 		53860F511DD962F90047A734 /* GZGYCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F4A1DD962F90047A734 /* GZGYCollectionViewController.m */; };
 		53860F521DD962F90047A734 /* GZGYEvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F4C1DD962F90047A734 /* GZGYEvaluationViewController.m */; };
 		53860F531DD962F90047A734 /* GZGYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53860F4E1DD962F90047A734 /* GZGYLoginViewController.m */; };
@@ -654,6 +655,8 @@
 		5380476E1DDAEE0B00C75869 /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
 		5380476F1DDAEE0B00C75869 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
 		538047701DDAEE0B00C75869 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		538492F41E13954F00B6DF31 /* GZGYOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYOrderModel.h; sourceTree = "<group>"; };
+		538492F51E13954F00B6DF31 /* GZGYOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYOrderModel.m; sourceTree = "<group>"; };
 		53860F491DD962F90047A734 /* GZGYCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYCollectionViewController.h; sourceTree = "<group>"; };
 		53860F4A1DD962F90047A734 /* GZGYCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGYCollectionViewController.m; sourceTree = "<group>"; };
 		53860F4B1DD962F90047A734 /* GZGYEvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGYEvaluationViewController.h; sourceTree = "<group>"; };
@@ -2214,6 +2217,8 @@
 			children = (
 				E5A9834F1DF5601E004D269B /* GZGAddressModel.h */,
 				E5A983501DF5601E004D269B /* GZGAddressModel.m */,
+				538492F41E13954F00B6DF31 /* GZGYOrderModel.h */,
+				538492F51E13954F00B6DF31 /* GZGYOrderModel.m */,
 			);
 			path = PersonalCenter;
 			sourceTree = "<group>";
@@ -2632,6 +2637,7 @@
 				E56C40EC1DC1AC5C00AF74A0 /* GZGConfirmOrderCell.m in Sources */,
 				048F710E1D9BA44F00338BA6 /* GZGGPGlobalSelectCell.m in Sources */,
 				E51567011DE2D02100B3DF3E /* GZGYPhotoViewController.m in Sources */,
+				538492F61E13954F00B6DF31 /* GZGYOrderModel.m in Sources */,
 				538047681DDAE7C600C75869 /* GZGYClassModel.m in Sources */,
 				E55EE5301DB63F29003F12C4 /* GZGSearchListController.m in Sources */,
 				044DA3E31D5C467100DD06EC /* UIView+WebCacheOperation.m in Sources */,

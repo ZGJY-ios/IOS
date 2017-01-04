@@ -465,4 +465,20 @@
     }];
 
 }
+#pragma mark --- 全部订单
+- (void)orderListDict:(NSDictionary *)dict Index:(NSInteger)index Finsh:(void (^)(NSArray * listArray))result
+{
+    [SVProgressHUD show];
+    NSString * url = [NSString stringWithFormat:@"%@%@",OrderTopic,@"findOrderStatus"];
+    NSLog(@"%@",url);
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"全部订单%@",responseObject);
+        NSArray * limitArray = responseObject[@"list"];
+        result(limitArray);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
 @end

@@ -66,7 +66,19 @@
     }
     return self;
 }
-
+-(void)setModel:(GZGYOrderModel *)model
+{
+    _model = model;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * urlString = [model.thumbnail stringByReplacingOccurrencesOfString:@"localhost" withString:@"192.168.0.110"];
+        
+        [orderImg setHeader:urlString];
+    });
+    numberLabel.text = [NSString stringWithFormat:@"%@",_model.sn];
+    dateLabel.text = [NSString stringWithFormat:@"%@",_model.creation_date];
+    nameLabel.text = [NSString stringWithFormat:@"%@",_model.name];
+    priceLabel.text = [NSString stringWithFormat:@"%@",_model.price];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

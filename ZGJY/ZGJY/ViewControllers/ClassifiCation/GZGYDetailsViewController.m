@@ -427,6 +427,8 @@
         } else {
             _bottomMsgLabel.text = @"下拉返回商品详情";
         }
+    }else if (scrollView == self.etableView){
+        
     }else
     {
         NSLog(@"%f",scrollView.contentOffset.x);
@@ -476,7 +478,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     //减速停止了时执行，手触摸时执行执行
-    if ([scrollView isKindOfClass:[UITableView class]]) {
+    if ([scrollView isKindOfClass:[UITableView class]]||[scrollView isKindOfClass:[self.etableView class]]) {
         
     }
     else
