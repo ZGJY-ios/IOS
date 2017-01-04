@@ -62,7 +62,7 @@
     [self.NilView addSubview:nilImage];
     UILabel * nilLbael = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:550], SCREENWIDTH, [GZGApplicationTool control_height:50])];
     nilLbael.text = @"此分类暂无商品";
-    nilLbael.font = [UIFont boldSystemFontOfSize:25];
+    nilLbael.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:50]];
     nilLbael.textAlignment = NSTextAlignmentCenter;
     [self.NilView addSubview:nilLbael];
     [self.view addSubview:self.NilView];

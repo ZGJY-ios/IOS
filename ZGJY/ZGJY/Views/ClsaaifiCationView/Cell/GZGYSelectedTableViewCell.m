@@ -17,7 +17,7 @@
         [self addSubview:self.selectedLabel];
         _countLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:25], [GZGApplicationTool control_wide:300], [GZGApplicationTool control_height:30])];
         _countLabel.text = @"1个,增值保障";
-        _countLabel.font = [UIFont systemFontOfSize:15];
+        _countLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
         [self addSubview:self.countLabel];
         [self addSubview:self.arrowView];
     }
@@ -27,7 +27,7 @@
 {
     _selectedLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:20], [GZGApplicationTool control_height:25], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
     _selectedLabel.text = @"已选";
-    _selectedLabel.font = [UIFont systemFontOfSize:15];
+    _selectedLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     return _selectedLabel;
 }
 //-(UILabel *)countLabel

@@ -25,7 +25,7 @@
             [SegBtn setTitle:NameArray[i] forState:UIControlStateNormal];
             [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [SegBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-            SegBtn.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+            SegBtn.titleLabel.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:28]];
             SegBtn.tag = i;
             [SegBtn addTarget:self action:@selector(SegBtn:) forControlEvents:UIControlEventTouchUpInside];
             [HeaderScroller addSubview:SegBtn];

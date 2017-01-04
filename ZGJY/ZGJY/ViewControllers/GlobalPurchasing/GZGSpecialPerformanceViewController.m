@@ -103,7 +103,7 @@ static NSString *SpecialPerformanceCellStr = @"SpecialPerformanceCellStr";
                                                             topTitleArray:titleArr
                                                               selectColor:[GZGColorClass subjectCountriesHeadFaceSelectTitleColor]
                                                              defauleColor:[GZGColorClass subjectCountriesHeadFaceCancleSelectTitleColor]
-                                                                titleFont:[UIFont systemFontOfSize:13]
+                                                                titleFont:[UIFont systemFontOfSize:[GZGApplicationTool control_height:26]]
                                                              titleSpacing:10.0f
                                                                 lineWidth:2.0f
                                   ];

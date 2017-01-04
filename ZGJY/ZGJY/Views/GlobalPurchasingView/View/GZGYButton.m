@@ -19,13 +19,13 @@
         headLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 80, 30)];
         headLabel.backgroundColor = [UIColor clearColor];
         headLabel.text = head;
-        headLabel.font = [UIFont systemFontOfSize:14];
+        headLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         //headLabel.lineBreakMode = NSLineBreakByWordWrapping;
         headLabel.numberOfLines = 0;
         [self addSubview:headLabel];
         
         msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 30)];
-        msgLabel.font = [UIFont systemFontOfSize:14];
+        msgLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         msgLabel.textColor = [UIColor lightGrayColor];
         msgLabel.backgroundColor = [UIColor clearColor];
         msgLabel.textAlignment = NSTextAlignmentRight;

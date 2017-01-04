@@ -86,7 +86,7 @@ static NSInteger const TopTitleLabTag = 9910;
     }
     _index = countIndex;
     UILabel *firstLab = _scrollView.subviews.firstObject;
-    CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y, ww = [self textSize:firstLab.text font:[UIFont systemFontOfSize:13] size:self.frame.size.width].width;
+    CGFloat hh = _scrollView.frame.size.height + _scrollView.frame.origin.y, ww = [self textSize:firstLab.text font:[UIFont systemFontOfSize:[GZGApplicationTool control_height:26]] size:self.frame.size.width].width;
     _topTitleLine = [[UIView alloc] init];
     _topTitleLine.backgroundColor = _selectColor;
     _topTitleLine.frame = CGRectMake(0, hh - [GZGApplicationTool control_height:25], ww, _lineWidth);

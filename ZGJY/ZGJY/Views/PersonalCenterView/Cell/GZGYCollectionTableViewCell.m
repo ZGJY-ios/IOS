@@ -28,7 +28,7 @@
             iconLabel.textAlignment = NSTextAlignmentCenter;
             iconLabel.backgroundColor = [UIColor orangeColor];
             iconLabel.text = @"热卖";
-            iconLabel.font = [UIFont systemFontOfSize:12];
+            iconLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:24]];
             [self addSubview:iconLabel];
         }
         priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:590], [GZGApplicationTool control_height:50], [GZGApplicationTool control_wide:140], [GZGApplicationTool control_height:35])];

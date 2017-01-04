@@ -23,7 +23,7 @@
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:175], [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:400], [GZGApplicationTool control_height:40])];
         titleLabel.text = @"手机快速注册";
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        titleLabel.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:40]];
         [self addSubview:titleLabel];
         NSMutableArray * viewArray = [NSMutableArray arrayWithCapacity:1];
         for (int i = 0; i<4; i++) {

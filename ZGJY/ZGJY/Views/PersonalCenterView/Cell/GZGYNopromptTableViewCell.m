@@ -45,11 +45,11 @@
         countLabel.text = @"×1";
         [self addSubview:countLabel];
         stateLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:130], [GZGApplicationTool control_height:35])];
-        stateLabel.font = [UIFont systemFontOfSize:14];
+        stateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         stateLabel.text = @"申请时间:";
         [self addSubview:stateLabel];
         timeLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:305], [GZGApplicationTool control_height:220], [GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35])];
-        timeLabel.font = [UIFont systemFontOfSize:14];
+        timeLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         timeLabel.text = @"2016-09-30";
         [self addSubview:timeLabel];
         forgoodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];

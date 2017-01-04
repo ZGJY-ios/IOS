@@ -28,11 +28,11 @@
                 [self addSubview:iconView];
                 nameLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:190]+[GZGApplicationTool control_wide:330]*j, [GZGApplicationTool control_height:365]+[GZGApplicationTool control_height:135]*i, [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
                 nameLabel.text = nameArray[i*2+j];
-                nameLabel.font = [UIFont boldSystemFontOfSize:18];
+                nameLabel.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:36]];
                 [self addSubview:nameLabel];
                 introduceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:190]+[GZGApplicationTool control_wide:330]*j, [GZGApplicationTool control_height:405]+[GZGApplicationTool control_height:135]*i, [GZGApplicationTool control_wide:220], [GZGApplicationTool control_height:30])];
                 introduceLabel.text = interArray[i*2+j];
-                introduceLabel.font = [UIFont systemFontOfSize:12];
+                introduceLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:24]];
                 [self addSubview:introduceLabel];
             }
         }

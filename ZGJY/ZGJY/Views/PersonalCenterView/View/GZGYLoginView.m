@@ -22,7 +22,7 @@
         titleLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:175], [GZGApplicationTool control_height:40], [GZGApplicationTool control_wide:400], [GZGApplicationTool control_height:40])];
         titleLabel.text = @"欢迎登录中港";  
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        titleLabel.font = [UIFont boldSystemFontOfSize:[GZGApplicationTool control_height:40]];
         [self addSubview:titleLabel];
         
         backView = [[UIView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:225], [GZGApplicationTool control_wide:550], [GZGApplicationTool control_height:85])];
@@ -70,7 +70,7 @@
         regBtn.frame = CGRectMake([GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:475], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:35]);
         [regBtn setTitleColor:[UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0] forState:UIControlStateNormal];
         [regBtn setTitle:@"邮箱快速注册" forState:UIControlStateNormal];
-        regBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        regBtn.titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         regBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [regBtn addTarget:self action:@selector(Registered:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:regBtn];
@@ -78,7 +78,7 @@
         forgetBtn.frame = CGRectMake([GZGApplicationTool control_wide:500], [GZGApplicationTool control_height:475], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35]);
         [forgetBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
         [forgetBtn setTitleColor:[UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0] forState:UIControlStateNormal];
-        forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        forgetBtn.titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
         forgetBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [forgetBtn addTarget:self action:@selector(Forget:) forControlEvents:UIControlEventTouchUpInside];
 //        [self addSubview:forgetBtn];

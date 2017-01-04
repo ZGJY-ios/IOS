@@ -83,7 +83,7 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.navigationBar.barTintColor = [GZGColorClass gzgNavBarBackColor];
     [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+     @{NSFontAttributeName:[UIFont systemFontOfSize:[GZGApplicationTool control_height:38]],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
 }
@@ -226,7 +226,7 @@
     self.webScrollView.backgroundColor = [UIColor whiteColor];
     [self.allView addSubview:self.webScrollView];
     _bottomMsgLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -[GZGApplicationTool control_height:100], SCREENWIDTH, [GZGApplicationTool control_height:80])];
-    _bottomMsgLabel.font = [UIFont systemFontOfSize:13.0f];
+    _bottomMsgLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
     _bottomMsgLabel.textAlignment = NSTextAlignmentCenter;
     _bottomMsgLabel.text = @"下拉返回商品详情";
     [self.webScrollView addSubview:_bottomMsgLabel];
@@ -292,7 +292,7 @@
     
     _footView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [GZGApplicationTool control_height:80])];
     _footView.text = @"继续拖动,查看图文详情";
-    _footView.font = [UIFont systemFontOfSize:15];
+    _footView.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:30]];
     _footView.textAlignment = NSTextAlignmentCenter;
     _footView.textColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1.0];
 }

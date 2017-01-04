@@ -33,7 +33,7 @@
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:70], self.frame.size.width, 30)];
         _titleLabel.text = @"限时抢购 先到先得";
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont systemFontOfSize:13.5];
+        _titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:27]];
     }
     return _titleLabel;
 }

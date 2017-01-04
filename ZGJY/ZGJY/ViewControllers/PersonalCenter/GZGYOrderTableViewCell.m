@@ -44,7 +44,7 @@
 -(UILabel *)dateLabel
 {
     _dateLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH-[GZGApplicationTool control_wide:170], [GZGApplicationTool control_height:35], [GZGApplicationTool control_wide:150], [GZGApplicationTool control_height:35])];
-    _dateLabel.font = [UIFont systemFontOfSize:13];
+    _dateLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:26]];
     _dateLabel.textColor = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1.0];
     _dateLabel.text = @"2016-10-11";
     return _dateLabel;
