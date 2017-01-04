@@ -1,0 +1,47 @@
+//
+//  ZGJY.pch
+//  ZGJY
+//
+//  Created by 刘亚栋 on 16/8/3.
+//  Copyright © 2016年 LiuYaDong. All rights reserved.
+//
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#ifndef ZGJY_pch
+#define ZGJY_pch
+#import "AppDelegate.h"
+#import "GZGApplicationTool.h"
+#import "GZGColorClass.h"
+#import "GZGCommonlySet.h"
+#import "ZGNetWork.h"
+#import "GZGCommonleView.h"
+#import "GZGYAPIHelper.h"
+#import "SVProgressHUD.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+XMGExtension.h"
+#import "UIImageView+XMGExtension.h"
+#import "MJRefresh.h"
+#import "GZGLogText.h"
+#import "GZGNetworkPort.h"
+#define APP_Story_URL  @"现在没有"
+#define SCREENWIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
+
+//notifi
+
+#define GZGCountriesTableCanslideNotification @"GZGCountriesTableCanSlideNotification"    //让Scrollew 可以滑动
+#define GZGCountriesTableBanSlideNotification @"GZGCountriesTableBanSlideNotification"    //让Scrollew 禁止滑动
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* ZGJY_pch */

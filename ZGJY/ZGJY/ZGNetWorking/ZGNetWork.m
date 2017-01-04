@@ -15,44 +15,59 @@ static NSInteger const _timeDelay                   = 30;
 
 @implementation ZGNetWork
 + (NSString *)mobileAPIBaseURL{
-    NSString *baseURL = @"";
-#if DEBUG
-    baseURL = @"";
+
+    NSString * baseURL= nil;
+#ifdef DEBUG
+    baseURL = @"http://192.168.0.110:8080/";
+#else
+    baseURL = @"http://www.maizanmao.com/";//上线接口
 #endif
     return baseURL;
 }
 
 + (AFHTTPSessionManager *)setRequestManger{
     
+//    @"text/plain",
+//    @"text/html",
+//    @"application/x-www-form-urlencoded",
+//    @"application/json",
+//    @"text/json",
+//    @"text/javascript",
+//    @"image/png",
+//    @"image/jpeg",
+//    @"application/rtf",
+//    @"image/gif",
+//    @"application/zip",
+//    @"audio/x-wav",
+//    @"image/tiff",
+//    @"application/vnd.ms-powerpoint",
+//    @"video/mpeg",@"video/quicktime",
+//    @"application/x-javascript",
+//    @"application/x-gzip",
+//    @"application/x-gtar",
+//    @"application/msword",
+//    @"text/css",
+//    @"video/x-msvideo",
+//    @"text/xml"
+    
+    
     AFHTTPSessionManager  *requestManager = [AFHTTPSessionManager manager];
     requestManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
-                                                                @"text/plain",
-                                                                @"text/html",
-                                                                @"application/x-www-form-urlencoded",
                                                                 @"application/json",
                                                                 @"text/json",
                                                                 @"text/javascript",
-                                                                @"image/png",
-                                                                @"image/jpeg",
-                                                                @"application/rtf",
-                                                                @"image/gif",
-                                                                @"application/zip",
-                                                                @"audio/x-wav",
-                                                                @"image/tiff",
-                                                                @"application/vnd.ms-powerpoint",
-                                                                @"video/mpeg",@"video/quicktime",
-                                                                @"application/x-javascript",
-                                                                @"application/x-gzip",
-                                                                @"application/x-gtar",
-                                                                @"application/msword",
-                                                                @"text/css",
-                                                                @"video/x-msvideo",
-                                                                @"text/xml", nil];
+                                                                @"text/html", nil];
+//    requestManager.responseSerializer = [AFJSONResponseSerializer serializer];
     requestManager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    ((AFJSONResponseSerializer *)requestManager.responseSerializer).removesKeysWithNullValues = YES;
     requestManager.requestSerializer.timeoutInterval = _timeDelay;
     
     return requestManager;
 }
+
+
+
+
 /**
  *  转Json数据
  *
@@ -140,12 +155,12 @@ static NSInteger const _timeDelay                   = 30;
                   parameters:(id)parameters
                     success:(void(^)(id responseObject,NSInteger task))success
                     failure:(void(^)(NSError *failure,NSInteger  task))errors{
-    
+    NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
     AFHTTPSessionManager *manger = [self setRequestManger];
-    [manger GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manger GET:gzgUrl parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",responseObject);
         
         success(responseObject,[self urlResponseErrorCode:task.response]);
         
@@ -166,8 +181,11 @@ static NSInteger const _timeDelay                   = 30;
                      success:(void(^)(id responseObject,NSInteger task))success
                      failure:(void(^)(NSError *failure,NSInteger  task))errors{
     
+    NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
+//    NSString *gzgUrl = [NSString stringWithFormat:@"http://192.168.0.110:8080/%@",url];
+    
     AFHTTPSessionManager *manger = [self setRequestManger];
-    [manger POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manger POST:gzgUrl parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject,[self urlResponseErrorCode:task.response]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -186,8 +204,9 @@ static NSInteger const _timeDelay                   = 30;
                          parameters:(id)parameters
                        success:(void(^)(id responseObject,NSInteger task))success
                        failure:(void(^)(NSError *failure,NSInteger  task))errors{
+    NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
     AFHTTPSessionManager *manger = [self setRequestManger];
-    [manger DELETE:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manger DELETE:gzgUrl parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject,[self urlResponseErrorCode:task.response]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errors(error,[self urlResponseErrorCode:task.response]);
@@ -206,7 +225,8 @@ static NSInteger const _timeDelay                   = 30;
                     success:(void(^)(id responseObject,NSInteger task))success
                     failure:(void(^)(NSError *failure,NSInteger  task))errors{
     AFHTTPSessionManager *manger = [self setRequestManger];
-    [manger PUT:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
+    [manger PUT:gzgUrl parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject,[self urlResponseErrorCode:task.response]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errors(error,[self urlResponseErrorCode:task.response]);
@@ -226,10 +246,10 @@ static NSInteger const _timeDelay                   = 30;
             Image:(UIImage *)image
             success:(void(^)(id responseObject,NSInteger task))success
             failure:(void(^)(NSError *failure,NSInteger  task))errors{
-    
+    NSString *gzgUrl = [NSString stringWithFormat:@"%@%@",[self mobileAPIBaseURL],url];
     [ZGNetDealImage conversionImage:image data:^(NSData *imgData) {
         AFHTTPSessionManager *manger = [self setRequestManger];
-        [manger POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [manger POST:gzgUrl parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             [formData appendPartWithFileData:imgData name:@"file" fileName:@"test" mimeType:@"image/png"];
         } progress:^(NSProgress * _Nonnull uploadProgress) {
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -241,3 +261,4 @@ static NSInteger const _timeDelay                   = 30;
     
 }
 @end
+
