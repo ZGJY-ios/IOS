@@ -331,6 +331,8 @@
 		E5941BB71DDBF9A70069B757 /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAD1DDBF9A70069B757 /* JSONKeyMapper.m */; };
 		E5941BB81DDBF9A70069B757 /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5941BAF1DDBF9A70069B757 /* JSONValueTransformer.m */; };
 		E59BDB491DD4188F008FB234 /* GZGCouponsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E59BDB481DD4188F008FB234 /* GZGCouponsCell.m */; };
+		E5A15D651E09585B0000BF57 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5393D4951E022D0C00CE2EC7 /* SystemConfiguration.framework */; };
+
 		E5A982F71DFFE6680081B8CD /* GZGTempMaternalInfantController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A982F61DFFE6680081B8CD /* GZGTempMaternalInfantController.m */; };
 		E5A983511DF5601E004D269B /* GZGAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A983501DF5601E004D269B /* GZGAddressModel.m */; };
 		E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */ = {isa = PBXBuildFile; fileRef = E5ABE6911DD16D3A00D2E59D /* OfficialAddress.png */; };
@@ -2319,7 +2321,7 @@
 		BDDDF8001D51B992002723AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = LiuYaDong;
 				TargetAttributes = {
 					BDDDF8071D51B992002723AB = {

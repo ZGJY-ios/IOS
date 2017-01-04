@@ -66,9 +66,7 @@
     cell.backgroundColor = [UIColor clearColor];
     
     GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
-    
-    
-    [cell setModel:model];
+    [cell setSModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -62,6 +62,22 @@
 }
 - (void)requestData {
     
+    if (_addressArrays.count > 0) {
+        [_addressArrays removeAllObjects];
+    }
+    if (_commmodityArrays.count > 0) {
+        [_commmodityArrays removeAllObjects];
+    }
+    if (_orderArrays.count > 0) {
+        [_orderArrays removeAllObjects];
+    }
+    if (_courierArrays.count > 0) {
+        [_courierArrays removeAllObjects];
+    }
+    if (_paymentArrays.count > 0) {
+        [_paymentArrays removeAllObjects];
+    }
+    
     if (!_addressArrays) {
         _addressArrays = [NSMutableArray array];
     }
@@ -130,7 +146,7 @@
 }
 - (void)requestDataWithSubmitOrder:(NSString *)amount {
     GZGAddressModel * addressModel = _addressArrays.firstObject;
-    GZGPayModel * payModel = _paymentArrays.firstObject;
+    GZGPayModel * payModel = _paymentArrays.lastObject;
     GZGCourierModel * couriersModel = _courierArrays.firstObject;
     NSDictionary * dict = @{@"receiverId":addressModel.ids,@"paymentMethodId":payModel.ids,@"shippingMethodId":couriersModel.ids};
     [[GZGYAPIHelper shareAPIHelper] submitOrderDict:dict Finsh:^(id responseObject) {
@@ -155,13 +171,15 @@
 
 #pragma mark - 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return _addressArrays.count;
     } else if (section == 1) {
         return _commmodityArrays.count;
+    } else if (section == 2) {
+        return 1;
     }
     return _orderArrays.count;
 }
@@ -197,6 +215,9 @@
 //    else if (indexPath.section == 2 || indexPath.section == 3) {
 //        return [GZGApplicationTool control_height:100];
 //    }
+    else if (indexPath.section == 2) {
+        return [GZGApplicationTool control_height:100];
+    }
     return [GZGApplicationTool control_height:423];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -236,19 +257,20 @@
         [cell setModel];
         return cell;
     }
-//    else if (indexPath.section == 2) {
-//        static NSString * cellIdentifier = @"Cell";
-//        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//        if (!cell) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-//        }
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.textLabel.text = NSLocalizedString(@"发票", nil);
-//        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-//        cell.detailTextLabel.text = NSLocalizedString(@"不需要发票", nil);
-//        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-//        return cell;
-//    } else if (indexPath.section == 3) {
+    else if (indexPath.section == 2) {
+        static NSString * cellIdentifier = @"Cell";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = NSLocalizedString(@"付款方式", nil);
+        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+        cell.detailTextLabel.text = NSLocalizedString(@"货到付款", nil);
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+        return cell;
+    }
+//    else if (indexPath.section == 3) {
 //        static NSString * cellIdentifier = @"Cell";
 //        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 //        if (!cell) {
@@ -287,8 +309,7 @@
     cell.totalPriceNumber.text = [NSString stringWithFormat:@"￥%.2f",self.totalPrice + model.freight];
     
     [cell setSubmitOrderBlock:^(NSString * amount) {
-//        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
-        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
+        [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
     }];
     return cell;
 }

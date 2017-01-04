@@ -29,9 +29,11 @@ static NSInteger const BtnTag = 1000;
     
 }
 - (BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
-
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
@@ -42,7 +44,7 @@ static NSInteger const BtnTag = 1000;
 - (void)buildUI{
 
     _textfield = [[UITextField alloc] initWithFrame:CGRectMake([GZGApplicationTool control_wide:20],
-                                                             [GZGApplicationTool control_height:18],
+                                                             [GZGApplicationTool control_height:18 ] + [GZGApplicationTool statusBarSize],
                                                              [GZGApplicationTool control_wide:625],
                                                              [GZGApplicationTool control_height:58])];
     _textfield.delegate = self;
@@ -57,7 +59,7 @@ static NSInteger const BtnTag = 1000;
     [self.view addSubview:_textfield];
     
     _cancleBtn = [UIButton  buttonWithType:UIButtonTypeRoundedRect];
-    _cancleBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:35] - [GZGApplicationTool control_wide:64], ([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:30])/2, [GZGApplicationTool control_wide:64], [GZGApplicationTool control_height:30]);
+    _cancleBtn.frame = CGRectMake(SCREENWIDTH - [GZGApplicationTool control_wide:35] - [GZGApplicationTool control_wide:64], ([GZGApplicationTool navBarAndStatusBarSize] - [GZGApplicationTool control_height:30])/2 + [GZGApplicationTool statusBarSize] / 2, [GZGApplicationTool control_wide:64], [GZGApplicationTool control_height:30]);
     [_cancleBtn setTitle:NSLocalizedString(@"GZG_Commonly_Cancle", nil) forState:UIControlStateNormal];
     _cancleBtn.titleLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:26]];
     [_cancleBtn setTitleColor:[GZGColorClass subjectSearchTextColor] forState:UIControlStateNormal];
@@ -151,7 +153,7 @@ static NSInteger const BtnTag = 1000;
 #pragma mark 系统代理
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    NSLog(@"开始搜索");
+    [self pushSearchListWithCommodity:textField.text];
     return YES;
 }
 #pragma mark 自己的代理
@@ -161,9 +163,12 @@ static NSInteger const BtnTag = 1000;
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)btnDown:(UIButton *)btn{
+    [self pushSearchListWithCommodity:btn.titleLabel.text];
+}
+- (void)pushSearchListWithCommodity:(NSString *)commodity {
     GZGSearchListController * searchVC = [[GZGSearchListController alloc] init];
     searchVC.hidesBottomBarWhenPushed = YES;
-    searchVC.string = btn.titleLabel.text;
+    searchVC.string = commodity;
     [self.navigationController pushViewController:searchVC animated:YES];
 }
 

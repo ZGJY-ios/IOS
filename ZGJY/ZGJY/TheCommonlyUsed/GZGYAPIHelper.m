@@ -134,15 +134,30 @@
         failed(failure);
     }];
 }
-
+#pragma mark - 搜索列表
+// 搜索列表
+- (void)searchDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"appTopic/AppSearch";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject[@"page"][@"list"]);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
 // 购物车列表
 - (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
     
+    [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         NSArray * array = responseObject[@"cart"];
         result(array);
+        [SVProgressHUD dismiss];
     } failure:^(NSError *failure, NSInteger task) {
         failed(failure);
+        [SVProgressHUD dismiss];
     }];
 }
 #pragma mark --- 商品详情接口
@@ -334,6 +349,19 @@
 // 提交订单
 - (void)submitOrderDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
     NSString * url = @"member/appOrder/create";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
+#pragma mark - 确认支付
+// 确认支付
+- (void)confirmPaymentDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appOrder/payment";
     [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         result(responseObject);

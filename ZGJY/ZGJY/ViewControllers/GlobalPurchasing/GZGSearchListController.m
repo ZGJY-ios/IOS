@@ -10,8 +10,10 @@
 #import "GZGSearchListCell.h"
 #import "GZGSegmentControl.h"
 #import "GZGDropDownMenu.h"
+#import "GZGSpecialPerformanceModel.h"
 #import "GZGYListModel.h"
 #import "GZGYDetailsViewController.h"
+
 @interface GZGSearchListController () <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,GZGDropDownMenuDelegate,GZGDropDownMenuDataSource,GZGSegmentControlDelegate,GZGSegmentControlDataSource>
 @property (nonatomic, strong) NSArray<GZGYListModel *> *model;
 @property (nonatomic, strong) NSMutableArray * shopIDArray;
@@ -33,6 +35,9 @@
 @property (nonatomic, assign) NSInteger currentData4Index;
 @property (nonatomic, assign) NSInteger currentData1SelectedIndex;
 @property (nonatomic, strong) UITextField * textField;
+@property (nonatomic, strong) NSMutableArray * commonditys;
+//@property (nonatomic, strong) UITableView * tableView;
+@property (nonatomic, strong) UIView * NilView;
 @end
 
 @implementation GZGSearchListController
@@ -53,8 +58,8 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
-    [self.leftBtn setImage:image forState:UIControlStateNormal];
+//    UIImage * image = [[UIImage imageNamed:@"return-arrow"] imageWithTintColor:[UIColor whiteColor]];
+//    [self.leftBtn setImage:image forState:UIControlStateNormal];
     
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(self.leftBtn.frame.origin.x + self.leftBtn.frame.size.width + [GZGApplicationTool control_wide:30],
                                                                [GZGApplicationTool control_height:8] + [UIApplication sharedApplication].statusBarFrame.size.height,
@@ -84,7 +89,7 @@
     _segmentControl.selectedIndex = 0;
     _segmentControl.layer.borderColor = [UIColor clearColor].CGColor;
     _segmentControl.layer.borderWidth = 1.0f;
-    [self.view addSubview:_segmentControl];
+//    [self.view addSubview:_segmentControl];
     
     //  指定默认选中
     _currentData1Index = 0;
@@ -101,35 +106,63 @@
     _downMenu.textSelectedColor = [GZGColorClass subjectSearchListSelectedTextColor];
     _downMenu.dataSource = self;
     _downMenu.delegate = self;
-    [self.view addSubview:self.downMenu];
+//    [self.view addSubview:self.downMenu];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height + [GZGApplicationTool control_height:194], [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height + [GZGApplicationTool control_height:194])) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.backgroundColor = [UIColor clearColor];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableView.showsVerticalScrollIndicator = NO;
-    _tableView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:_tableView];
-    [self ListData];
+//    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height + [GZGApplicationTool control_height:194], [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height + [GZGApplicationTool control_height:194])) style:UITableViewStylePlain];
+    UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - (self.navBarView.frame.origin.y + self.navBarView.frame.size.height)) style:UITableViewStylePlain];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    tableView.showsVerticalScrollIndicator = NO;
+    tableView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:tableView];
+    _tableView = tableView;
+    
+    [self NilviewInterface];
+    [self requestDataWithKeyword:self.string];
 }
-#pragma mark --- 数据
--(void)ListData
+#pragma mark - 自己的方法
+#pragma mark --- 分类为空界面
+-(void)NilviewInterface
 {
-    NSDictionary * dict;
-    if ([_stateString isEqualToString:@"分类"]) {
-        dict = @{@"productCategoryId":_string};
-    }else{
-        dict = @{@"brandId":_string};
+    self.NilView = [[UIView alloc]initWithFrame:self.tableView.frame];
+    self.NilView.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
+    UIImageView * nilImage = [[UIImageView alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:250], [GZGApplicationTool control_wide:250], [GZGApplicationTool control_height:250])];
+    nilImage.image = [UIImage imageNamed:@"图层-0"];
+    [self.NilView addSubview:nilImage];
+    UILabel * nilLbael = [[UILabel alloc]initWithFrame:CGRectMake(0, [GZGApplicationTool control_height:550], SCREENWIDTH, [GZGApplicationTool control_height:50])];
+    nilLbael.text = @"此分类暂无商品";
+    nilLbael.font = [UIFont boldSystemFontOfSize:25];
+    nilLbael.textAlignment = NSTextAlignmentCenter;
+    [self.NilView addSubview:nilLbael];
+    [self.view addSubview:self.NilView];
+    self.NilView.hidden = YES;
+}
+- (void)requestDataWithKeyword:(NSString *)keyword {
+    
+    if (!_commonditys) {
+        _commonditys = [NSMutableArray array];
     }
-    [[GZGYAPIHelper shareAPIHelper]shopListDict:dict ClassOrBrand:_stateString Finsh:^(NSArray *listArray) {
-        for (int i = 0; i<listArray.count;i++) {
-            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-            dic = listArray[i];
-            [self.shopIDArray addObject:dic[@"id"]];
+    if (_commonditys.count > 0) {
+        [_commonditys removeAllObjects];
+    }
+    NSDictionary * dict = @{@"keyword":keyword};
+    [[GZGYAPIHelper shareAPIHelper] searchDict:dict Finsh:^(NSArray *dataArray) {
+        if (dataArray.count == 0) {
+            self.NilView.hidden = NO;
+        }else{
+            self.NilView.hidden = YES;
         }
-        self.model = [GZGYListModel mj_objectArrayWithKeyValuesArray:listArray];
-        [_tableView reloadData];
+        for (int i = 0; i < dataArray.count; i++) {
+            NSDictionary * dic = dataArray[i];
+            GZGSpecialPerformanceModel * model = [GZGSpecialPerformanceModel specialPerformanceWithDict:dic];
+            [_commonditys addObject:model];
+        }
+        [self.tableView reloadData];
+    } failed:^(NSError *error) {
+        GZGLog(@"搜索失败：%@",error);
+        [SVProgressHUD showErrorWithStatus:@"搜索失败，请稍后重试！"];
     }];
 }
 #pragma mark - 系统的代理
@@ -137,7 +170,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.model.count;
+    return _commonditys.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GZGSearchListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
@@ -145,7 +178,8 @@
         cell = [[GZGSearchListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.backgroundColor = [UIColor clearColor];
-    cell.model = self.model[indexPath.row];
+    GZGSpecialPerformanceModel * model = _commonditys[indexPath.row];
+    [cell setSModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

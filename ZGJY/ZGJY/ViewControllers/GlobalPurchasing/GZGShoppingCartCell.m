@@ -115,9 +115,9 @@
     [self.contentView addSubview:self.cartPhone];
     [self.contentView addSubview:self.cartExclusive];
     [self.contentView addSubview:self.cartPrice];
-//    [self.contentView addSubview:self.cartSub];
+    [self.contentView addSubview:self.cartSub];
     [self.contentView addSubview:self.cartNumber];
-//    [self.contentView addSubview:self.cartAdd];
+    [self.contentView addSubview:self.cartAdd];
 }
 - (void)buttonClick:(UIButton *)button {
     

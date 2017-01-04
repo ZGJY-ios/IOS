@@ -99,10 +99,10 @@ GZGCrossBorderDirectMailCellDelegate,CollectionViewDelegeteClickProtocol
     
     //暂时隐藏
     
-    self.leftBtn.hidden = YES;
+//    self.leftBtn.hidden = YES;
     self.rightBtn.hidden = YES;
     
-//    [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
+    [self.leftBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Search"] forState:UIControlStateNormal];
 //    [self.rightBtn setImage:[UIImage imageNamed:@"QQG_TabBar_Message"] forState:UIControlStateNormal];
     self.titles.hidden = YES;
     
