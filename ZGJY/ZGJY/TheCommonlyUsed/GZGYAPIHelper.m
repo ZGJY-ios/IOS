@@ -134,15 +134,30 @@
         failed(failure);
     }];
 }
-
+#pragma mark - 搜索列表
+// 搜索列表
+- (void)searchDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"appTopic/AppSearch";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject[@"page"][@"list"]);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
 // 购物车列表
 - (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed {
     
+    [SVProgressHUD show];
     [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
         NSArray * array = responseObject[@"cart"];
         result(array);
+        [SVProgressHUD dismiss];
     } failure:^(NSError *failure, NSInteger task) {
         failed(failure);
+        [SVProgressHUD dismiss];
     }];
 }
 #pragma mark --- 商品详情接口
@@ -343,6 +358,19 @@
         [SVProgressHUD dismiss];
     }];
 }
+#pragma mark - 确认支付
+// 确认支付
+- (void)confirmPaymentDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
+    NSString * url = @"member/appOrder/payment";
+    [SVProgressHUD show];
+    [ZGNetWork POSTRequestMethodUrl:url parameters:dict success:^(id responseObject, NSInteger task) {
+        result(responseObject);
+        [SVProgressHUD dismiss];
+    } failure:^(NSError *failure, NSInteger task) {
+        failed(failure);
+        [SVProgressHUD dismiss];
+    }];
+}
 #pragma mark - 添加收藏
 // 添加收藏
 - (void)addCollectionDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed {
@@ -476,6 +504,35 @@
         GZGLog(@"全部订单%@",responseObject);
         NSArray * limitArray = responseObject[@"list"];
         result(limitArray);
+    }failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
+#pragma mark  -- 检测当前密码
+
+- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSArray * listArray))result{
+    
+    NSString *url = @"member/appPassword/checkCurrentPassword";
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:passWord success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        result(responseObject);
+    } failure:^(NSError *failure, NSInteger task) {
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
+        NSLog(@"%@",failure);
+    }];
+}
+
+
+- (void)changePassWorldClassCurrentPassword:(NSDictionary *)currentPassword Finsh:(void (^)(NSArray * listArray))result{
+    [SVProgressHUD show];
+    NSString *url = @"member/appPassword/update";
+    
+    [ZGNetWork POSTRequestMethodUrl:url parameters:currentPassword success:^(id responseObject, NSInteger task) {
+        [SVProgressHUD dismiss];
+        GZGLog(@"列表%@",responseObject);
+//        result(limitArray);
     } failure:^(NSError *failure, NSInteger task) {
         [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试"];
         NSLog(@"%@",failure);

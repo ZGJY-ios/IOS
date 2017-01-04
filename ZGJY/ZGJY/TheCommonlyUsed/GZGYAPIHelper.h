@@ -22,8 +22,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
     GoodsDetailsFireAlsoGroup, // 火力拼团
     GoodsDetailsKorea, // 韩国馆
     GoodsDetailsJapan, // 日本馆
-    GoodsDetailsEurope, // 欧洲馆
-    GoodsDetailsAussie, // 澳洲馆
+    GoodsDetailsEurope, // 健康保健
+    GoodsDetailsAussie, // 居家日用
 };
 
 
@@ -53,7 +53,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)pavilionCountries:(NSInteger)countries dict:(NSDictionary *)dict finish:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 //所以限时特卖数据
 - (void)AllLimitedTimeSaleDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result;
-
+// 搜索列表
+- (void)searchDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * dataArray))result failed:(void(^)(NSError * error))failed;
 // 购物车列表
 - (void)cartListURL:(NSString *)url dict:(NSDictionary *)dict finished:(void(^)(NSArray * goods))result failed:(void(^)(NSError * error))failed;
 // 添加到购物车
@@ -84,9 +85,10 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)makeSureOrderDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
 // 提交订单
 - (void)submitOrderDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
+// 确认支付
+- (void)confirmPaymentDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
 // 添加收藏
 - (void)addCollectionDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
-
 // 删除收藏
 - (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result;
 // 收藏列表
@@ -94,6 +96,16 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 
 #pragma mark - 健康保健   居家日用 护肤美妆 母婴专区
 - (void)homeCategoryIconData:(NSString *)cateS result:(void (^)(NSDictionary *dict))result;
+
+//// 收藏列表
+//- (void)collectionListDict:(NSDictionary *)dict Finsh:(void (^)(id responseObject))result failed:(void(^)(NSError * error))failed;
+//
+//#pragma mark - 健康保健   居家日用 护肤美妆 母婴专区
+//- (void)homeCategoryIconData:(NSString *)cateS result:(void (^)(NSDictionary *dict))result;
+//
+//// 删除收藏
+//- (void)delegateCollectionListDict:(NSDictionary *)dict Finsh:(void (^)(NSString * dataString))result;
+
 // 一级分类
 - (void)oneClassificationDict:(NSDictionary *)dict Finsh:(void (^)(NSArray * listArray))result;
 // 二级分类
@@ -104,4 +116,8 @@ typedef NS_ENUM(NSInteger, GoodsDetails) {
 - (void)shopListDict:(NSDictionary *)dict ClassOrBrand:(NSString *)stateString Finsh:(void (^)(NSArray * listArray))result;
 // 全部订单
 - (void)orderListDict:(NSDictionary *)dict Index:(NSInteger)index Finsh:(void (^)(NSArray * listArray))result;
+
+#pragma mark  -- 检测当前密码
+- (void)checkPassWord:(NSDictionary *)passWord result:(void (^)(NSArray * listArray))result;
+- (void)changePassWorldClassCurrentPassword:(NSDictionary *)currentPassword Finsh:(void (^)(NSArray * listArray))result;
 @end

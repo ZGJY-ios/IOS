@@ -78,7 +78,7 @@
     });
     
     
-    [self.commodityImageView addSubview:self.commodityHotImageView];
+//    [self.commodityImageView addSubview:self.commodityHotImageView];
     [self addSubview:self.commodityImageView];
     [self addSubview:self.commodityNameLabel];
     [self addSubview:self.commodityIntroductionLabel];
@@ -90,11 +90,11 @@
     _model = model;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString * urlString;
-        if (_model.image.length == 0&&_model.logo.length!=0) {
-            urlString = _model.logo;
-        }else if (_model.logo.length == 0&&_model.image.length!=0){
+//        if (_model.image.length == 0&&_model.logo.length!=0) {
+//            urlString = _model.logo;
+//        }else if (_model.logo.length == 0&&_model.image.length!=0){
             urlString = _model.image;
-        }
+//        }
         [_commodityImageView setHeader:urlString];
     });
 
@@ -121,6 +121,36 @@
         }
         [self addSubview:commodityLabel];
     }
+}
+- (void)setSModel:(GZGSpecialPerformanceModel *)sModel {
+    
+    _sModel = sModel;
+    
+    [self.commodityImageView sd_setImageWithURL:[NSURL URLWithString:_sModel.image] placeholderImage:nil];
+    self.commodityNameLabel.text = _sModel.name;
+    self.commodityIntroductionLabel.text = _sModel.full_name;
+    self.commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",_sModel.price];
+    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",_sModel.market_price]];
+    
+    self.commodityLabels = [NSMutableArray arrayWithArray:@[@"上新",@"热卖",@"促销"]];
+    for (NSInteger i = 0; i < _commodityLabels.count; i ++) {
+        UILabel * commodityLabel = [[UILabel alloc] init];
+        commodityLabel.frame = CGRectMake(self.commodityPriceLabel.frame.origin.x + self.commodityPriceLabel.frame.size.width + [GZGApplicationTool control_wide:10] + [GZGApplicationTool control_wide:70] * i, self.commodityIntroductionLabel.frame.origin.y + self.commodityIntroductionLabel.frame.size.height + [GZGApplicationTool control_height:42], [GZGApplicationTool control_wide:60], [GZGApplicationTool control_height:20]);
+        commodityLabel.text = NSLocalizedString(_commodityLabels[i], nil);
+        commodityLabel.textColor = [UIColor whiteColor];
+        commodityLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_wide:12]];
+        commodityLabel.textAlignment = NSTextAlignmentCenter;
+        // 颜色
+        if ([self.commodityLabels[i] isEqualToString:@"上新"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"blue-back"] mostColor];
+        } else if ([self.commodityLabels[i] isEqualToString:@"热卖"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"orange-back"] mostColor];
+        } else if ([self.commodityLabels[i] isEqualToString:@"促销"]) {
+            commodityLabel.backgroundColor = [[UIImage imageNamed:@"green-back"] mostColor];
+        }
+        [self addSubview:commodityLabel];
+    }
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

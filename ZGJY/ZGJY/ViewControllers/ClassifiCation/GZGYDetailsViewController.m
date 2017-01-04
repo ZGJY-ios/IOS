@@ -87,6 +87,13 @@
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [self creatleftBtnWithTitle:nil normalImage:@"NavBar_Returnimage" highlightedImage:nil frame:CGRectMake(0,0, [GZGApplicationTool control_wide:45], [GZGApplicationTool control_height:45]) action:@selector(pop)];
 }
+
+-  (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navBarView.hidden = NO;
+     self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     nameArray = @[@"商品",@"详情",@"评价"];
@@ -124,15 +131,19 @@
 }
 // 添加购物车
 - (void)requestDataWithAddCart {
-    
-    NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
-    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
-        [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
-        GZGLog(@"添加成功");
-    } failed:^(NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"服务器异常"];
-        GZGLog(@"添加失败");
-    }];
+    NSUserDefaults * userID = [[NSUserDefaults standardUserDefaults] objectForKey:@"USERID"];
+    if (userID) {
+        NSDictionary * dict = @{@"id":self.shopID,@"quantity":choiceView.countField.text};
+        [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
+            [SVProgressHUD showSuccessWithStatus:@"成功加入购物车"];
+            GZGLog(@"添加成功");
+        } failed:^(NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"服务器异常"];
+            GZGLog(@"添加失败");
+        }];
+    } else {
+        [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"没有登录！！"];
+    }
 }
 // 添加收藏
 - (void)requestDataWithAddCollection {
@@ -650,10 +661,7 @@
     GZGLog(@"加入进货单");
     [self requestDataWithAddCart];
 }
--(void)viewWillDisappear:(BOOL)animated
-{
-    self.navBarView.hidden = NO;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

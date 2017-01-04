@@ -80,6 +80,10 @@
 		044DA4031D5C60B200DD06EC /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3F81D5C60B200DD06EC /* UIProgressView+AFNetworking.m */; };
 		044DA4041D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3FA1D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m */; };
 		044DA4051D5C60B200DD06EC /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 044DA3FC1D5C60B200DD06EC /* UIWebView+AFNetworking.m */; };
+		046B147B1E0D314F008527E4 /* gzgqdt-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */; };
+		046B147C1E0D314F008527E4 /* gzgqdt.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14781E0D314F008527E4 /* gzgqdt.png */; };
+		046B147D1E0D314F008527E4 /* gzgqdt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B14791E0D314F008527E4 /* gzgqdt@2x.png */; };
+		046B147E1E0D314F008527E4 /* gzgqdt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046B147A1E0D314F008527E4 /* gzgqdt@3x.png */; };
 		047467CB1DAB859B009E4EAA /* nav_adly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467BF1DAB859B009E4EAA /* nav_adly.jpg */; };
 		047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C01DAB859B009E4EAA /* nav_hgg.jpg */; };
 		047467CD1DAB859B009E4EAA /* nav_hlpt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 047467C11DAB859B009E4EAA /* nav_hlpt.jpg */; };
@@ -113,6 +117,7 @@
 		04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0531DB9B51C003966DA /* index-Europe.jpg */; };
 		04A2D0581DB9B51C003966DA /* index-Japan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0541DB9B51C003966DA /* index-Japan.jpg */; };
 		04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A2D0551DB9B51C003966DA /* index-Korea.jpg */; };
+		04A437D51E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */; };
 		04A44BC61DC2F819007F87D5 /* GZGADDAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */; };
 		04A44BC91DC2F8E7007F87D5 /* GZGADDAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A44BC81DC2F8E7007F87D5 /* GZGADDAddressCell.m */; };
 		04A4A4B71DBF394500897F5A /* sy_myzq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04A4A4B61DBF394500897F5A /* sy_myzq.jpg */; };
@@ -491,6 +496,10 @@
 		044DA3FA1D5C60B200DD06EC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		044DA3FB1D5C60B200DD06EC /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		044DA3FC1D5C60B200DD06EC /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt-568h@2x.png"; sourceTree = "<group>"; };
+		046B14781E0D314F008527E4 /* gzgqdt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gzgqdt.png; sourceTree = "<group>"; };
+		046B14791E0D314F008527E4 /* gzgqdt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@2x.png"; sourceTree = "<group>"; };
+		046B147A1E0D314F008527E4 /* gzgqdt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gzgqdt@3x.png"; sourceTree = "<group>"; };
 		047467BF1DAB859B009E4EAA /* nav_adly.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_adly.jpg; sourceTree = "<group>"; };
 		047467C01DAB859B009E4EAA /* nav_hgg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hgg.jpg; sourceTree = "<group>"; };
 		047467C11DAB859B009E4EAA /* nav_hlpt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nav_hlpt.jpg; sourceTree = "<group>"; };
@@ -539,6 +548,9 @@
 		04A2D0531DB9B51C003966DA /* index-Europe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Europe.jpg"; sourceTree = "<group>"; };
 		04A2D0541DB9B51C003966DA /* index-Japan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Japan.jpg"; sourceTree = "<group>"; };
 		04A2D0551DB9B51C003966DA /* index-Korea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "index-Korea.jpg"; sourceTree = "<group>"; };
+		04A437D31E14ABD400A244F5 /* GZGNewPassWordModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGNewPassWordModifyViewController.h; sourceTree = "<group>"; };
+		04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGNewPassWordModifyViewController.m; sourceTree = "<group>"; };
+		04A437D61E14B3EA00A244F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04A44BC41DC2F819007F87D5 /* GZGADDAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressViewController.h; sourceTree = "<group>"; };
 		04A44BC51DC2F819007F87D5 /* GZGADDAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGADDAddressViewController.m; sourceTree = "<group>"; };
 		04A44BC71DC2F8E7007F87D5 /* GZGADDAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGADDAddressCell.h; sourceTree = "<group>"; };
@@ -561,7 +573,6 @@
 		04D60F461D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		04D60F471D87D67E00A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		04D60F491D87D6A400A42583 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		04D60F4B1D87D6BA00A42583 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04E8D61D1D9917F200E0D85D /* GZGGlobalPurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGGlobalPurchasingViewController.h; sourceTree = "<group>"; };
 		04E8D61E1D9917F200E0D85D /* GZGGlobalPurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GZGGlobalPurchasingViewController.m; sourceTree = "<group>"; };
 		04FBA25F1D98C87000AD147A /* GZGClassifiCationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GZGClassifiCationViewController.h; sourceTree = "<group>"; };
@@ -1586,6 +1597,8 @@
 				E54312461DD4378D0007C12D /* GZGAuthenticateViewController.m */,
 				E5201B361DD450CE007EDFAB /* GZGChangePasswordViewController.h */,
 				E5201B371DD450CE007EDFAB /* GZGChangePasswordViewController.m */,
+				04A437D31E14ABD400A244F5 /* GZGNewPassWordModifyViewController.h */,
+				04A437D41E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m */,
 				53860F481DD962E80047A734 /* YYS */,
 			);
 			path = PersonalCenter;
@@ -1639,6 +1652,10 @@
 				538047641DDAE3C300C75869 /* GZGYAPIHelper.m */,
 				533087381E094DCA0073AF61 /* GZGNewPavilion.h */,
 				533087391E094DCA0073AF61 /* GZGNewPavilion.m */,
+				046B14771E0D314F008527E4 /* gzgqdt-568h@2x.png */,
+				046B14781E0D314F008527E4 /* gzgqdt.png */,
+				046B14791E0D314F008527E4 /* gzgqdt@2x.png */,
+				046B147A1E0D314F008527E4 /* gzgqdt@3x.png */,
 			);
 			path = TheCommonlyUsed;
 			sourceTree = "<group>";
@@ -2307,7 +2324,7 @@
 		BDDDF8001D51B992002723AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = LiuYaDong;
 				TargetAttributes = {
 					BDDDF8071D51B992002723AB = {
@@ -2381,6 +2398,7 @@
 				5393D4A31E022D7900CE2EC7 /* AlipaySDK.bundle in Resources */,
 				047467CF1DAB859B009E4EAA /* nav_ozg.jpg in Resources */,
 				E5ABE6921DD16D3A00D2E59D /* OfficialAddress.png in Resources */,
+				046B147B1E0D314F008527E4 /* gzgqdt-568h@2x.png in Resources */,
 				E5648D301DBC83540077A165 /* PersonalHead@2x.png in Resources */,
 				04A2D0591DB9B51C003966DA /* index-Korea.jpg in Resources */,
 				047467CC1DAB859B009E4EAA /* nav_hgg.jpg in Resources */,
@@ -2398,6 +2416,7 @@
 				538CD0E61E0CC96D001348A4 /* 111.png in Resources */,
 				040CD2861DBE10F700A12DC3 /* sy_hgpic1.png in Resources */,
 				047467D41DAB859B009E4EAA /* sy_hgban.jpg in Resources */,
+				046B147D1E0D314F008527E4 /* gzgqdt@2x.png in Resources */,
 				04A4A4C11DBF3E6100897F5A /* gzg_gg1.png in Resources */,
 				040CD2881DBE10F700A12DC3 /* sy_hlpic3.png in Resources */,
 				04D60F481D87D6A400A42583 /* Localizable.strings in Resources */,
@@ -2420,6 +2439,7 @@
 				04A2D0571DB9B51C003966DA /* index-Europe.jpg in Resources */,
 				E581D8F71DC9CAE8000A3484 /* shentong-logo@3x.png in Resources */,
 				536400AD1E09523E00FC07C3 /* HFMZ.png in Resources */,
+				046B147E1E0D314F008527E4 /* gzgqdt@3x.png in Resources */,
 				BDDDF81B1D51B992002723AB /* LaunchScreen.storyboard in Resources */,
 				BDDDF8181D51B992002723AB /* Assets.xcassets in Resources */,
 				538047731DDAEE0B00C75869 /* SVProgressHUD.bundle in Resources */,
@@ -2427,6 +2447,7 @@
 				04104ECC1D9CACEF00A940F1 /* sy_kjpic2.jpg in Resources */,
 				047467D31DAB859B009E4EAA /* sy_adban.jpg in Resources */,
 				04104ED41D9CACEF00A940F1 /* sy_qqpic1.jpg in Resources */,
+				046B147C1E0D314F008527E4 /* gzgqdt.png in Resources */,
 				E5648D2E1DBC82280077A165 /* PersonalCenterBackgroundImage.jpg in Resources */,
 				047467CE1DAB859B009E4EAA /* nav_kjzy.jpg in Resources */,
 				538CD0E81E0CC97C001348A4 /* 未标题-1.png in Resources */,
@@ -2515,6 +2536,7 @@
 				E5201B411DD46CD6007EDFAB /* GZGSpecialPerformanceCell.m in Sources */,
 				5393D4801E022C7C00CE2EC7 /* base64.m in Sources */,
 				E51566F21DE2CF3A00B3DF3E /* MJRefreshStateHeader.m in Sources */,
+				04A437D51E14ABD400A244F5 /* GZGNewPassWordModifyViewController.m in Sources */,
 				E51566F01DE2CF3A00B3DF3E /* MJRefreshHeader.m in Sources */,
 				E5ABE6951DD16D6100D2E59D /* GZGAboutUsViewController.m in Sources */,
 				538CD0EB1E0CEABA001348A4 /* GZGYShopListViewController.m in Sources */,
@@ -2733,7 +2755,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				04D60F491D87D6A400A42583 /* zh-Hans */,
-				04D60F4B1D87D6BA00A42583 /* en */,
+				04A437D61E14B3EA00A244F5 /* en */,
 			);
 			name = Localizable.strings;
 			path = ..;
@@ -2893,8 +2915,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer: ji shaokun (7K99FWYYSD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ji shaokun (7K99FWYYSD)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen Qianhai Zhonggang Jinyuan Trade Co.,Ltd (5CXBN7534D)";
 				DEVELOPMENT_TEAM = 5CXBN7534D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

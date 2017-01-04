@@ -9,6 +9,7 @@
 #import "GZGTempMaternalInfantController.h"
 #import "GZGSearchListCell.h"
 #import "GZGSpecialPerformanceModel.h"
+#import "GZGYDetailsViewController.h"
 @interface GZGTempMaternalInfantController () <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic , strong) NSMutableArray *dataArray;
 @property(nonatomic, strong) UITableView *mainTableView;
@@ -65,15 +66,36 @@
     cell.backgroundColor = [UIColor clearColor];
     
     GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
-    
-    
-    [cell setModel:model];
+    [cell setSModel:model];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [GZGApplicationTool control_height:274];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+//    [self.commodityImageView sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:nil];
+//    self.commodityNameLabel.text = model.name;
+//    self.commodityIntroductionLabel.text = model.full_name;
+//    self.commodityPriceLabel.text = [NSString stringWithFormat:@"%0.2f",model.price];
+//    self.commodityReferencePriceLabel.attributedText = [self attributedStringHorzontalLineWithString:[NSString stringWithFormat:@"国内参考价%0.2f",model.market_price]];
+    
+    GZGSpecialPerformanceModel * model = _dataArray[indexPath.row];
+    
+    
+    NSLog(@"%ld",self.taglids.integerValue);
+    
+    
+    GZGYDetailsViewController * details = [[GZGYDetailsViewController alloc]init];
+    details.shopID = model.ID;
+    details.shopName = model.name;
+    details.shopImg = model.image;
+    details.productCategoryId = self.taglids;
+    details.gDetails = GoodsDetailsMaternalAndInfant;
+    details.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:details animated:YES];
+    
     
 }
 

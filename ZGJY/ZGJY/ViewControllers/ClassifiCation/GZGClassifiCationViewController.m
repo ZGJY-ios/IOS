@@ -301,7 +301,7 @@
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if ([collectionView isEqual:self.CollectionView]) {
-        return CGSizeMake(SCREENWIDTH/3*2, [GZGApplicationTool control_height:190]);
+        return CGSizeMake(0, 0);
     }else{
         return CGSizeMake(0, 0);
     }
@@ -309,11 +309,7 @@
 -(UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([collectionView isEqual:self.CollectionView]) {
-        UICollectionReusableView*headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        UIImageView * imgHeadView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH/3*2, [GZGApplicationTool control_height:200])];
-        imgHeadView.image = [UIImage imageNamed:@"sy_ad1.jpg"];
-        [headerView addSubview:imgHeadView];
-        return headerView;
+        return nil;
     }else{
         return nil;
     }

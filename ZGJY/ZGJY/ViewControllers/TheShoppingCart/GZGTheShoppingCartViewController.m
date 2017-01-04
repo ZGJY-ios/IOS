@@ -82,6 +82,10 @@
     self.isFutureGenerations = NO;
 //    [self.leftBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.rightBtn setImage:[[UIImage imageNamed:@"TheShoppingCartPushMessage"] imageWithTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    self.rightBtn.hidden = YES;// 以后干掉
+    
+    
+    
     _editorBtn = ({
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(self.rightBtn.frame.origin.x - [GZGApplicationTool control_wide:110], self.rightBtn.frame.origin.y, [GZGApplicationTool control_wide:90], self.rightBtn.frame.size.height);
@@ -198,7 +202,7 @@
 - (void)requestDataWithAddCartID:(NSString *)shopID number:(NSString *)number {
     
     NSDictionary * dict = @{@"id":shopID,@"quantity":number};
-    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/add" Dict:dict Finished:^(NSArray *carts) {
+    [[GZGYAPIHelper shareAPIHelper] addToCartURL:@"appCart/edit" Dict:dict Finished:^(NSArray *carts) {
         // 添加成功 刷新购物车列表
         [self requestData];
     } failed:^(NSError *error) {
@@ -319,7 +323,7 @@
         CGFloat totalPrice = [weakSelf.settlementView.combinedPriceTitle.text floatValue] + (weakCell.cartRedio.isSelected ? (model.price * weakCell.cartNumber.text.integerValue) : (- model.price * weakCell.cartNumber.text.integerValue));
         weakSelf.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",totalPrice];
     };
-    void (^calculateNumberPrice)(GZGSpecialPerformanceModel*,BOOL, BOOL) = ^(GZGSpecialPerformanceModel * model, BOOL addOrSub, BOOL isSelected) {
+    void (^calculateNumberPrice)(GZGSpecialPerformanceModel*,NSInteger,BOOL, BOOL) = ^(GZGSpecialPerformanceModel * model, NSInteger number, BOOL addOrSub, BOOL isSelected) {
         
         CGFloat totalPrice;
         if (isSelected) {
@@ -331,10 +335,10 @@
         weakSelf.settlementView.combinedPriceTitle.text = [NSString stringWithFormat:@"%.2f",totalPrice];
         if (addOrSub) {
             // 添加
-            [weakSelf requestDataWithAddCartID:[NSString stringWithFormat:@"%ld",model.product_id] number:@"1"];
+            [weakSelf requestDataWithAddCartID:[NSString stringWithFormat:@"%@",model.ID] number:[NSString stringWithFormat:@"%ld",number]];
         } else {
             // 删除
-            [weakSelf requestDataWithDeleteCartID:[NSString stringWithFormat:@"%ld",model.product_id] number:@"1"];
+            [weakSelf requestDataWithAddCartID:[NSString stringWithFormat:@"%@",model.ID] number:[NSString stringWithFormat:@"%ld",number]];
         }
     };
     void (^isSelectedFutureGenerations)() = ^() {
@@ -384,13 +388,13 @@
                     weakCell.cartNumber.text = [NSString stringWithFormat:@"%ld",--number];
                     // 按钮选中
                     if (weakCell.cartRedio.isSelected) {
-                        calculateNumberPrice(model,NO, YES);
+                        calculateNumberPrice(model,number,NO, YES);
                     } else {
-                        weakCell.cartRedio.selected = YES;
-                        calculateNumberPrice(model,NO, NO);
+//                        weakCell.cartRedio.selected = YES;
+                        calculateNumberPrice(model,number,NO, NO);
                     }
                 }
-                isSelectedFutureGenerations();
+//                isSelectedFutureGenerations();
             }
                 break;
             case 2: {
@@ -399,12 +403,12 @@
                 weakCell.cartNumber.text = [NSString stringWithFormat:@"%ld",++number];
                 // 按钮选中
                 if (weakCell.cartRedio.isSelected) {
-                    calculateNumberPrice(model, YES, YES);
+                    calculateNumberPrice(model,number, YES, YES);
                 } else {
-                    weakCell.cartRedio.selected = YES;
-                    calculateNumberPrice(model, YES, NO);
+//                    weakCell.cartRedio.selected = YES;
+                    calculateNumberPrice(model,number, YES, NO);
                 }
-                isSelectedFutureGenerations();
+//                isSelectedFutureGenerations();
             }
                 break;
         }

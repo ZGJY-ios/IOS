@@ -49,7 +49,7 @@
 }
 -(UILabel *)priceLabel
 {
-    _priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:100], [GZGApplicationTool control_height:30])];
+    _priceLabel = [[UILabel alloc]initWithFrame:CGRectMake([GZGApplicationTool control_wide:280], [GZGApplicationTool control_height:145], [GZGApplicationTool control_wide:200], [GZGApplicationTool control_height:30])];
     _priceLabel.text = @"拼团价:";
     _priceLabel.font = [UIFont systemFontOfSize:14];
     _priceLabel.textColor = [UIColor colorWithRed:252/255.0 green:16/255.0 blue:59/255.0 alpha:1.0];

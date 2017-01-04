@@ -18,6 +18,7 @@
 #import "GZGYEvaluationViewController.h"
 #import "GZGYTheOrderViewController.h"
 #import "GZGYLoginViewController.h"
+#import "GZGNewPassWordModifyViewController.h"
 @interface UIImage (PersonalCenter)
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
@@ -93,7 +94,9 @@
     NSArray * myInformationGroupTitles = [NSArray arrayWithObjects:@"待付款",@"待收货",@"待评价",@"已完成", nil];
     _myInformationGroupDic = [NSDictionary dictionaryWithObjectsAndKeys:myInformationGroupImages,@"image",myInformationGroupTitles,@"title", nil];
     NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterOrder",@"PersonalCenterAfterSales",@"PersonalCenterCollection",@"PersonalCenterCoupons",@"PersonalCenterAddress",@"PersonalCenterPassword",@"PersonalCenterEvaluation", nil];
+//    NSArray * myInformationImages = [NSArray arrayWithObjects:@"PersonalCenterCollection",@"PersonalCenterAddress", nil];
     NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的订单",@"我的售后",@"我的收藏",@"我的优惠券",@"收货地址管理",@"密码管理",@"评价管理", nil];
+//    NSArray * myInformationTitles = [NSArray arrayWithObjects:@"我的收藏",@"收货地址管理", nil];
     NSDictionary * myInformationDict = [NSDictionary dictionaryWithObjectsAndKeys:myInformationImages,@"image",myInformationTitles,@"title", nil];
     
     NSArray * programFunctionImages = [NSArray arrayWithObjects:@"PersonalCenterHelp", nil];
@@ -102,6 +105,7 @@
     NSDictionary * programFunction = [NSDictionary dictionaryWithObjectsAndKeys:programFunctionImages,@"image",programFunctionTitles,@"title", nil];
     
     _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict,programFunction, nil];
+//    _personalCenters = [NSMutableArray arrayWithObjects:myInformationDict, nil];
     UITableView * tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBarView.frame.origin.y + self.navBarView.frame.size.height, [GZGApplicationTool screenWide], [GZGApplicationTool screenHeight] - self.navBarView.frame.origin.y - self.navBarView.frame.size.height - self.tabBarController.tabBar.frame.size.height) style:UITableViewStyleGrouped];
     tableView.tableHeaderView = [self tableHeaderViewWithBackgroundImage:@"PersonalCenterBackgroundImage.jpg" headImage:@"PersonalHead" title:NSLocalizedString(@"中港会员123", nil)];
     tableView.dataSource = self;
@@ -212,6 +216,34 @@
     switch (indexPath.section) {
         case 0:
         {
+            
+            
+//            
+//            switch (indexPath.row) {
+//                case 0:
+//                {
+//                    GZGYCollectionViewController * collection= [[GZGYCollectionViewController alloc]init];
+//                    collection.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:collection animated:YES];
+//                    NSLog(@"我的收藏");
+//
+//                    break;
+//                }
+//                case 1:
+//                {
+//                    NSLog(@"收货地址管理");
+//                    GZGAddressManageViewController *addredssManger = [[GZGAddressManageViewController alloc] init];
+//                    [addredssManger setHidesBottomBarWhenPushed:YES];
+//                    [self.navigationController pushViewController:addredssManger animated:YES];
+//
+//                    break;
+//                }
+//                default:
+//                    break;
+//            }
+            
+            
+            
             switch (indexPath.row) {
                 case 0: {
 
@@ -251,9 +283,15 @@
                     break;
                 case 5: {
                     NSLog(@"密码管理");
-                    GZGAuthenticateViewController * authenticateVC = [[GZGAuthenticateViewController alloc] init];
-                    authenticateVC.hidesBottomBarWhenPushed = YES;
-                    [self.navigationController pushViewController:authenticateVC animated:YES];
+//                    GZGAuthenticateViewController * authenticateVC = [[GZGAuthenticateViewController alloc] init];
+//                    authenticateVC.hidesBottomBarWhenPushed = YES;
+//                    [self.navigationController pushViewController:authenticateVC animated:YES];
+                    
+                    GZGNewPassWordModifyViewController *newVC = [[GZGNewPassWordModifyViewController alloc] init];
+                    [newVC setHidesBottomBarWhenPushed:YES];
+                    [self.navigationController pushViewController:newVC animated:YES];
+                    
+                    
                 }
                     break;
                 case 6: {

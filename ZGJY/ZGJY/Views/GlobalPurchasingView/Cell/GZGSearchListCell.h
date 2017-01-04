@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GZGYListModel.h"
+#import "GZGSpecialPerformanceModel.h"
 @interface UIImage (Tint)
 
 - (UIImage *)imageWithTintColor:(UIColor *)tintColor;
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NSMutableArray * commodityLabels; // 商品标签
 @property (nonatomic, strong) UILabel * commodityReferencePriceLabel; // 商品参考价
 @property (nonatomic, strong) GZGYListModel *model;
+@property (nonatomic, strong) GZGSpecialPerformanceModel * sModel;
 
 
 @end

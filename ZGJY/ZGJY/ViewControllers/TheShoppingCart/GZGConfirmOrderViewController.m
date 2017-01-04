@@ -13,7 +13,7 @@
 #import "GZGShoppingCartModel.h"
 #import "GZGAddressModel.h"
 #import "GZGAddressManageViewController.h"
-
+#import "GZGADDAddressViewController.h"
 @interface GZGConfirmOrderViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;
 @property (nonatomic, strong) NSMutableArray * addressArrays;    // 地址
@@ -21,22 +21,37 @@
 @property (nonatomic, strong) NSMutableArray * orderArrays;          // 订单
 @property (nonatomic, strong) NSMutableArray * courierArrays;    // 配送方式
 @property (nonatomic, strong) NSMutableArray * paymentArrays;    // 支付方式
+//@property (nonatomic, assign)NSInteger counts;
 @end
 
 @implementation GZGConfirmOrderViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-//    [self requestData];
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titles.text = NSLocalizedString(@"确认订单", nil);
     
     [self buildUI];
-    [self requestData];
+   
 }
+#warning 测试 测试
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //测试使用 后期修改
+    NSString * gwc = [[NSUserDefaults standardUserDefaults]objectForKey:@"gwc"];
+    
+    NSLog(@"%@",gwc);
+    
+    if ([gwc isEqualToString: @"1"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"gwc"];
+    }else{
+        [self requestData];
+    }
+    
+}
+
 #pragma mark - 自己的方法
 - (void)buildUI {
     // UITableView
@@ -46,6 +61,22 @@
     [self.view addSubview:self.tableView];
 }
 - (void)requestData {
+    
+    if (_addressArrays.count > 0) {
+        [_addressArrays removeAllObjects];
+    }
+    if (_commmodityArrays.count > 0) {
+        [_commmodityArrays removeAllObjects];
+    }
+    if (_orderArrays.count > 0) {
+        [_orderArrays removeAllObjects];
+    }
+    if (_courierArrays.count > 0) {
+        [_courierArrays removeAllObjects];
+    }
+    if (_paymentArrays.count > 0) {
+        [_paymentArrays removeAllObjects];
+    }
     
     if (!_addressArrays) {
         _addressArrays = [NSMutableArray array];
@@ -66,7 +97,6 @@
     NSString * memberID = [[NSUserDefaults standardUserDefaults] objectForKey:@"USERID"];
     NSDictionary * dict = @{@"memberId":memberID};
     [[GZGYAPIHelper shareAPIHelper] makeSureOrderDict:dict Finsh:^(id responseObject) {
-        
         NSDictionary * order = responseObject[@"order"];
         GZGOrderModel * orderModel = [GZGOrderModel orderWithDict:order];
         [_orderArrays addObject:orderModel];
@@ -74,6 +104,16 @@
         NSArray * couriers = responseObject[@"shippingMethods"];
         NSArray * payments = responseObject[@"paymentMethods"];
         NSArray * carts = responseObject[@"cart"];
+        
+    #warning 测试
+        
+        if (address.count==0){
+            GZGADDAddressViewController *vc  = [[GZGADDAddressViewController alloc] init];
+            [vc setHidesBottomBarWhenPushed:YES];
+            vc.type = AddressTypeAdd;
+            [self.navigationController pushViewController:vc animated:YES];
+            return ;
+        }
         for (int i = 0; i < address.count; i++) {
             NSDictionary * dict = address[i];
             GZGAddressModel * model = [GZGAddressModel specialPerformanceWithDict:dict];
@@ -106,7 +146,7 @@
 }
 - (void)requestDataWithSubmitOrder:(NSString *)amount {
     GZGAddressModel * addressModel = _addressArrays.firstObject;
-    GZGPayModel * payModel = _paymentArrays.firstObject;
+    GZGPayModel * payModel = _paymentArrays.lastObject;
     GZGCourierModel * couriersModel = _courierArrays.firstObject;
     NSDictionary * dict = @{@"receiverId":addressModel.ids,@"paymentMethodId":payModel.ids,@"shippingMethodId":couriersModel.ids};
     [[GZGYAPIHelper shareAPIHelper] submitOrderDict:dict Finsh:^(id responseObject) {
@@ -131,13 +171,15 @@
 
 #pragma mark - 系统代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return _addressArrays.count;
     } else if (section == 1) {
         return _commmodityArrays.count;
+    } else if (section == 2) {
+        return 1;
     }
     return _orderArrays.count;
 }
@@ -173,6 +215,9 @@
 //    else if (indexPath.section == 2 || indexPath.section == 3) {
 //        return [GZGApplicationTool control_height:100];
 //    }
+    else if (indexPath.section == 2) {
+        return [GZGApplicationTool control_height:100];
+    }
     return [GZGApplicationTool control_height:423];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -212,19 +257,20 @@
         [cell setModel];
         return cell;
     }
-//    else if (indexPath.section == 2) {
-//        static NSString * cellIdentifier = @"Cell";
-//        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//        if (!cell) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-//        }
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        cell.textLabel.text = NSLocalizedString(@"发票", nil);
-//        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-//        cell.detailTextLabel.text = NSLocalizedString(@"不需要发票", nil);
-//        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
-//        return cell;
-//    } else if (indexPath.section == 3) {
+    else if (indexPath.section == 2) {
+        static NSString * cellIdentifier = @"Cell";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+        }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = NSLocalizedString(@"付款方式", nil);
+        cell.textLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+        cell.detailTextLabel.text = NSLocalizedString(@"货到付款", nil);
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:[GZGApplicationTool control_height:28]];
+        return cell;
+    }
+//    else if (indexPath.section == 3) {
 //        static NSString * cellIdentifier = @"Cell";
 //        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 //        if (!cell) {
@@ -264,6 +310,7 @@
     [cell setSubmitOrderBlock:^(NSString * amount) {
     [self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
        // [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启支付功能，请稍等！"];
+    //[self requestDataWithSubmitOrder:[NSString stringWithFormat:@"%.2f",self.totalPrice + model.freight]];
     }];
     return cell;
 }

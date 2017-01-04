@@ -114,7 +114,7 @@ static NSString *CountriesHeadFaceCollectionCell = @"CountriesHeadFaceCollection
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
+    [kAPPDELEGATE AutoDisplayAlertView:@"提示" :@"暂未开启此功能"];
     
     
 }
